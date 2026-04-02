@@ -1,4 +1,76 @@
-<!DOCTYPE html>
+  <!-- the product card -->
+    {{-- <div
+        class="relative flex flex-col bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group max-w-sm">
+
+        <div class="relative h-48 w-full overflow-hidden bg-gray-100">
+            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                alt="وجبة صحية"
+                class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500">
+
+            <div
+                class="absolute top-3 start-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm z-10">
+                15% خصم
+            </div>
+
+            <button
+                class="absolute top-3 end-3 p-2 bg-white/80 backdrop-blur-sm rounded-full text-gray-400 hover:text-red-500 hover:bg-white transition-all shadow-sm z-10">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                    </path>
+                </svg>
+            </button>
+        </div>
+
+        <div class="p-5 flex flex-col flex-grow">
+
+            <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-medium text-gray-500 flex items-center gap-1">
+                    <svg class="w-4 h-4 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                    </svg>
+                    مطعم المشويات الفاخرة
+                </span>
+                <div class="flex items-center gap-1 bg-orange-50 px-2 py-0.5 rounded-md">
+                    <span class="text-xs font-bold text-orange-600">4.8</span>
+                    <svg class="w-3 h-3 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                        <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                        </path>
+                    </svg>
+                </div>
+            </div>
+
+            <h3 class="text-lg font-bold text-gray-800 mb-2 line-clamp-1" title="طبق مشاوي مشكل فاخر مع الأرز">طبق مشاوي
+                مشكل فاخر مع الأرز</h3>
+
+            <p class="text-sm text-gray-500 mb-4 line-clamp-2">
+                تشكيلة من أفضل أنواع اللحوم الطازجة المشوية على الفحم مع التوابل الشرقية الأصيلة والبطاطس المقرمشة، تكفي
+                لشخصين.
+            </p>
+
+            <div class="mt-auto flex items-center justify-between pt-4 border-t border-gray-100">
+                <div class="flex flex-col">
+                    <span class="text-xs text-gray-400 line-through mb-0.5">$25.00</span>
+                    <span class="text-2xl font-extrabold text-gray-800">$18.<span class="text-sm">50</span></span>
+                </div>
+
+                <button
+                    class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-5 py-2.5 rounded-xl transition-colors font-semibold shadow-sm hover:shadow-md active:scale-95">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                    </svg>
+                    <span>أضف للسلة</span>
+                </button>
+            </div>
+
+        </div>
+    </div> --}}
+
+
+    <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -275,3 +347,4 @@
         @endif
     </body>
 </html>
+
