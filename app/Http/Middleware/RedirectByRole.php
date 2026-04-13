@@ -20,10 +20,10 @@ class RedirectByRole
             $user = Auth::user();
 
             if ($user->hasRole('seller')) {
-                return response()->view('auth.seller.dashboard');
+                return redirect('seller/dashboard');
             }
             if ($user->hasRole('buyer')) {
-                return response()->view('dashboard');
+                return redirect('buyer/dashboard');
             }
         }
 

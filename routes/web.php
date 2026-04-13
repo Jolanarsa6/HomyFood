@@ -1,12 +1,14 @@
 <?php
 
-use App\Http\Controllers\Frontend\UserController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Buyer\BuyerDashboardController;
+use App\Http\Controllers\Seller\ProductController;
+use App\Http\Controllers\Seller\SellerDashboardController;
+use App\Http\Controllers\Seller\SellerRegisterController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('home');
+})->name('home')->middleware('guest:web');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -14,7 +16,7 @@ Route::get('/dashboard', function () {
 
 
 Route::group(['middleware' => ['auth:web' , 'verified' , 'role:buyer'], 'prefix' => 'buyer','as' => 'buyer.' ] , function(){
-    Route::get('/jojo',[UserController::class,'index'])->name('jojo');
+    Route::get('/dashboard',[BuyerDashboardController::class,'index'])->name('dashboard');
 
 
 
@@ -24,12 +26,19 @@ Route::group(['middleware' => ['auth:web' , 'verified' , 'role:buyer'], 'prefix'
 
 
 
-Route::group(['middleware' => ['auth:web' , 'verified' , 'role:seller'], 'prefix' => 'seller','as' => 'seller.' ] , function(){
-
+Route::group(['middleware' => ['auth:web' , 'verified' , 'role:seller', 'check_approval'], 'prefix' => 'seller','as' => 'seller.' ] , function(){
+        Route::get('/dashboard',[SellerDashboardController::class,'index'])->name('dashboard');
+Route::get('/addProduct',[ProductController::class,'index']);
 
 
 });
 
+
+
+Route::get('/sellerRegister',[SellerRegisterController::class,'index'])->name('sellerRegister');
+Route::get('/sellerWaiting',function(){
+    return view('seller.waiting');
+})->name('sellerWaiting');
 
 
 

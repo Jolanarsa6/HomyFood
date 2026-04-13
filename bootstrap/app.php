@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\CheckSellerApproval;
 use App\Http\Middleware\RedirectByRole;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use Illuminate\Auth\Middleware\Authenticate;
@@ -18,7 +19,8 @@ return Application::configure(basePath: dirname(__DIR__))
             'auth' => Authenticate::class,
             'guest' => RedirectIfAuthenticated::class,
             'role_redirect' => RedirectByRole::class,
-            'role' => \Spatie\Permission\Middleware\RoleMiddleware::class
+            'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
+            'check_approval' => CheckSellerApproval::class
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

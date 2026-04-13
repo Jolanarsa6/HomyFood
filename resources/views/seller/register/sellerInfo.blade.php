@@ -1,13 +1,13 @@
 <x-guest-layout>
      <!-- the register header -->
     <div class="text-center mb-8">
-        <h2 class="text-2xl font-extrabold text-homy-green-700">{{ __('Sign In') }}!</h2>
+        <h2 class="text-2xl font-extrabold text-homy-green-700">{{ __('Seller Sign In') }}!</h2>
     </div>
 
     <form method="POST" action="{{ route('register') }}">
         @csrf
-  
-<input type="hidden" name="account_type" value="buyer">
+<input type="hidden" name="account_type" value="seller">
+
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('Name')" />

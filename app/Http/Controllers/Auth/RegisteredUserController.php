@@ -32,22 +32,28 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
+
+        $status = ($request->account_type === 'seller') ? 'pending' : 'approved';
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'password' => Hash::make($request->string('password')),
+            'status' => $status
         ]);
 
-        $user->assignRole('buyer');
+        $user->assignRole($request->account_type);
 
         event(new Registered($user));
 
-        Auth::login($user);
-
-        return redirect(route('dashboard', absolute: false));
+        if($status == 'approved'){
+            Auth::login($user);
+            return redirect(route('dashboard', absolute: false));
+        }else{
+            return redirect(route('sellerWaiting', absolute: false));
+        }
     }
 }

@@ -209,7 +209,7 @@
     "Show :name": "عرض :name",
     "Show All": "عرض الكل",
     "Showing": "عرض",
-    "Sign In": "أنشئ حساباً الآن",
+    "Sign In": "أنشئ حساباً",
     "Solve": "حل",
     "SSL Handshake Failed": "فشلت مصافحة SSL",
     "Start": "بدء",
@@ -268,8 +268,8 @@
     "HOMY": "عالم",
     "FOOD": "الطعام",
     "HOMY FOOD": "عالم الطعام",
-    "all reserved": "جميع الحقوق محفوظة لـ"
-
-   
+    "all reserved": "جميع الحقوق محفوظة لـ",
+    "Join Us As Seller":"انضم إلينا كبائع",
+   "You are logged in!":"أنت مسجل الدخول بالفعل!"
 
 }
