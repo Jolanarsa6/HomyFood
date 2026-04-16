@@ -178,7 +178,7 @@
                  </div>
              </div>
          </div>
-         <div class="collapse navbar-collapse" id="navbar-menu">
+         <div class="collapse navbar-collapse" id="navbar-menu" style="display: flex;justify-content:center">
              <div>
                  <form action="./" method="get" autocomplete="off" novalidate>
                      <div class="input-icon">
