@@ -58,5 +58,5 @@ Route::group(["middleware"=>"auth:admin", "prefix"=>"admin", "as"=>"admin."], fu
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 
-    Route::get('joinRequest',[JoinRequestController::class,'index']);
-});
+        });
+        Route::get('/joinRequest',[JoinRequestController::class,'index'])->name('joinRequest');

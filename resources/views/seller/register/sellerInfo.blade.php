@@ -1,7 +1,7 @@
 <x-guest-layout>
      <!-- the register header -->
     <div class="text-center mb-8">
-        <h2 class="text-2xl font-extrabold text-homy-green-700">{{ __('Seller Sign In') }}!</h2>
+        <h2 class="text-2xl font-extrabold text-homy-green-700">{{ __('messages.seller_signIn') }}!</h2>
     </div>
 
     <form method="POST" action="{{ route('register') }}">

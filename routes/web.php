@@ -1,69 +1,39 @@
 <?php
 
 use App\Http\Controllers\Buyer\BuyerDashboardController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Seller\ProductController;
 use App\Http\Controllers\Seller\SellerDashboardController;
 use App\Http\Controllers\Seller\SellerRegisterController;
 use Illuminate\Support\Facades\Route;
 
+
+// The global route for all 
 Route::get('/', function () {
     return view('home');
-})->name('home')->middleware('guest:web');
+})->name('home')->middleware(['guest:web','lang.switch']);
 
+
+// The home page for buyer and seller dependent on it's role
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth','role_redirect','verified'])->name('dashboard');
+})->middleware(['auth','role.redirect','verified','lang.switch'])->name('dashboard');
 
-
-Route::group(['middleware' => ['auth:web' , 'verified' , 'role:buyer'], 'prefix' => 'buyer','as' => 'buyer.' ] , function(){
-    Route::get('/dashboard',[BuyerDashboardController::class,'index'])->name('dashboard');
-
-
-
-});
-
-
-
-
-
-Route::group(['middleware' => ['auth:web' , 'verified' , 'role:seller', 'check_approval'], 'prefix' => 'seller','as' => 'seller.' ] , function(){
-        Route::get('/dashboard',[SellerDashboardController::class,'index'])->name('dashboard');
-Route::get('/addProduct',[ProductController::class,'index']);
-
-
-});
-
-
-
-Route::get('/sellerRegister',[SellerRegisterController::class,'index'])->name('sellerRegister');
-Route::get('/sellerWaiting',function(){
-    return view('seller.waiting');
-})->name('sellerWaiting');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-
+// The home page for super admin
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
 })->middleware(['auth:admin', 'verified'])->name('admin.dashboard');
+
+// For the language translation proccess
+Route::get('/translation/{locale}',function($locale){
+    if(in_array($locale,['ar','en'])){
+        session()->put('locale',$locale);
+    }
+    return redirect()->back();
+})->name('langSwitch');
+
+// For the light , dark mode
+
 
 
 
@@ -71,3 +41,6 @@ require __DIR__.'/auth.php';
 
 require __DIR__.'/admin.php';
 
+require __DIR__.'/buyer.php';
+
+require __DIR__.'/seller.php';

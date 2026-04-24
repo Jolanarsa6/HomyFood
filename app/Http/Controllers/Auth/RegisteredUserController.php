@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Models\User;
+use App\Notifications\SellerJoinRequest;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -49,11 +51,14 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        if($status == 'approved'){
+        if($request->account_type == 'seller' && $status == 'pending'){
+            $admin = Admin::first();
+            $admin->notify(new SellerJoinRequest());
+
+            return redirect(route('sellerWaiting', absolute: false));
+            }else{
             Auth::login($user);
             return redirect(route('dashboard', absolute: false));
-        }else{
-            return redirect(route('sellerWaiting', absolute: false));
         }
     }
 }

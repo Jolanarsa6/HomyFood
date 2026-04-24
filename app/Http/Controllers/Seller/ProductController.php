@@ -9,6 +9,6 @@ class ProductController extends Controller
 {
     function index()
     {
-        return view('seller.product.addProduct');
+        return view('seller.beforeJoin');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -13,8 +14,10 @@ class JoinRequestController extends Controller
      */
     public function index()
     {
+           $admin = Admin::find(1);
+
        $users = User::role('seller')->where('status','pending')->get();
-        return view('admin.joinRequest', compact('users'));
+        return view('admin.joinRequest', compact('users','admin'));
     }
 
     /**

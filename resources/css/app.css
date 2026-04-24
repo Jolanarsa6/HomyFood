@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+:root{
+                --homy-green-100: "#E8EFEA"; 
+                     --homy-green-500: "#225E38";
+                     --homy-green-600: "#1C4D2E";
+                     --homy-green-700: "#1A472A"; 
+                    /* --homy-green-800: "#12211B";
+                     --homy-green-900: "#0A1411"; */
+                    --homy-gold-50: "#FDFBF6", 
+                    --homy-gold-100: "#F6EEDA",
+                    --homy-gold-200: "#EAD5AC",
+                    --homy-gold-400: "#D4B87E",
+                    --homy-gold-500: "#C4A462",
+                    --homy-gold-600: "#A88E53",
+    }
+    .dark{
+  --homy-green-100: "#E8EFEA"; 
+                     --homy-green-500: "#225E38";
+                     --homy-green-600: "#1C4D2E";
+                     --homy-green-700: "#1A472A"; 
+                    /* --homy-green-800: "#12211B";
+                     --homy-green-900: "#0A1411"; */
+                    --homy-gold-50: "#FDFBF6", 
+                    --homy-gold-100: "#F6EEDA",
+                    --homy-gold-200: "#EAD5AC",
+                    --homy-gold-400: "#D4B87E",
+                    --homy-gold-500: "#C4A462",
+                    --homy-gold-600: "#A88E53",
+    }
