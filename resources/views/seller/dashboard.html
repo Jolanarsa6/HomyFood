@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homy Food Seller | Dashboard</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ["Cairo", "ui-sans-serif", "system-ui", "sans-serif"],
+                    },
+                    colors: {
+                        "homy-green": {
+                            100: "#E8EFEA",
+                            500: "#225E38",
+                            600: "#1C4D2E",
+                            700: "#1A472A"
+                        },
+                        "homy-gold": {
+                            50: "#FDFBF6",
+                            100: "#F6EEDA",
+                            200: "#EAD5AC",
+                            400: "#D4B87E",
+                            500: "#C4A462",
+                            600: "#A88E53"
+                        }
+                    }
+                }
+            }
+        };
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="../assets/app.css">
+</head>
+<body class="text-slate-800 dark:text-slate-100">
+    <div id="sidebarOverlay" class="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm lg:hidden"></div>
+
+    <header class="sticky top-0 z-30 border-b border-homy-gold-200/70 bg-white/85 backdrop-blur-xl dark:border-homy-gold-600/25 dark:bg-[#0f1f18]/85">
+        <div class="mx-auto flex w-full max-w-[1500px] items-center gap-3 px-4 py-3">
+            <button id="menuToggle" class="h-11 w-11 rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 shadow-sm lg:hidden dark:border-homy-gold-600/40 dark:bg-homy-green-700/35 dark:text-homy-gold-300"><i class="fa-solid fa-bars"></i></button>
+            <a href="dashboard.html" class="flex items-center gap-3">
+                <div class="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-homy-green-700 to-homy-green-500 text-base font-black text-white shadow-lg">HF</div>
+                <div>
+                    <p class="text-base font-black text-homy-green-700 dark:text-homy-gold-400">Homy Food Seller</p>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400"><span class="lang-ar">لوحة تحكم البائع</span><span class="lang-en">Seller Dashboard</span></p>
+                </div>
+            </a>
+
+            <div class="ms-auto flex items-center gap-2">
+                <button id="langToggle" class="inline-flex h-11 items-center gap-2 rounded-2xl border border-homy-gold-200 bg-white px-3 text-xs font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/35 dark:text-homy-gold-300"><i class="fa-solid fa-language"></i><span class="lang-ar">EN</span><span class="lang-en">AR</span></button>
+                <button id="themeToggle" class="h-11 w-11 rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/35 dark:text-homy-gold-300"><i class="fa-solid fa-moon"></i></button>
+                <a href="../index.html" class="rounded-2xl border border-homy-gold-300 px-4 py-2 text-sm font-black text-homy-green-700 dark:border-homy-gold-600/35 dark:text-homy-gold-300"><span class="lang-ar">واجهة العملاء</span><span class="lang-en">Customer Site</span></a>
+            </div>
+        </div>
+    </header>
+
+    <main class="mx-auto grid w-full max-w-[1500px] gap-6 px-4 py-6 lg:grid-cols-[1fr_300px]">
+        <section class="space-y-6">
+            <article class="rounded-[2rem] border border-homy-gold-200 bg-gradient-to-br from-homy-gold-50 via-white to-homy-green-100/45 p-6 dark:border-homy-gold-600/35 dark:from-[#14261f] dark:via-[#12211b] dark:to-[#173326]">
+                <div class="flex flex-wrap items-start justify-between gap-4">
+                    <div>
+                        <h1 class="text-3xl font-black text-homy-green-700 dark:text-homy-gold-400"><span class="lang-ar">مرحبًا، مطبخ بيت الشام</span><span class="lang-en">Welcome, Beit Al Sham Kitchen</span></h1>
+                        <p class="mt-2 text-sm font-semibold text-slate-600 dark:text-slate-300"><span class="lang-ar">لديك اليوم 18 طلب جديد و3 منتجات تحتاج تحديث المخزون.</span><span class="lang-en">You have 18 new orders today and 3 items need stock update.</span></p>
+                    </div>
+                    <a href="add-product.html" class="rounded-2xl bg-homy-green-700 px-5 py-3 text-sm font-black text-white hover:bg-homy-green-600"><span class="lang-ar">إضافة منتج جديد</span><span class="lang-en">Add New Product</span></a>
+                </div>
+                <div class="mt-5 grid gap-3 sm:grid-cols-4 text-center text-xs font-black">
+                    <div class="rounded-xl bg-white/90 p-3 text-homy-green-700 dark:bg-homy-green-700/35 dark:text-homy-gold-300"><span class="lang-ar">نسبة قبول الطلبات</span><span class="lang-en">Order Acceptance</span><p class="mt-1 text-lg">96%</p></div>
+                    <div class="rounded-xl bg-white/90 p-3 text-homy-green-700 dark:bg-homy-green-700/35 dark:text-homy-gold-300"><span class="lang-ar">متوسط التقييم</span><span class="lang-en">Avg Rating</span><p class="mt-1 text-lg">4.8</p></div>
+                    <div class="rounded-xl bg-white/90 p-3 text-homy-green-700 dark:bg-homy-green-700/35 dark:text-homy-gold-300"><span class="lang-ar">التحضير اليومي</span><span class="lang-en">Daily Production</span><p class="mt-1 text-lg">72</p></div>
+                    <div class="rounded-xl bg-white/90 p-3 text-homy-green-700 dark:bg-homy-green-700/35 dark:text-homy-gold-300"><span class="lang-ar">وقت الرد</span><span class="lang-en">Response Time</span><p class="mt-1 text-lg">12m</p></div>
+                </div>
+            </article>
+
+            <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+                <article class="kpi-card p-4">
+                    <p class="text-xs font-black text-slate-500 dark:text-slate-300"><span class="lang-ar">إجمالي المبيعات</span><span class="lang-en">Total Sales</span></p>
+                    <p class="mt-2 text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">48,900 SAR</p>
+                    <p class="mt-1 text-xs font-bold text-emerald-600">+12%</p>
+                </article>
+                <article class="kpi-card p-4">
+                    <p class="text-xs font-black text-slate-500 dark:text-slate-300"><span class="lang-ar">طلبات قيد التحضير</span><span class="lang-en">Preparing Orders</span></p>
+                    <p class="mt-2 text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">23</p>
+                    <p class="mt-1 text-xs font-bold text-homy-gold-600"><span class="lang-ar">يحتاج متابعة</span><span class="lang-en">Needs Follow-up</span></p>
+                </article>
+                <article class="kpi-card p-4">
+                    <p class="text-xs font-black text-slate-500 dark:text-slate-300"><span class="lang-ar">رصيد المحفظة</span><span class="lang-en">Wallet Balance</span></p>
+                    <p class="mt-2 text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">12,340 SAR</p>
+                    <p class="mt-1 text-xs font-bold text-sky-600"><span class="lang-ar">آخر تحويل: أمس</span><span class="lang-en">Last payout: Yesterday</span></p>
+                </article>
+                <article class="kpi-card p-4">
+                    <p class="text-xs font-black text-slate-500 dark:text-slate-300"><span class="lang-ar">منتجات منخفضة المخزون</span><span class="lang-en">Low Stock Products</span></p>
+                    <p class="mt-2 text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">3</p>
+                    <a href="products.html" class="mt-1 inline-block text-xs font-black text-red-600 underline"><span class="lang-ar">تحديث الآن</span><span class="lang-en">Update Now</span></a>
+                </article>
+            </div>
+
+            <div class="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
+                <article class="rounded-[1.5rem] border border-homy-gold-200 bg-white/90 p-5 dark:border-homy-gold-600/35 dark:bg-[#12211B]/85">
+                    <div class="mb-4 flex items-center justify-between">
+                        <h2 class="text-lg font-black text-homy-green-700 dark:text-homy-gold-400"><span class="lang-ar">أحدث الطلبات</span><span class="lang-en">Latest Orders</span></h2>
+                        <a href="orders.html" class="text-xs font-black text-homy-gold-600 underline"><span class="lang-ar">عرض الكل</span><span class="lang-en">View All</span></a>
+                    </div>
+                    <div class="overflow-x-auto custom-scrollbar">
+                        <table class="min-w-full text-sm">
+                            <thead>
+                                <tr class="text-slate-500 dark:text-slate-300">
+                                    <th class="px-2 py-2 text-right font-black"><span class="lang-ar">رقم الطلب</span><span class="lang-en">Order ID</span></th>
+                                    <th class="px-2 py-2 text-right font-black"><span class="lang-ar">العميل</span><span class="lang-en">Customer</span></th>
+                                    <th class="px-2 py-2 text-right font-black"><span class="lang-ar">الحالة</span><span class="lang-en">Status</span></th>
+                                    <th class="px-2 py-2 text-right font-black"><span class="lang-ar">القيمة</span><span class="lang-en">Amount</span></th>
+                                </tr>
+                            </thead>
+                            <tbody class="font-semibold text-slate-600 dark:text-slate-300">
+                                <tr class="border-t border-homy-gold-100 dark:border-homy-gold-600/25"><td class="px-2 py-3">#HMF-2091</td><td class="px-2 py-3">ريم أحمد</td><td class="px-2 py-3"><span class="rounded-full bg-amber-100 px-2 py-1 text-xs font-black text-amber-700">Preparing</span></td><td class="px-2 py-3">182 SAR</td></tr>
+                                <tr class="border-t border-homy-gold-100 dark:border-homy-gold-600/25"><td class="px-2 py-3">#HMF-2090</td><td class="px-2 py-3">Khaled N.</td><td class="px-2 py-3"><span class="rounded-full bg-sky-100 px-2 py-1 text-xs font-black text-sky-700">Shipped</span></td><td class="px-2 py-3">95 SAR</td></tr>
+                                <tr class="border-t border-homy-gold-100 dark:border-homy-gold-600/25"><td class="px-2 py-3">#HMF-2089</td><td class="px-2 py-3">Dina H.</td><td class="px-2 py-3"><span class="rounded-full bg-emerald-100 px-2 py-1 text-xs font-black text-emerald-700">Delivered</span></td><td class="px-2 py-3">243 SAR</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+
+                <article class="rounded-[1.5rem] border border-homy-gold-200 bg-white/90 p-5 dark:border-homy-gold-600/35 dark:bg-[#12211B]/85">
+                    <h2 class="mb-4 text-lg font-black text-homy-green-700 dark:text-homy-gold-400"><span class="lang-ar">أداء المنتجات</span><span class="lang-en">Product Performance</span></h2>
+                    <div class="space-y-3 text-sm font-semibold text-slate-600 dark:text-slate-300">
+                        <div>
+                            <div class="mb-1 flex items-center justify-between"><span>مكدوس جوز سوبر</span><span>82%</span></div>
+                            <div class="h-2 rounded-full bg-homy-gold-100 dark:bg-homy-green-700/30"><div class="h-full w-[82%] rounded-full bg-homy-green-700 dark:bg-homy-gold-500"></div></div>
+                        </div>
+                        <div>
+                            <div class="mb-1 flex items-center justify-between"><span>مربى تين ملكي</span><span>70%</span></div>
+                            <div class="h-2 rounded-full bg-homy-gold-100 dark:bg-homy-green-700/30"><div class="h-full w-[70%] rounded-full bg-homy-green-700 dark:bg-homy-gold-500"></div></div>
+                        </div>
+                        <div>
+                            <div class="mb-1 flex items-center justify-between"><span>زعتر نابلسي</span><span>54%</span></div>
+                            <div class="h-2 rounded-full bg-homy-gold-100 dark:bg-homy-green-700/30"><div class="h-full w-[54%] rounded-full bg-homy-green-700 dark:bg-homy-gold-500"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 rounded-xl border border-homy-gold-200 p-3 dark:border-homy-gold-600/35">
+                        <p class="text-xs font-black text-homy-green-700 dark:text-homy-gold-400"><span class="lang-ar">تعليق العملاء الأخير</span><span class="lang-en">Latest Customer Comment</span></p>
+                        <p class="mt-2 text-sm font-semibold text-slate-600 dark:text-slate-300"><span class="lang-ar">التغليف ممتاز والطعم أصيل جدًا، شكرا لكم.</span><span class="lang-en">Great packaging and authentic taste, thank you.</span></p>
+                        <a href="messages.html" class="mt-2 inline-block text-xs font-black text-homy-gold-600 underline"><span class="lang-ar">الرد من هنا</span><span class="lang-en">Reply Here</span></a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <aside id="sidebar" class="offcanvas-sidebar fixed right-0 top-0 z-50 h-full w-80 max-w-[88vw] overflow-y-auto border-s border-homy-gold-200/60 bg-white/95 p-5 shadow-2xl shadow-black/25 backdrop-blur-xl dark:border-homy-gold-600/35 dark:bg-[#12211B]/95 lg:sticky lg:top-24 lg:z-10 lg:h-[calc(100vh-7rem)] lg:w-auto lg:max-w-none lg:translate-x-0 lg:rounded-[1.5rem] lg:border lg:shadow-none">
+            <div class="mb-6 flex items-center justify-between lg:mb-4">
+                <h2 class="text-sm font-black text-homy-green-700 dark:text-homy-gold-400"><span class="lang-ar">قائمة البائع</span><span class="lang-en">Seller Menu</span></h2>
+                <button id="closeSidebar" class="h-9 w-9 rounded-xl border border-homy-gold-200 text-homy-green-700 lg:hidden dark:border-homy-gold-600/35 dark:text-homy-gold-300"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <nav class="space-y-2 text-sm font-bold">
+                <a href="dashboard.html" class="flex items-center gap-3 rounded-xl border border-homy-gold-200 bg-homy-gold-50 px-3 py-2 text-homy-green-700 dark:border-homy-gold-600/35 dark:bg-homy-green-700/35 dark:text-homy-gold-300"><i class="fa-solid fa-grid-2"></i><span class="lang-ar">الرئيسية</span><span class="lang-en">Dashboard</span></a>
+                <a href="add-product.html" class="flex items-center gap-3 rounded-xl px-3 py-2 text-slate-600 hover:bg-homy-gold-50 dark:text-slate-300 dark:hover:bg-homy-green-700/25"><i class="fa-solid fa-plus"></i><span class="lang-ar">إضافة منتج</span><span class="lang-en">Add Product</span></a>
+                <a href="products.html" class="flex items-center gap-3 rounded-xl px-3 py-2 text-slate-600 hover:bg-homy-gold-50 dark:text-slate-300 dark:hover:bg-homy-green-700/25"><i class="fa-solid fa-box-open"></i><span class="lang-ar">إدارة المنتجات</span><span class="lang-en">Products</span></a>
+                <a href="orders.html" class="flex items-center gap-3 rounded-xl px-3 py-2 text-slate-600 hover:bg-homy-gold-50 dark:text-slate-300 dark:hover:bg-homy-green-700/25"><i class="fa-solid fa-truck-fast"></i><span class="lang-ar">تتبع الطلبات</span><span class="lang-en">Orders</span></a>
+                <a href="wallet.html" class="flex items-center gap-3 rounded-xl px-3 py-2 text-slate-600 hover:bg-homy-gold-50 dark:text-slate-300 dark:hover:bg-homy-green-700/25"><i class="fa-solid fa-wallet"></i><span class="lang-ar">المحفظة</span><span class="lang-en">Wallet</span></a>
+                <a href="messages.html" class="flex items-center gap-3 rounded-xl px-3 py-2 text-slate-600 hover:bg-homy-gold-50 dark:text-slate-300 dark:hover:bg-homy-green-700/25"><i class="fa-solid fa-comments"></i><span class="lang-ar">المراسلة والتعليقات</span><span class="lang-en">Messages</span></a>
+                <a href="analytics.html" class="flex items-center gap-3 rounded-xl px-3 py-2 text-slate-600 hover:bg-homy-gold-50 dark:text-slate-300 dark:hover:bg-homy-green-700/25"><i class="fa-solid fa-chart-simple"></i><span class="lang-ar">الإحصائيات</span><span class="lang-en">Analytics</span></a>
+                <a href="store-settings.html" class="flex items-center gap-3 rounded-xl px-3 py-2 text-slate-600 hover:bg-homy-gold-50 dark:text-slate-300 dark:hover:bg-homy-green-700/25"><i class="fa-solid fa-sliders"></i><span class="lang-ar">إعدادات المتجر</span><span class="lang-en">Store Settings</span></a>
+                <a href="profile.html" class="flex items-center gap-3 rounded-xl px-3 py-2 text-slate-600 hover:bg-homy-gold-50 dark:text-slate-300 dark:hover:bg-homy-green-700/25"><i class="fa-solid fa-user-gear"></i><span class="lang-ar">الملف الشخصي</span><span class="lang-en">Profile</span></a>
+            </nav>
+        </aside>
+    </main>
+
+    <script src="../assets/app.js"></script>
+</body>
+</html>

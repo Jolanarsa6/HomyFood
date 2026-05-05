@@ -1,4 +1,13 @@
 <x-guest-layout>
+     <x-slot name="title">
+        {{ __('actions.verfiy_email') }}
+    </x-slot>
+
+      <main class="px-4 py-4 lg:py-12 flex items-center justify-center">
+        <section
+            class="max-h-[600px] py-7 px-7 max-w-[600px] overflow-hidden rounded-[2rem] border border-homy-gold-200 bg-white/90 shadow-2xl shadow-homy-green-700/10 dark:border-homy-gold-600/35 dark:bg-[#12211B]/90 lg:grid-cols-2">
+   
+
     <div class="mb-4 text-sm text-gray-500 leading-relaxed">
         {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
     </div>
@@ -14,7 +23,7 @@
             @csrf
 
             <div>
-                <x-primary-button>
+                <x-primary-button mt-10>
                     {{ __('Resend Verification Email') }}
                 </x-primary-button>
             </div>
@@ -28,4 +37,7 @@
             </button>
         </form>
     </div>
+
+        </section>
+      </main>
 </x-guest-layout>

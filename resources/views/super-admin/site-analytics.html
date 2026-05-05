@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homy Super Admin | Site Analytics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    fontFamily: { sans: ["Cairo", "ui-sans-serif", "system-ui", "sans-serif"] },
+                    colors: {
+                        "homy-green": { 100: "#E8EFEA", 500: "#225E38", 600: "#1C4D2E", 700: "#1A472A" },
+                        "homy-gold": { 50: "#FDFBF6", 100: "#F6EEDA", 200: "#EAD5AC", 400: "#D4B87E", 500: "#C4A462", 600: "#A88E53" }
+                    }
+                }
+            }
+        };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="../assets/app.css">
+</head>
+<body class="text-slate-800 dark:text-slate-100">
+    <div id="sidebarOverlay" class="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm lg:hidden"></div>
+
+    <header class="sticky top-0 z-30 border-b border-homy-gold-200/70 bg-white/85 backdrop-blur-xl dark:border-homy-gold-600/25 dark:bg-[#0f1f18]/85">
+        <div class="mx-auto flex w-full max-w-[1700px] items-center gap-3 px-4 py-3">
+            <button id="menuToggle" class="h-11 w-11 rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 shadow-sm lg:hidden dark:border-homy-gold-600/40 dark:bg-homy-green-700/35 dark:text-homy-gold-300"><i class="fa-solid fa-bars"></i></button>
+            <a href="dashboard.html" class="flex items-center gap-3"><div class="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-homy-green-700 to-homy-green-500 text-base font-black text-white shadow-lg">SA</div><div><p class="text-base font-black text-homy-green-700 dark:text-homy-gold-400">Homy Super Admin</p><p class="text-[11px] text-slate-500 dark:text-slate-400"><span class="lang-ar">إحصائيات الموقع</span><span class="lang-en">Site Analytics</span></p></div></a>
+            <div class="relative hidden w-full max-w-xl xl:block"><i class="fa-solid fa-magnifying-glass pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-400"></i><input type="search" placeholder="ابحث عن بائع أو متجر / Search seller or store" class="w-full rounded-2xl border border-homy-gold-200 bg-white px-10 py-2.5 text-sm font-semibold text-slate-700 outline-none ring-homy-gold-400 focus:ring dark:border-homy-gold-600/35 dark:bg-homy-green-700/25 dark:text-slate-100"></div>
+            <div class="ms-auto flex items-center gap-2"><button id="langToggle" class="inline-flex h-11 items-center gap-2 rounded-2xl border border-homy-gold-200 bg-white px-3 text-xs font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/35 dark:text-homy-gold-300"><i class="fa-solid fa-language"></i><span class="lang-ar">EN</span><span class="lang-en">AR</span></button><button id="themeToggle" class="h-11 w-11 rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/35 dark:text-homy-gold-300"><i class="fa-solid fa-moon"></i></button></div>
+        </div>
+    </header>
+
+    <main class="mx-auto grid w-full max-w-[1700px] gap-6 px-4 py-6 lg:grid-cols-[1fr_320px]">
+        <section class="space-y-6">
+            <article class="rounded-[2rem] border border-homy-gold-200 bg-gradient-to-br from-homy-gold-50 via-white to-homy-green-100/60 p-6 dark:border-homy-gold-600/35 dark:from-[#15261f] dark:via-[#12211B] dark:to-[#183629]">
+                <h1 class="text-3xl font-black text-homy-green-700 dark:text-homy-gold-400"><span class="lang-ar">لوحة الإحصائيات الشاملة</span><span class="lang-en">Global Analytics Board</span></h1>
+                <p class="mt-2 text-sm font-semibold text-slate-600 dark:text-slate-300"><span class="lang-ar">متابعة النمو، التحويل، الإيرادات، ونقاط الاختناق التشغيلية لحظيًا.</span><span class="lang-en">Track growth, conversion, revenue, and operational bottlenecks in real time.</span></p>
+            </article>
+            <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+                <article class="kpi-card p-4"><p class="text-xs font-black text-slate-500 dark:text-slate-300"><span class="lang-ar">الزيارات اليومية</span><span class="lang-en">Daily Visits</span></p><p class="mt-2 text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">184K</p><p class="mt-1 text-xs font-bold text-emerald-600">+11%</p></article>
+                <article class="kpi-card p-4"><p class="text-xs font-black text-slate-500 dark:text-slate-300"><span class="lang-ar">معدل التحويل</span><span class="lang-en">Conversion Rate</span></p><p class="mt-2 text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">4.9%</p></article>
+                <article class="kpi-card p-4"><p class="text-xs font-black text-slate-500 dark:text-slate-300"><span class="lang-ar">متوسط السلة</span><span class="lang-en">Avg Basket</span></p><p class="mt-2 text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">133 SAR</p></article>
+                <article class="kpi-card p-4"><p class="text-xs font-black text-slate-500 dark:text-slate-300"><span class="lang-ar">معدل الإلغاء</span><span class="lang-en">Cancellation</span></p><p class="mt-2 text-2xl font-black text-red-600">1.7%</p></article>
+            </div>
+            <div class="grid gap-6 xl:grid-cols-2">
+                <article class="rounded-[1.5rem] border border-homy-gold-200 bg-white/90 p-5 dark:border-homy-gold-600/35 dark:bg-[#12211B]/85">
+                    <h2 class="text-lg font-black text-homy-green-700 dark:text-homy-gold-400"><span class="lang-ar">اتجاه الإيرادات - 7 أيام</span><span class="lang-en">Revenue Trend - 7 Days</span></h2>
+                    <div class="mt-5 grid h-56 grid-cols-7 items-end gap-2"><div class="h-[32%] rounded-t-lg bg-homy-green-700/70"></div><div class="h-[45%] rounded-t-lg bg-homy-green-700/70"></div><div class="h-[58%] rounded-t-lg bg-homy-green-700/70"></div><div class="h-[61%] rounded-t-lg bg-homy-green-700/70"></div><div class="h-[70%] rounded-t-lg bg-homy-green-700/70"></div><div class="h-[76%] rounded-t-lg bg-homy-green-700/70"></div><div class="h-[92%] rounded-t-lg bg-homy-gold-500"></div></div>
+                </article>
+                <article class="rounded-[1.5rem] border border-homy-gold-200 bg-white/90 p-5 dark:border-homy-gold-600/35 dark:bg-[#12211B]/85">
+                    <h2 class="text-lg font-black text-homy-green-700 dark:text-homy-gold-400"><span class="lang-ar">أفضل القنوات</span><span class="lang-en">Top Channels</span></h2>
+                    <div class="mt-4 space-y-3 text-sm font-semibold text-slate-600 dark:text-slate-300">
+                        <div><div class="mb-1 flex justify-between"><span>Homy Search</span><span>41%</span></div><div class="h-2 rounded-full bg-homy-gold-100 dark:bg-homy-green-700/30"><div class="h-full w-[82%] rounded-full bg-homy-green-700 dark:bg-homy-gold-500"></div></div></div>
+                        <div><div class="mb-1 flex justify-between"><span>Social Media</span><span>29%</span></div><div class="h-2 rounded-full bg-homy-gold-100 dark:bg-homy-green-700/30"><div class="h-full w-[63%] rounded-full bg-homy-green-700 dark:bg-homy-gold-500"></div></div></div>
+                        <div><div class="mb-1 flex justify-between"><span>Campaigns</span><span>17%</span></div><div class="h-2 rounded-full bg-homy-gold-100 dark:bg-homy-green-700/30"><div class="h-full w-[48%] rounded-full bg-homy-green-700 dark:bg-homy-gold-500"></div></div></div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <aside id="sidebar" class="offcanvas-sidebar fixed right-0 top-0 z-50 h-full w-80 max-w-[90vw] overflow-y-auto border-s border-homy-gold-200/60 bg-white/95 p-5 shadow-2xl shadow-black/25 backdrop-blur-xl dark:border-homy-gold-600/35 dark:bg-[#12211B]/95 lg:sticky lg:top-24 lg:z-10 lg:h-[calc(100vh-7rem)] lg:w-auto lg:max-w-none lg:translate-x-0 lg:rounded-[1.5rem] lg:border lg:shadow-none">
+            <div class="mb-5 flex items-center justify-between"><h2 class="text-sm font-black text-homy-green-700 dark:text-homy-gold-400"><span class="lang-ar">قائمة الإدارة العليا</span><span class="lang-en">Super Admin Menu</span></h2><button id="closeSidebar" class="h-9 w-9 rounded-xl border border-homy-gold-200 text-homy-green-700 lg:hidden dark:border-homy-gold-600/35 dark:text-homy-gold-300"><i class="fa-solid fa-xmark"></i></button></div>
+            <nav class="space-y-1.5 text-sm font-bold">
+                <a href="dashboard.html" class="flex items-center gap-3 rounded-xl px-3 py-2 text-slate-600 hover:bg-homy-gold-50 dark:text-slate-300 dark:hover:bg-homy-green-700/25"><i class="fa-solid fa-grid-2"></i><span class="lang-ar">الرئيسية</span><span class="lang-en">Dashboard</span></a>
+                <a href="site-analytics.html" class="flex items-center gap-3 rounded-xl border border-homy-gold-200 bg-homy-gold-50 px-3 py-2 text-homy-green-700 dark:border-homy-gold-600/35 dark:bg-homy-green-700/35 dark:text-homy-gold-300"><i class="fa-solid fa-chart-line"></i><span class="lang-ar">إحصائيات الموقع</span><span class="lang-en">Site Analytics</span></a>
+                <a href="vendor-applications.html" class="flex items-center gap-3 rounded-xl px-3 py-2 text-slate-600 hover:bg-homy-gold-50 dark:text-slate-300 dark:hover:bg-homy-green-700/25"><i class="fa-solid fa-user-plus"></i><span class="lang-ar">طلبات الانضمام</span><span class="lang-en">Vendor Applications</span></a>
+                <a href="product-types.html" class="flex items-center gap-3 rounded-xl px-3 py-2 text-slate-600 hover:bg-homy-gold-50 dark:text-slate-300 dark:hover:bg-homy-green-700/25"><i class="fa-solid fa-layer-group"></i><span class="lang-ar">أنواع المنتجات</span><span class="lang-en">Product Types</span></a>
+                <a href="payment-methods.html" class="flex items-center gap-3 rounded-xl px-3 py-2 text-slate-600 hover:bg-homy-gold-50 dark:text-slate-300 dark:hover:bg-homy-green-700/25"><i class="fa-solid fa-credit-card"></i><span class="lang-ar">وسائل الدفع</span><span class="lang-en">Payment Methods</span></a>
+            </nav>
+        </aside>
+    </main>
+
+    <script src="../assets/app.js"></script>
+</body>
+</html>

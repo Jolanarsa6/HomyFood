@@ -1,33 +1,40 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}" class="scroll-smooth">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}"
+    class="scroll-smooth">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ ('Log in') }}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homy Food | {{ $title ?? config('app.name') }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script>
+        if (localStorage.getItem('darkMode') === 'true' ||
+            (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    <link rel="stylesheet" href="{{ asset('templates/assets/app.css') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <style> body { font-family: 'Cairo', sans-serif; } </style>
+
 </head>
-<body class="antialiased bg-gray-50 text-gray-900">
-    <div class="min-h-screen flex flex-col justify-center items-center p-4 sm:p-6">
-        
-        <div class="mb-8 transition-transform duration-500 hover:scale-105">
-            <a href="/" class="flex flex-col items-center gap-2">
-                <x-application-logo />
-                <h1 class="text-2xl font-black text-homy-green-700 tracking-tight">{{ __('HOMY') }} <span class="text-homy-gold-500">{{ __('FOOD') }}</span></h1>
-            </a>
-        </div>
 
-        <div class="w-full max-w-md bg-white rounded-3xl shadow-xl shadow-homy-green-100/40 border border-homy-gold-100/50 overflow-hidden">
-            <div class="p-8 sm:p-10">
-                {{ $slot }}
-            </div>
-        </div>
+<body class="text-slate-800 dark:text-slate-100">
+    @include('partials.header')
+ <main class="px-4 py-8 lg:py-12">
+        <section
+            class="mx-auto grid w-full max-w-7xl overflow-hidden rounded-[2rem] border border-homy-gold-200 bg-white/90 shadow-2xl shadow-homy-green-700/10 dark:border-homy-gold-600/35 dark:bg-[#12211B]/90 lg:grid-cols-2">
+    
+   {{ $slot }}
 
-        <p class="mt-8 text-sm text-gray-400">
-            &copy; {{ date('Y') }} {{ __('all reserved') }} 
-            <span class="font-bold text-homy-gold-500">{{ __('HOMY FOOD') }}</span>
-        </p>
-    </div>
+        </section>
+ </main>
+    <x-footer />
+    <script src="{{ asset('templates/assets/app.js') }}"></script>
 </body>
+
 </html>

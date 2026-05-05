@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 
 // The global route for all 
 Route::get('/', function () {
-    return view('home');
+    return view('index');
 })->name('home')->middleware(['guest:web','lang.switch']);
 
 
@@ -32,9 +32,11 @@ Route::get('/translation/{locale}',function($locale){
     return redirect()->back();
 })->name('langSwitch');
 
-// For the light , dark mode
 
-
+// for test
+Route::get('/test', function () {
+    return view('buyer.login');
+})->middleware(['lang.switch']);
 
 
 require __DIR__.'/auth.php';

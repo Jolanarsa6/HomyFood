@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homy Food | About Us</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ["Cairo", "ui-sans-serif", "system-ui", "sans-serif"],
+                    },
+                    colors: {
+                        "homy-green": {
+                            100: "#E8EFEA",
+                            500: "#225E38",
+                            600: "#1C4D2E",
+                            700: "#1A472A",
+                        },
+                        "homy-gold": {
+                            50: "#FDFBF6",
+                            100: "#F6EEDA",
+                            200: "#EAD5AC",
+                            400: "#D4B87E",
+                            500: "#C4A462",
+                            600: "#A88E53",
+                        },
+                    },
+                },
+            },
+        };
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="./assets/app.css">
+</head>
+<body class="text-slate-800 dark:text-slate-100">
+    <div id="sidebarOverlay" class="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm"></div>
+
+    <aside id="sidebar" class="offcanvas-sidebar fixed top-0 right-0 z-50 h-full w-80 max-w-[88vw] overflow-y-auto custom-scrollbar border-s border-homy-gold-200/60 bg-white/95 p-6 shadow-2xl shadow-black/25 backdrop-blur-xl dark:border-homy-gold-600/40 dark:bg-[#12211B]/95">
+        <div class="mb-8 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="h-12 w-12 rounded-2xl bg-gradient-to-br from-homy-green-700 to-homy-green-500 text-white grid place-items-center text-lg shadow-lg">HF</div>
+                <p class="text-lg font-black text-homy-green-700 dark:text-homy-gold-500">Homy Food</p>
+            </a>
+            <button id="closeSidebar" class="h-10 w-10 rounded-xl border border-homy-gold-200 text-homy-green-700 hover:bg-homy-gold-50 dark:border-homy-gold-600/50 dark:text-homy-gold-400 dark:hover:bg-homy-green-700/40">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <nav class="space-y-2">
+            <a href="index.html" class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-slate-600 hover:bg-homy-gold-50 dark:text-slate-300 dark:hover:bg-homy-green-700/30"><i class="fa-solid fa-house"></i><span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a>
+            <a href="special-offers.html" class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-slate-600 hover:bg-homy-gold-50 dark:text-slate-300 dark:hover:bg-homy-green-700/30"><i class="fa-solid fa-badge-percent"></i><span class="lang-ar">العروض المميزة</span><span class="lang-en">Special Offers</span></a>
+            <a href="about-us.html" class="flex items-center gap-3 rounded-2xl border border-homy-gold-200 bg-homy-gold-50 px-4 py-3 text-sm font-bold text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/40 dark:text-homy-gold-300"><i class="fa-solid fa-circle-info"></i><span class="lang-ar">من نحن</span><span class="lang-en">About Us</span></a>
+            <a href="contact-us.html" class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-slate-600 hover:bg-homy-gold-50 dark:text-slate-300 dark:hover:bg-homy-green-700/30"><i class="fa-solid fa-envelope-open-text"></i><span class="lang-ar">تواصل معنا</span><span class="lang-en">Contact Us</span></a>
+        </nav>
+    </aside>
+
+    <div class="relative z-10">
+        <div class="bg-homy-green-700 px-4 py-2 text-center text-xs font-bold text-white">
+            <span class="lang-ar">نؤمن أن الطعام المنزلي رسالة دفء قبل أن يكون منتجًا</span>
+            <span class="lang-en">We believe homemade food is warmth before it is a product</span>
+        </div>
+
+        <header class="sticky top-0 z-30 border-b border-homy-gold-100/80 bg-white/80 backdrop-blur-xl dark:border-homy-gold-600/25 dark:bg-[#0f1f18]/85">
+            <div class="mx-auto flex w-full max-w-7xl items-center gap-3 px-4 py-3">
+                <button id="menuToggle" class="h-11 w-11 shrink-0 rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 shadow-sm hover:bg-homy-gold-50 dark:border-homy-gold-600/40 dark:bg-homy-green-700/40 dark:text-homy-gold-300"><i class="fa-solid fa-bars"></i></button>
+                <a href="index.html" class="flex items-center gap-3">
+                    <div class="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-homy-green-700 to-homy-green-500 text-base font-black text-white shadow-lg">HF</div>
+                    <p class="text-base font-black text-homy-green-700 dark:text-homy-gold-400">Homy Food</p>
+                </a>
+                <div class="ms-auto flex items-center gap-2">
+                    <button id="langToggle" class="inline-flex h-11 items-center gap-2 rounded-2xl border border-homy-gold-200 bg-white px-3 text-xs font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/40 dark:text-homy-gold-300"><i class="fa-solid fa-language"></i><span class="lang-ar">EN</span><span class="lang-en">AR</span></button>
+                    <button id="themeToggle" class="h-11 w-11 rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/40 dark:text-homy-gold-300"><i class="fa-solid fa-moon"></i></button>
+                </div>
+            </div>
+        </header>
+
+        <main class="px-4 py-10">
+            <section class="mx-auto w-full max-w-7xl">
+                <div class="grid gap-6 lg:grid-cols-2 lg:items-center">
+                    <div>
+                        <h1 class="text-3xl font-black text-homy-green-700 dark:text-homy-gold-400">
+                            <span class="lang-ar">من نحن</span>
+                            <span class="lang-en">About Homy Food</span>
+                        </h1>
+                        <p class="mt-4 text-sm font-semibold leading-7 text-slate-600 dark:text-slate-300">
+                            <span class="lang-ar">Homy Food منصة تجمع بين الذوق المحلي الأصيل والتجربة الرقمية الحديثة. مهمتنا أن نقدم منتجات منزلية موثوقة للمغتربين وكل من يبحث عن طعم البيت، مع تصميم واجهات راقية، بحث سريع، ومقارنة سهلة تساعد المستخدم على اتخاذ القرار بثقة.</span>
+                            <span class="lang-en">Homy Food bridges authentic local taste with modern digital experience. Our mission is to deliver trusted homemade products to expats and anyone seeking the comfort of home, with elegant interfaces, fast search and smart comparison flow.</span>
+                        </p>
+                        <div class="mt-6 grid gap-3 sm:grid-cols-3">
+                            <div class="rounded-2xl border border-homy-gold-200 bg-white/85 p-4 text-center dark:border-homy-gold-600/35 dark:bg-[#12211B]/80">
+                                <p class="text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">+12K</p>
+                                <p class="text-xs font-bold text-slate-500 dark:text-slate-300"><span class="lang-ar">طلب شهري</span><span class="lang-en">Monthly Orders</span></p>
+                            </div>
+                            <div class="rounded-2xl border border-homy-gold-200 bg-white/85 p-4 text-center dark:border-homy-gold-600/35 dark:bg-[#12211B]/80">
+                                <p class="text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">+600</p>
+                                <p class="text-xs font-bold text-slate-500 dark:text-slate-300"><span class="lang-ar">بائع موثوق</span><span class="lang-en">Trusted Sellers</span></p>
+                            </div>
+                            <div class="rounded-2xl border border-homy-gold-200 bg-white/85 p-4 text-center dark:border-homy-gold-600/35 dark:bg-[#12211B]/80">
+                                <p class="text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">4.9</p>
+                                <p class="text-xs font-bold text-slate-500 dark:text-slate-300"><span class="lang-ar">متوسط التقييم</span><span class="lang-en">Average Rating</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=1200&q=80" alt="Homy food story" class="h-full max-h-[440px] w-full rounded-[2rem] object-cover border border-homy-gold-200 dark:border-homy-gold-600/35">
+                </div>
+            </section>
+
+            <section class="mx-auto mt-10 w-full max-w-7xl rounded-[2rem] border border-homy-gold-200 bg-white/85 p-6 dark:border-homy-gold-600/30 dark:bg-[#12211B]/85">
+                <h2 class="text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">
+                    <span class="lang-ar">قيمنا الأساسية</span>
+                    <span class="lang-en">Our Core Values</span>
+                </h2>
+                <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    <article class="rounded-2xl border border-homy-gold-200 bg-homy-gold-50/70 p-4 dark:border-homy-gold-600/35 dark:bg-homy-green-700/20">
+                        <i class="fa-solid fa-shield-heart text-homy-gold-600"></i>
+                        <h3 class="mt-2 font-black text-homy-green-700 dark:text-homy-gold-400"><span class="lang-ar">الثقة</span><span class="lang-en">Trust</span></h3>
+                        <p class="mt-1 text-xs font-semibold text-slate-500 dark:text-slate-300"><span class="lang-ar">تحقق من جودة البائع والمنتج قبل العرض.</span><span class="lang-en">Quality verification before listing.</span></p>
+                    </article>
+                    <article class="rounded-2xl border border-homy-gold-200 bg-homy-gold-50/70 p-4 dark:border-homy-gold-600/35 dark:bg-homy-green-700/20">
+                        <i class="fa-solid fa-people-group text-homy-gold-600"></i>
+                        <h3 class="mt-2 font-black text-homy-green-700 dark:text-homy-gold-400"><span class="lang-ar">الانتماء</span><span class="lang-en">Belonging</span></h3>
+                        <p class="mt-1 text-xs font-semibold text-slate-500 dark:text-slate-300"><span class="lang-ar">نجعل المستخدم يشعر أنه بين أهله.</span><span class="lang-en">Make users feel at home.</span></p>
+                    </article>
+                    <article class="rounded-2xl border border-homy-gold-200 bg-homy-gold-50/70 p-4 dark:border-homy-gold-600/35 dark:bg-homy-green-700/20">
+                        <i class="fa-solid fa-bolt text-homy-gold-600"></i>
+                        <h3 class="mt-2 font-black text-homy-green-700 dark:text-homy-gold-400"><span class="lang-ar">السرعة</span><span class="lang-en">Speed</span></h3>
+                        <p class="mt-1 text-xs font-semibold text-slate-500 dark:text-slate-300"><span class="lang-ar">تصفح سريع وتجربة شراء مختصرة.</span><span class="lang-en">Fast browsing and checkout flow.</span></p>
+                    </article>
+                    <article class="rounded-2xl border border-homy-gold-200 bg-homy-gold-50/70 p-4 dark:border-homy-gold-600/35 dark:bg-homy-green-700/20">
+                        <i class="fa-solid fa-star text-homy-gold-600"></i>
+                        <h3 class="mt-2 font-black text-homy-green-700 dark:text-homy-gold-400"><span class="lang-ar">التميّز</span><span class="lang-en">Excellence</span></h3>
+                        <p class="mt-1 text-xs font-semibold text-slate-500 dark:text-slate-300"><span class="lang-ar">تصميم ينافس المنصات العالمية.</span><span class="lang-en">Design quality that rivals global marketplaces.</span></p>
+                    </article>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="./assets/app.js"></script>
+</body>
+</html>

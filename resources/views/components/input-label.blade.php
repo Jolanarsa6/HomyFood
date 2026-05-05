@@ -2,16 +2,9 @@
 <label
     {{ $attributes->merge([
         'class' => '
-        block 
-        text-sm 
-        font-bold  
-        text-homy-green-700    
-        hover:text-homy-green-600 
-        transition-colors 
-        duration-200
-        mb-4
+       mb-2 block text-sm font-black text-homy-green-700 dark:text-homy-gold-400
     ',
     ]) }}>
 
-    {{ $value ?? $slot }}
+   <span> {{ $value ?? $slot }}</span>
 </label>

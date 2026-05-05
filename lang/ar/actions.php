@@ -116,5 +116,17 @@ return [
     'user'            => 'مستخدم',
     'view'            => 'عرض',
     'yes'             => 'نعم',
-    'buyer_signUp' =>'انضم إلينا كبائع'
+    'buyer_signUp' =>'انضم إلينا كبائع',
+    'login' => 'تسجيل الدخول',
+    'back_home' => 'العودة للرئيسية',
+    'remember_me' => 'تذكرني',
+    'create_account' => 'إنشاء حساب',
+    'seller_login' => 'انضم كبائع',
+     'register' => 'إنشاء حساب',
+    'forget_password' => 'نسيت كلمة المرور',
+    'confirm_password' => 'تأكيد كلمة المرور',
+    'reset_password' => 'إعادة ضبط كلنة المرور',
+    'verfiy_email' => 'تأكيد البريد الالكتروني',
+    
+
 ];
