@@ -1,20 +1,20 @@
 <?php
 
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Auth\ConfirmablePasswordController;
-use App\Http\Controllers\Auth\EmailVerificationNotificationController;
-use App\Http\Controllers\Auth\EmailVerificationPromptController;
-use App\Http\Controllers\Auth\NewPasswordController;
-use App\Http\Controllers\Auth\PasswordController;
-use App\Http\Controllers\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\UserAuth\AuthenticatedSessionController;
+use App\Http\Controllers\UserAuth\ConfirmablePasswordController;
+use App\Http\Controllers\UserAuth\EmailVerificationNotificationController;
+use App\Http\Controllers\UserAuth\EmailVerificationPromptController;
+use App\Http\Controllers\UserAuth\NewPasswordController;
+use App\Http\Controllers\UserAuth\PasswordController;
+use App\Http\Controllers\UserAuth\PasswordResetLinkController;
+use App\Http\Controllers\UserAuth\RegisteredUserController;
+use App\Http\Controllers\UserAuth\VerifyEmailController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['guest:web','lang.switch'])->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
-        ->name('register');
+        ->name('buyer.register');
 
     Route::post('register', [RegisteredUserController::class, 'store'])->middleware('check_approval');
 

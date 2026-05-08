@@ -5,129 +5,795 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ __('global.title') }}</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Poppins:wght@400;500;600&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('user/assets/css/index.css') }}">
+    <title>Homy Food | Home</title>
+    <meta name="description" content="Homy Food premium homemade food marketplace">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+    <link rel="stylesheet" href="{{ asset('templates/assets/app.css') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-    <style>
-        body {
-            font-family: 'Cairo', sans-serif;
-            scroll-behavior: smooth;
+    <!-- Prevent Flicker: Apply theme before body renders -->
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia(
+                '(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
         }
-
-        body.sidebar-open {
-            overflow: hidden;
-        }
-    </style>
-
+    </script>
 
 </head>
 
-<body>
-
-    <nav class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <div class="sidebar-logo">
-                <x-application-logo class="h-9" />
-                <span>{{ __('Homy Food') }}</span>
-            </div>
-            <i class="fas fa-times close-sidebar" id="closeSidebar"></i>
-        </div>
-        <div class="sidebar-menu">
-            <ul>
-                <li><a href="#" class="active"><i class="fas fa-home"></i>{{ __('Home') }}</a></li>
-                <li><a href="#"><i class="fas fa-percent"></i>{{ __('Special Offers') }}</a></li>
-                <li><a href="#"><i class="fas fa-info-circle"></i>{{ __('About Us') }}</a></li>
-                <li><a href="#"><i class="fas fa-envelope"></i>{{ __('Connect Us') }}</a></li>
-                <a href="{{ route('login') }}"
-                    class="block lg:hidden py-1"><x-primary-button>{{ __('Log In') }}</x-primary-button></a>
-                <a href="{{ route('register') }}"
-                    class="block lg:hidden py-1"><x-secondary-button>{{ __('Sign In') }}</x-secondary-button></a>
-                <a href="{{ route('sellerRegister') }}"
-                    class="block lg:hidden py-[-50px]"><x-primary-button>{{ __('Join Us As Seller') }}</x-primary-button></a>
-            </ul>
-        </div>
-    </nav>
-
-    <header class="header">
-        <div class="top-bar">{{ __('global.top_bar') }}💰</div>
-        <div class="main-header">
-            <div class="logo-nav-group">
-                <i class="fas fa-bars menu-toggle" id="menuToggle"></i>
-                <a href="#" class="header-logo">
-                    <x-application-logo class="h-9" />
-                </a>
-            </div>
-
-            <!-- translation button -->
-            <div>
-                <a href="{{ route('langSwitch', 'en') }}">
-                    <span id="langText" class="text-xs font-black text-homy-green-700 tracking-widest">ENGLISH</span>
-
-                    <div
-                        class="w-10 h-10 rounded-full bg-homy-gold-500 text-white flex items-center justify-center shadow-lg group-hover:rotate-[360deg] transition-transform duration-700">
-                        <i class="fas fa-globe-americas"></i>
-                    </div>
-                </a>
-                <a href="{{ route('langSwitch', 'ar') }}">
-                    <span id="langText" class="text-xs font-black text-homy-green-700 tracking-widest">ARABIC</span>
-
-                    <div
-                        class="w-10 h-10 rounded-full bg-homy-gold-500 text-white flex items-center justify-center shadow-lg group-hover:rotate-[360deg] transition-transform duration-700">
-                        <i class="fas fa-globe-americas"></i>
-                    </div>
-                </a>
-            </div>
-
-            {{-- buyer login --}}
-            <a href="{{ route('sellerRegister') }}">
-                <x-secondary-button class="hidden lg:block">
-                    {{ __('Join Us As Seller') }}
-                </x-secondary-button>
+<body class="text-slate-800 dark:text-slate-100">
+    <div id="sidebarOverlay" class="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm"></div>
+    <aside id="sidebar"
+        class="offcanvas-sidebar fixed top-0 right-0 z-50 h-full w-80 max-w-[88vw] overflow-y-auto custom-scrollbar border-s border-homy-gold-200/60 bg-white/95 p-6 shadow-2xl shadow-black/25 backdrop-blur-xl dark:border-homy-gold-600/40 dark:bg-[#12211B]/95">
+        <div class="mb-8 flex items-center justify-between">
+            <a href="{{ route('home') }}" class="flex items-center gap-3">
+                <x-application-logo />
+                <div>
+                    <p class="text-lg font-black text-homy-green-700 dark:text-homy-gold-500">
+                        {{ __('partials/aside.title') }}
+                    </p>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">{{ __('partials/aside.description') }}</p>
+                </div>
             </a>
+            <button id="closeSidebar"
+                class="h-10 w-10 rounded-xl border border-homy-gold-200 text-homy-green-700 hover:bg-homy-gold-50 dark:border-homy-gold-600/50 dark:text-homy-gold-400 dark:hover:bg-homy-green-700/40"
+                aria-label="Close sidebar">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
 
+        <nav class="space-y-2">
+            <a href="index.html"
+                class="flex items-center gap-3 rounded-2xl border border-homy-gold-200 bg-homy-gold-50/70 px-4 py-3 text-sm font-bold text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/40 dark:text-homy-gold-300">
+                <i class="fa-solid fa-house"></i>
+                <span>{{ __('partials/aside.home') }}</span>
+            </a>
+            <a href="special-offers.html"
+                class="flex items-center gap-3 rounded-2xl border border-transparent px-4 py-3 text-sm font-bold text-slate-600 hover:border-homy-gold-200 hover:bg-homy-gold-50/60 hover:text-homy-green-700 dark:text-slate-300 dark:hover:border-homy-gold-600/40 dark:hover:bg-homy-green-700/30">
+                <i class="fa-solid fa-badge-percent"></i>
+                <span>{{ __('partials/aside.special_offers') }}</span>
+            </a>
+            <a href="compare.html"
+                class="flex items-center gap-3 rounded-2xl border border-transparent px-4 py-3 text-sm font-bold text-slate-600 hover:border-homy-gold-200 hover:bg-homy-gold-50/60 hover:text-homy-green-700 dark:text-slate-300 dark:hover:border-homy-gold-600/40 dark:hover:bg-homy-green-700/30">
+                <i class="fa-solid fa-scale-balanced"></i>
+                <span>{{ __('partials/aside.compare_product') }}</span>
+            </a>
+            <a href="about-us.html"
+                class="flex items-center gap-3 rounded-2xl border border-transparent px-4 py-3 text-sm font-bold text-slate-600 hover:border-homy-gold-200 hover:bg-homy-gold-50/60 hover:text-homy-green-700 dark:text-slate-300 dark:hover:border-homy-gold-600/40 dark:hover:bg-homy-green-700/30">
+                <i class="fa-solid fa-circle-info"></i>
+                <span>{{ __('partials/aside.about_us') }}</span>
+            </a>
+            <a href="contact-us.html"
+                class="flex items-center gap-3 rounded-2xl border border-transparent px-4 py-3 text-sm font-bold text-slate-600 hover:border-homy-gold-200 hover:bg-homy-gold-50/60 hover:text-homy-green-700 dark:text-slate-300 dark:hover:border-homy-gold-600/40 dark:hover:bg-homy-green-700/30">
+                <i class="fa-solid fa-envelope-open-text"></i>
+                <span>{{ __('partials/aside.connect_us') }}</span>
+            </a>
+            <a href="seller/join.html"
+                class="flex items-center gap-3 rounded-2xl border border-transparent px-4 py-3 text-sm font-bold text-slate-600 hover:border-homy-gold-200 hover:bg-homy-gold-50/60 hover:text-homy-green-700 dark:text-slate-300 dark:hover:border-homy-gold-600/40 dark:hover:bg-homy-green-700/30">
+                <i class="fa-solid fa-store"></i>
+                <span>{{ __('partials/aside.join_us_seller') }}</span>
+            </a>
+        </nav>
 
-            <div class="search-container">
-                <input type="text" placeholder="ابحث عن زعتر، مكدوس، مربى تين...">
-                <i class="fas fa-search search-icon"></i>
-            </div>
+        <div class="mt-10 grid gap-3">
+            <a href="{{ route('login') }}"
+                class="grid place-items-center rounded-2xl border-2 border-homy-green-700 bg-homy-green-700 px-4 py-3 text-sm font-black text-white transition hover:-translate-y-0.5 hover:bg-homy-green-600">
+                <span>{{ __('actions.login') }}</span>
+            </a>
+            <a href="{{ route('buyer.register') }}"
+                class="grid place-items-center rounded-2xl border-2 border-homy-gold-400 bg-white px-4 py-3 text-sm font-black text-homy-green-700 transition hover:-translate-y-0.5 hover:bg-homy-gold-500 hover:text-homy-green-900 dark:bg-homy-gold-500 dark:text-homy-green-900">
+                <span>{{ __('partials/aside.create_account') }}</span>
+            </a>
+            <a href="{{ route('seller.join') }}"
+                class="grid place-items-center rounded-2xl border-2 border-homy-gold-400 bg-homy-gold-500 px-4 py-3 text-sm font-black text-homy-green-900 transition hover:-translate-y-0.5 hover:bg-homy-gold-400">
+                <span>{{ __('partials/aside.join_us_seller') }}</span>
+            </a>
+        </div>
+    </aside>
 
-            <div class="user-actions hidden lg:block">
-                <!-- log in and sign in buttons -->
-                <div class="auth-buttons flex items-center gap-3 auth-buttons mobile:hidden">
+    <div class="relative z-10">
+        <div class="bg-homy-green-700 px-4 py-2 text-center text-xs font-bold tracking-wide text-white">
+            <span class="lang-ar">شحن مجاني لأول طلب</span>
+            <span class="lang-en">Free shipping on first order over 200 SAR - Code HOMY100</span>
+        </div>
 
+        <header
+            class="sticky top-0 z-30 border-b border-homy-gold-100/80 bg-white/80 backdrop-blur-xl dark:border-homy-gold-600/25 dark:bg-[#0f1f18]/85">
+            <div class="mx-auto flex w-full max-w-7xl items-center gap-3 px-4 py-3 lg:gap-4">
+                <button id="menuToggle"
+                    class="h-11 w-11 shrink-0 rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 shadow-sm hover:bg-homy-gold-50 dark:border-homy-gold-600/40 dark:bg-homy-green-700/40 dark:text-homy-gold-300"
+                    aria-label="Open sidebar">
 
-                    <nav class="flex items-center justify-end gap-4">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
 
+                <a href="index.html" class="flex items-center gap-3">
+                    <div
+                        class="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-homy-green-700 to-homy-green-500 text-base font-black text-white shadow-lg">
+                        HF</div>
+                    <div class="hidden sm:block">
+                        <p class="text-base font-black text-homy-green-700 dark:text-homy-gold-400">Homy Food</p>
+                        <p class="text-[11px] text-slate-500 dark:text-slate-400">
+                            <span>{{ __('sidebar.description') }}</span>
+                        </p>
+                    </div>
+                </a>
 
-
-                        <a href="{{ route('login') }}">
-                            <x-primary-button class="whitespace-nowrap mb-6">
-                                <i class="far fa-user text-lg"></i>
-                                {{ __('Log In') }}
-                            </x-primary-button>
-                        </a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">
-                                <x-secondary-button>
-                                    <i class="fa-solid fa-arrow-right-to-bracket"></i>
-                                    {{ __('Sign In') }}
-                                </x-secondary-button>
-                            </a>
-                        @endif
-
-                    </nav>
-
+                <div class="hidden flex-1 lg:flex">
+                    <label class="relative w-full">
+                        <input type="search" placeholder="ابحث عن مكدوس، مربى، زعتر، سمن..."
+                            class="w-full rounded-2xl border border-homy-gold-200/80 bg-white py-3 ps-12 pe-4 text-sm font-semibold text-slate-700 outline-none ring-homy-gold-100 transition placeholder:font-medium placeholder:text-slate-400 focus:border-homy-gold-500 focus:ring-4 dark:border-homy-gold-600/35 dark:bg-[#163126] dark:text-slate-100 dark:placeholder:text-slate-400">
+                        <i
+                            class="fa-solid fa-magnifying-glass pointer-events-none absolute start-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                    </label>
                 </div>
 
+                <div class="ms-auto flex items-center gap-2">
+                    <x-lang-switch />
+
+                    {{-- <button id="themeToggle" class="h-11 w-11 rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 shadow-sm transition hover:bg-homy-gold-50 dark:border-homy-gold-600/40 dark:bg-homy-green-700/40 dark:text-homy-gold-300" aria-label="Toggle theme">
+                        <i class="fa-solid fa-moon"></i>
+                    </button> --}}
+
+                    <x-them-toggle />
+
+
+
+                    <a href="wishlist.html"
+                        class="relative grid h-11 w-11 place-items-center rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 shadow-sm transition hover:bg-homy-gold-50 dark:border-homy-gold-600/40 dark:bg-homy-green-700/40 dark:text-homy-gold-300"
+                        aria-label="Wishlist">
+                        <i class="fa-regular fa-heart"></i>
+                        <span
+                            class="absolute -top-1 -start-1 min-w-5 rounded-full bg-homy-gold-500 px-1 text-center text-[11px] font-black text-homy-green-900">4</span>
+                    </a>
+                    <a href="cart.html"
+                        class="relative grid h-11 w-11 place-items-center rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 shadow-sm transition hover:bg-homy-gold-50 dark:border-homy-gold-600/40 dark:bg-homy-green-700/40 dark:text-homy-gold-300"
+                        aria-label="Cart">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span
+                            class="absolute -top-1 -start-1 min-w-5 rounded-full bg-homy-gold-500 px-1 text-center text-[11px] font-black text-homy-green-900">3</span>
+                    </a>
+                    {{-- <a href="{{ route('login') }}"
+                        class="hidden rounded-2xl border-2 border-homy-green-700 bg-homy-green-700 px-4 py-2.5 text-sm font-black text-white transition hover:bg-homy-green-600 lg:block">
+                         
+                    </a> --}}
+
+                    <a href="{{ route('login') }}">
+                        <x-primary-button>
+                            <i class="far fa-user text-lg"></i>
+                            <span>{{ __('actions.login') }}</span>
+                        </x-primary-button>
+                    </a>
+
+                    <a href="{{ route('seller.join') }}"
+                        class="rounded-2xl border-2 border-homy-gold-400 bg-homy-gold-500 px-4 py-2.5 text-sm font-black text-homy-green-900 transition hover:bg-homy-gold-400 xl:block">
+                        <span>{{ __('partials/aside.join_us_seller') }}</span>
+                    </a>
+
+
+
+                </div>
             </div>
-        </div>
-    </header>
+
+            <div class="mx-auto block max-w-7xl px-4 pb-3 lg:hidden">
+                <label class="relative block">
+                    <input type="search" placeholder="ابحث عن منتجات البيت..."
+                        class="w-full rounded-2xl border border-homy-gold-200/80 bg-white py-3 ps-12 pe-4 text-sm font-semibold text-slate-700 outline-none ring-homy-gold-100 transition placeholder:font-medium placeholder:text-slate-400 focus:border-homy-gold-500 focus:ring-4 dark:border-homy-gold-600/35 dark:bg-[#163126] dark:text-slate-100 dark:placeholder:text-slate-400">
+                    <i
+                        class="fa-solid fa-magnifying-glass pointer-events-none absolute start-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                </label>
+            </div>
+        </header>
+
+        <main>
+            <section class="relative overflow-hidden px-4 pb-14 pt-10 lg:pt-14">
+                <div class="soft-grid absolute inset-0 opacity-40"></div>
+                <div
+                    class="pointer-events-none absolute -start-24 -top-20 h-72 w-72 rounded-full bg-homy-gold-200/55 blur-3xl">
+                </div>
+                <div
+                    class="pointer-events-none absolute -end-16 top-10 h-64 w-64 rounded-full bg-homy-green-100/75 blur-3xl dark:bg-homy-green-700/30">
+                </div>
+
+                <div class="relative mx-auto grid w-full max-w-7xl items-center gap-8 lg:grid-cols-2">
+                    <div>
+                        <div
+                            class="mb-4 inline-flex items-center gap-2 rounded-full border border-homy-gold-200 bg-white/80 px-4 py-2 text-xs font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/30 dark:text-homy-gold-300">
+                            <i class="fa-solid fa-crown text-homy-gold-500"></i>
+                            <span class="lang-ar">تجربة منزلية فاخرة </span>
+                            <span class="lang-en">Homemade Experience</span>
+                        </div>
+
+                        <h1
+                            class="text-3xl font-black leading-tight text-homy-green-700 dark:text-homy-gold-400 sm:text-4xl lg:text-5xl">
+                            <span class="lang-ar">مذاق البيت الذي يخفف الغربة ويقربك من أهلك</span>
+                            <span class="lang-en">A Home Taste That Brings You Closer To Family</span>
+                        </h1>
+
+                        <p
+                            class="mt-5 max-w-xl text-sm font-semibold leading-7 text-slate-600 dark:text-slate-300 sm:text-base">
+                            <span class="lang-ar">مربيات ومخللات ومكدوس وزعتر وسمن بلدي ومنتجات ألبان مصنوعة بعناية من
+                                بائعين موثوقين. .</span>
+                            <span class="lang-en">Jams, pickles, makdous, zaatar, ghee and dairy delights from trusted
+                                sellers. </span>
+                        </p>
+
+                        <div class="mt-7 flex flex-wrap items-center gap-3">
+                            <a href="special-offers.html"
+                                class="rounded-2xl bg-homy-green-700 px-6 py-3 text-sm font-black text-white shadow-lg shadow-homy-green-700/25 transition hover:-translate-y-0.5 hover:bg-homy-green-600">
+                                <span class="lang-ar">ابدأ التسوق الآن</span>
+                                <span class="lang-en">Start Shopping</span>
+                            </a>
+                            <a href="compare.html"
+                                class="rounded-2xl border-2 border-homy-gold-400 bg-white px-6 py-3 text-sm font-black text-homy-green-700 transition hover:-translate-y-0.5 hover:bg-homy-gold-500 hover:text-homy-green-900 dark:bg-homy-gold-500 dark:text-homy-green-900">
+                                <span class="lang-ar">قارن المنتجات</span>
+                                <span class="lang-en">Compare Products</span>
+                            </a>
+                            <a href="{{ route('seller.join') }}"
+                                class="rounded-2xl border-2 border-homy-gold-300 bg-homy-gold-50 px-6 py-3 text-sm font-black text-homy-green-700 transition hover:-translate-y-0.5 hover:bg-homy-gold-500 hover:text-homy-green-900 dark:border-homy-gold-600/35 dark:bg-homy-green-700/35 dark:text-homy-gold-300 dark:hover:bg-homy-gold-500 dark:hover:text-homy-green-900">
+                                <span class="lang-ar">انضم كبائع</span>
+                                <span class="lang-en">Become A Seller</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="grid gap-4 sm:grid-cols-2">
+                        <article
+                            class="hero-badge rounded-3xl border border-homy-gold-200/80 bg-white/90 p-4 shadow-xl shadow-homy-gold-100/70 dark:border-homy-gold-600/35 dark:bg-[#153023]/90">
+                            <img src="https://images.unsplash.com/photo-1625943555419-56a2cb596640?auto=format&fit=crop&w=900&q=80"
+                                alt="Makdous" class="h-36 w-full rounded-2xl object-cover">
+                            <h3 class="mt-3 font-black text-homy-green-700 dark:text-homy-gold-400">
+                                <span class="lang-ar">مكدوس فاخر بزيت الزيتون</span>
+                                <span class="lang-en">Premium Makdous In Olive Oil</span>
+                            </h3>
+                            <p class="mt-1 text-sm text-slate-500 dark:text-slate-300">4.9 ★</p>
+                        </article>
+
+                        <article
+                            class="hero-badge rounded-3xl border border-homy-gold-200/80 bg-white/90 p-4 shadow-xl shadow-homy-gold-100/70 dark:border-homy-gold-600/35 dark:bg-[#153023]/90"
+                            style="animation-delay:0.5s">
+                            <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=900&q=80"
+                                alt="Jam" class="h-36 w-full rounded-2xl object-cover">
+                            <h3 class="mt-3 font-black text-homy-green-700 dark:text-homy-gold-400">
+                                <span class="lang-ar">مربى تين بطعم أصيل</span>
+                                <span class="lang-en">Authentic Fig Jam</span>
+                            </h3>
+                            <p class="mt-1 text-sm text-slate-500 dark:text-slate-300">4.8 ★</p>
+                        </article>
+
+                        <article
+                            class="rounded-3xl border border-homy-gold-200/80 bg-homy-green-700 p-4 text-white shadow-xl sm:col-span-2 dark:border-homy-gold-600/35">
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <div>
+                                    <p class="text-xs font-bold uppercase tracking-wider text-homy-gold-100">
+                                        <span class="lang-ar">منتج الأسبوع</span>
+                                        <span class="lang-en">Product Of The Week</span>
+                                    </p>
+                                    <h3 class="mt-1 text-lg font-black">
+                                        <span class="lang-ar">سمن بلدي نقي 100%</span>
+                                        <span class="lang-en">Pure Traditional Ghee 100%</span>
+                                    </h3>
+                                </div>
+                                <a href="product-details.html"
+                                    class="rounded-xl bg-homy-gold-500 px-4 py-2 text-xs font-black text-homy-green-900 transition hover:bg-homy-gold-400">
+                                    <span class="lang-ar">عرض التفاصيل</span>
+                                    <span class="lang-en">View Details</span>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="px-4 pb-8">
+                <div class="mx-auto flex w-full max-w-7xl gap-3 overflow-x-auto pb-2 custom-scrollbar">
+                    <button
+                        class="js-filter-item active shrink-0 rounded-2xl border border-homy-gold-200 bg-white px-4 py-3 text-center text-xs font-black text-homy-green-700 dark:border-homy-gold-600/35 dark:bg-[#153023] dark:text-homy-gold-300">
+                        <i class="fa-solid fa-layer-group mb-2 block text-base"></i>
+                        <span class="lang-ar">الكل</span>
+                        <span class="lang-en">All</span>
+                    </button>
+                    <button
+                        class="js-filter-item shrink-0 rounded-2xl border border-homy-gold-200 bg-white px-4 py-3 text-center text-xs font-black text-homy-green-700 dark:border-homy-gold-600/35 dark:bg-[#153023] dark:text-homy-gold-300">
+                        <i class="fa-solid fa-jar mb-2 block text-base"></i>
+                        <span class="lang-ar">المربيات</span>
+                        <span class="lang-en">Jams</span>
+                    </button>
+                    <button
+                        class="js-filter-item shrink-0 rounded-2xl border border-homy-gold-200 bg-white px-4 py-3 text-center text-xs font-black text-homy-green-700 dark:border-homy-gold-600/35 dark:bg-[#153023] dark:text-homy-gold-300">
+                        <i class="fa-solid fa-seedling mb-2 block text-base"></i>
+                        <span class="lang-ar">الزعتر</span>
+                        <span class="lang-en">Zaatar</span>
+                    </button>
+                    <button
+                        class="js-filter-item shrink-0 rounded-2xl border border-homy-gold-200 bg-white px-4 py-3 text-center text-xs font-black text-homy-green-700 dark:border-homy-gold-600/35 dark:bg-[#153023] dark:text-homy-gold-300">
+                        <i class="fa-solid fa-pepper-hot mb-2 block text-base"></i>
+                        <span class="lang-ar">المخللات</span>
+                        <span class="lang-en">Pickles</span>
+                    </button>
+                    <button
+                        class="js-filter-item shrink-0 rounded-2xl border border-homy-gold-200 bg-white px-4 py-3 text-center text-xs font-black text-homy-green-700 dark:border-homy-gold-600/35 dark:bg-[#153023] dark:text-homy-gold-300">
+                        <i class="fa-solid fa-wheat-awn mb-2 block text-base"></i>
+                        <span class="lang-ar">المونة</span>
+                        <span class="lang-en">Pantry</span>
+                    </button>
+                    <button
+                        class="js-filter-item shrink-0 rounded-2xl border border-homy-gold-200 bg-white px-4 py-3 text-center text-xs font-black text-homy-green-700 dark:border-homy-gold-600/35 dark:bg-[#153023] dark:text-homy-gold-300">
+                        <i class="fa-solid fa-cheese mb-2 block text-base"></i>
+                        <span class="lang-ar">الألبان</span>
+                        <span class="lang-en">Dairy</span>
+                    </button>
+                </div>
+            </section>
+
+            <section class="px-4 pb-14">
+                <div class="mx-auto w-full max-w-7xl">
+                    <div class="mb-7 flex items-end justify-between gap-4">
+                        <div>
+                            <h2 class="text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">
+                                <span class="lang-ar">منتجات مختارة لك</span>
+                                <span class="lang-en">Curated For You</span>
+                            </h2>
+                            <!-- <p class="mt-1 text-sm font-semibold text-slate-500 dark:text-slate-300">
+                                <span class="lang-ar">بطاقات المنتج الأساسية بنفس روح متجرك الحالية</span>
+                                <span class="lang-en">Core product cards aligned with your current style</span>
+                            </p> -->
+                        </div>
+                        <a href="special-offers.html"
+                            class="text-sm font-black text-homy-green-700 underline decoration-homy-gold-500 decoration-2 underline-offset-4 dark:text-homy-gold-400">
+                            <span class="lang-ar">عرض الكل</span>
+                            <span class="lang-en">View All</span>
+                        </a>
+                    </div>
+
+                    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                        <article class="homy-card p-3">
+                            <a href="product-details.html" class="relative block">
+                                <img src="https://images.unsplash.com/photo-1590779033100-9f60705a013d?auto=format&fit=crop&w=900&q=80"
+                                    alt="Fig Jam" class="h-44 w-full rounded-2xl object-cover">
+                                <span
+                                    class="absolute start-2 top-2 rounded-full bg-white/90 px-2 py-1 text-[11px] font-black text-homy-green-700">45
+                                    SAR</span>
+                                <button data-action="toggle-favorite" aria-pressed="false"
+                                    class="absolute end-2 top-2 h-9 w-9 rounded-full bg-white/90 text-homy-green-700 shadow"
+                                    type="button">
+                                    <i class="fa-solid fa-heart"></i>
+                                </button>
+                            </a>
+                            <div class="pt-3">
+                                <h3
+                                    class="line-clamp-1 text-sm font-black text-homy-green-700 dark:text-homy-gold-400">
+                                    <span class="lang-ar">مربى تين ملكي</span>
+                                    <span class="lang-en">Royal Fig Jam</span>
+                                </h3>
+                                <p class="mt-1 text-xs font-semibold text-slate-500 dark:text-slate-300">
+                                    <span class="lang-ar">مطبخ بيت الشام</span>
+                                    <span class="lang-en">Beit Al Sham Kitchen</span>
+                                </p>
+                                <div class="mt-3 flex items-center justify-between">
+                                    <div class="text-xs font-black text-homy-gold-600">4.9 ★</div>
+                                    <a href="cart.html"
+                                        class="rounded-xl bg-homy-green-700 px-3 py-2 text-[11px] font-black text-white">
+                                        <span class="lang-ar">أضف للسلة</span>
+                                        <span class="lang-en">Add To Cart</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="homy-card p-3">
+                            <a href="product-details.html" class="relative block">
+                                <img src="https://images.unsplash.com/photo-1609501676725-7186f734b709?auto=format&fit=crop&w=900&q=80"
+                                    alt="Pickles" class="h-44 w-full rounded-2xl object-cover">
+                                <span
+                                    class="absolute start-2 top-2 rounded-full bg-white/90 px-2 py-1 text-[11px] font-black text-homy-green-700">38
+                                    SAR</span>
+                                <button data-action="toggle-favorite" aria-pressed="false"
+                                    class="absolute end-2 top-2 h-9 w-9 rounded-full bg-white/90 text-homy-green-700 shadow"
+                                    type="button">
+                                    <i class="fa-solid fa-heart"></i>
+                                </button>
+                            </a>
+                            <div class="pt-3">
+                                <h3
+                                    class="line-clamp-1 text-sm font-black text-homy-green-700 dark:text-homy-gold-400">
+                                    <span class="lang-ar">مخلل خيار مقرمش</span>
+                                    <span class="lang-en">Crunchy Pickled Cucumber</span>
+                                </h3>
+                                <p class="mt-1 text-xs font-semibold text-slate-500 dark:text-slate-300">
+                                    <span class="lang-ar">مونة جدتي</span>
+                                    <span class="lang-en">Grandma Pantry</span>
+                                </p>
+                                <div class="mt-3 flex items-center justify-between">
+                                    <div class="text-xs font-black text-homy-gold-600">4.7 ★</div>
+                                    <a href="cart.html"
+                                        class="rounded-xl bg-homy-green-700 px-3 py-2 text-[11px] font-black text-white">
+                                        <span class="lang-ar">أضف للسلة</span>
+                                        <span class="lang-en">Add To Cart</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="homy-card p-3">
+                            <a href="product-details.html" class="relative block">
+                                <img src="https://images.unsplash.com/photo-1603048719539-9ecb4d6f0164?auto=format&fit=crop&w=900&q=80"
+                                    alt="Zaatar" class="h-44 w-full rounded-2xl object-cover">
+                                <span
+                                    class="absolute start-2 top-2 rounded-full bg-white/90 px-2 py-1 text-[11px] font-black text-homy-green-700">52
+                                    SAR</span>
+                                <button data-action="toggle-favorite" aria-pressed="false"
+                                    class="absolute end-2 top-2 h-9 w-9 rounded-full bg-white/90 text-homy-green-700 shadow"
+                                    type="button">
+                                    <i class="fa-solid fa-heart"></i>
+                                </button>
+                            </a>
+                            <div class="pt-3">
+                                <h3
+                                    class="line-clamp-1 text-sm font-black text-homy-green-700 dark:text-homy-gold-400">
+                                    <span class="lang-ar">زعتر نابلسي فاخر</span>
+                                    <span class="lang-en">Premium Nabulsi Zaatar</span>
+                                </h3>
+                                <p class="mt-1 text-xs font-semibold text-slate-500 dark:text-slate-300">
+                                    <span class="lang-ar">دار الطيب</span>
+                                    <span class="lang-en">Dar Al Tayyeb</span>
+                                </p>
+                                <div class="mt-3 flex items-center justify-between">
+                                    <div class="text-xs font-black text-homy-gold-600">4.8 ★</div>
+                                    <a href="cart.html"
+                                        class="rounded-xl bg-homy-green-700 px-3 py-2 text-[11px] font-black text-white">
+                                        <span class="lang-ar">أضف للسلة</span>
+                                        <span class="lang-en">Add To Cart</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="homy-card p-3">
+                            <a href="product-details.html" class="relative block">
+                                <img src="https://images.unsplash.com/photo-1617093727343-374698b1b08d?auto=format&fit=crop&w=900&q=80"
+                                    alt="Ghee" class="h-44 w-full rounded-2xl object-cover">
+                                <span
+                                    class="absolute start-2 top-2 rounded-full bg-white/90 px-2 py-1 text-[11px] font-black text-homy-green-700">67
+                                    SAR</span>
+                                <button data-action="toggle-favorite" aria-pressed="false"
+                                    class="absolute end-2 top-2 h-9 w-9 rounded-full bg-white/90 text-homy-green-700 shadow"
+                                    type="button">
+                                    <i class="fa-solid fa-heart"></i>
+                                </button>
+                            </a>
+                            <div class="pt-3">
+                                <h3
+                                    class="line-clamp-1 text-sm font-black text-homy-green-700 dark:text-homy-gold-400">
+                                    <span class="lang-ar">سمن بقري بلدي</span>
+                                    <span class="lang-en">Traditional Cow Ghee</span>
+                                </h3>
+                                <p class="mt-1 text-xs font-semibold text-slate-500 dark:text-slate-300">
+                                    <span class="lang-ar">مزرعة النور</span>
+                                    <span class="lang-en">Noor Farm</span>
+                                </p>
+                                <div class="mt-3 flex items-center justify-between">
+                                    <div class="text-xs font-black text-homy-gold-600">4.9 ★</div>
+                                    <a href="cart.html"
+                                        class="rounded-xl bg-homy-green-700 px-3 py-2 text-[11px] font-black text-white">
+                                        <span class="lang-ar">أضف للسلة</span>
+                                        <span class="lang-en">Add To Cart</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="px-4 pb-14">
+                <div class="mx-auto w-full max-w-7xl">
+                    <div class="mb-7 flex items-end justify-between gap-4">
+                        <div>
+                            <h2 class="text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">
+                                <span class="lang-ar">قد يعجبك</span>
+                                <span class="lang-en">May You Love</span>
+                            </h2>
+                            <!-- <p class="mt-1 text-sm font-semibold text-slate-500 dark:text-slate-300">
+                                <span class="lang-ar">تنويع بصري يعزز تجربة المستخدم في الصفحة الرئيسية</span>
+                                <span class="lang-en">Visual diversity for richer homepage experience</span>
+                            </p> -->
+                        </div>
+                    </div>
+
+                    <div class="grid gap-5 lg:grid-cols-2">
+                        <article class="homy-card flex flex-col gap-4 p-4 sm:flex-row">
+                            <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"
+                                alt="Makdous" class="h-44 w-full rounded-2xl object-cover sm:h-auto sm:w-48">
+                            <div class="flex flex-1 flex-col">
+                                <div class="flex items-start justify-between gap-2">
+                                    <h3 class="text-lg font-black text-homy-green-700 dark:text-homy-gold-400">
+                                        <span class="lang-ar">مكدوس جوز سوبر</span>
+                                        <span class="lang-en">Super Walnut Makdous</span>
+                                    </h3>
+                                    <span
+                                        class="rounded-full bg-homy-gold-100 px-3 py-1 text-xs font-black text-homy-green-700 dark:bg-homy-gold-500 dark:text-homy-green-900">-15%</span>
+                                </div>
+                                <p class="mt-2 text-sm font-medium text-slate-600 dark:text-slate-300">
+                                    <span class="lang-ar">محمّر على نار هادئة ومحفوظ بزيت زيتون بكر ممتاز.</span>
+                                    <span class="lang-en">Slow-roasted and preserved in premium extra virgin olive
+                                        oil.</span>
+                                </p>
+                                <div class="mt-auto pt-4 flex flex-wrap items-center gap-2">
+                                    <span class="text-sm font-black text-homy-green-700 dark:text-homy-gold-400">58
+                                        SAR</span>
+                                    <a href="product-details.html"
+                                        class="rounded-xl border border-homy-gold-300 px-3 py-2 text-xs font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:text-homy-gold-300">
+                                        <span class="lang-ar">التفاصيل</span>
+                                        <span class="lang-en">Details</span>
+                                    </a>
+                                    <a href="checkout.html"
+                                        class="rounded-xl bg-homy-green-700 px-3 py-2 text-xs font-black text-white">
+                                        <span class="lang-ar">شراء الآن</span>
+                                        <span class="lang-en">Buy Now</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="homy-card p-4">
+                            <div class="grid gap-3 sm:grid-cols-[1.2fr_1fr]">
+                                <img src="https://images.unsplash.com/photo-1611250188496-e966043a0629?auto=format&fit=crop&w=900&q=80"
+                                    alt="Assorted products" class="h-44 w-full rounded-2xl object-cover sm:h-full">
+                                <div class="rounded-2xl bg-homy-green-700/95 p-4 text-white dark:bg-homy-green-700">
+                                    <p class="text-xs font-bold uppercase tracking-wider text-homy-gold-100">
+                                        <span class="lang-ar">صندوق العائلة</span>
+                                        <span class="lang-en">Family Box</span>
+                                    </p>
+                                    <h3 class="mt-1 text-lg font-black">
+                                        <span class="lang-ar">5 منتجات مختارة</span>
+                                        <span class="lang-en">5 Curated Products</span>
+                                    </h3>
+                                    <p class="mt-2 text-xs font-semibold text-white/80">
+                                        <span class="lang-ar">مربى + زعتر + مكدوس + سمن + مخلل</span>
+                                        <span class="lang-en">Jam + Zaatar + Makdous + Ghee + Pickles</span>
+                                    </p>
+                                    <a href="cart.html"
+                                        class="mt-4 inline-block rounded-xl bg-homy-gold-500 px-3 py-2 text-xs font-black text-homy-green-900">
+                                        <span class="lang-ar">أضف البوكس للسلة</span>
+                                        <span class="lang-en">Add Box To Cart</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="px-4 pb-14">
+                <div class="mx-auto w-full max-w-7xl">
+                    <div
+                        class="rounded-[2rem] border border-homy-gold-200 bg-gradient-to-br from-homy-gold-50 via-white to-homy-green-100/45 p-6 shadow-xl dark:border-homy-gold-600/30 dark:from-[#14261f] dark:via-[#12211b] dark:to-[#173326]">
+                        <div class="mb-5 flex flex-wrap items-end justify-between gap-3">
+                            <div>
+                                <h2 class="text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">
+                                    <span class="lang-ar">فلاتر سريعة</span>
+                                    <span class="lang-en">Quick Filters</span>
+                                </h2>
+                                <!-- <p class="mt-1 text-sm font-semibold text-slate-600 dark:text-slate-300">
+                                    <span class="lang-ar">نفس هدف فلاتر الأعلى لكن بعرض بصري عالمي</span>
+                                    <span class="lang-en">Same purpose as top filters with a richer visual style</span>
+                                </p> -->
+                            </div>
+                        </div>
+
+                        <div class="grid gap-4 sm:grid-cols-3 lg:grid-cols-6">
+                            <button
+                                class="js-filter-item active mx-auto flex h-28 w-28 flex-col items-center justify-center rounded-full border border-homy-gold-300 bg-white text-xs font-black text-homy-green-700 shadow-md transition hover:-translate-y-1 dark:border-homy-gold-600/40 dark:bg-[#173326] dark:text-homy-gold-300">
+                                <i class="fa-solid fa-jar mb-2 text-lg"></i>
+                                <span class="lang-ar">مربى</span>
+                                <span class="lang-en">Jam</span>
+                            </button>
+                            <button
+                                class="js-filter-item mx-auto flex h-28 w-28 flex-col items-center justify-center rounded-full border border-homy-gold-300 bg-white text-xs font-black text-homy-green-700 shadow-md transition hover:-translate-y-1 dark:border-homy-gold-600/40 dark:bg-[#173326] dark:text-homy-gold-300">
+                                <i class="fa-solid fa-bowl-food mb-2 text-lg"></i>
+                                <span class="lang-ar">مكدوس</span>
+                                <span class="lang-en">Makdous</span>
+                            </button>
+                            <button
+                                class="js-filter-item mx-auto flex h-28 w-28 flex-col items-center justify-center rounded-full border border-homy-gold-300 bg-white text-xs font-black text-homy-green-700 shadow-md transition hover:-translate-y-1 dark:border-homy-gold-600/40 dark:bg-[#173326] dark:text-homy-gold-300">
+                                <i class="fa-solid fa-leaf mb-2 text-lg"></i>
+                                <span class="lang-ar">زعتر</span>
+                                <span class="lang-en">Zaatar</span>
+                            </button>
+                            <button
+                                class="js-filter-item mx-auto flex h-28 w-28 flex-col items-center justify-center rounded-full border border-homy-gold-300 bg-white text-xs font-black text-homy-green-700 shadow-md transition hover:-translate-y-1 dark:border-homy-gold-600/40 dark:bg-[#173326] dark:text-homy-gold-300">
+                                <i class="fa-solid fa-cow mb-2 text-lg"></i>
+                                <span class="lang-ar">سمن</span>
+                                <span class="lang-en">Ghee</span>
+                            </button>
+                            <button
+                                class="js-filter-item mx-auto flex h-28 w-28 flex-col items-center justify-center rounded-full border border-homy-gold-300 bg-white text-xs font-black text-homy-green-700 shadow-md transition hover:-translate-y-1 dark:border-homy-gold-600/40 dark:bg-[#173326] dark:text-homy-gold-300">
+                                <i class="fa-solid fa-cheese mb-2 text-lg"></i>
+                                <span class="lang-ar">ألبان</span>
+                                <span class="lang-en">Dairy</span>
+                            </button>
+                            <button
+                                class="js-filter-item mx-auto flex h-28 w-28 flex-col items-center justify-center rounded-full border border-homy-gold-300 bg-white text-xs font-black text-homy-green-700 shadow-md transition hover:-translate-y-1 dark:border-homy-gold-600/40 dark:bg-[#173326] dark:text-homy-gold-300">
+                                <i class="fa-solid fa-pepper-hot mb-2 text-lg"></i>
+                                <span class="lang-ar">مخللات</span>
+                                <span class="lang-en">Pickles</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="px-4 pb-14">
+                <div class="mx-auto w-full max-w-7xl">
+                    <div class="mb-7 flex items-end justify-between gap-4">
+                        <div>
+                            <h2 class="text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">
+                                <span class="lang-ar">فيديوهات من البائعين</span>
+                                <span class="lang-en">Seller Video Showcase</span>
+                            </h2>
+                            <p class="mt-1 text-sm font-semibold text-slate-500 dark:text-slate-300">
+                                <span class="lang-ar">قسم مخصص لشرح المنتج وطريقة التحضير</span>
+                                <span class="lang-en">Dedicated videos for product stories and preparation</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="grid gap-5 lg:grid-cols-3">
+                        <article class="homy-card overflow-hidden">
+                            <video controls preload="metadata"
+                                poster="https://images.unsplash.com/photo-1587241321921-91a834d6d191?auto=format&fit=crop&w=900&q=80"
+                                class="h-52 w-full object-cover">
+                                <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+                                    type="video/mp4">
+                            </video>
+                            <div class="p-4">
+                                <h3 class="font-black text-homy-green-700 dark:text-homy-gold-400">
+                                    <span class="lang-ar">طريقة تحضير المكدوس البلدي</span>
+                                    <span class="lang-en">How We Prepare Traditional Makdous</span>
+                                </h3>
+                            </div>
+                        </article>
+                        <article class="homy-card overflow-hidden">
+                            <video controls preload="metadata"
+                                poster="https://images.unsplash.com/photo-1589712235274-89ec11f2f24f?auto=format&fit=crop&w=900&q=80"
+                                class="h-52 w-full object-cover">
+                                <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+                                    type="video/webm">
+                            </video>
+                            <div class="p-4">
+                                <h3 class="font-black text-homy-green-700 dark:text-homy-gold-400">
+                                    <span class="lang-ar">من الحقل إلى مرطبان الزعتر</span>
+                                    <span class="lang-en">From Field To Zaatar Jar</span>
+                                </h3>
+                            </div>
+                        </article>
+                        <article class="homy-card overflow-hidden">
+                            <video controls preload="metadata"
+                                poster="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=80"
+                                class="h-52 w-full object-cover">
+                                <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+                                    type="video/mp4">
+                            </video>
+                            <div class="p-4">
+                                <h3 class="font-black text-homy-green-700 dark:text-homy-gold-400">
+                                    <span class="lang-ar">سر نكهة السمن البلدي</span>
+                                    <span class="lang-en">The Secret Of Traditional Ghee</span>
+                                </h3>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="px-4 pb-14">
+                <div
+                    class="mx-auto w-full max-w-7xl rounded-[2rem] border border-homy-gold-200 bg-white/85 p-6 shadow-xl dark:border-homy-gold-600/30 dark:bg-[#12211B]/85">
+                    <div class="mb-6 flex flex-wrap items-end justify-between gap-3">
+                        <div>
+                            <h2 class="text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">
+                                <span class="lang-ar">قسم المقارنة </span>
+                                <span class="lang-en">Comparison Zone</span>
+                            </h2>
+                            <p class="mt-1 text-sm font-semibold text-slate-500 dark:text-slate-300">
+                                <span class="lang-ar">اختر منتجاتك وقارن السعر والتقييم والتعبئة بسرعة</span>
+                                <span class="lang-en">Pick products and compare price, rating and packaging fast</span>
+                            </p>
+                        </div>
+                        <a href="compare.html"
+                            class="rounded-xl bg-homy-green-700 px-4 py-2 text-xs font-black text-white transition hover:bg-homy-green-600">
+                            <span class="lang-ar">افتح صفحة المقارنة</span>
+                            <span class="lang-en">Open Comparison Page</span>
+                        </a>
+                    </div>
+
+                    <div class="grid gap-4 md:grid-cols-2">
+                        <article
+                            class="rounded-2xl border border-homy-gold-200 bg-homy-gold-50/70 p-4 dark:border-homy-gold-600/30 dark:bg-homy-green-700/25">
+                            <h3 class="font-black text-homy-green-700 dark:text-homy-gold-400">
+                                <span class="lang-ar">مربى تين عضوي</span>
+                                <span class="lang-en">Organic Fig Jam</span>
+                            </h3>
+                            <p class="mt-1 text-sm font-semibold text-slate-600 dark:text-slate-300">45 SAR | 4.9 ★</p>
+                        </article>
+                        <article
+                            class="rounded-2xl border border-homy-gold-200 bg-homy-gold-50/70 p-4 dark:border-homy-gold-600/30 dark:bg-homy-green-700/25">
+                            <h3 class="font-black text-homy-green-700 dark:text-homy-gold-400">
+                                <span class="lang-ar">مربى تين كلاسيك</span>
+                                <span class="lang-en">Classic Fig Jam</span>
+                            </h3>
+                            <p class="mt-1 text-sm font-semibold text-slate-600 dark:text-slate-300">39 SAR | 4.6 ★</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="px-4 pb-14">
+                <div class="mx-auto w-full max-w-7xl">
+                    <div class="mb-6 flex items-end justify-between gap-3">
+                        <h2 class="text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">
+                            <span class="lang-ar">العلامات والبائعون المميزون</span>
+                            <span class="lang-en">Featured Brands & Sellers</span>
+                        </h2>
+                    </div>
+
+                    <div
+                        class="brand-marquee overflow-hidden rounded-3xl border border-homy-gold-200 bg-white/90 p-4 dark:border-homy-gold-600/30 dark:bg-[#12211B]/85">
+                        <div class="brand-track flex w-max gap-3">
+                            <span
+                                class="rounded-2xl border border-homy-gold-200 bg-homy-gold-50 px-4 py-3 text-sm font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/30 dark:text-homy-gold-300">Homy
+                                Pantry</span>
+                            <span
+                                class="rounded-2xl border border-homy-gold-200 bg-homy-gold-50 px-4 py-3 text-sm font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/30 dark:text-homy-gold-300">Levant
+                                Spoon</span>
+                            <span
+                                class="rounded-2xl border border-homy-gold-200 bg-homy-gold-50 px-4 py-3 text-sm font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/30 dark:text-homy-gold-300">Golden
+                                Ghee House</span>
+                            <span
+                                class="rounded-2xl border border-homy-gold-200 bg-homy-gold-50 px-4 py-3 text-sm font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/30 dark:text-homy-gold-300">Makdous
+                                Stories</span>
+                            <span
+                                class="rounded-2xl border border-homy-gold-200 bg-homy-gold-50 px-4 py-3 text-sm font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/30 dark:text-homy-gold-300">Farm
+                                To Jar</span>
+                            <span
+                                class="rounded-2xl border border-homy-gold-200 bg-homy-gold-50 px-4 py-3 text-sm font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/30 dark:text-homy-gold-300">Royal
+                                Pickles</span>
+                            <span
+                                class="rounded-2xl border border-homy-gold-200 bg-homy-gold-50 px-4 py-3 text-sm font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/30 dark:text-homy-gold-300">Homy
+                                Pantry</span>
+                            <span
+                                class="rounded-2xl border border-homy-gold-200 bg-homy-gold-50 px-4 py-3 text-sm font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/30 dark:text-homy-gold-300">Levant
+                                Spoon</span>
+                            <span
+                                class="rounded-2xl border border-homy-gold-200 bg-homy-gold-50 px-4 py-3 text-sm font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/30 dark:text-homy-gold-300">Golden
+                                Ghee House</span>
+                            <span
+                                class="rounded-2xl border border-homy-gold-200 bg-homy-gold-50 px-4 py-3 text-sm font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/30 dark:text-homy-gold-300">Makdous
+                                Stories</span>
+                            <span
+                                class="rounded-2xl border border-homy-gold-200 bg-homy-gold-50 px-4 py-3 text-sm font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/30 dark:text-homy-gold-300">Farm
+                                To Jar</span>
+                            <span
+                                class="rounded-2xl border border-homy-gold-200 bg-homy-gold-50 px-4 py-3 text-sm font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/30 dark:text-homy-gold-300">Royal
+                                Pickles</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    @include('partials.footer');
+
+
+    <script src="{{ asset('templates/assets/app.js') }}"></script>
 
 </body>
-</html>
 
+</html>

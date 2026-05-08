@@ -63,6 +63,18 @@
         </div>
     </header>
 
+    <!-- ---------------- -->
+   <div class="mx-2 auth-buttons flex items-center gap-3 auth-buttons">
+    <x-secondary-button onclick="event.preventDefault(); document.getElementById('post-form').submit();">
+        {{ __('Log Out') }}
+    </x-secondary-button>
+
+   <form id="post-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
+</div>
+<!-- ------------------- -->
+
     <main class="mx-auto grid w-full max-w-[1500px] gap-6 px-4 py-6 lg:grid-cols-[1fr_300px]">
         <section class="space-y-6">
             <article class="rounded-[2rem] border border-homy-gold-200 bg-gradient-to-br from-homy-gold-50 via-white to-homy-green-100/45 p-6 dark:border-homy-gold-600/35 dark:from-[#14261f] dark:via-[#12211b] dark:to-[#173326]">

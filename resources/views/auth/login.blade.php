@@ -62,7 +62,7 @@
 
                 <p class="mt-6 text-center text-sm font-semibold text-slate-500 dark:text-slate-300">
                     <span>{{ __('messages.no_account') }}</span>
-                    <a href="{{ route('register') }}" class="font-black text-homy-gold-600 underline">
+                    <a href="{{ route('buyer.register') }}" class="font-black text-homy-gold-600 underline">
                         <span>{{ __('actions.create_account') }}</span>
                     </a>
                 </p>

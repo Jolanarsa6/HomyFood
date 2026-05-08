@@ -8,7 +8,7 @@
          <div class="ms-auto flex items-center gap-2">
              <x-lang-switch />
              <x-them-toggle />
-             <a href="index.html"
+             <a href="{{ route('home') }}"
                  class="rounded-2xl border-2 border-homy-gold-300 px-4 py-2 text-sm font-black text-homy-green-700 transition hover:bg-homy-gold-500 hover:text-homy-green-900 dark:border-homy-gold-600/35 dark:text-homy-gold-300">
                  <span>{{ __('actions.back_home') }}</span>
              </a>

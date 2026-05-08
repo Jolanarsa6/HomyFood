@@ -25,7 +25,7 @@
                     </p>
 
                     <div class="mt-7 flex flex-wrap items-center gap-3">
-                        <a href="register.html" class="rounded-2xl bg-homy-green-700 px-6 py-3 text-sm font-black text-white shadow-lg shadow-homy-green-700/25 transition hover:-translate-y-0.5 hover:bg-homy-green-600">
+                        <a href="{{ route('seller.register') }}" class="rounded-2xl bg-homy-green-700 px-6 py-3 text-sm font-black text-white shadow-lg shadow-homy-green-700/25 transition hover:-translate-y-0.5 hover:bg-homy-green-600">
                             <span class="lang-ar">ابدأ التسجيل كبائع</span>
                             <span class="lang-en">Start Seller Registration</span>
                         </a>

@@ -2,7 +2,7 @@
          <a href="index.html" class="flex items-center gap-3">
              <div
                  class="h-12 w-12 rounded-2xl bg-gradient-to-br from-homy-green-700 to-homy-green-500 text-white grid place-items-center text-lg shadow-lg">
-                 HF</div>
+                <x-application-logo/></div>
              <div>
                  <p class="text-lg font-black text-homy-green-700 dark:text-homy-gold-500">{{ __('partials/aside.title') }}
                  </p>
