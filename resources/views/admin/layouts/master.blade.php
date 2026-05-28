@@ -1,48 +1,52 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}" class="scroll-smooth">
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}"
+    class="scroll-smooth">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Admin Dashboard - Homy Food</title>
-
-    <link href="{{ asset('admin/assets/dist/css/tabler.min.css?1692870487') }}" rel="stylesheet" />
-    <link href="{{ asset('admin/assets/dist/css/demo.min.css?1692870487') }}" rel="stylesheet" />
-
-    <link href="{{ asset('admin/assets/dist/css/homy-them.css') }}" rel="stylesheet" />
-    @vite(['resources/css/admin-tailwind.css', 'resources/js/app.js'])
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homy Food | {{ $title ?? config('app.name') }}</title>
+    <meta name="description" content="Homy Food premium homemade food marketplace">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 
+    <link rel="stylesheet" href="{{ asset('templates/assets/app.css') }}">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <!-- Prevent Flicker: Apply theme before body renders -->
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia(
+                '(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
 </head>
 
-<body>
-    <script src="{{ asset('admin/assets/dist/js/demo-theme.min.js?1692870487') }}"></script>
-    <div class="page">
+<body class="text-slate-800 dark:text-slate-100">
+    <div id="sidebarOverlay" class="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm lg:hidden"></div>
 
         <!-- Header -->
         @include('admin.layouts.header')
 
-
-        <!-- Sidebar -->
-        @include('admin.layouts.sidebar')
-
         <!-- Main Contents -->
-        <div class="page-wrapper">
+    <main class="mx-auto grid w-full max-w-[1700px] gap-6 px-4 py-6 lg:grid-cols-[1fr_320px]">
 
             @yield('content')
 
-        </div>
-
+            
+            <aside id="sidebar" class="offcanvas-sidebar fixed right-0 top-0 z-50 h-full w-80 max-w-[90vw] overflow-y-auto border-s border-homy-gold-200/60 bg-white/95 p-5 shadow-2xl shadow-black/25 backdrop-blur-xl dark:border-homy-gold-600/35 dark:bg-[#12211B]/95 lg:sticky lg:top-24 lg:z-10 lg:h-[calc(100vh-7rem)] lg:w-auto lg:max-w-none lg:translate-x-0 lg:rounded-[1.5rem] lg:border lg:shadow-none">               
+                @include('admin.layouts.sidebar')
+            </aside>
+    </main>
+</div>
         <!-- footer -->
-        @include('admin.layouts.footer')
-    </div>
-    </div>
+       <x-footer/>
+    
 
-
-    <script src="{{ asset('admin/assets/dist/js/tabler.min.js?1692870487') }}" defer></script>
-    <script src="{{ asset('admin/assets/dist/js/demo.min.js?1692870487') }}" defer></script>
-
+    <script src="../assets/app.js"></script>
 </body>
-
 </html>

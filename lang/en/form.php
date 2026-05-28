@@ -6,8 +6,10 @@ return [
     'confirm_password' => 'Confirm Password',
     'full_name' => 'Full Name',
     'user_name' => 'User Name',
-    'birthdate' => 'Birthdate',  
+    'birthdate' => 'Birthdate',
     'check_agree' => 'I agree to terms and privacy policy.',
-    'password' => 'Password'
+    'password' => 'Password',
+    'city' => 'city',
+    'town' => 'town',
 
 ];

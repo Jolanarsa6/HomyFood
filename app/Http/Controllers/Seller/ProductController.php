@@ -3,12 +3,54 @@
 namespace App\Http\Controllers\Seller;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Seller\ProductInformationsRequest;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
-    function index()
+    function create()
     {
-        return view('seller.beforeJoin');
+        return view('seller.add-product');
     }
+
+   function store(ProductInformationsRequest $request)
+   {
+
+    $data = $request->validated();
+   $data['user_id'] = Auth::user()->id;
+
+    $product = Product::create($data);
+
+    //    $product->categories()->attach($request->category_id);
+        $product->categories()->sync($request->input('category_id', []));
+ $product->packagings()->sync($request->input('packaging_id', []));
+ $product->payments()->sync($request->input('payment_id', []));
+
+    //    $product->deliveries()->attach($request->delivery_id);
+
+ $product->deliveries()->sync($request->input('delivery_id', []));
+
+//  $deliveryIds = $request->input('delivery_id', []);
+
+    // 4. Insert into the pivot table
+    // $product->deliveries()->sync($deliveryIds);
+
+
+
+    // Assuming $request->validated() or request() is used
+       if ($request->hasFile('product_image')) {
+// $product->addMediaFromRequest('product_image')->toMediaCollection('Product_Images');
+    $product->addMediaFromRequest('product_image')->toMediaCollection('product_images');
+
+    //    $product->addMediaFromRequest('product_image')->toMediaCollection('ProductImages');
+        }
+         if ($request->hasFile('video')) {
+                  $product->addMediaFromRequest('product_video')->toMediaCollection('ProductVideos');
+        }
+    return redirect()->back()->with('success', 'Categories added successfully!');
+
+        // return redirect('/');
+   }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -11,12 +12,13 @@ class SellerJoinRequest extends Notification
 {
     use Queueable;
 
+    // protected $data;
     /**
      * Create a new notification instance.
      */
     public function __construct()
     {
-        //
+        // $this->data = $data;
     }
 
     /**
@@ -48,10 +50,15 @@ class SellerJoinRequest extends Notification
     public function toArray(object $notifiable): array
     {
         return [
+           
             'title' => __('messages.new_seller_join'),
+            // 'name' => $this->seller->name,         
             'message' => __('messages.notify_new_seller_join'),
             'url'=> route('joinRequest'),
             'icon' => 'check-circle'
+              
+            // 'message' => $this->data['message'] ?? 'Default message',
+     
         ];
     }
 }

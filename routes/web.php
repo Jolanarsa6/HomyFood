@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Buyer\BuyerDashboardController;
+use App\Http\Controllers\General\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Seller\ProductController;
 use App\Http\Controllers\Seller\SellerDashboardController;
@@ -9,10 +10,7 @@ use Illuminate\Support\Facades\Route;
 
 
 // The global route for all 
-Route::get('/', function () {
-    return view('home');
-})->name('home')->middleware(['guest:web','lang.switch']);
-
+Route::get('/',[HomeController::class,'index'])->name('home')->middleware(['guest:web','lang.switch']);
 
 // The home page for buyer and seller dependent on it's role
 Route::get('/dashboard', function () {
@@ -22,7 +20,7 @@ Route::get('/dashboard', function () {
 // The home page for super admin
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
-})->middleware(['auth:admin', 'verified'])->name('admin.dashboard');
+})->middleware(['auth:admin', 'verified','lang.switch'])->name('admin.dashboard');
 
 // For the language translation proccess
 Route::get('/translation/{locale}',function($locale){

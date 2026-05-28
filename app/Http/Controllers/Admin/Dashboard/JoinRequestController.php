@@ -6,65 +6,59 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class JoinRequestController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-           $admin = Admin::find(1);
 
-       $users = User::role('seller')->where('status','pending')->get();
-        return view('admin.joinRequest', compact('users','admin'));
+    public function index(Request $request)
+    {
+        $admin = Auth::guard('admin')->user();
+        $users = User::role('seller')->get();
+        return view('admin.joinRequest', compact('users', 'admin'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+
+    public function approve_joinRequest(Request $request)
     {
-        //
+        $user = User::find($request->user_id);
+        if ($user->hasRole('seller')) {
+            $user->update([$user->status = 'approved']);
+        }
+
+        return redirect()->route('admin.join_request');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function reject_joinRequest(Request $request)
     {
-        //
+        $user = User::find($request->user_id);
+        if ($user->hasRole('seller')) {
+            $user->update([$user->status = 'rejected']);
+        }
+
+        return redirect()->route('admin.join_request');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function accept_all_joinRequest()
     {
-        //
+        $users = User::role('seller')->get();
+        foreach($users as $user){
+            $user->update([$user->status = 'approved']);
+        }
+
+        return redirect()->route('admin.join_request');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+     public function reject_all_joinRequest()
     {
-        //
-    }
+        $users = User::role('seller')->get();
+        foreach($users as $user){
+            $user->update([$user->status = 'rejected']);
+        }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return redirect()->route('admin.join_request');
     }
 }

@@ -28,16 +28,12 @@
                         <a href="{{ route('seller.register') }}" class="rounded-2xl bg-homy-green-700 px-6 py-3 text-sm font-black text-white shadow-lg shadow-homy-green-700/25 transition hover:-translate-y-0.5 hover:bg-homy-green-600">
                             <span class="lang-ar">ابدأ التسجيل كبائع</span>
                             <span class="lang-en">Start Seller Registration</span>
-                        </a>
-                        {{-- <a href="dashboard.html" class="rounded-2xl border-2 border-homy-gold-400 bg-white px-6 py-3 text-sm font-black text-homy-green-700 transition hover:-translate-y-0.5 hover:bg-homy-gold-500 hover:text-homy-green-900 dark:bg-homy-gold-500 dark:text-homy-green-900">
-                            <span class="lang-ar">استعراض لوحة البائع</span>
-                            <span class="lang-en">Preview Seller Dashboard</span>
-                        </a> --}}
+                        </a>                   
                     </div>
                 </div>
 
                 <div class="rounded-[2rem] border border-homy-gold-200 bg-white/90 p-5 shadow-xl dark:border-homy-gold-600/35 dark:bg-[#12211B]/85">
-                    <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=1300&q=80" alt="Seller journey" class="h-64 w-full rounded-2xl object-cover">
+                    <img src="{{ asset('images/join.jpg') }}" alt="Seller journey" class="h-64 w-full rounded-2xl object-cover">
                     <div class="mt-4 grid grid-cols-3 gap-3 text-center text-xs font-black">
                         <div class="rounded-xl bg-homy-gold-50 p-3 text-homy-green-700 dark:bg-homy-green-700/30 dark:text-homy-gold-300">
                             <p class="text-lg">24h</p>
@@ -108,7 +104,7 @@
                         <li class="rounded-xl border border-homy-gold-200 px-3 py-2 dark:border-homy-gold-600/35"><span class="font-black text-homy-green-700 dark:text-homy-gold-400">4.</span> <span class="lang-ar">انتظار المراجعة ثم تفعيل لوحة التحكم.</span><span class="lang-en">Wait review then access seller dashboard.</span></li>
                     </ol>
 
-                    <a href="register.html" class="mt-5 inline-block rounded-2xl bg-homy-green-700 px-6 py-3 text-sm font-black text-white transition hover:bg-homy-green-600">
+                    <a href="{{ route('seller.register') }}" class="mt-5 inline-block rounded-2xl bg-homy-green-700 px-6 py-3 text-sm font-black text-white transition hover:bg-homy-green-600">
                         <span class="lang-ar">متابعة إلى التسجيل</span>
                         <span class="lang-en">Continue To Registration</span>
                     </a>

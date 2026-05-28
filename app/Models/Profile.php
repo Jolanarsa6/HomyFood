@@ -4,12 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Profile extends Model
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+
+class Profile extends Model implements HasMedia
 {
+    use InteractsWithMedia;
     protected $guarded = ['id'];
 
-    function profile()
+
+
+    public function user()
     {
-        return $this->belongsTo(Profile::class);
+        return $this->hasOne(User::class);
     }
+
 }

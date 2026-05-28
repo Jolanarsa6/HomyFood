@@ -24,7 +24,6 @@
             document.documentElement.classList.remove('dark');
         }
     </script>
-
 </head>
 
 <body class="text-slate-800 dark:text-slate-100">
@@ -32,10 +31,8 @@
     <aside id="sidebar"
         class="offcanvas-sidebar fixed top-0 right-0 z-50 h-full w-80 max-w-[88vw] overflow-y-auto custom-scrollbar border-s border-homy-gold-200/60 bg-white/95 p-6 shadow-2xl shadow-black/25 backdrop-blur-xl dark:border-homy-gold-600/40 dark:bg-[#12211B]/95">
         <div class="mb-8 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-3">
-                <div
-                    class="h-12 w-12 rounded-2xl bg-gradient-to-br from-homy-green-700 to-homy-green-500 text-white grid place-items-center text-lg shadow-lg">
-                    HF</div>
+            <a href="{{ route('home') }}" class="flex items-center gap-3">
+                <x-application-logo />
                 <div>
                     <p class="text-lg font-black text-homy-green-700 dark:text-homy-gold-500">
                         {{ __('partials/aside.title') }}
@@ -84,8 +81,15 @@
         </nav>
 
         <div class="mt-10 grid gap-3">
-           <x-logout/>
-            <a href="seller/join.html"
+            <a href="{{ route('login') }}"
+                class="grid place-items-center rounded-2xl border-2 border-homy-green-700 bg-homy-green-700 px-4 py-3 text-sm font-black text-white transition hover:-translate-y-0.5 hover:bg-homy-green-600">
+                <span>{{ __('actions.login') }}</span>
+            </a>
+            <a href="{{ route('buyer.register') }}"
+                class="grid place-items-center rounded-2xl border-2 border-homy-gold-400 bg-white px-4 py-3 text-sm font-black text-homy-green-700 transition hover:-translate-y-0.5 hover:bg-homy-gold-500 hover:text-homy-green-900 dark:bg-homy-gold-500 dark:text-homy-green-900">
+                <span>{{ __('partials/aside.create_account') }}</span>
+            </a>
+            <a href="{{ route('seller.join') }}"
                 class="grid place-items-center rounded-2xl border-2 border-homy-gold-400 bg-homy-gold-500 px-4 py-3 text-sm font-black text-homy-green-900 transition hover:-translate-y-0.5 hover:bg-homy-gold-400">
                 <span>{{ __('partials/aside.join_us_seller') }}</span>
             </a>
@@ -108,14 +112,16 @@
                     <i class="fa-solid fa-bars"></i>
                 </button>
 
-                <a href="index.html" class="flex items-center gap-3">
-                    <div
+                <a href="{{ route('home') }}" class="flex items-center gap-3">
+                    {{-- <div
                         class="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-homy-green-700 to-homy-green-500 text-base font-black text-white shadow-lg">
-                        HF</div>
+                        HF</div> --}}
+
+                        <x-application-logo/>
                     <div class="hidden sm:block">
-                        <p class="text-base font-black text-homy-green-700 dark:text-homy-gold-400">Homy Food</p>
+                        <p class="text-base font-black text-homy-green-700 dark:text-homy-gold-400">{{ __('global.title') }}</p>
                         <p class="text-[11px] text-slate-500 dark:text-slate-400">
-                            <span>{{ __('sidebar.description') }}</span>
+                            {{-- <span>{{ __('titles.description') }}</span> --}}
                         </p>
                     </div>
                 </a>
@@ -130,7 +136,7 @@
                 </div>
 
                 <div class="ms-auto flex items-center gap-2">
-                   <x-lang-switch/>
+                    <x-lang-switch />
 
                     {{-- <button id="themeToggle" class="h-11 w-11 rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 shadow-sm transition hover:bg-homy-gold-50 dark:border-homy-gold-600/40 dark:bg-homy-green-700/40 dark:text-homy-gold-300" aria-label="Toggle theme">
                         <i class="fa-solid fa-moon"></i>
@@ -159,18 +165,20 @@
                          
                     </a> --}}
 
-                                <a href="{{ route('login') }}">
-                            <x-primary-button>
-                                <i class="far fa-user text-lg"></i>
+                    {{-- <a href="{{ route('login') }}">
+                        <x-primary-button>
+                            <i class="far fa-user text-lg"></i>
                             <span>{{ __('actions.login') }}</span>
-                            </x-primary-button>
-                        </a>
+                        </x-primary-button>
+                    </a> --}}
 
-                    <a href="{{ route('seller.join') }}"
-                        class="hidden rounded-2xl border-2 border-homy-gold-400 bg-homy-gold-500 px-4 py-2.5 text-sm font-black text-homy-green-900 transition hover:bg-homy-gold-400 xl:block">
-                        <span>{{ __('actions.seller_login') }}</span>
-                    </a>
-         
+                    {{-- <a href="{{ route('seller.join') }}"
+                        class="rounded-2xl border-2 border-homy-gold-400 bg-homy-gold-500 px-4 py-2.5 text-sm font-black text-homy-green-900 transition hover:bg-homy-gold-400 xl:block">
+                        <span>{{ __('partials/aside.join_us_seller') }}</span>
+                    </a> --}}
+<x-logout/>
+
+
                 </div>
             </div>
 
@@ -212,10 +220,9 @@
                         <p
                             class="mt-5 max-w-xl text-sm font-semibold leading-7 text-slate-600 dark:text-slate-300 sm:text-base">
                             <span class="lang-ar">مربيات ومخللات ومكدوس وزعتر وسمن بلدي ومنتجات ألبان مصنوعة بعناية من
-                                بائعين موثوقين. تصميم مريح، شراء أسرع، وتجربة تفاعلية أنيقة .</span>
+                                بائعين موثوقين. .</span>
                             <span class="lang-en">Jams, pickles, makdous, zaatar, ghee and dairy delights from trusted
-                                sellers. Elegant UX, fast buying flow, and a polished browsing experience inspired
-                                .</span>
+                                sellers. </span>
                         </p>
 
                         <div class="mt-7 flex flex-wrap items-center gap-3">
@@ -229,18 +236,14 @@
                                 <span class="lang-ar">قارن المنتجات</span>
                                 <span class="lang-en">Compare Products</span>
                             </a>
-                            <a href="seller/join.html"
-                                class="rounded-2xl border-2 border-homy-gold-300 bg-homy-gold-50 px-6 py-3 text-sm font-black text-homy-green-700 transition hover:-translate-y-0.5 hover:bg-homy-gold-500 hover:text-homy-green-900 dark:border-homy-gold-600/35 dark:bg-homy-green-700/35 dark:text-homy-gold-300 dark:hover:bg-homy-gold-500 dark:hover:text-homy-green-900">
-                                <span class="lang-ar">انضم كبائع</span>
-                                <span class="lang-en">Become A Seller</span>
-                            </a>
+                           <x-logout/>
                         </div>
                     </div>
 
                     <div class="grid gap-4 sm:grid-cols-2">
                         <article
                             class="hero-badge rounded-3xl border border-homy-gold-200/80 bg-white/90 p-4 shadow-xl shadow-homy-gold-100/70 dark:border-homy-gold-600/35 dark:bg-[#153023]/90">
-                            <img src="https://images.unsplash.com/photo-1625943555419-56a2cb596640?auto=format&fit=crop&w=900&q=80"
+                            <img src="{{ $product->getFirstMediaUrl('product_images') }}"
                                 alt="Makdous" class="h-36 w-full rounded-2xl object-cover">
                             <h3 class="mt-3 font-black text-homy-green-700 dark:text-homy-gold-400">
                                 <span class="lang-ar">مكدوس فاخر بزيت الزيتون</span>
@@ -261,7 +264,7 @@
                             <p class="mt-1 text-sm text-slate-500 dark:text-slate-300">4.8 ★</p>
                         </article>
 
-                        <article
+                        {{-- <article
                             class="rounded-3xl border border-homy-gold-200/80 bg-homy-green-700 p-4 text-white shadow-xl sm:col-span-2 dark:border-homy-gold-600/35">
                             <div class="flex flex-wrap items-center justify-between gap-2">
                                 <div>
@@ -280,7 +283,7 @@
                                     <span class="lang-en">View Details</span>
                                 </a>
                             </div>
-                        </article>
+                        </article> --}}
                     </div>
                 </div>
             </section>
@@ -347,7 +350,7 @@
                     </div>
 
                     <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                        <article class="homy-card p-3">
+                        {{-- <article class="homy-card p-3">
                             <a href="product-details.html" class="relative block">
                                 <img src="https://images.unsplash.com/photo-1590779033100-9f60705a013d?auto=format&fit=crop&w=900&q=80"
                                     alt="Fig Jam" class="h-44 w-full rounded-2xl object-cover">
@@ -379,7 +382,9 @@
                                     </a>
                                 </div>
                             </div>
-                        </article>
+                        </article> --}}
+
+                         
 
                         <article class="homy-card p-3">
                             <a href="product-details.html" class="relative block">

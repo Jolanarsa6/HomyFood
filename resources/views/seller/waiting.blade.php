@@ -1,49 +1,7 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homy Food | Waiting Approval</title>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ["Cairo", "ui-sans-serif", "system-ui", "sans-serif"],
-                    },
-                    colors: {
-                        "homy-green": {
-                            100: "#E8EFEA",
-                            500: "#225E38",
-                            600: "#1C4D2E",
-                            700: "#1A472A"
-                        },
-                        "homy-gold": {
-                            50: "#FDFBF6",
-                            100: "#F6EEDA",
-                            200: "#EAD5AC",
-                            400: "#D4B87E",
-                            500: "#C4A462",
-                            600: "#A88E53"
-                        }
-                    }
-                }
-            }
-        };
-    </script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="stylesheet" href="../assets/app.css">
-</head>
+<x-app-layout>
 <body class="text-slate-800 dark:text-slate-100">
     <main class="min-h-screen px-4 py-10 grid place-items-center">
-        <div class="mb-4 flex w-full max-w-2xl justify-end gap-2">
+        {{-- <div class="mb-4 flex w-full max-w-2xl justify-end gap-2">
             <button id="langToggle" class="inline-flex h-11 items-center gap-2 rounded-2xl border border-homy-gold-200 bg-white px-3 text-xs font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/35 dark:text-homy-gold-300">
                 <i class="fa-solid fa-language"></i>
                 <span class="lang-ar">EN</span>
@@ -52,7 +10,7 @@
             <button id="themeToggle" class="h-11 w-11 rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/35 dark:text-homy-gold-300">
                 <i class="fa-solid fa-moon"></i>
             </button>
-        </div>
+        </div> --}}
         <section class="w-full max-w-2xl rounded-[2rem] border border-homy-gold-200 bg-white/90 p-8 text-center shadow-2xl dark:border-homy-gold-600/35 dark:bg-[#12211B]/90">
             <div class="mx-auto mb-6 grid h-20 w-20 place-items-center rounded-full border-2 border-homy-gold-300 bg-homy-gold-50 text-homy-green-700 dark:border-homy-gold-600/35 dark:bg-homy-green-700/30 dark:text-homy-gold-400">
                 <i class="fa-solid fa-hourglass-half text-2xl"></i>
@@ -84,18 +42,17 @@
             </div>
 
             <div class="mt-7 flex flex-wrap items-center justify-center gap-3">
-                <a href="../index.html" class="rounded-2xl bg-homy-green-700 px-6 py-3 text-sm font-black text-white transition hover:bg-homy-green-600">
+                <a href="{{ route('home') }}" class="rounded-2xl bg-homy-green-700 px-6 py-3 text-sm font-black text-white transition hover:bg-homy-green-600">
                     <span class="lang-ar">العودة للرئيسية</span>
                     <span class="lang-en">Back To Home</span>
                 </a>
-                <a href="join.html" class="rounded-2xl border border-homy-gold-300 px-6 py-3 text-sm font-black text-homy-green-700 dark:border-homy-gold-600/35 dark:text-homy-gold-300">
+                {{-- <a href="join.html" class="rounded-2xl border border-homy-gold-300 px-6 py-3 text-sm font-black text-homy-green-700 dark:border-homy-gold-600/35 dark:text-homy-gold-300">
                     <span class="lang-ar">تعديل المعلومات</span>
                     <span class="lang-en">Edit Information</span>
-                </a>
+                </a> --}}
             </div>
         </section>
     </main>
 
-    <script src="../assets/app.js"></script>
 </body>
-</html>
+</x-app-layout>

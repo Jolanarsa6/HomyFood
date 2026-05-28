@@ -12,7 +12,7 @@ use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\Dashboard\JoinRequestController;
 use Illuminate\Support\Facades\Route;
 
-Route::group(["middleware"=>"guest:admin", "prefix"=>"admin", "as"=>"admin."], function () {
+Route::group(["middleware" => ["guest:admin", 'lang.switch'], "prefix" => "admin", "as" => "admin."], function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
         ->name('register');
 
@@ -36,7 +36,7 @@ Route::group(["middleware"=>"guest:admin", "prefix"=>"admin", "as"=>"admin."], f
         ->name('password.store');
 });
 
-Route::group(["middleware"=>"auth:admin", "prefix"=>"admin", "as"=>"admin."], function () {
+Route::group(["middleware" => ["auth:admin", 'lang.switch'], "prefix" => "admin", "as" => "admin."], function () {
     Route::get('verify-email', EmailVerificationPromptController::class)
         ->name('verification.notice');
 
@@ -58,5 +58,13 @@ Route::group(["middleware"=>"auth:admin", "prefix"=>"admin", "as"=>"admin."], fu
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 
-        });
-        Route::get('/joinRequest',[JoinRequestController::class,'index'])->name('joinRequest');
+
+    // main route 
+    Route::get('/joinRequest', [JoinRequestController::class, 'index'])->name('join_request');
+    Route::put('/approve_joinRequest', [JoinRequestController::class, 'approve_joinRequest'])->name('approve_joinRequest');
+    Route::put('/reject_joinRequest', [JoinRequestController::class, 'reject_joinRequest'])->name('reject_joinRequest');
+    Route::put('/accept_all_joinRequest', [JoinRequestController::class, 'accept_all_joinRequest'])->name('accept_all_joinRequest');
+    Route::put('/reject_all_joinRequest', [JoinRequestController::class, 'reject_all_joinRequest'])->name('reject_all_joinRequest');
+
+
+});

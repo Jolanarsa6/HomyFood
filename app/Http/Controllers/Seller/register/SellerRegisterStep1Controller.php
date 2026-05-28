@@ -19,7 +19,7 @@ class SellerRegisterStep1Controller extends Controller
 {
      public function create()
     {
-         return view('seller.register-step1');
+         return view('seller.register');
     }
 
   

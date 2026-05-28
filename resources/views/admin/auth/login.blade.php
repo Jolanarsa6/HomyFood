@@ -1,22 +1,22 @@
 <x-guest-Layout>
   <x-slot name="title">
-        {{ __('actions.login') }}
+        {{ __('actions.admin_login') }}
     </x-slot>
     
             <div class="p-6 sm:p-10">
             <div class="p-6 sm:p-10">
                 <div class="mb-8">
                     <p class="text-xs font-black uppercase tracking-[0.2em] text-homy-gold-600">
-                        {{ __('titles.welcome_back') }}</p>
+                        {{ __('actions.welcom_ser') }}</p>
                     <h1 class="mt-2 text-3xl font-black text-homy-green-700 dark:text-homy-gold-400">
-                        <span>{{ __('titles.login') }}</span>
+                        <span>{{ __('actions.admin_login') }}</span>
                     </h1>
                     <p class="mt-2 text-sm font-semibold text-slate-500 dark:text-slate-300">
-                        <span>{{ __('messages.enter_your_account') }}</span>
+                        <span>{{ __('messages.enter_your_account_admin') }}</span>
                     </p>
                 </div>
 
-                <form method="POST" action="{{ route('login') }}" class="space-y-4">
+                <form method="POST" action="{{ route('admin.login') }}" class="space-y-4">
                     @csrf
                     <div>
 

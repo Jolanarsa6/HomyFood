@@ -1,202 +1,61 @@
- <header class="navbar navbar-expand-md d-none d-lg-flex d-print-none">
-     <div class="container-xl">
-         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu"
-             aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
-             <span class="navbar-toggler-icon"></span>
-         </button>
-         <div class="navbar-nav flex-row order-md-last">
-             <div class="d-none d-md-flex">
-                 <a href="?theme=dark" class="nav-link px-0 hide-theme-dark" title="Enable dark mode"
-                     data-bs-toggle="tooltip" data-bs-placement="bottom">
-                     <!-- Download SVG icon from http://tabler-icons.io/i/moon -->
-                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                         stroke-linecap="round" stroke-linejoin="round">
-                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                         <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
-                     </svg>
-                 </a>
-                 <a href="?theme=light" class="nav-link px-0 hide-theme-light" title="Enable light mode"
-                     data-bs-toggle="tooltip" data-bs-placement="bottom">
-                     <!-- Download SVG icon from http://tabler-icons.io/i/sun -->
-                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                         stroke-linecap="round" stroke-linejoin="round">
-                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                         <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
-                         <path
-                             d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
-                     </svg>
-                 </a>
-                 <div class="nav-item dropdown d-none d-md-flex me-3">
-                     <a href="#" class="nav-link px-0" data-bs-toggle="dropdown" tabindex="-1"
-                         aria-label="Show notifications">
-                         <!-- Download SVG icon from http://tabler-icons.io/i/bell -->
-                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                             viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                             stroke-linecap="round" stroke-linejoin="round">
-                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                             <path
-                                 d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6" />
-                             <path d="M9 17v1a3 3 0 0 0 6 0v-1" />
-                         </svg>
-                         <span class="badge bg-red"></span>
-                     </a>
-                     <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-end dropdown-menu-card">
-                         <div class="card">
-                             <div class="card-header">
-                                 <h3 class="card-title">Last updates</h3>
-                             </div>
-                             <div class="list-group list-group-flush list-group-hoverable">
-                                 <div class="list-group-item">
-                                     <div class="row align-items-center">
-                                         <div class="col-auto"><span
-                                                 class="status-dot status-dot-animated bg-red d-block"></span>
-                                         </div>
-                                         <div class="col text-truncate">
-                                             <a href="#" class="text-body d-block">Example 1</a>
-                                             <div class="d-block text-secondary text-truncate mt-n1">
-                                                 Change deprecated html tags to text decoration classes (#29604)
-                                             </div>
-                                         </div>
-                                         <div class="col-auto">
-                                             <a href="#" class="list-group-item-actions">
-                                                 <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon text-muted"
-                                                     width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
-                                                     stroke="currentColor" fill="none" stroke-linecap="round"
-                                                     stroke-linejoin="round">
-                                                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                     <path
-                                                         d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
-                                                 </svg>
-                                             </a>
-                                         </div>
-                                     </div>
-                                 </div>
-                                 <div class="list-group-item">
-                                     <div class="row align-items-center">
-                                         <div class="col-auto"><span class="status-dot d-block"></span></div>
-                                         <div class="col text-truncate">
-                                             <a href="#" class="text-body d-block">Example 2</a>
-                                             <div class="d-block text-secondary text-truncate mt-n1">
-                                                 justify-content:between ⇒ justify-content:space-between (#29734)
-                                             </div>
-                                         </div>
-                                         <div class="col-auto">
-                                             <a href="#" class="list-group-item-actions show">
-                                                 <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon text-yellow"
-                                                     width="24" height="24" viewBox="0 0 24 24"
-                                                     stroke-width="2" stroke="currentColor" fill="none"
-                                                     stroke-linecap="round" stroke-linejoin="round">
-                                                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                     <path
-                                                         d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
-                                                 </svg>
-                                             </a>
-                                         </div>
-                                     </div>
-                                 </div>
-                                 <div class="list-group-item">
-                                     <div class="row align-items-center">
-                                         <div class="col-auto"><span class="status-dot d-block"></span></div>
-                                         <div class="col text-truncate">
-                                             <a href="#" class="text-body d-block">Example 3</a>
-                                             <div class="d-block text-secondary text-truncate mt-n1">
-                                                 Update change-version.js (#29736)
-                                             </div>
-                                         </div>
-                                         <div class="col-auto">
-                                             <a href="#" class="list-group-item-actions">
-                                                 <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon text-muted"
-                                                     width="24" height="24" viewBox="0 0 24 24"
-                                                     stroke-width="2" stroke="currentColor" fill="none"
-                                                     stroke-linecap="round" stroke-linejoin="round">
-                                                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                     <path
-                                                         d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
-                                                 </svg>
-                                             </a>
-                                         </div>
-                                     </div>
-                                 </div>
-                                 <div class="list-group-item">
-                                     <div class="row align-items-center">
-                                         <div class="col-auto"><span
-                                                 class="status-dot status-dot-animated bg-green d-block"></span>
-                                         </div>
-                                         <div class="col text-truncate">
-                                             <a href="#" class="text-body d-block">Example 4</a>
-                                             <div class="d-block text-secondary text-truncate mt-n1">
-                                                 Regenerate package-lock.json (#29730)
-                                             </div>
-                                         </div>
-                                         <div class="col-auto">
-                                             <a href="#" class="list-group-item-actions">
-                                                 <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon text-muted"
-                                                     width="24" height="24" viewBox="0 0 24 24"
-                                                     stroke-width="2" stroke="currentColor" fill="none"
-                                                     stroke-linecap="round" stroke-linejoin="round">
-                                                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                     <path
-                                                         d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
-                                                 </svg>
-                                             </a>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-             <div class="nav-item dropdown">
-                 <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown"
-                     aria-label="Open user menu">
-                     <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
-                     <div class="d-none d-xl-block ps-2">
-                         <div>Jolanar Saoud</div>
-                         <div class="mt-1 small text-secondary">Backend Developer</div>
-                     </div>
-                 </a>
-                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                     <a href="#" class="dropdown-item">Status</a>
-                     <a href="./profile.html" class="dropdown-item">Profile</a>
-                     <a href="#" class="dropdown-item">Feedback</a>
-                     <div class="dropdown-divider"></div>
-                     <a href="./settings.html" class="dropdown-item">Settings</a>
-                     <a href="{{ asset('/') }}"
-                         onclick="event.peventDefault(); getElementById('logout').submit();"
-                         class="dropdown-item">Logout</a>
-                     <form method="POST" id="logout" action="{{ route('admin.logout') }}">
-                         @csrf
-                     </form>
+<header class="sticky top-0 z-30 border-b border-homy-gold-200/70 bg-white/85 backdrop-blur-xl dark:border-homy-gold-600/25 dark:bg-[#0f1f18]/85">
+        <div class="mx-auto flex w-full max-w-[1700px] items-center gap-3 px-4 py-3">
+            <button id="menuToggle" class="h-11 w-11 rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 shadow-sm lg:hidden dark:border-homy-gold-600/40 dark:bg-homy-green-700/35 dark:text-homy-gold-300"><i class="fa-solid fa-bars"></i></button>
 
-                 </div>
-             </div>
-         </div>
-         <div class="collapse navbar-collapse" id="navbar-menu" style="display: flex;justify-content:center">
-             <div>
-                 <form action="./" method="get" autocomplete="off" novalidate>
-                     <div class="input-icon">
-                         <span class="input-icon-addon">
-                             <!-- Download SVG icon from http://tabler-icons.io/i/search -->
-                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                                 viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                 stroke-linecap="round" stroke-linejoin="round">
-                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                 <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
-                                 <path d="M21 21l-6 -6" />
-                             </svg>
-                         </span>
-                         <input type="text" value="" class="form-control" placeholder="Search…"
-                             aria-label="Search in website">
-                     </div>
-                 </form>
-             </div>
-         </div>
-     </div>
- </header>
+            <a href="dashboard.html" class="flex items-center gap-3">
+                <div class="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-homy-green-700 to-homy-green-500 text-base font-black text-white shadow-lg">SA</div>
+                <div>
+                    <p class="text-base font-black text-homy-green-700 dark:text-homy-gold-400">Homy Super Admin</p>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400"><span class="lang-ar">مركز التحكم الشامل</span><span class="lang-en">Global Control Center</span></p>
+                </div>
+            </a>
+
+            <div class="relative hidden w-full max-w-xl xl:block">
+                <i class="fa-solid fa-magnifying-glass pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                <input type="search" placeholder="ابحث عن بائع أو متجر / Search seller or store" class="w-full rounded-2xl border border-homy-gold-200 bg-white px-10 py-2.5 text-sm font-semibold text-slate-700 outline-none ring-homy-gold-400 focus:ring dark:border-homy-gold-600/35 dark:bg-homy-green-700/25 dark:text-slate-100">
+            </div>
+
+            <div class="ms-auto flex items-center gap-2">
+
+<x-lang-switch/>
+<x-them-toggle />
+
+                <div class="relative">
+                    <button data-toggle="notifications" class="relative h-11 w-11 rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/35 dark:text-homy-gold-300">
+                        <i class="fa-regular fa-bell"></i>
+                        {{-- <span class="absolute -left-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-red-500 px-1 text-[10px] font-black text-white">{{ $admin->unreadNotifications->count() }}</span> --}}
+                    </button>
+                    <div id="notificationsPanel" class="admin-popover hidden absolute left-0 mt-2 w-80 overflow-hidden rounded-2xl border border-homy-gold-200 bg-white shadow-2xl shadow-black/15 dark:border-homy-gold-600/35 dark:bg-[#12211B]">
+                        <div class="border-b border-homy-gold-100 px-4 py-3 text-xs font-black text-homy-green-700 dark:border-homy-gold-600/25 dark:text-homy-gold-400"><span class="lang-ar">إشعارات هامة</span><span class="lang-en">Important Notifications</span></div>
+                        <a href="vendor-applications.html" class="block border-b border-homy-gold-100 px-4 py-3 text-sm font-semibold text-slate-600 hover:bg-homy-gold-50 dark:border-homy-gold-600/25 dark:text-slate-300 dark:hover:bg-homy-green-700/25"><span class="lang-ar">7 طلبات انضمام بائعين جديدة تحتاج مراجعة</span><span class="lang-en">7 new vendor applications need review</span></a>
+                        <a href="disputes.html" class="block border-b border-homy-gold-100 px-4 py-3 text-sm font-semibold text-slate-600 hover:bg-homy-gold-50 dark:border-homy-gold-600/25 dark:text-slate-300 dark:hover:bg-homy-green-700/25"><span class="lang-ar">نزاع دفع جديد بقيمة 890 SAR</span><span class="lang-en">New payment dispute worth 890 SAR</span></a>
+                        <a href="suggestions.html" class="block border-b border-homy-gold-100 px-4 py-3 text-sm font-semibold text-slate-600 hover:bg-homy-gold-50 dark:border-homy-gold-600/25 dark:text-slate-300 dark:hover:bg-homy-green-700/25"><span class="lang-ar">اقتراح تحسين لتجربة التوصيل من المستخدمين</span><span class="lang-en">Delivery experience improvement suggestion</span></a>
+                        <a href="notifications-center.html" class="block px-4 py-3 text-center text-xs font-black text-homy-gold-600"><span class="lang-ar">عرض كل الإشعارات</span><span class="lang-en">See All Notifications</span></a>
+                    </div>
+                </div>
+                <x-logout/>
+
+                <div class="relative">
+                    <button data-toggle="profileMenu" class="flex items-center gap-2 rounded-2xl border border-homy-gold-200 bg-white px-2 py-1.5 dark:border-homy-gold-600/40 dark:bg-homy-green-700/35">
+                        <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=120&q=80" alt="Admin" class="h-8 w-8 rounded-xl object-cover">
+                        <span class="hidden text-xs font-black text-homy-green-700 dark:text-homy-gold-300 sm:block"><span class="lang-ar">المدير العام</span><span class="lang-en">Owner Admin</span></span>
+                    </button>
+                    <div id="profileMenu" class="admin-popover hidden absolute left-0 mt-2 w-56 overflow-hidden rounded-2xl border border-homy-gold-200 bg-white shadow-xl shadow-black/15 dark:border-homy-gold-600/35 dark:bg-[#12211B]">
+                        <a href="profile.html" class="block border-b border-homy-gold-100 px-4 py-3 text-sm font-semibold text-slate-600 hover:bg-homy-gold-50 dark:border-homy-gold-600/25 dark:text-slate-300 dark:hover:bg-homy-green-700/25"><span class="lang-ar">الملف الشخصي</span><span class="lang-en">Profile</span></a>
+                        <a href="profile-settings.html" class="block border-b border-homy-gold-100 px-4 py-3 text-sm font-semibold text-slate-600 hover:bg-homy-gold-50 dark:border-homy-gold-600/25 dark:text-slate-300 dark:hover:bg-homy-green-700/25"><span class="lang-ar">إعدادات البروفايل</span><span class="lang-en">Profile Settings</span></a>
+                        <a href="system-settings.html" class="block px-4 py-3 text-sm font-semibold text-slate-600 hover:bg-homy-gold-50 dark:text-slate-300 dark:hover:bg-homy-green-700/25"><span class="lang-ar">إعدادات النظام</span><span class="lang-en">System Settings</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+{{-- 
+    @foreach($admin->unreadNotifications as $notification)
+        <li style="color: gray;">
+            {{ $notification->data['message'] }} 
+        </li>
+    @endforeach    --}}
+
+
+                    {{-- <button id="themeToggle" class="h-11 w-11 rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/35 dark:text-homy-gold-300"><i class="fa-solid fa-moon"></i></button> --}} 

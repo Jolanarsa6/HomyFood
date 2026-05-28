@@ -127,6 +127,8 @@ return [
     'confirm_password' => 'Confirm Password',
     'reset_password' => 'Reset Password',
     'verfiy_email' => 'Verfiy Email',
-
+    'admin_login' => 'Admin Login',
+    'welcom_ser' => 'Welcome Ser',
+    
 
 ];

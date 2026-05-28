@@ -127,6 +127,8 @@ return [
     'confirm_password' => 'تأكيد كلمة المرور',
     'reset_password' => 'إعادة ضبط كلنة المرور',
     'verfiy_email' => 'تأكيد البريد الالكتروني',
-    
+    'admin_login' => 'تسجيل دخول المسؤول',
+    'welcom_ser' => 'أهلا بحضرتك',
+
 
 ];
