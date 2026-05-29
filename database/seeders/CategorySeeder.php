@@ -27,11 +27,11 @@ class CategorySeeder extends Seeder
                 'name' => 'Thyme',
             ],
             [
-                'admin_id' => '1',
+                'admin_id' => '2',
                 'name' => 'Oils',
             ],
             [
-                'admin_id' => '1',
+                'admin_id' => '2',
                 'name' => 'Mortar',
             ]
         ];

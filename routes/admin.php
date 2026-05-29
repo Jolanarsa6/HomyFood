@@ -9,7 +9,11 @@ use App\Http\Controllers\Admin\Auth\PasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
+use App\Http\Controllers\Admin\Dashboard\CategoryController;
 use App\Http\Controllers\Admin\Dashboard\JoinRequestController;
+use App\Http\Controllers\Admin\Dashboard\PaymentController;
+use App\Http\Controllers\Admin\Dashboard\SellersControlController;
+use App\Http\Controllers\Admin\Dashboard\SiteAnalyticsController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(["middleware" => ["guest:admin", 'lang.switch'], "prefix" => "admin", "as" => "admin."], function () {
@@ -60,11 +64,30 @@ Route::group(["middleware" => ["auth:admin", 'lang.switch'], "prefix" => "admin"
 
 
     // main route 
+
+    // seller join request
     Route::get('/joinRequest', [JoinRequestController::class, 'index'])->name('join_request');
     Route::put('/approve_joinRequest', [JoinRequestController::class, 'approve_joinRequest'])->name('approve_joinRequest');
     Route::put('/reject_joinRequest', [JoinRequestController::class, 'reject_joinRequest'])->name('reject_joinRequest');
     Route::put('/accept_all_joinRequest', [JoinRequestController::class, 'accept_all_joinRequest'])->name('accept_all_joinRequest');
     Route::put('/reject_all_joinRequest', [JoinRequestController::class, 'reject_all_joinRequest'])->name('reject_all_joinRequest');
+
+    // product categories
+    Route::get('/show_product_types', [CategoryController::class, 'index'])->name('show_product_types');
+    Route::delete('/delete_category/{category_id}', [CategoryController::class, 'destroy'])->name('delete_category');
+    Route::post('/add_category', [CategoryController::class, 'edit'])->name('add_category');
+
+    // product payment methods
+    Route::get('/show_payment_methods', [PaymentController::class, 'index'])->name('show_payment_methods');
+    Route::delete('/delete_payment/{payment_id}', [PaymentController::class, 'destroy'])->name('delete_payment');
+    Route::post('/add_payment', [PaymentController::class, 'edit'])->name('add_payment');
+
+
+    // site analytics 
+    Route::get('/show_site_analytics', [SiteAnalyticsController::class, 'index'])->name('show_site_analytics');
+
+    // seller control
+    Route::get('/show_sellers_control', [SellersControlController::class, 'index'])->name('show_sellers_control');
 
 
 });

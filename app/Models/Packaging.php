@@ -14,4 +14,9 @@ class Packaging extends Model
     {
        return $this->belongsToMany(Product::class, 'product_packaging');
     }
+
+     public function admins()
+    {
+        return $this->belongsTo(Admin::class);
+    }
 }

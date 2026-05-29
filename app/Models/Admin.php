@@ -47,7 +47,24 @@ class Admin extends Authenticatable
         ];
     }
 
+    public function categories()
+    {
+        return $this->hasMany(Category::class);
+    }
 
+    public function deliveries()
+    {
+        return $this->hasMany(Delivery::class);
+    }
 
+    public function packagings()
+    {
+        return $this->hasMany(Packaging::class);
+    }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
     
 }

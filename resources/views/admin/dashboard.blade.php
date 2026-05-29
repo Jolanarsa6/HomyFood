@@ -1,4 +1,4 @@
-@extends('admin.layouts.master');
+@extends('admin.layouts.master')
 
 @section('content')
     <section class="space-y-6">
@@ -20,9 +20,9 @@
                             quality, operational experience, and platform growth from one powerful center.</span></p>
                 </div>
                 <div class="flex flex-wrap gap-2 text-xs font-black">
-                    <a href="vendor-applications.html" class="rounded-xl bg-homy-green-700 px-4 py-2 text-white"><span
+                    <a href="{{ route('admin.join_request') }}" class="rounded-xl bg-homy-green-700 px-4 py-2 text-white"><span
                             class="lang-ar">طلبات الانضمام</span><span class="lang-en">Join Requests</span></a>
-                    <a href="site-analytics.html"
+                    <a href="{{ route('admin.show_site_analytics') }}"
                         class="rounded-xl border border-homy-gold-300 px-4 py-2 text-homy-green-700 dark:border-homy-gold-600/35 dark:text-homy-gold-300"><span
                             class="lang-ar">لوحة الإحصائيات</span><span class="lang-en">Analytics</span></a>
                 </div>

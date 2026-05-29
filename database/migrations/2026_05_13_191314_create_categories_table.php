@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('admin_id')->constrained('admins')->noActionOnDelete();
             $table->string('name');
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }

@@ -16,9 +16,8 @@ class JoinRequestController extends Controller
 
     public function index(Request $request)
     {
-        $admin = Auth::guard('admin')->user();
         $users = User::role('seller')->get();
-        return view('admin.joinRequest', compact('users', 'admin'));
+        return view('admin.joinRequest', compact('users'));
     }
 
 
