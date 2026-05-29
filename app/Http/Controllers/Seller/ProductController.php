@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Seller;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Seller\ProductInformationsRequest;
+use App\Models\Category;
+use App\Models\Delivery;
+use App\Models\Packaging;
+use App\Models\Payment;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,7 +16,12 @@ class ProductController extends Controller
 {
     function create()
     {
-        return view('seller.add-product');
+        $packagings = Packaging::all();
+        $payments = Payment::all();
+        $deliveries = Delivery::all();
+        $categories = Category::all();
+   
+        return view('seller.add-product',compact('packagings','payments','deliveries','categories'));
     }
 
    function store(ProductInformationsRequest $request)

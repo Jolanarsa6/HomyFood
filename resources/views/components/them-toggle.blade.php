@@ -1,44 +1,31 @@
-<div x-data="{
-    darkMode: localStorage.getItem('theme') === 'dark' ||
-        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-}" x-init="$watch('darkMode', val => {
-    localStorage.setItem('theme', val ? 'dark' : 'light');
-    if (val) { document.documentElement.classList.add('dark'); } else { document.documentElement.classList.remove('dark'); }
-})" class="flex items-center">
+<!-- Alpine + Tailwind header-style theme toggle.
+     Requires Alpine.js present on the page.
+     Matches header icons: square, rounded-2xl, gradient -> white on active. -->
+<div x-data="{ darkMode: localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches) }"
+     x-init="document.documentElement.classList.toggle('dark', darkMode); $watch('darkMode', val => { localStorage.setItem('theme', val ? 'dark' : 'light'); document.documentElement.classList.toggle('dark', val); })"
+     class="flex items-center">
 
-    <button @click="darkMode = !darkMode" type="button" {{-- h-6 w-11 is standard toggle size --}}
-        class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 focus:outline-none bg-gray-200 dark:bg-gray-700"
-        {{-- class="h-11 w-16 relative inline-flex flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 focus:outline-none border-homy-gold-200 bg-white text-homy-green-700 shadow-sm  hover:bg-homy-gold-50 dark:border-homy-gold-600/40 dark:bg-homy-green-700/40 dark:text-homy-gold-300" --}}
+  <button
+    @click="darkMode = !darkMode"
+    type="button"
+    role="switch"
+    :aria-checked="darkMode"
+    class="group inline-flex h-11 items-center gap-2 rounded-2xl border border-homy-gold-200 bg-white px-3 text-xs font-black text-homy-green-700 shadow-sm transition hover:bg-homy-gold-50 dark:border-homy-gold-600/40 dark:bg-homy-green-700/40 dark:text-homy-gold-300 focus:outline-none focus:ring-2 focus:ring-homy-gold-200">
 
-        role="switch" :aria-checked="darkMode">
+    <span class="sr-only">تبديل الوضع</span>
 
-        <span class="sr-only">{{ __('Toggle Theme') }}</span>
+    <!-- Sun icon (visible when light mode) -->
+    <svg class="h-5 w-5 transition-opacity duration-200" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+         :class="darkMode ? 'opacity-0' : 'opacity-100'">
+      <path d="M6.995 12c0 2.761 2.246 5 5.005 5 2.76 0 5-2.239 5-5 0-2.759-2.24-5-5-5-2.759 0-5.005 2.241-5.005 5zm13.005-.5h2v1h-2v-1zM2 11.5h2v1H2v-1zM12 2v2h0V2zm0 18v2h0v-2zM4.22 4.22l1.42 1.42L4.22 4.22zM18.36 18.36l1.42 1.42-1.42-1.42zM18.36 5.64l1.42-1.42-1.42 1.42zM4.22 19.78l1.42-1.42-1.42 1.42z"/>
+    </svg>
 
-        <!-- Toggle Knob -->
-        {{-- We use ltr:translate-x and rtl:-translate-x to support both directions --}}
-        <span
-            class="pointer-events-none relative inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"
-            :class="{
-                'ltr:translate-x-5 rtl:-translate-x-5': darkMode,
-                'translate-x-0': !darkMode
-            }">
+    <!-- Moon icon (visible when dark mode) -->
+    <svg class="absolute h-5 w-5 transition-opacity duration-200" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+         :class="darkMode ? 'opacity-100' : 'opacity-0'">
+      <path d="M21.752 15.002A9 9 0 0112 3a1 1 0 00-1 1 7 7 0 1010.752 10.002 1 1 0 00-.0-.0z"/>
+    </svg>
 
-            <!-- Sun Icon (Visible in Dark) -->
-            <span class="absolute inset-0 flex h-full w-full items-center justify-center transition-opacity"
-                :class="darkMode ? 'opacity-100 ease-in duration-200' : 'opacity-0 ease-out duration-100'">
-                <svg class="h-11 w-11 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                        d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" />
-                </svg>
-            </span>
+  </button>
 
-            <!-- Moon Icon (Visible in Light) -->
-            <span class="absolute inset-0 flex h-full w-full items-center justify-center transition-opacity"
-                :class="darkMode ? 'opacity-0 ease-out duration-100' : 'opacity-100 ease-in duration-200'">
-                <svg class="h-11 w-11 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-                </svg>
-            </span>
-        </span>
-    </button>
 </div>
