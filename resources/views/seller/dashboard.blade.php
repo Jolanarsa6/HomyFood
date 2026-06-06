@@ -3,12 +3,13 @@
 
 @section('content')
 <section class="space-y-6">
+    <x-logout/>
     <article
         class="rounded-[2rem] border border-homy-gold-200 bg-gradient-to-br from-homy-gold-50 via-white to-homy-green-100/45 p-6 dark:border-homy-gold-600/35 dark:from-[#14261f] dark:via-[#12211b] dark:to-[#173326]">
         <div class="flex flex-wrap items-start justify-between gap-4">
             <div>
                 <h1 class="text-3xl font-black text-homy-green-700 dark:text-homy-gold-400"><span
-                        class="lang-ar">مرحبًا، مطبخ بيت الشام</span><span class="lang-en">Welcome, Beit Al Sham
+                        class="lang-ar">مرحبًا، مطبخ الريف</span><span class="lang-en">Welcome, Al-Reef
                         Kitchen</span></h1>
                 <p class="mt-2 text-sm font-semibold text-slate-600 dark:text-slate-300"><span class="lang-ar">لديك
                         اليوم 18 طلب جديد و3 منتجات تحتاج تحديث المخزون.</span><span class="lang-en">You have 18 new

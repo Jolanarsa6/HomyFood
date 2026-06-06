@@ -30,19 +30,21 @@
         </article>
 
         <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            <article class="kpi-card p-4">
-                <p class="text-xs font-black text-slate-500 dark:text-slate-300"><span class="lang-ar">إجمالي المبيعات
-                        الشهرية</span><span class="lang-en">Monthly GMV</span></p>
-                <p class="mt-2 text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">1.42M SAR</p>
-                <p class="mt-1 text-xs font-bold text-emerald-600">+18.4%</p>
-            </article>
-            <article class="kpi-card p-4">
-                <p class="text-xs font-black text-slate-500 dark:text-slate-300"><span class="lang-ar">البائعون
-                        النشطون</span><span class="lang-en">Active Vendors</span></p>
-                <p class="mt-2 text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">1,284</p>
-                <p class="mt-1 text-xs font-bold text-homy-gold-600"><span class="lang-ar">42 جديد هذا الأسبوع</span><span
-                        class="lang-en">42 new this week</span></p>
-            </article>
+              <article class="kpi-card p-4">
+                  <p class="text-xs font-black text-slate-500 dark:text-slate-300"><span class="lang-ar">إجمالي المبيعات
+                          الشهرية</span><span class="lang-en">Monthly GMV</span></p>
+                  <p class="mt-2 text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">  SAR</p>
+                  <p class="mt-1 text-xs font-bold text-emerald-600">+18.4%</p>
+              </article>
+              <article class="kpi-card p-4">
+                  <p class="text-xs font-black text-slate-500 dark:text-slate-300"><span class="lang-ar">البائعون
+                          النشطون</span><span class="lang-en">Active Vendors</span></p>
+                  <p class="mt-2 text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">{{ count($sellers) }}</p>
+                  <p class="mt-1 text-xs font-bold text-homy-gold-600"><span class="lang-ar">{{ count($sellers) }} جديد هذا الأسبوع</span><span
+                          class="lang-en">42 new this week</span></p>
+              </article>       
+    
+
             <article class="kpi-card p-4">
                 <p class="text-xs font-black text-slate-500 dark:text-slate-300"><span class="lang-ar">معدل رضا
                         العملاء</span><span class="lang-en">Customer Satisfaction</span></p>

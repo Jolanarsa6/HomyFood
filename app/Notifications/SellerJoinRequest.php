@@ -54,7 +54,7 @@ class SellerJoinRequest extends Notification
             'title' => __('messages.new_seller_join'),
             // 'name' => $this->seller->name,         
             'message' => __('messages.notify_new_seller_join'),
-            'url'=> route('joinRequest'),
+            'url'=> route('seller.join'),
             'icon' => 'check-circle'
               
             // 'message' => $this->data['message'] ?? 'Default message',

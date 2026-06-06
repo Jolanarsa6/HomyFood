@@ -1,197 +1,10 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}"
-    class="scroll-smooth">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homy Food | Home</title>
-    <meta name="description" content="Homy Food premium homemade food marketplace">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-
-    <link rel="stylesheet" href="{{ asset('templates/assets/app.css') }}">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <!-- Prevent Flicker: Apply theme before body renders -->
-    <script>
-        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia(
-                '(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
-    </script>
-</head>
-
-<body class="text-slate-800 dark:text-slate-100">
-    <div id="sidebarOverlay" class="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm"></div>
-    <aside id="sidebar"
-        class="offcanvas-sidebar fixed top-0 right-0 z-50 h-full w-80 max-w-[88vw] overflow-y-auto custom-scrollbar border-s border-homy-gold-200/60 bg-white/95 p-6 shadow-2xl shadow-black/25 backdrop-blur-xl dark:border-homy-gold-600/40 dark:bg-[#12211B]/95">
-        <div class="mb-8 flex items-center justify-between">
-            <a href="{{ route('home') }}" class="flex items-center gap-3">
-                <x-application-logo />
-                <div>
-                    <p class="text-lg font-black text-homy-green-700 dark:text-homy-gold-500">
-                        {{ __('partials/aside.title') }}
-                    </p>
-                    <p class="text-xs text-slate-500 dark:text-slate-400">{{ __('partials/aside.description') }}</p>
-                </div>
-            </a>
-            <button id="closeSidebar"
-                class="h-10 w-10 rounded-xl border border-homy-gold-200 text-homy-green-700 hover:bg-homy-gold-50 dark:border-homy-gold-600/50 dark:text-homy-gold-400 dark:hover:bg-homy-green-700/40"
-                aria-label="Close sidebar">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-        </div>
-
-        <nav class="space-y-2">
-            <a href="index.html"
-                class="flex items-center gap-3 rounded-2xl border border-homy-gold-200 bg-homy-gold-50/70 px-4 py-3 text-sm font-bold text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/40 dark:text-homy-gold-300">
-                <i class="fa-solid fa-house"></i>
-                <span>{{ __('partials/aside.home') }}</span>
-            </a>
-            <a href="special-offers.html"
-                class="flex items-center gap-3 rounded-2xl border border-transparent px-4 py-3 text-sm font-bold text-slate-600 hover:border-homy-gold-200 hover:bg-homy-gold-50/60 hover:text-homy-green-700 dark:text-slate-300 dark:hover:border-homy-gold-600/40 dark:hover:bg-homy-green-700/30">
-                <i class="fa-solid fa-badge-percent"></i>
-                <span>{{ __('partials/aside.special_offers') }}</span>
-            </a>
-            <a href="compare.html"
-                class="flex items-center gap-3 rounded-2xl border border-transparent px-4 py-3 text-sm font-bold text-slate-600 hover:border-homy-gold-200 hover:bg-homy-gold-50/60 hover:text-homy-green-700 dark:text-slate-300 dark:hover:border-homy-gold-600/40 dark:hover:bg-homy-green-700/30">
-                <i class="fa-solid fa-scale-balanced"></i>
-                <span>{{ __('partials/aside.compare_product') }}</span>
-            </a>
-            <a href="about-us.html"
-                class="flex items-center gap-3 rounded-2xl border border-transparent px-4 py-3 text-sm font-bold text-slate-600 hover:border-homy-gold-200 hover:bg-homy-gold-50/60 hover:text-homy-green-700 dark:text-slate-300 dark:hover:border-homy-gold-600/40 dark:hover:bg-homy-green-700/30">
-                <i class="fa-solid fa-circle-info"></i>
-                <span>{{ __('partials/aside.about_us') }}</span>
-            </a>
-            <a href="contact-us.html"
-                class="flex items-center gap-3 rounded-2xl border border-transparent px-4 py-3 text-sm font-bold text-slate-600 hover:border-homy-gold-200 hover:bg-homy-gold-50/60 hover:text-homy-green-700 dark:text-slate-300 dark:hover:border-homy-gold-600/40 dark:hover:bg-homy-green-700/30">
-                <i class="fa-solid fa-envelope-open-text"></i>
-                <span>{{ __('partials/aside.connect_us') }}</span>
-            </a>
-            <a href="seller/join.html"
-                class="flex items-center gap-3 rounded-2xl border border-transparent px-4 py-3 text-sm font-bold text-slate-600 hover:border-homy-gold-200 hover:bg-homy-gold-50/60 hover:text-homy-green-700 dark:text-slate-300 dark:hover:border-homy-gold-600/40 dark:hover:bg-homy-green-700/30">
-                <i class="fa-solid fa-store"></i>
-                <span>{{ __('partials/aside.join_us_seller') }}</span>
-            </a>
-        </nav>
-
-        <div class="mt-10 grid gap-3">
-            <a href="{{ route('login') }}"
-                class="grid place-items-center rounded-2xl border-2 border-homy-green-700 bg-homy-green-700 px-4 py-3 text-sm font-black text-white transition hover:-translate-y-0.5 hover:bg-homy-green-600">
-                <span>{{ __('actions.login') }}</span>
-            </a>
-            <a href="{{ route('buyer.register') }}"
-                class="grid place-items-center rounded-2xl border-2 border-homy-gold-400 bg-white px-4 py-3 text-sm font-black text-homy-green-700 transition hover:-translate-y-0.5 hover:bg-homy-gold-500 hover:text-homy-green-900 dark:bg-homy-gold-500 dark:text-homy-green-900">
-                <span>{{ __('partials/aside.create_account') }}</span>
-            </a>
-            <a href="{{ route('seller.join') }}"
-                class="grid place-items-center rounded-2xl border-2 border-homy-gold-400 bg-homy-gold-500 px-4 py-3 text-sm font-black text-homy-green-900 transition hover:-translate-y-0.5 hover:bg-homy-gold-400">
-                <span>{{ __('partials/aside.join_us_seller') }}</span>
-            </a>
-        </div>
-    </aside>
-
+<x-buyer.app>
+        @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <div class="alert alert-danger">{{ $error }}</div>
+                    @endforeach
+                @endif
     <div class="relative z-10">
-        <div class="bg-homy-green-700 px-4 py-2 text-center text-xs font-bold tracking-wide text-white">
-            <span class="lang-ar">شحن مجاني لأول طلب</span>
-            <span class="lang-en">Free shipping on first order over 200 SAR - Code HOMY100</span>
-        </div>
-
-        <header
-            class="sticky top-0 z-30 border-b border-homy-gold-100/80 bg-white/80 backdrop-blur-xl dark:border-homy-gold-600/25 dark:bg-[#0f1f18]/85">
-            <div class="mx-auto flex w-full max-w-7xl items-center gap-3 px-4 py-3 lg:gap-4">
-                <button id="menuToggle"
-                    class="h-11 w-11 shrink-0 rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 shadow-sm hover:bg-homy-gold-50 dark:border-homy-gold-600/40 dark:bg-homy-green-700/40 dark:text-homy-gold-300"
-                    aria-label="Open sidebar">
-
-                    <i class="fa-solid fa-bars"></i>
-                </button>
-
-                <a href="{{ route('home') }}" class="flex items-center gap-3">
-                    {{-- <div
-                        class="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-homy-green-700 to-homy-green-500 text-base font-black text-white shadow-lg">
-                        HF</div> --}}
-
-                        <x-application-logo/>
-                    <div class="hidden sm:block">
-                        <p class="text-base font-black text-homy-green-700 dark:text-homy-gold-400">{{ __('global.title') }}</p>
-                        <p class="text-[11px] text-slate-500 dark:text-slate-400">
-                            {{-- <span>{{ __('titles.description') }}</span> --}}
-                        </p>
-                    </div>
-                </a>
-
-                <div class="hidden flex-1 lg:flex">
-                    <label class="relative w-full">
-                        <input type="search" placeholder="ابحث عن مكدوس، مربى، زعتر، سمن..."
-                            class="w-full rounded-2xl border border-homy-gold-200/80 bg-white py-3 ps-12 pe-4 text-sm font-semibold text-slate-700 outline-none ring-homy-gold-100 transition placeholder:font-medium placeholder:text-slate-400 focus:border-homy-gold-500 focus:ring-4 dark:border-homy-gold-600/35 dark:bg-[#163126] dark:text-slate-100 dark:placeholder:text-slate-400">
-                        <i
-                            class="fa-solid fa-magnifying-glass pointer-events-none absolute start-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                    </label>
-                </div>
-
-                <div class="ms-auto flex items-center gap-2">
-                    <x-lang-switch />
-
-                    {{-- <button id="themeToggle" class="h-11 w-11 rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 shadow-sm transition hover:bg-homy-gold-50 dark:border-homy-gold-600/40 dark:bg-homy-green-700/40 dark:text-homy-gold-300" aria-label="Toggle theme">
-                        <i class="fa-solid fa-moon"></i>
-                    </button> --}}
-
-                    <x-them-toggle />
-
-
-
-                    <a href="wishlist.html"
-                        class="relative grid h-11 w-11 place-items-center rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 shadow-sm transition hover:bg-homy-gold-50 dark:border-homy-gold-600/40 dark:bg-homy-green-700/40 dark:text-homy-gold-300"
-                        aria-label="Wishlist">
-                        <i class="fa-regular fa-heart"></i>
-                        <span
-                            class="absolute -top-1 -start-1 min-w-5 rounded-full bg-homy-gold-500 px-1 text-center text-[11px] font-black text-homy-green-900">4</span>
-                    </a>
-                    <a href="cart.html"
-                        class="relative grid h-11 w-11 place-items-center rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 shadow-sm transition hover:bg-homy-gold-50 dark:border-homy-gold-600/40 dark:bg-homy-green-700/40 dark:text-homy-gold-300"
-                        aria-label="Cart">
-                        <i class="fa-solid fa-bag-shopping"></i>
-                        <span
-                            class="absolute -top-1 -start-1 min-w-5 rounded-full bg-homy-gold-500 px-1 text-center text-[11px] font-black text-homy-green-900">3</span>
-                    </a>
-                    {{-- <a href="{{ route('login') }}"
-                        class="hidden rounded-2xl border-2 border-homy-green-700 bg-homy-green-700 px-4 py-2.5 text-sm font-black text-white transition hover:bg-homy-green-600 lg:block">
-                         
-                    </a> --}}
-
-                    {{-- <a href="{{ route('login') }}">
-                        <x-primary-button>
-                            <i class="far fa-user text-lg"></i>
-                            <span>{{ __('actions.login') }}</span>
-                        </x-primary-button>
-                    </a> --}}
-
-                    {{-- <a href="{{ route('seller.join') }}"
-                        class="rounded-2xl border-2 border-homy-gold-400 bg-homy-gold-500 px-4 py-2.5 text-sm font-black text-homy-green-900 transition hover:bg-homy-gold-400 xl:block">
-                        <span>{{ __('partials/aside.join_us_seller') }}</span>
-                    </a> --}}
-<x-logout/>
-
-
-                </div>
-            </div>
-
-            <div class="mx-auto block max-w-7xl px-4 pb-3 lg:hidden">
-                <label class="relative block">
-                    <input type="search" placeholder="ابحث عن منتجات البيت..."
-                        class="w-full rounded-2xl border border-homy-gold-200/80 bg-white py-3 ps-12 pe-4 text-sm font-semibold text-slate-700 outline-none ring-homy-gold-100 transition placeholder:font-medium placeholder:text-slate-400 focus:border-homy-gold-500 focus:ring-4 dark:border-homy-gold-600/35 dark:bg-[#163126] dark:text-slate-100 dark:placeholder:text-slate-400">
-                    <i
-                        class="fa-solid fa-magnifying-glass pointer-events-none absolute start-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                </label>
-            </div>
-        </header>
-
         <main>
             <section class="relative overflow-hidden px-4 pb-14 pt-10 lg:pt-14">
                 <div class="soft-grid absolute inset-0 opacity-40"></div>
@@ -226,33 +39,43 @@
                         </p>
 
                         <div class="mt-7 flex flex-wrap items-center gap-3">
-                            <a href="special-offers.html"
+                            {{-- <a href="special-offers.html"
+                                class="rounded-2xl bg-homy-green-700 px-6 py-3 text-sm font-black text-white shadow-lg shadow-homy-green-700/25 transition hover:-translate-y-0.5 hover:bg-homy-green-600">
+                                <span class="lang-ar">ابدأ التسوق الآن</span>
+                                <span class="lang-en">Start Shopping</span>
+                            </a> --}}
+                            {{-- <a href="compare.html"
+                                class="rounded-2xl border-2 border-homy-gold-400 bg-white px-6 py-3 text-sm font-black text-homy-green-700 transition hover:-translate-y-0.5 hover:bg-homy-gold-500 hover:text-homy-green-900 dark:bg-homy-gold-500 dark:text-homy-green-900">
+                                <span class="lang-ar">قارن المنتجات</span>
+                                <span class="lang-en">Compare Products</span>
+                            </a> --}}
+                            <a href="{{ route('login') }}"
                                 class="rounded-2xl bg-homy-green-700 px-6 py-3 text-sm font-black text-white shadow-lg shadow-homy-green-700/25 transition hover:-translate-y-0.5 hover:bg-homy-green-600">
                                 <span class="lang-ar">ابدأ التسوق الآن</span>
                                 <span class="lang-en">Start Shopping</span>
                             </a>
-                            <a href="compare.html"
-                                class="rounded-2xl border-2 border-homy-gold-400 bg-white px-6 py-3 text-sm font-black text-homy-green-700 transition hover:-translate-y-0.5 hover:bg-homy-gold-500 hover:text-homy-green-900 dark:bg-homy-gold-500 dark:text-homy-green-900">
-                                <span class="lang-ar">قارن المنتجات</span>
-                                <span class="lang-en">Compare Products</span>
+                            <a href="{{ route('seller.join') }}"
+                                class="rounded-2xl border-2 border-homy-gold-300 bg-homy-gold-50 px-6 py-3 text-sm font-black text-homy-green-700 transition hover:-translate-y-0.5 hover:bg-homy-gold-500 hover:text-homy-green-900 dark:border-homy-gold-600/35 dark:bg-homy-green-700/35 dark:text-homy-gold-300 dark:hover:bg-homy-gold-500 dark:hover:text-homy-green-900">
+                                <span class="lang-ar">انضم كبائع</span>
+                                <span class="lang-en">Become A Seller</span>
                             </a>
-                           <x-logout/>
                         </div>
                     </div>
 
                     <div class="grid gap-4 sm:grid-cols-2">
-                        <article
-                            class="hero-badge rounded-3xl border border-homy-gold-200/80 bg-white/90 p-4 shadow-xl shadow-homy-gold-100/70 dark:border-homy-gold-600/35 dark:bg-[#153023]/90">
-                            <img src="{{ $product->getFirstMediaUrl('product_images') }}"
-                                alt="Makdous" class="h-36 w-full rounded-2xl object-cover">
-                            <h3 class="mt-3 font-black text-homy-green-700 dark:text-homy-gold-400">
-                                <span class="lang-ar">مكدوس فاخر بزيت الزيتون</span>
-                                <span class="lang-en">Premium Makdous In Olive Oil</span>
-                            </h3>
-                            <p class="mt-1 text-sm text-slate-500 dark:text-slate-300">4.9 ★</p>
-                        </article>
-
-                        <article
+                        @foreach ($products->take(2) as $product)
+                            <article
+                                class="hero-badge rounded-3xl border border-homy-gold-200/80 bg-white/90 p-4 shadow-xl shadow-homy-gold-100/70 dark:border-homy-gold-600/35 dark:bg-[#153023]/90">
+                                <img src="{{ $product->getFirstMediaUrl('product_images') }}"
+                                    alt="{{ $product->ar_name }}" class="h-36 w-full rounded-2xl object-cover">
+                                <h3 class="mt-3 font-black text-homy-green-700 dark:text-homy-gold-400">
+                                    <span class="lang-ar">{{ $product->product_ar_name }}</span>
+                                    <span class="lang-en">Premium Makdous In Olive Oil</span>
+                                </h3>
+                                <p class="mt-1 text-sm text-slate-500 dark:text-slate-300">{{ $product->price }} ★</p>
+                            </article>
+                        @endforeach
+                        {{-- <article
                             class="hero-badge rounded-3xl border border-homy-gold-200/80 bg-white/90 p-4 shadow-xl shadow-homy-gold-100/70 dark:border-homy-gold-600/35 dark:bg-[#153023]/90"
                             style="animation-delay:0.5s">
                             <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=900&q=80"
@@ -262,9 +85,9 @@
                                 <span class="lang-en">Authentic Fig Jam</span>
                             </h3>
                             <p class="mt-1 text-sm text-slate-500 dark:text-slate-300">4.8 ★</p>
-                        </article>
+                        </article> --}}
 
-                        {{-- <article
+                        <article
                             class="rounded-3xl border border-homy-gold-200/80 bg-homy-green-700 p-4 text-white shadow-xl sm:col-span-2 dark:border-homy-gold-600/35">
                             <div class="flex flex-wrap items-center justify-between gap-2">
                                 <div>
@@ -283,13 +106,13 @@
                                     <span class="lang-en">View Details</span>
                                 </a>
                             </div>
-                        </article> --}}
+                        </article>
                     </div>
                 </div>
             </section>
 
-            <section class="px-4 pb-8">
-                <div class="mx-auto flex w-full max-w-7xl gap-3 overflow-x-auto pb-2 custom-scrollbar">
+            {{-- <section class="px-4 pb-8">
+                <div class="mx-auto flex w-full max-w-7xl gap-20 overflow-x-auto pb-2 custom-scrollbar">
                     <button
                         class="js-filter-item active shrink-0 rounded-2xl border border-homy-gold-200 bg-white px-4 py-3 text-center text-xs font-black text-homy-green-700 dark:border-homy-gold-600/35 dark:bg-[#153023] dark:text-homy-gold-300">
                         <i class="fa-solid fa-layer-group mb-2 block text-base"></i>
@@ -327,7 +150,7 @@
                         <span class="lang-en">Dairy</span>
                     </button>
                 </div>
-            </section>
+            </section> --}}
 
             <section class="px-4 pb-14">
                 <div class="mx-auto w-full max-w-7xl">
@@ -342,14 +165,51 @@
                                 <span class="lang-en">Core product cards aligned with your current style</span>
                             </p> -->
                         </div>
-                        <a href="special-offers.html"
+                        {{-- <a href="special-offers.html"
                             class="text-sm font-black text-homy-green-700 underline decoration-homy-gold-500 decoration-2 underline-offset-4 dark:text-homy-gold-400">
                             <span class="lang-ar">عرض الكل</span>
                             <span class="lang-en">View All</span>
-                        </a>
+                        </a> --}}
                     </div>
 
                     <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                        @foreach ($products as $product)
+                            <article class="homy-card p-3">
+                                <a href="product-details.html" class="relative block">
+                                    <img src={{ $product->getFirstMediaUrl('product_images') }} alt="Fig Jam"
+                                        class="h-44 w-full rounded-2xl object-cover">
+                                    <span
+                                        class="absolute start-2 top-2 rounded-full bg-white/90 px-2 py-1 text-[11px] font-black text-homy-green-700">{{ $product->price }}
+                                        SAR</span>
+                                    <button data-action="toggle-favorite" aria-pressed="false"
+                                        class="absolute end-2 top-2 h-9 w-9 rounded-full bg-white/90 text-homy-green-700 shadow"
+                                        type="button">
+                                        <i class="fa-solid fa-heart"></i>
+                                    </button>
+                                </a>
+                                <div class="pt-3">
+                                    <h3
+                                        class="line-clamp-1 text-sm font-black text-homy-green-700 dark:text-homy-gold-400">
+                                        <span class="lang-ar">{{ $product->product_ar_name }}</span>
+                                        <span class="lang-en">{{ $product->product_en_name }}</span>
+                                    </h3>
+                                    <p class="mt-1 text-xs font-semibold text-slate-500 dark:text-slate-300">
+                                        <span class="lang-ar">{{ $product->brand }}</span>
+                                        <span class="lang-en">{{ $product->brand }}</span>
+                                    </p>
+                                    <div class="mt-3 flex items-center justify-between">
+                                        <div class="text-xs font-black text-homy-gold-600">5 ★</div>
+                                        <a href="cart.html"
+                                            class="rounded-xl bg-homy-green-700 px-3 py-2 text-[11px] font-black text-white">
+                                            <span class="lang-ar">أضف للسلة</span>
+                                            <span class="lang-en">Add To Cart</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        @endforeach
+
+
                         {{-- <article class="homy-card p-3">
                             <a href="product-details.html" class="relative block">
                                 <img src="https://images.unsplash.com/photo-1590779033100-9f60705a013d?auto=format&fit=crop&w=900&q=80"
@@ -384,9 +244,7 @@
                             </div>
                         </article> --}}
 
-                         
-
-                        <article class="homy-card p-3">
+                        {{-- <article class="homy-card p-3">
                             <a href="product-details.html" class="relative block">
                                 <img src="https://images.unsplash.com/photo-1609501676725-7186f734b709?auto=format&fit=crop&w=900&q=80"
                                     alt="Pickles" class="h-44 w-full rounded-2xl object-cover">
@@ -486,7 +344,7 @@
                                     </a>
                                 </div>
                             </div>
-                        </article>
+                        </article> --}}
                     </div>
                 </div>
             </section>
@@ -507,7 +365,42 @@
                     </div>
 
                     <div class="grid gap-5 lg:grid-cols-2">
-                        <article class="homy-card flex flex-col gap-4 p-4 sm:flex-row">
+                        @foreach ($products->sortByDesc('id')->take(2) as $product)
+                            <article class="homy-card flex flex-col gap-4 p-4 sm:flex-row">
+                                <img src="{{ $product->getFirstMediaUrl('product_images') }}" alt="Makdous"
+                                    class="h-44 w-full rounded-2xl object-cover sm:h-auto sm:w-48">
+                                <div class="flex flex-1 flex-col">
+                                    <div class="flex items-start justify-between gap-2">
+                                        <h3 class="text-lg font-black text-homy-green-700 dark:text-homy-gold-400">
+                                            <span class="lang-ar">{{ $product->product_ar_name }}</span>
+                                            <span class="lang-en">{{ $product->product_en_name }}</span>
+                                        </h3>
+                                        <span
+                                            class="rounded-full bg-homy-gold-100 px-3 py-1 text-xs font-black text-homy-green-700 dark:bg-homy-gold-500 dark:text-homy-green-900">-15%</span>
+                                    </div>
+                                    <p class="mt-2 text-sm font-medium text-slate-600 dark:text-slate-300">
+                                        <span class="lang-ar">{{ $product->description }}</span>
+                                        <span class="lang-en">{{ $product->description }}</span>
+                                    </p>
+                                    <div class="mt-auto pt-4 flex flex-wrap items-center gap-2">
+                                        <span
+                                            class="text-sm font-black text-homy-green-700 dark:text-homy-gold-400">{{ $product->price }}
+                                            SAR</span>
+                                        <a href="{{ route('buyer.show_product_details', $product->id) }}"
+                                            class="rounded-xl border border-homy-gold-300 px-3 py-2 text-xs font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:text-homy-gold-300">
+                                            <span class="lang-ar">التفاصيل</span>
+                                            <span class="lang-en">Details</span>
+                                        </a>
+                                        <a href="{{ route('buyer.checkout', $product->id) }}"
+                                            class="rounded-xl bg-homy-green-700 px-3 py-2 text-xs font-black text-white">
+                                            <span class="lang-ar">شراء الآن</span>
+                                            <span class="lang-en">Buy Now</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        @endforeach
+                        {{-- <article class="homy-card flex flex-col gap-4 p-4 sm:flex-row">
                             <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"
                                 alt="Makdous" class="h-44 w-full rounded-2xl object-cover sm:h-auto sm:w-48">
                             <div class="flex flex-1 flex-col">
@@ -565,7 +458,7 @@
                                     </a>
                                 </div>
                             </div>
-                        </article>
+                        </article> --}}
                     </div>
                 </div>
             </section>
@@ -788,11 +681,4 @@
         </main>
     </div>
 
-    @include('partials.footer');
-
-
-    <script src="{{ asset('templates/assets/app.js') }}"></script>
-
-</body>
-
-</html>
+</x-buyer.app>

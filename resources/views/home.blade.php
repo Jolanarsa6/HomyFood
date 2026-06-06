@@ -34,15 +34,20 @@
                         </p>
 
                         <div class="mt-7 flex flex-wrap items-center gap-3">
-                            <a href="special-offers.html"
+                            {{-- <a href="special-offers.html"
                                 class="rounded-2xl bg-homy-green-700 px-6 py-3 text-sm font-black text-white shadow-lg shadow-homy-green-700/25 transition hover:-translate-y-0.5 hover:bg-homy-green-600">
                                 <span class="lang-ar">ابدأ التسوق الآن</span>
                                 <span class="lang-en">Start Shopping</span>
-                            </a>
-                            <a href="compare.html"
+                            </a> --}}
+                            {{-- <a href="compare.html"
                                 class="rounded-2xl border-2 border-homy-gold-400 bg-white px-6 py-3 text-sm font-black text-homy-green-700 transition hover:-translate-y-0.5 hover:bg-homy-gold-500 hover:text-homy-green-900 dark:bg-homy-gold-500 dark:text-homy-green-900">
                                 <span class="lang-ar">قارن المنتجات</span>
                                 <span class="lang-en">Compare Products</span>
+                            </a> --}}
+                            <a href="{{ route('login') }}"
+                                class="rounded-2xl bg-homy-green-700 px-6 py-3 text-sm font-black text-white shadow-lg shadow-homy-green-700/25 transition hover:-translate-y-0.5 hover:bg-homy-green-600">
+                                <span class="lang-ar">ابدأ التسوق الآن</span>
+                                <span class="lang-en">Start Shopping</span>
                             </a>
                             <a href="{{ route('seller.join') }}"
                                 class="rounded-2xl border-2 border-homy-gold-300 bg-homy-gold-50 px-6 py-3 text-sm font-black text-homy-green-700 transition hover:-translate-y-0.5 hover:bg-homy-gold-500 hover:text-homy-green-900 dark:border-homy-gold-600/35 dark:bg-homy-green-700/35 dark:text-homy-gold-300 dark:hover:bg-homy-gold-500 dark:hover:text-homy-green-900">
@@ -101,8 +106,8 @@
                 </div>
             </section>
 
-            <section class="px-4 pb-8">
-                <div class="mx-auto flex w-full max-w-7xl gap-3 overflow-x-auto pb-2 custom-scrollbar">
+            {{-- <section class="px-4 pb-8">
+                <div class="mx-auto flex w-full max-w-7xl gap-20 overflow-x-auto pb-2 custom-scrollbar">
                     <button
                         class="js-filter-item active shrink-0 rounded-2xl border border-homy-gold-200 bg-white px-4 py-3 text-center text-xs font-black text-homy-green-700 dark:border-homy-gold-600/35 dark:bg-[#153023] dark:text-homy-gold-300">
                         <i class="fa-solid fa-layer-group mb-2 block text-base"></i>
@@ -140,7 +145,7 @@
                         <span class="lang-en">Dairy</span>
                     </button>
                 </div>
-            </section>
+            </section> --}}
 
             <section class="px-4 pb-14">
                 <div class="mx-auto w-full max-w-7xl">
@@ -155,14 +160,51 @@
                                 <span class="lang-en">Core product cards aligned with your current style</span>
                             </p> -->
                         </div>
-                        <a href="special-offers.html"
+                        {{-- <a href="special-offers.html"
                             class="text-sm font-black text-homy-green-700 underline decoration-homy-gold-500 decoration-2 underline-offset-4 dark:text-homy-gold-400">
                             <span class="lang-ar">عرض الكل</span>
                             <span class="lang-en">View All</span>
-                        </a>
+                        </a> --}}
                     </div>
 
                     <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                        @foreach ($products as $product)
+                            <article class="homy-card p-3">
+                                <a href="product-details.html" class="relative block">
+                                    <img src={{ $product->getFirstMediaUrl('product_images') }} alt="Fig Jam"
+                                        class="h-44 w-full rounded-2xl object-cover">
+                                    <span
+                                        class="absolute start-2 top-2 rounded-full bg-white/90 px-2 py-1 text-[11px] font-black text-homy-green-700">{{ $product->price }}
+                                        SAR</span>
+                                    <button data-action="toggle-favorite" aria-pressed="false"
+                                        class="absolute end-2 top-2 h-9 w-9 rounded-full bg-white/90 text-homy-green-700 shadow"
+                                        type="button">
+                                        <i class="fa-solid fa-heart"></i>
+                                    </button>
+                                </a>
+                                <div class="pt-3">
+                                    <h3
+                                        class="line-clamp-1 text-sm font-black text-homy-green-700 dark:text-homy-gold-400">
+                                        <span class="lang-ar">{{ $product->product_ar_name }}</span>
+                                        <span class="lang-en">{{ $product->product_en_name }}</span>
+                                    </h3>
+                                    <p class="mt-1 text-xs font-semibold text-slate-500 dark:text-slate-300">
+                                        <span class="lang-ar">{{ $product->brand }}</span>
+                                        <span class="lang-en">{{ $product->brand }}</span>
+                                    </p>
+                                    <div class="mt-3 flex items-center justify-between">
+                                        <div class="text-xs font-black text-homy-gold-600">5 ★</div>
+                                        <a href="cart.html"
+                                            class="rounded-xl bg-homy-green-700 px-3 py-2 text-[11px] font-black text-white">
+                                            <span class="lang-ar">أضف للسلة</span>
+                                            <span class="lang-en">Add To Cart</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        @endforeach
+
+
                         {{-- <article class="homy-card p-3">
                             <a href="product-details.html" class="relative block">
                                 <img src="https://images.unsplash.com/photo-1590779033100-9f60705a013d?auto=format&fit=crop&w=900&q=80"
@@ -197,9 +239,7 @@
                             </div>
                         </article> --}}
 
-
-
-                        <article class="homy-card p-3">
+                        {{-- <article class="homy-card p-3">
                             <a href="product-details.html" class="relative block">
                                 <img src="https://images.unsplash.com/photo-1609501676725-7186f734b709?auto=format&fit=crop&w=900&q=80"
                                     alt="Pickles" class="h-44 w-full rounded-2xl object-cover">
@@ -299,7 +339,7 @@
                                     </a>
                                 </div>
                             </div>
-                        </article>
+                        </article> --}}
                     </div>
                 </div>
             </section>
@@ -320,7 +360,42 @@
                     </div>
 
                     <div class="grid gap-5 lg:grid-cols-2">
-                        <article class="homy-card flex flex-col gap-4 p-4 sm:flex-row">
+                        @foreach ($products->sortByDesc('id')->take(2) as $product)
+                            <article class="homy-card flex flex-col gap-4 p-4 sm:flex-row">
+                                <img src="{{ $product->getFirstMediaUrl('product_images') }}" alt="Makdous"
+                                    class="h-44 w-full rounded-2xl object-cover sm:h-auto sm:w-48">
+                                <div class="flex flex-1 flex-col">
+                                    <div class="flex items-start justify-between gap-2">
+                                        <h3 class="text-lg font-black text-homy-green-700 dark:text-homy-gold-400">
+                                            <span class="lang-ar">{{ $product->product_ar_name }}</span>
+                                            <span class="lang-en">{{ $product->product_en_name }}</span>
+                                        </h3>
+                                        <span
+                                            class="rounded-full bg-homy-gold-100 px-3 py-1 text-xs font-black text-homy-green-700 dark:bg-homy-gold-500 dark:text-homy-green-900">-15%</span>
+                                    </div>
+                                    <p class="mt-2 text-sm font-medium text-slate-600 dark:text-slate-300">
+                                        <span class="lang-ar">{{ $product->description }}</span>
+                                        <span class="lang-en">{{ $product->description }}</span>
+                                    </p>
+                                    <div class="mt-auto pt-4 flex flex-wrap items-center gap-2">
+                                        <span
+                                            class="text-sm font-black text-homy-green-700 dark:text-homy-gold-400">{{ $product->price }}
+                                            SAR</span>
+                                        <a href="{{ route('buyer.show_product_details', $product->id) }}"
+                                            class="rounded-xl border border-homy-gold-300 px-3 py-2 text-xs font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:text-homy-gold-300">
+                                            <span class="lang-ar">التفاصيل</span>
+                                            <span class="lang-en">Details</span>
+                                        </a>
+                                        <a href="{{ route('buyer.checkout', $product->id) }}"
+                                            class="rounded-xl bg-homy-green-700 px-3 py-2 text-xs font-black text-white">
+                                            <span class="lang-ar">شراء الآن</span>
+                                            <span class="lang-en">Buy Now</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        @endforeach
+                        {{-- <article class="homy-card flex flex-col gap-4 p-4 sm:flex-row">
                             <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"
                                 alt="Makdous" class="h-44 w-full rounded-2xl object-cover sm:h-auto sm:w-48">
                             <div class="flex flex-1 flex-col">
@@ -378,7 +453,7 @@
                                     </a>
                                 </div>
                             </div>
-                        </article>
+                        </article> --}}
                     </div>
                 </div>
             </section>

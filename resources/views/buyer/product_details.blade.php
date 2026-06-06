@@ -1,50 +1,11 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homy Food | Product Details</title>
+@extends('buyer.layouts.master')
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ["Cairo", "ui-sans-serif", "system-ui", "sans-serif"],
-                    },
-                    colors: {
-                        "homy-green": {
-                            100: "#E8EFEA",
-                            500: "#225E38",
-                            600: "#1C4D2E",
-                            700: "#1A472A",
-                        },
-                        "homy-gold": {
-                            50: "#FDFBF6",
-                            100: "#F6EEDA",
-                            200: "#EAD5AC",
-                            400: "#D4B87E",
-                            500: "#C4A462",
-                            600: "#A88E53",
-                        },
-                    },
-                },
-            },
-        };
-    </script>
+@section('content')
+ 
+{{-- <body class="text-slate-800 dark:text-slate-100">
+    <div id="sidebarOverlay" class="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm"></div> --}}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="stylesheet" href="./assets/app.css">
-</head>
-<body class="text-slate-800 dark:text-slate-100">
-    <div id="sidebarOverlay" class="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm"></div>
-
-    <aside id="sidebar" class="offcanvas-sidebar fixed top-0 right-0 z-50 h-full w-80 max-w-[88vw] overflow-y-auto custom-scrollbar border-s border-homy-gold-200/60 bg-white/95 p-6 shadow-2xl shadow-black/25 backdrop-blur-xl dark:border-homy-gold-600/40 dark:bg-[#12211B]/95">
+    {{-- <aside id="sidebar" class="offcanvas-sidebar fixed top-0 right-0 z-50 h-full w-80 max-w-[88vw] overflow-y-auto custom-scrollbar border-s border-homy-gold-200/60 bg-white/95 p-6 shadow-2xl shadow-black/25 backdrop-blur-xl dark:border-homy-gold-600/40 dark:bg-[#12211B]/95">
         <div class="mb-8 flex items-center justify-between">
             <a href="index.html" class="flex items-center gap-3">
                 <div class="h-12 w-12 rounded-2xl bg-gradient-to-br from-homy-green-700 to-homy-green-500 text-white grid place-items-center text-lg shadow-lg">HF</div>
@@ -57,10 +18,10 @@
             <a href="wishlist.html" class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-slate-600 hover:bg-homy-gold-50 dark:text-slate-300 dark:hover:bg-homy-green-700/30"><i class="fa-solid fa-heart"></i><span class="lang-ar">المفضلة</span><span class="lang-en">Wishlist</span></a>
             <a href="cart.html" class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-slate-600 hover:bg-homy-gold-50 dark:text-slate-300 dark:hover:bg-homy-green-700/30"><i class="fa-solid fa-bag-shopping"></i><span class="lang-ar">السلة</span><span class="lang-en">Cart</span></a>
         </nav>
-    </aside>
+    </aside> --}}
 
-    <div class="relative z-10">
-        <header class="sticky top-0 z-30 border-b border-homy-gold-100/80 bg-white/80 backdrop-blur-xl dark:border-homy-gold-600/25 dark:bg-[#0f1f18]/85">
+    {{-- <div class="relative z-10"> --}}
+        {{-- <header class="sticky top-0 z-30 border-b border-homy-gold-100/80 bg-white/80 backdrop-blur-xl dark:border-homy-gold-600/25 dark:bg-[#0f1f18]/85">
             <div class="mx-auto flex w-full max-w-7xl items-center gap-3 px-4 py-3">
                 <button id="menuToggle" class="h-11 w-11 shrink-0 rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 shadow-sm hover:bg-homy-gold-50 dark:border-homy-gold-600/40 dark:bg-homy-green-700/40 dark:text-homy-gold-300"><i class="fa-solid fa-bars"></i></button>
                 <a href="index.html" class="flex items-center gap-3">
@@ -72,19 +33,19 @@
                     <button id="themeToggle" class="h-11 w-11 rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/40 dark:text-homy-gold-300"><i class="fa-solid fa-moon"></i></button>
                 </div>
             </div>
-        </header>
+        </header> --}}
 
         <main class="px-4 py-10">
             <section class="mx-auto grid w-full max-w-7xl gap-6 lg:grid-cols-[1.15fr_1fr]">
                 <article class="rounded-[2rem] border border-homy-gold-200 bg-white/90 p-5 shadow-lg dark:border-homy-gold-600/35 dark:bg-[#12211B]/85">
                     <div class="relative overflow-hidden rounded-[1.5rem]">
-                        <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1500&q=80" alt="Makdous product" class="h-[420px] w-full object-cover">
+                        <img src="{{ $product->getFirstMediaUrl('product_images') }}" alt="Makdous product" class="h-[420px] w-full object-cover">
                         <button data-action="toggle-favorite" aria-pressed="false" class="absolute end-4 top-4 h-11 w-11 rounded-full bg-white/90 text-homy-green-700 shadow"><i class="fa-solid fa-heart"></i></button>
                     </div>
 
                     <div class="mt-5">
-                        <h1 class="text-2xl font-black text-homy-green-700 dark:text-homy-gold-400"><span class="lang-ar">مكدوس جوز سوبر - زجاجي فاخر</span><span class="lang-en">Super Walnut Makdous - Premium Glass Jar</span></h1>
-                        <p class="mt-2 text-sm font-semibold text-slate-500 dark:text-slate-300"><span class="lang-ar">باذنجان صغير محشي بالجوز والفليفلة ومغمور بزيت زيتون بكر ممتاز.</span><span class="lang-en">Small eggplants stuffed with walnut and red pepper in premium extra virgin olive oil.</span></p>
+                        <h1 class="text-2xl font-black text-homy-green-700 dark:text-homy-gold-400"><span class="lang-ar">{{ $product->product_ar_name }}</span><span class="lang-en">{{ $product->product_en_name }}</span></h1>
+                        <p class="mt-2 text-sm font-semibold text-slate-500 dark:text-slate-300"><span class="lang-ar">{{ $product->description }}</span><span class="lang-en">{{ $product->description }}</span></p>
 
                         <div class="mt-4 flex flex-wrap items-center gap-4">
                             <span class="rounded-full bg-homy-gold-100 px-3 py-1 text-xs font-black text-homy-green-700 dark:bg-homy-gold-500 dark:text-homy-green-900">58 SAR</span>
@@ -172,6 +133,5 @@
         </main>
     </div>
 
-    <script src="./assets/app.js"></script>
-</body>
-</html>
+  
+@endsection

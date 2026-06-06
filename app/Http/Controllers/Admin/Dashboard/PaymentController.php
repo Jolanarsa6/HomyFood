@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Payment;
+use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,7 +15,9 @@ class PaymentController extends Controller
     {
         $admin = Auth::guard('admin')->user();
         $payments = $admin->payments()->get();
-        return view('admin.paymentMethods',compact('payments'));
+        $sellers = User::role('seller')->get();
+        $products = Product::all();
+        return view('admin.paymentMethods',compact('payments','admin','sellers','products'));
     }
 
      public function destroy(int $payment_id)

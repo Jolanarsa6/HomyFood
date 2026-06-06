@@ -9,69 +9,70 @@
          </button>
 
          <a href="{{ route('home') }}" class="flex items-center gap-3">
-             {{-- <div
-                        class="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-homy-green-700 to-homy-green-500 text-base font-black text-white shadow-lg">
-                        HF</div> --}}
 
-             <x-application-logo />
+
+             <x-application-logo class="hidden lg:flex" />
              <div class="hidden sm:block">
-                 <p class="text-base font-black text-homy-green-700 dark:text-homy-gold-400">{{ __('global.title') }}</p>
-                 <p class="text-[11px] text-slate-500 dark:text-slate-400">
-                     {{-- <span>{{ __('titles.description') }}</span> --}}
+                 <p class="text-base font-black text-homy-green-700 dark:text-homy-gold-400">{{ __('global.title') }}
                  </p>
+                 {{-- <p class="text-[11px] text-slate-500 dark:text-slate-400">
+                     <span>{{ __('titles.description') }}</span>
+                 </p> --}}
              </div>
          </a>
 
          <div class="hidden flex-1 lg:flex">
              <label class="relative w-full">
-                 <input type="search" placeholder="ابحث عن مكدوس، مربى، زعتر، سمن..."
-                     class="w-full rounded-2xl border border-homy-gold-200/80 bg-white py-3 ps-12 pe-4 text-sm font-semibold text-slate-700 outline-none ring-homy-gold-100 transition placeholder:font-medium placeholder:text-slate-400 focus:border-homy-gold-500 focus:ring-4 dark:border-homy-gold-600/35 dark:bg-[#163126] dark:text-slate-100 dark:placeholder:text-slate-400">
-                 <i
-                     class="fa-solid fa-magnifying-glass pointer-events-none absolute start-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                 <form action="{{ route('dashboard') }}" method="GET">
+                     <input type="search" placeholder="{{ __('messages.search_message') }}"
+                         aria-describedby="button-addon2" name="search" value="{{ request()->search }}"
+                         class="w-full rounded-2xl border border-homy-gold-200/80 bg-white py-3 ps-12 pe-4 text-sm font-semibold text-slate-700 outline-none ring-homy-gold-100 transition placeholder:font-medium placeholder:text-slate-400 focus:border-homy-gold-500 focus:ring-4 dark:border-homy-gold-600/35 dark:bg-[#163126] dark:text-slate-100 dark:placeholder:text-slate-400">
+                     <i
+                         class="fa-solid fa-magnifying-glass pointer-events-none absolute start-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
              </label>
+             </form>
+
          </div>
 
          <div class="ms-auto flex items-center gap-2">
              <x-lang-switch />
 
-             {{-- <button id="themeToggle" class="h-11 w-11 rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 shadow-sm transition hover:bg-homy-gold-50 dark:border-homy-gold-600/40 dark:bg-homy-green-700/40 dark:text-homy-gold-300" aria-label="Toggle theme">
-                        <i class="fa-solid fa-moon"></i>
-                    </button> --}}
-
              <x-them-toggle />
 
+             @auth
+                 <a href="wishlist.html"
+                     class="relative grid h-11 w-11 place-items-center rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 shadow-sm transition hover:bg-homy-gold-50 dark:border-homy-gold-600/40 dark:bg-homy-green-700/40 dark:text-homy-gold-300"
+                     aria-label="Wishlist">
+                     <i class="fa-regular fa-heart"></i>
+                     <span
+                         class="absolute -top-1 -start-1 min-w-5 rounded-full bg-homy-gold-500 px-1 text-center text-[11px] font-black text-homy-green-900">4</span>
+                 </a>
+                 <a href="cart.html"
+                     class="relative grid h-11 w-11 place-items-center rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 shadow-sm transition hover:bg-homy-gold-50 dark:border-homy-gold-600/40 dark:bg-homy-green-700/40 dark:text-homy-gold-300"
+                     aria-label="Cart">
+                     <i class="fa-solid fa-bag-shopping"></i>
+                     <span
+                         class="absolute -top-1 -start-1 min-w-5 rounded-full bg-homy-gold-500 px-1 text-center text-[11px] font-black text-homy-green-900">3</span>
+                 </a>
+             @endauth
 
+             @guest
+                 <a href="{{ route('login') }}">
+                     <x-primary-button>
+                         <i class="far fa-user text-lg"></i>
+                         <span>{{ __('actions.login') }}</span>
+                     </x-primary-button>
+                 </a>
 
-             <a href="wishlist.html"
-                 class="relative grid h-11 w-11 place-items-center rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 shadow-sm transition hover:bg-homy-gold-50 dark:border-homy-gold-600/40 dark:bg-homy-green-700/40 dark:text-homy-gold-300"
-                 aria-label="Wishlist">
-                 <i class="fa-regular fa-heart"></i>
-                 <span
-                     class="absolute -top-1 -start-1 min-w-5 rounded-full bg-homy-gold-500 px-1 text-center text-[11px] font-black text-homy-green-900">4</span>
-             </a>
-             <a href="cart.html"
-                 class="relative grid h-11 w-11 place-items-center rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 shadow-sm transition hover:bg-homy-gold-50 dark:border-homy-gold-600/40 dark:bg-homy-green-700/40 dark:text-homy-gold-300"
-                 aria-label="Cart">
-                 <i class="fa-solid fa-bag-shopping"></i>
-                 <span
-                     class="absolute -top-1 -start-1 min-w-5 rounded-full bg-homy-gold-500 px-1 text-center text-[11px] font-black text-homy-green-900">3</span>
-             </a>
-             {{-- <a href="{{ route('login') }}"
-                        class="hidden rounded-2xl border-2 border-homy-green-700 bg-homy-green-700 px-4 py-2.5 text-sm font-black text-white transition hover:bg-homy-green-600 lg:block">
-                         
-                    </a> --}}
+                 <a href="{{ route('seller.join') }}"
+                     class="rounded-2xl border-2 border-homy-gold-400 bg-homy-gold-500 px-4 py-2.5 text-sm font-black text-homy-green-900 transition hover:bg-homy-gold-400 xl:block">
+                     <span>{{ __('partials/aside.join_us_seller') }}</span>
+                 </a>
+             @endguest
 
-             <a href="{{ route('login') }}">
-                 <x-primary-button>
-                     <i class="far fa-user text-lg"></i>
-                     <span>{{ __('actions.login') }}</span>
-                 </x-primary-button>
-             </a>
-
-             <a href="{{ route('seller.join') }}"
-                 class="rounded-2xl border-2 border-homy-gold-400 bg-homy-gold-500 px-4 py-2.5 text-sm font-black text-homy-green-900 transition hover:bg-homy-gold-400 xl:block">
-                 <span>{{ __('partials/aside.join_us_seller') }}</span>
-             </a>
+             @auth
+                 <x-logout class="block lg:hidden" />
+             @endauth
          </div>
      </div>
 

@@ -16,14 +16,14 @@
               <article class="kpi-card p-4">
                   <p class="text-xs font-black text-slate-500 dark:text-slate-300"><span class="lang-ar">إجمالي المبيعات
                           الشهرية</span><span class="lang-en">Monthly GMV</span></p>
-                  <p class="mt-2 text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">1.42M SAR</p>
+                  <p class="mt-2 text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">  SAR</p>
                   <p class="mt-1 text-xs font-bold text-emerald-600">+18.4%</p>
               </article>
               <article class="kpi-card p-4">
                   <p class="text-xs font-black text-slate-500 dark:text-slate-300"><span class="lang-ar">البائعون
                           النشطون</span><span class="lang-en">Active Vendors</span></p>
-                  <p class="mt-2 text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">1,284</p>
-                  <p class="mt-1 text-xs font-bold text-homy-gold-600"><span class="lang-ar">42 جديد هذا الأسبوع</span><span
+                  <p class="mt-2 text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">{{ count($sellers) }}</p>
+                  <p class="mt-1 text-xs font-bold text-homy-gold-600"><span class="lang-ar">{{ count($sellers) }} جديد هذا الأسبوع</span><span
                           class="lang-en">42 new this week</span></p>
               </article>       
           </div>
@@ -32,8 +32,8 @@
                   <article
                       class="rounded-[1.5rem] border border-homy-gold-200 bg-white/90 p-5 dark:border-homy-gold-600/35 dark:bg-[#12211B]/85">
                       <h2 class="text-lg font-black text-homy-green-700 dark:text-homy-gold-400"><span
-                              class="lang-ar">الأنواع
-                              الحالية</span><span class="lang-en">Current Types</span></h2>
+                              class="lang-ar">وسائل الدفع
+                              الحالية</span><span class="lang-en">Current Payment Methods</span></h2>
                       <div class="mt-4 overflow-x-auto custom-scrollbar">
                           <table class="min-w-full text-sm">
                               <thead>
@@ -71,8 +71,8 @@
                   <article
                       class="rounded-[1.5rem] border border-homy-gold-200 bg-white/90 p-5 dark:border-homy-gold-600/35 dark:bg-[#12211B]/85">
                       <h2 class="text-lg font-black text-homy-green-700 dark:text-homy-gold-400"><span class="lang-ar">إضافة
-                              نوع
-                              جديد</span><span class="lang-en">Add New Type</span></h2>
+                              وسيلة دفع جديدة
+                              </span><span class="lang-en">Add New Payment Method</span></h2>
                       <form class="mt-4 space-y-3" method="POST" action="{{ route('admin.add_payment') }}">
                           @csrf
                           <input type="hidden" name="admin_id" value="{{ Auth::guard('admin')->user() }}">
@@ -90,7 +90,7 @@
                           </div>
                           <button type="submit"
                               class="w-full rounded-xl bg-homy-green-700 px-4 py-2 text-sm font-black text-white"><span
-                                  class="lang-ar">إضافة النوع</span><span class="lang-en">Create Type</span></button>
+                                  class="lang-ar">إضافة الطريقة</span><span class="lang-en">Create Method</span></button>
                       </form>
                   </article>
               </div>

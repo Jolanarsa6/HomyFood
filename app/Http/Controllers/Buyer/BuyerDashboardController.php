@@ -16,7 +16,7 @@ class BuyerDashboardController extends Controller
         //     $media->delete();
         // }
 
-        $product = Product::first();
-        return view('dashboard',compact('product'));
+        $products = Product::all();
+        return view('dashboard',compact('products'));
     }
 }
