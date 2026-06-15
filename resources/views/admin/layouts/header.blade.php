@@ -4,7 +4,8 @@
 
 
             <a href="dashboard.html" class="flex items-center gap-3">
-                <div class="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-homy-green-700 to-homy-green-500 text-base font-black text-white shadow-lg">SA</div>
+                {{-- <div class="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-homy-green-700 to-homy-green-500 text-base font-black text-white shadow-lg">SA</div> --}}
+                <x-application-logo></x-application-logo>
                 <div>
                     <p class="text-base font-black text-homy-green-700 dark:text-homy-gold-400">Homy Super Admin</p>
                     <p class="text-[11px] text-slate-500 dark:text-slate-400"><span class="lang-ar">مركز التحكم الشامل</span><span class="lang-en">Global Control Center</span></p>
@@ -24,7 +25,7 @@
                 <div class="relative">
                     <button data-toggle="notifications" class="relative h-11 w-11 rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/35 dark:text-homy-gold-300">
                         <i class="fa-regular fa-bell"></i>
-                        <span class="absolute -left-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-red-500 px-1 text-[10px] font-black text-white">{{ $admin->unreadNotifications->count() }}</span>
+                        <span class="absolute -left-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-red-500 px-1 text-[10px] font-black text-white">{{ $notifications->count() }}</span>
                     </button>
                     <div id="notificationsPanel" class="admin-popover hidden absolute left-0 mt-2 w-80 overflow-hidden rounded-2xl border border-homy-gold-200 bg-white shadow-2xl shadow-black/15 dark:border-homy-gold-600/35 dark:bg-[#12211B]">
                         <div class="border-b border-homy-gold-100 px-4 py-3 text-xs font-black text-homy-green-700 dark:border-homy-gold-600/25 dark:text-homy-gold-400"><span class="lang-ar">إشعارات هامة</span><span class="lang-en">Important Notifications</span></div>

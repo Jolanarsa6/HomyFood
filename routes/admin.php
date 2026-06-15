@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\Dashboard\JoinRequestController;
 use App\Http\Controllers\Admin\Dashboard\PaymentController;
 use App\Http\Controllers\Admin\Dashboard\SellersControlController;
 use App\Http\Controllers\Admin\Dashboard\SiteAnalyticsController;
+use App\Http\Controllers\Notifi\sellerJoinRequestNotifi;
 use Illuminate\Support\Facades\Route;
 
 Route::group(["middleware" => ["guest:admin", 'lang.switch'], "prefix" => "admin", "as" => "admin."], function () {
@@ -89,5 +90,8 @@ Route::group(["middleware" => ["auth:admin", 'lang.switch'], "prefix" => "admin"
     // seller control
     Route::get('/show_sellers_control', [SellersControlController::class, 'index'])->name('show_sellers_control');
 
-
+    // Notitication control
+    Route::get('/show_notifications', [sellerJoinRequestNotifi::class, 'index'])->name('show_notifications');
+    Route::post('/read_notifications/{notification_id}', [sellerJoinRequestNotifi::class, 'edit'])->name('notifications.read');
+    Route::post('/readAll_notifications', [sellerJoinRequestNotifi::class, 'readAll'])->name('notifications.readAll');
 });

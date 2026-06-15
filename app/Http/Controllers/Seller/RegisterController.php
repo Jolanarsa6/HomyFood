@@ -50,11 +50,11 @@ class RegisterController extends Controller
 //     // 'url' => '/joinRequest'
 // ];
 
-$admin = Admin::find(1);
-               $admin->notify(new SellerJoinRequest());
-
-            event(new Registered($user));
-        });
+    $admin = Admin::find(1);
+                   $admin->notify(new SellerJoinRequest($data));
+                   
+                   event(new Registered($user));
+                });
 
 
         return redirect(route('seller.waiting', absolute: false));

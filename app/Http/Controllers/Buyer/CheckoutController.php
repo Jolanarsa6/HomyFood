@@ -5,12 +5,21 @@ namespace App\Http\Controllers\Buyer;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
-    public function index(int $product_id)
+
+    public function index()
+    {
+        $product = Auth::user()->productCart()->get();
+        $no = 1000;
+        return view('buyer.checkout',compact('product','no'));
+    }
+    public function show(int $product_id)
     {
         $product = Product::findOrFail($product_id);
-        return view('buyer/checkout',compact('product'));
+        $no = 1;
+        return view('buyer.checkout',compact('product','no'));
     }
 }

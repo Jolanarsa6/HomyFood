@@ -17,7 +17,7 @@ class PaymentController extends Controller
         $payments = $admin->payments()->get();
         $sellers = User::role('seller')->get();
         $products = Product::all();
-        return view('admin.paymentMethods',compact('payments','admin','sellers','products'));
+        return view('admin.paymentMethods',compact('payments','sellers','products'));
     }
 
      public function destroy(int $payment_id)

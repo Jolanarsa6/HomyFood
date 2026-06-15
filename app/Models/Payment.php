@@ -15,7 +15,7 @@ class Payment extends Model
        return $this->belongsToMany(Product::class, 'product_payment');
     }
 
-     public function admins()
+     public function admin()
     {
         return $this->belongsTo(Admin::class);
     }

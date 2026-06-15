@@ -34,7 +34,7 @@
              <i class="fa-solid fa-scale-balanced"></i>
              <span>{{ __('partials/aside.compare_product') }}</span>
          </a>
-         <a href="about-us.html"
+         <a href="{{ route('buyer.about_us') }}"
              class="flex items-center gap-3 rounded-2xl border border-transparent px-4 py-3 text-sm font-bold text-slate-600 hover:border-homy-gold-200 hover:bg-homy-gold-50/60 hover:text-homy-green-700 dark:text-slate-300 dark:hover:border-homy-gold-600/40 dark:hover:bg-homy-green-700/30">
              <i class="fa-solid fa-circle-info"></i>
              <span>{{ __('partials/aside.about_us') }}</span>

@@ -11,6 +11,10 @@
     rounded-lg 
     border 
     border-homy-gold-200
+
+    dark:bg-red-950/30 
+    dark:border-red-900/50 
+
 ']) }}>
         @foreach ((array) $messages as $message)
             <li>{{ $message }}</li>

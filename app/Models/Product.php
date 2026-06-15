@@ -11,7 +11,10 @@ class Product extends Model implements HasMedia
     use InteractsWithMedia;
     protected $guarded = ['id'];
 
-
+    public function user()
+    {
+        return $this->belongsToMany(User::class);
+    }
 
     public function categories()
     {
@@ -28,5 +31,16 @@ class Product extends Model implements HasMedia
     public function payments()
     {
         return $this->belongsToMany(Payment::class, 'product_payment');
+    }
+
+
+    function productWishlists()
+    {
+        return $this->belongsToMany(User::class, 'wishlist');
+    }
+
+    function productCart()
+    {
+        return $this->belongsToMany(User::class, 'cart');
     }
 }

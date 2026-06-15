@@ -12,13 +12,13 @@ class SellerJoinRequest extends Notification
 {
     use Queueable;
 
-    // protected $data;
+    protected $user;
     /**
      * Create a new notification instance.
      */
-    public function __construct()
+    public function __construct($user)
     {
-        // $this->data = $data;
+        $this->user = $user;
     }
 
     /**
@@ -52,9 +52,9 @@ class SellerJoinRequest extends Notification
         return [
            
             'title' => __('messages.new_seller_join'),
-            // 'name' => $this->seller->name,         
+            'name' => $this->user->full_name,         
             'message' => __('messages.notify_new_seller_join'),
-            'url'=> route('seller.join'),
+            'url'=> '/admin/joinRequest',
             'icon' => 'check-circle'
               
             // 'message' => $this->data['message'] ?? 'Default message',

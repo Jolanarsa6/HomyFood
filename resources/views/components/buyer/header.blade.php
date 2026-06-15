@@ -23,7 +23,7 @@
 
          <div class="hidden flex-1 lg:flex">
              <label class="relative w-full">
-                 <form action="{{ route('dashboard') }}" method="GET">
+                 <form action="{{ route('buyer.search') }}" method="GET">
                      <input type="search" placeholder="{{ __('messages.search_message') }}"
                          aria-describedby="button-addon2" name="search" value="{{ request()->search }}"
                          class="w-full rounded-2xl border border-homy-gold-200/80 bg-white py-3 ps-12 pe-4 text-sm font-semibold text-slate-700 outline-none ring-homy-gold-100 transition placeholder:font-medium placeholder:text-slate-400 focus:border-homy-gold-500 focus:ring-4 dark:border-homy-gold-600/35 dark:bg-[#163126] dark:text-slate-100 dark:placeholder:text-slate-400">
@@ -40,14 +40,14 @@
              <x-them-toggle />
 
              @auth
-                 <a href="wishlist.html"
+                 <a href="{{ route('buyer.wishlist') }}"
                      class="relative grid h-11 w-11 place-items-center rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 shadow-sm transition hover:bg-homy-gold-50 dark:border-homy-gold-600/40 dark:bg-homy-green-700/40 dark:text-homy-gold-300"
                      aria-label="Wishlist">
                      <i class="fa-regular fa-heart"></i>
                      <span
                          class="absolute -top-1 -start-1 min-w-5 rounded-full bg-homy-gold-500 px-1 text-center text-[11px] font-black text-homy-green-900">4</span>
                  </a>
-                 <a href="cart.html"
+                 <a href="{{ route('buyer.show_cart') }}"
                      class="relative grid h-11 w-11 place-items-center rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 shadow-sm transition hover:bg-homy-gold-50 dark:border-homy-gold-600/40 dark:bg-homy-green-700/40 dark:text-homy-gold-300"
                      aria-label="Cart">
                      <i class="fa-solid fa-bag-shopping"></i>

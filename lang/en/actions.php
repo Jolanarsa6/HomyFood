@@ -129,6 +129,7 @@ return [
     'verfiy_email' => 'Verfiy Email',
     'admin_login' => 'Admin Login',
     'welcom_ser' => 'Welcome Ser',
-    
+    'remove' => 'Remove',
+
 
 ];

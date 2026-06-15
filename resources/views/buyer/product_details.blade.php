@@ -2,38 +2,6 @@
 
 @section('content')
  
-{{-- <body class="text-slate-800 dark:text-slate-100">
-    <div id="sidebarOverlay" class="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm"></div> --}}
-
-    {{-- <aside id="sidebar" class="offcanvas-sidebar fixed top-0 right-0 z-50 h-full w-80 max-w-[88vw] overflow-y-auto custom-scrollbar border-s border-homy-gold-200/60 bg-white/95 p-6 shadow-2xl shadow-black/25 backdrop-blur-xl dark:border-homy-gold-600/40 dark:bg-[#12211B]/95">
-        <div class="mb-8 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-3">
-                <div class="h-12 w-12 rounded-2xl bg-gradient-to-br from-homy-green-700 to-homy-green-500 text-white grid place-items-center text-lg shadow-lg">HF</div>
-                <p class="text-lg font-black text-homy-green-700 dark:text-homy-gold-500">Homy Food</p>
-            </a>
-            <button id="closeSidebar" class="h-10 w-10 rounded-xl border border-homy-gold-200 text-homy-green-700 hover:bg-homy-gold-50 dark:border-homy-gold-600/50 dark:text-homy-gold-400 dark:hover:bg-homy-green-700/40"><i class="fa-solid fa-xmark"></i></button>
-        </div>
-        <nav class="space-y-2">
-            <a href="index.html" class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-slate-600 hover:bg-homy-gold-50 dark:text-slate-300 dark:hover:bg-homy-green-700/30"><i class="fa-solid fa-house"></i><span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a>
-            <a href="wishlist.html" class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-slate-600 hover:bg-homy-gold-50 dark:text-slate-300 dark:hover:bg-homy-green-700/30"><i class="fa-solid fa-heart"></i><span class="lang-ar">المفضلة</span><span class="lang-en">Wishlist</span></a>
-            <a href="cart.html" class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold text-slate-600 hover:bg-homy-gold-50 dark:text-slate-300 dark:hover:bg-homy-green-700/30"><i class="fa-solid fa-bag-shopping"></i><span class="lang-ar">السلة</span><span class="lang-en">Cart</span></a>
-        </nav>
-    </aside> --}}
-
-    {{-- <div class="relative z-10"> --}}
-        {{-- <header class="sticky top-0 z-30 border-b border-homy-gold-100/80 bg-white/80 backdrop-blur-xl dark:border-homy-gold-600/25 dark:bg-[#0f1f18]/85">
-            <div class="mx-auto flex w-full max-w-7xl items-center gap-3 px-4 py-3">
-                <button id="menuToggle" class="h-11 w-11 shrink-0 rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 shadow-sm hover:bg-homy-gold-50 dark:border-homy-gold-600/40 dark:bg-homy-green-700/40 dark:text-homy-gold-300"><i class="fa-solid fa-bars"></i></button>
-                <a href="index.html" class="flex items-center gap-3">
-                    <div class="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-homy-green-700 to-homy-green-500 text-base font-black text-white shadow-lg">HF</div>
-                    <p class="text-base font-black text-homy-green-700 dark:text-homy-gold-400">Homy Food</p>
-                </a>
-                <div class="ms-auto flex items-center gap-2">
-                    <button id="langToggle" class="inline-flex h-11 items-center gap-2 rounded-2xl border border-homy-gold-200 bg-white px-3 text-xs font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/40 dark:text-homy-gold-300"><i class="fa-solid fa-language"></i><span class="lang-ar">EN</span><span class="lang-en">AR</span></button>
-                    <button id="themeToggle" class="h-11 w-11 rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/40 dark:text-homy-gold-300"><i class="fa-solid fa-moon"></i></button>
-                </div>
-            </div>
-        </header> --}}
 
         <main class="px-4 py-10">
             <section class="mx-auto grid w-full max-w-7xl gap-6 lg:grid-cols-[1.15fr_1fr]">
@@ -66,7 +34,7 @@
 
                         <div class="mt-6 flex flex-wrap gap-3">
                             <a href="cart.html" class="rounded-2xl bg-homy-green-700 px-5 py-3 text-sm font-black text-white transition hover:bg-homy-green-600"><span class="lang-ar">إضافة إلى السلة</span><span class="lang-en">Add To Cart</span></a>
-                            <a href="checkout.html" class="rounded-2xl border-2 border-homy-gold-400 bg-white px-5 py-3 text-sm font-black text-homy-green-700 transition hover:bg-homy-gold-500 hover:text-homy-green-900 dark:bg-homy-gold-500 dark:text-homy-green-900"><span class="lang-ar">شراء الآن</span><span class="lang-en">Buy Now</span></a>
+                            <a href="{{ route('buyer.checkout',$product->id) }}" class="rounded-2xl border-2 border-homy-gold-400 bg-white px-5 py-3 text-sm font-black text-homy-green-700 transition hover:bg-homy-gold-500 hover:text-homy-green-900 dark:bg-homy-gold-500 dark:text-homy-green-900"><span class="lang-ar">شراء الآن</span><span class="lang-en">Buy Now</span></a>
                             <a href="compare.html" class="rounded-2xl border border-homy-gold-300 px-5 py-3 text-sm font-black text-homy-green-700 dark:border-homy-gold-600/35 dark:text-homy-gold-300"><span class="lang-ar">مقارنة</span><span class="lang-en">Compare</span></a>
                         </div>
                     </div>

@@ -1,9 +1,5 @@
 <x-buyer.app>
-        @if ($errors->any())
-                    @foreach ($errors->all() as $error)
-                        <div class="alert alert-danger">{{ $error }}</div>
-                    @endforeach
-                @endif
+
     <div class="relative z-10">
         <main>
             <section class="relative overflow-hidden px-4 pb-14 pt-10 lg:pt-14">
@@ -181,11 +177,13 @@
                                     <span
                                         class="absolute start-2 top-2 rounded-full bg-white/90 px-2 py-1 text-[11px] font-black text-homy-green-700">{{ $product->price }}
                                         SAR</span>
-                                    <button data-action="toggle-favorite" aria-pressed="false"
-                                        class="absolute end-2 top-2 h-9 w-9 rounded-full bg-white/90 text-homy-green-700 shadow"
-                                        type="button">
-                                        <i class="fa-solid fa-heart"></i>
-                                    </button>
+                                    <form action="{{ route('buyer.addToWishlist', $product->id) }}" method="GET">
+                                        <button type="submit" data-action="toggle-favorite" aria-pressed="false"
+                                            class="absolute end-2 top-2 h-9 w-9 rounded-full bg-white/90 text-homy-green-700 shadow"
+                                            type="button">
+                                            <i class="fa-solid fa-heart"></i>
+                                        </button>
+                                    </form>
                                 </a>
                                 <div class="pt-3">
                                     <h3
@@ -199,7 +197,7 @@
                                     </p>
                                     <div class="mt-3 flex items-center justify-between">
                                         <div class="text-xs font-black text-homy-gold-600">5 ★</div>
-                                        <a href="cart.html"
+                                        <a href="{{ route('buyer.addToCart', $product->id) }}"
                                             class="rounded-xl bg-homy-green-700 px-3 py-2 text-[11px] font-black text-white">
                                             <span class="lang-ar">أضف للسلة</span>
                                             <span class="lang-en">Add To Cart</span>
@@ -208,143 +206,6 @@
                                 </div>
                             </article>
                         @endforeach
-
-
-                        {{-- <article class="homy-card p-3">
-                            <a href="product-details.html" class="relative block">
-                                <img src="https://images.unsplash.com/photo-1590779033100-9f60705a013d?auto=format&fit=crop&w=900&q=80"
-                                    alt="Fig Jam" class="h-44 w-full rounded-2xl object-cover">
-                                <span
-                                    class="absolute start-2 top-2 rounded-full bg-white/90 px-2 py-1 text-[11px] font-black text-homy-green-700">45
-                                    SAR</span>
-                                <button data-action="toggle-favorite" aria-pressed="false"
-                                    class="absolute end-2 top-2 h-9 w-9 rounded-full bg-white/90 text-homy-green-700 shadow"
-                                    type="button">
-                                    <i class="fa-solid fa-heart"></i>
-                                </button>
-                            </a>
-                            <div class="pt-3">
-                                <h3
-                                    class="line-clamp-1 text-sm font-black text-homy-green-700 dark:text-homy-gold-400">
-                                    <span class="lang-ar">مربى تين ملكي</span>
-                                    <span class="lang-en">Royal Fig Jam</span>
-                                </h3>
-                                <p class="mt-1 text-xs font-semibold text-slate-500 dark:text-slate-300">
-                                    <span class="lang-ar">مطبخ بيت الشام</span>
-                                    <span class="lang-en">Beit Al Sham Kitchen</span>
-                                </p>
-                                <div class="mt-3 flex items-center justify-between">
-                                    <div class="text-xs font-black text-homy-gold-600">4.9 ★</div>
-                                    <a href="cart.html"
-                                        class="rounded-xl bg-homy-green-700 px-3 py-2 text-[11px] font-black text-white">
-                                        <span class="lang-ar">أضف للسلة</span>
-                                        <span class="lang-en">Add To Cart</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </article> --}}
-
-                        {{-- <article class="homy-card p-3">
-                            <a href="product-details.html" class="relative block">
-                                <img src="https://images.unsplash.com/photo-1609501676725-7186f734b709?auto=format&fit=crop&w=900&q=80"
-                                    alt="Pickles" class="h-44 w-full rounded-2xl object-cover">
-                                <span
-                                    class="absolute start-2 top-2 rounded-full bg-white/90 px-2 py-1 text-[11px] font-black text-homy-green-700">38
-                                    SAR</span>
-                                <button data-action="toggle-favorite" aria-pressed="false"
-                                    class="absolute end-2 top-2 h-9 w-9 rounded-full bg-white/90 text-homy-green-700 shadow"
-                                    type="button">
-                                    <i class="fa-solid fa-heart"></i>
-                                </button>
-                            </a>
-                            <div class="pt-3">
-                                <h3
-                                    class="line-clamp-1 text-sm font-black text-homy-green-700 dark:text-homy-gold-400">
-                                    <span class="lang-ar">مخلل خيار مقرمش</span>
-                                    <span class="lang-en">Crunchy Pickled Cucumber</span>
-                                </h3>
-                                <p class="mt-1 text-xs font-semibold text-slate-500 dark:text-slate-300">
-                                    <span class="lang-ar">مونة جدتي</span>
-                                    <span class="lang-en">Grandma Pantry</span>
-                                </p>
-                                <div class="mt-3 flex items-center justify-between">
-                                    <div class="text-xs font-black text-homy-gold-600">4.7 ★</div>
-                                    <a href="cart.html"
-                                        class="rounded-xl bg-homy-green-700 px-3 py-2 text-[11px] font-black text-white">
-                                        <span class="lang-ar">أضف للسلة</span>
-                                        <span class="lang-en">Add To Cart</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="homy-card p-3">
-                            <a href="product-details.html" class="relative block">
-                                <img src="https://images.unsplash.com/photo-1603048719539-9ecb4d6f0164?auto=format&fit=crop&w=900&q=80"
-                                    alt="Zaatar" class="h-44 w-full rounded-2xl object-cover">
-                                <span
-                                    class="absolute start-2 top-2 rounded-full bg-white/90 px-2 py-1 text-[11px] font-black text-homy-green-700">52
-                                    SAR</span>
-                                <button data-action="toggle-favorite" aria-pressed="false"
-                                    class="absolute end-2 top-2 h-9 w-9 rounded-full bg-white/90 text-homy-green-700 shadow"
-                                    type="button">
-                                    <i class="fa-solid fa-heart"></i>
-                                </button>
-                            </a>
-                            <div class="pt-3">
-                                <h3
-                                    class="line-clamp-1 text-sm font-black text-homy-green-700 dark:text-homy-gold-400">
-                                    <span class="lang-ar">زعتر نابلسي فاخر</span>
-                                    <span class="lang-en">Premium Nabulsi Zaatar</span>
-                                </h3>
-                                <p class="mt-1 text-xs font-semibold text-slate-500 dark:text-slate-300">
-                                    <span class="lang-ar">دار الطيب</span>
-                                    <span class="lang-en">Dar Al Tayyeb</span>
-                                </p>
-                                <div class="mt-3 flex items-center justify-between">
-                                    <div class="text-xs font-black text-homy-gold-600">4.8 ★</div>
-                                    <a href="cart.html"
-                                        class="rounded-xl bg-homy-green-700 px-3 py-2 text-[11px] font-black text-white">
-                                        <span class="lang-ar">أضف للسلة</span>
-                                        <span class="lang-en">Add To Cart</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="homy-card p-3">
-                            <a href="product-details.html" class="relative block">
-                                <img src="https://images.unsplash.com/photo-1617093727343-374698b1b08d?auto=format&fit=crop&w=900&q=80"
-                                    alt="Ghee" class="h-44 w-full rounded-2xl object-cover">
-                                <span
-                                    class="absolute start-2 top-2 rounded-full bg-white/90 px-2 py-1 text-[11px] font-black text-homy-green-700">67
-                                    SAR</span>
-                                <button data-action="toggle-favorite" aria-pressed="false"
-                                    class="absolute end-2 top-2 h-9 w-9 rounded-full bg-white/90 text-homy-green-700 shadow"
-                                    type="button">
-                                    <i class="fa-solid fa-heart"></i>
-                                </button>
-                            </a>
-                            <div class="pt-3">
-                                <h3
-                                    class="line-clamp-1 text-sm font-black text-homy-green-700 dark:text-homy-gold-400">
-                                    <span class="lang-ar">سمن بقري بلدي</span>
-                                    <span class="lang-en">Traditional Cow Ghee</span>
-                                </h3>
-                                <p class="mt-1 text-xs font-semibold text-slate-500 dark:text-slate-300">
-                                    <span class="lang-ar">مزرعة النور</span>
-                                    <span class="lang-en">Noor Farm</span>
-                                </p>
-                                <div class="mt-3 flex items-center justify-between">
-                                    <div class="text-xs font-black text-homy-gold-600">4.9 ★</div>
-                                    <a href="cart.html"
-                                        class="rounded-xl bg-homy-green-700 px-3 py-2 text-[11px] font-black text-white">
-                                        <span class="lang-ar">أضف للسلة</span>
-                                        <span class="lang-en">Add To Cart</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </article> --}}
                     </div>
                 </div>
             </section>
@@ -357,15 +218,15 @@
                                 <span class="lang-ar">قد يعجبك</span>
                                 <span class="lang-en">May You Love</span>
                             </h2>
-                            <!-- <p class="mt-1 text-sm font-semibold text-slate-500 dark:text-slate-300">
+                            {{-- <p class="mt-1 text-sm font-semibold text-slate-500 dark:text-slate-300">
                                 <span class="lang-ar">تنويع بصري يعزز تجربة المستخدم في الصفحة الرئيسية</span>
                                 <span class="lang-en">Visual diversity for richer homepage experience</span>
-                            </p> -->
+                            </p>  --}}
                         </div>
                     </div>
 
                     <div class="grid gap-5 lg:grid-cols-2">
-                        @foreach ($products->sortByDesc('id')->take(2) as $product)
+                        @foreach ($products->sortByDesc('id')->take(1) as $product)
                             <article class="homy-card flex flex-col gap-4 p-4 sm:flex-row">
                                 <img src="{{ $product->getFirstMediaUrl('product_images') }}" alt="Makdous"
                                     class="h-44 w-full rounded-2xl object-cover sm:h-auto sm:w-48">
@@ -400,65 +261,35 @@
                                 </div>
                             </article>
                         @endforeach
-                        {{-- <article class="homy-card flex flex-col gap-4 p-4 sm:flex-row">
-                            <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"
-                                alt="Makdous" class="h-44 w-full rounded-2xl object-cover sm:h-auto sm:w-48">
-                            <div class="flex flex-1 flex-col">
-                                <div class="flex items-start justify-between gap-2">
-                                    <h3 class="text-lg font-black text-homy-green-700 dark:text-homy-gold-400">
-                                        <span class="lang-ar">مكدوس جوز سوبر</span>
-                                        <span class="lang-en">Super Walnut Makdous</span>
-                                    </h3>
-                                    <span
-                                        class="rounded-full bg-homy-gold-100 px-3 py-1 text-xs font-black text-homy-green-700 dark:bg-homy-gold-500 dark:text-homy-green-900">-15%</span>
-                                </div>
-                                <p class="mt-2 text-sm font-medium text-slate-600 dark:text-slate-300">
-                                    <span class="lang-ar">محمّر على نار هادئة ومحفوظ بزيت زيتون بكر ممتاز.</span>
-                                    <span class="lang-en">Slow-roasted and preserved in premium extra virgin olive
-                                        oil.</span>
-                                </p>
-                                <div class="mt-auto pt-4 flex flex-wrap items-center gap-2">
-                                    <span class="text-sm font-black text-homy-green-700 dark:text-homy-gold-400">58
-                                        SAR</span>
-                                    <a href="product-details.html"
-                                        class="rounded-xl border border-homy-gold-300 px-3 py-2 text-xs font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:text-homy-gold-300">
-                                        <span class="lang-ar">التفاصيل</span>
-                                        <span class="lang-en">Details</span>
-                                    </a>
-                                    <a href="checkout.html"
-                                        class="rounded-xl bg-homy-green-700 px-3 py-2 text-xs font-black text-white">
-                                        <span class="lang-ar">شراء الآن</span>
-                                        <span class="lang-en">Buy Now</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </article>
 
-                        <article class="homy-card p-4">
-                            <div class="grid gap-3 sm:grid-cols-[1.2fr_1fr]">
-                                <img src="https://images.unsplash.com/photo-1611250188496-e966043a0629?auto=format&fit=crop&w=900&q=80"
-                                    alt="Assorted products" class="h-44 w-full rounded-2xl object-cover sm:h-full">
-                                <div class="rounded-2xl bg-homy-green-700/95 p-4 text-white dark:bg-homy-green-700">
-                                    <p class="text-xs font-bold uppercase tracking-wider text-homy-gold-100">
-                                        <span class="lang-ar">صندوق العائلة</span>
-                                        <span class="lang-en">Family Box</span>
-                                    </p>
-                                    <h3 class="mt-1 text-lg font-black">
-                                        <span class="lang-ar">5 منتجات مختارة</span>
-                                        <span class="lang-en">5 Curated Products</span>
-                                    </h3>
-                                    <p class="mt-2 text-xs font-semibold text-white/80">
-                                        <span class="lang-ar">مربى + زعتر + مكدوس + سمن + مخلل</span>
-                                        <span class="lang-en">Jam + Zaatar + Makdous + Ghee + Pickles</span>
-                                    </p>
-                                    <a href="cart.html"
-                                        class="mt-4 inline-block rounded-xl bg-homy-gold-500 px-3 py-2 text-xs font-black text-homy-green-900">
-                                        <span class="lang-ar">أضف البوكس للسلة</span>
-                                        <span class="lang-en">Add Box To Cart</span>
-                                    </a>
+
+                            <article class="homy-card p-4">
+                                <div class="grid gap-3 sm:grid-cols-[1.2fr_1fr]">
+                                    <img src="{{ asset('images/boxPhoto.jpg') }}"
+                                        alt="Assorted products"
+                                        class="h-44 w-full rounded-2xl object-cover sm:h-full">
+                                    <div
+                                        class="rounded-2xl bg-homy-green-700/95 p-4 text-white dark:bg-homy-green-700">
+                                        <p class="text-xs font-bold uppercase tracking-wider text-homy-gold-100">
+                                            <span class="lang-ar">صندوق العائلة</span>
+                                            <span class="lang-en">Family Box</span>
+                                        </p>
+                                        <h3 class="mt-1 text-lg font-black">
+                                            <span class="lang-ar">5 منتجات مختارة</span>
+                                            <span class="lang-en">5 Curated Products</span>
+                                        </h3>
+                                        <p class="mt-2 text-xs font-semibold text-white/80">
+                                            <span class="lang-ar">مربى + زعتر + مكدوس + سمن + مخلل</span>
+                                            <span class="lang-en">Jam + Zaatar + Makdous + Ghee + Pickles</span>
+                                        </p>
+                                        <a href="{{ route('buyer.addToCart',1) }}"
+                                            class="mt-4 inline-block rounded-xl bg-homy-gold-500 px-3 py-2 text-xs font-black text-homy-green-900">
+                                            <span class="lang-ar">أضف البوكس للسلة</span>
+                                            <span class="lang-en">Add Box To Cart</span>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                        </article> --}}
+                            </article>
                     </div>
                 </div>
             </section>

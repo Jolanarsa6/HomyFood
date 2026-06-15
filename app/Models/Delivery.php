@@ -15,7 +15,7 @@ class Delivery extends Model
        return $this->belongsToMany(Product::class, 'product_delivery');
     }
 
-     public function admins()
+     public function admin()
     {
         return $this->belongsTo(Admin::class);
     }

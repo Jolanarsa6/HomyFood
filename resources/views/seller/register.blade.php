@@ -20,10 +20,15 @@
 
                 {{-- ______________________________ --}}
 
-                @if ($errors->any())
+                {{-- @if ($errors->any())
                     <div style="color:white">
                         {{ $errors->first() }}
                     </div>
+                @endif --}}
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <x-input-error :messages="$error" />
+                    @endforeach
                 @endif
 
 
@@ -184,18 +189,18 @@
                                 <label
                                     class="mb-2 block text-sm font-black text-homy-green-700 dark:text-homy-gold-400"><span
                                         class="lang-ar">اسم البنك</span><span class="lang-en">Bank Name</span></label>
-                     
-                                <x-text-input id="bank_name" type="text"
-                                    name="bank_name" :value="old('bank_name')" required autofocus autocomplete="bank_name" />
+
+                                <x-text-input id="bank_name" type="text" name="bank_name" :value="old('bank_name')"
+                                    required autofocus autocomplete="bank_name" />
                                 <x-input-error :messages="$errors->get('bank_name')" />
                             </div>
                             <div>
                                 <label
                                     class="mb-2 block text-sm font-black text-homy-green-700 dark:text-homy-gold-400"><span
                                         class="lang-ar">IBAN</span><span class="lang-en">IBAN</span></label>
-                                
-                                    <x-text-input id="IBAN" type="text"
-                                    name="IBAN" :value="old('IBAN')" required autofocus autocomplete="IBAN" />
+
+                                <x-text-input id="IBAN" type="text" name="IBAN" :value="old('IBAN')"
+                                    required autofocus autocomplete="IBAN" />
                                 <x-input-error :messages="$errors->get('IBAN')" />
                             </div>
                         </div>
@@ -205,9 +210,9 @@
                                     class="mb-2 block text-sm font-black text-homy-green-700 dark:text-homy-gold-400"><span
                                         class="lang-ar">رقم الهوية/الإقامة</span><span class="lang-en">National ID /
                                         Residency No.</span></label>
-                               
-                                      <x-text-input id="id_number" type="text"
-                                    name="id_number" :value="old('id_number')" required autofocus autocomplete="id_number" />
+
+                                <x-text-input id="id_number" type="text" name="id_number" :value="old('id_number')"
+                                    required autofocus autocomplete="id_number" />
                                 <x-input-error :messages="$errors->get('id_number')" />
                             </div>
                             <div>
@@ -215,9 +220,9 @@
                                     class="mb-2 block text-sm font-black text-homy-green-700 dark:text-homy-gold-400"><span
                                         class="lang-ar">الاسم التجاري</span><span class="lang-en">Commercial
                                         Name</span></label>
-                               
-                                     <x-text-input id="username" type="text"
-                                    name="username" :value="old('username')" required autofocus autocomplete="username" />
+
+                                <x-text-input id="username" type="text" name="username" :value="old('username')"
+                                    required autofocus autocomplete="username" />
                                 <x-input-error :messages="$errors->get('username')" />
                             </div>
                         </div>

@@ -10,7 +10,6 @@ class SiteAnalyticsController extends Controller
 {
     public function index()
     {
-        $admin = Auth::guard('admin')->user();
-        return view('admin.siteAnalytics',compact('admin'));
+        return view('admin.siteAnalytics');
     }
 }

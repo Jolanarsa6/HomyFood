@@ -27,7 +27,7 @@ Route::get('/admin/dashboard', function () {
        $payments = $admin->payments()->get();
         $sellers = User::role('seller')->get();
         $products = Product::all();
-    return view('admin.dashboard',compact('admin','payments','sellers','products'));
+    return view('admin.dashboard',compact('payments','sellers','products'));
 })->middleware(['auth:admin', 'verified','lang.switch'])->name('admin.dashboard');
 
 // For the language translation proccess
@@ -40,7 +40,7 @@ Route::get('/translation/{locale}',function($locale){
 
 
 // For Unread Notifications
-Route::get('/show_notifications',[ShowUnReadNotificationNumberController::class,'index'])->name('show_notifications');
+// Route::get('/show_notifications',[ShowUnReadNotificationNumberController::class,'index'])->name('show_notifications');
 
 
 

@@ -17,7 +17,7 @@ class CategoryController extends Controller
         $admin = Auth::guard('admin')->user();
         $categories = $admin->categories()->get();
 
-        return view('admin.productTypes', compact('categories','admin'));
+        return view('admin.productTypes', compact('categories'));
     }
 
     public function destroy(int $category_id)

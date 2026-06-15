@@ -36,6 +36,7 @@
     @include('buyer.layouts.header');
 
     <!-- Page Content -->
+
         @yield('content')
 
         <!-- footer -->

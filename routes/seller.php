@@ -8,6 +8,7 @@ use App\Http\Controllers\Seller\register\SellerRegisterStep4Controller;
 use App\Http\Controllers\Seller\RegisterController;
 use App\Http\Controllers\Seller\SellerDashboardController;
 use App\Http\Controllers\Seller\SellerJoinController;
+use App\Models\Admin;
 use App\Notifications\SellerJoinRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
