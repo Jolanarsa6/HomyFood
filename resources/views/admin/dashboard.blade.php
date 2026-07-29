@@ -13,7 +13,7 @@
             <div class="relative flex flex-wrap items-start justify-between gap-4">
                 <div>
                     <h1 class="text-3xl font-black text-homy-green-700 dark:text-homy-gold-400"><span class="lang-ar">لوحة
-                            القيادة العالمية</span><span class="lang-en">Global Mission Dashboard</span></h1>
+                            التحكم  </span><span class="lang-en">Mission Dashboard</span></h1>
                     <p class="mt-2 max-w-2xl text-sm font-semibold leading-7 text-slate-600 dark:text-slate-300"><span
                             class="lang-ar">إشراف كامل على البائعين، المدفوعات، جودة المنتجات، التجربة التشغيلية، والنمو
                             اليومي للمنصة من نقطة واحدة قوية.</span><span class="lang-en">Oversee vendors, payments, product

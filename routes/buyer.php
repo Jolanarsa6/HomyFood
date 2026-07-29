@@ -3,6 +3,7 @@
 use App\Http\Controllers\Buyer\BuyerDashboardController;
 use App\Http\Controllers\Buyer\CartController;
 use App\Http\Controllers\Buyer\CheckoutController;
+use App\Http\Controllers\Buyer\ConnectUsController;
 use App\Http\Controllers\Buyer\ProductDetailsController;
 use App\Http\Controllers\Buyer\WishlistController;
 use Illuminate\Support\Facades\Route;
@@ -17,7 +18,6 @@ Route::group(['middleware' => ['guest:web,admin', 'lang.switch'], 'prefix' => 'b
 
 Route::group(['middleware' => ['auth:web', 'verified', 'role:buyer', 'lang.switch'], 'prefix' => 'buyer', 'as' => 'buyer.'], function () {
     Route::get('/dashboard', [BuyerDashboardController::class, 'index'])->name('dashboard');
-    Route::get('/search', [BuyerDashboardController::class, 'search'])->name('search');
 
 
     Route::get('/product_details/{product_id}', [ProductDetailsController::class, 'index'])->name('show_product_details');
@@ -39,5 +39,19 @@ Route::group(['middleware' => ['auth:web', 'verified', 'role:buyer', 'lang.switc
     // checkout
     Route::get('/checkout_all', [CheckoutController::class, 'index'])->name('checkout_all');
     Route::get('/checkout/{product_id}', [CheckoutController::class, 'show'])->name('checkout');
+    Route::get('/special-offers', function () {
+        return view('buyer.special-offers');
+    })->name('special-offers');
+
+    Route::get('/compare', function () {
+        return view('buyer.compare');
+    })->name('compare');
+
+    Route::get('/contact_us', [ConnectUsController::class,'index'])->name('contact_us.show');
+    Route::post('/contact_us_send', [ConnectUsController::class,'store'])->name('contact_us.store');
+  
 
 });
+
+    Route::get('/search', [BuyerDashboardController::class, 'search'])->name('buyer.search');
+

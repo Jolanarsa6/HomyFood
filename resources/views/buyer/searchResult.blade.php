@@ -3,7 +3,7 @@
     <main class="px-4 py-10">
         <section class="mx-auto w-full max-w-7xl">
             <div class="mb-7 flex items-end justify-between gap-3">
-                <a href="{{ route('buyer.dashboard') }}"
+                <a href="{{ route('home') }}"
                     class="rounded-2xl bg-homy-green-700 px-4 py-2 text-xs font-black text-white"><span
                         class="lang-ar">العودة إلى الرئيسية</span><span class="lang-en">Return Home</span></a>
             </div>

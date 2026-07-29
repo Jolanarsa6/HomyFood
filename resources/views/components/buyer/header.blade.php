@@ -27,8 +27,8 @@
                      <input type="search" placeholder="{{ __('messages.search_message') }}"
                          aria-describedby="button-addon2" name="search" value="{{ request()->search }}"
                          class="w-full rounded-2xl border border-homy-gold-200/80 bg-white py-3 ps-12 pe-4 text-sm font-semibold text-slate-700 outline-none ring-homy-gold-100 transition placeholder:font-medium placeholder:text-slate-400 focus:border-homy-gold-500 focus:ring-4 dark:border-homy-gold-600/35 dark:bg-[#163126] dark:text-slate-100 dark:placeholder:text-slate-400">
-                     <i
-                         class="fa-solid fa-magnifying-glass pointer-events-none absolute start-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                     <button type="submit"><i
+                             class="fa-solid fa-magnifying-glass pointer-events-none absolute start-4 top-1/2 -translate-y-1/2 text-slate-400"></i></button>
              </label>
              </form>
 
@@ -77,11 +77,19 @@
      </div>
 
      <div class="mx-auto block max-w-7xl px-4 pb-3 lg:hidden">
+
+
+
          <label class="relative block">
-             <input type="search" placeholder="ابحث عن منتجات البيت..."
-                 class="w-full rounded-2xl border border-homy-gold-200/80 bg-white py-3 ps-12 pe-4 text-sm font-semibold text-slate-700 outline-none ring-homy-gold-100 transition placeholder:font-medium placeholder:text-slate-400 focus:border-homy-gold-500 focus:ring-4 dark:border-homy-gold-600/35 dark:bg-[#163126] dark:text-slate-100 dark:placeholder:text-slate-400">
-             <i
-                 class="fa-solid fa-magnifying-glass pointer-events-none absolute start-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-         </label>
+             <form action="{{ route('buyer.search') }}" method="GET">
+                 <input type="search" placeholder="{{ __('messages.search_message') }}" name="search"
+                     value="{{ request()->search }}"
+                     class="w-full rounded-2xl border border-homy-gold-200/80 bg-white py-3 ps-12 pe-4 text-sm font-semibold text-slate-700 outline-none ring-homy-gold-100 transition placeholder:font-medium placeholder:text-slate-400 focus:border-homy-gold-500 focus:ring-4 dark:border-homy-gold-600/35 dark:bg-[#163126] dark:text-slate-100 dark:placeholder:text-slate-400">
+                 <i
+                     class="fa-solid fa-magnifying-glass pointer-events-none absolute start-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+          <button type="submit"><i
+                             class="fa-solid fa-magnifying-glass pointer-events-none absolute start-4 top-1/2 -translate-y-1/2 text-slate-400"></i></button>
+             </label>
+             </form>
      </div>
  </header>
