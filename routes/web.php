@@ -3,7 +3,6 @@
 use App\Http\Controllers\Buyer\BuyerDashboardController;
 use App\Http\Controllers\General\HomeController;
 use App\Http\Controllers\Notifi\ShowUnReadNotificationNumberController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Seller\ProductController;
 use App\Http\Controllers\Seller\SellerDashboardController;
 use App\Http\Controllers\Seller\SellerRegisterController;

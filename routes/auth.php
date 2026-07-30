@@ -9,7 +9,6 @@ use App\Http\Controllers\UserAuth\PasswordController;
 use App\Http\Controllers\UserAuth\PasswordResetLinkController;
 use App\Http\Controllers\UserAuth\RegisteredUserController;
 use App\Http\Controllers\UserAuth\VerifyEmailController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['guest:web','lang.switch'])->group(function () {
@@ -60,8 +59,8 @@ Route::middleware(['auth:web','lang.switch'])->group(function () {
 });
 
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
