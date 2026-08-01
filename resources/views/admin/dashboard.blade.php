@@ -1,6 +1,8 @@
 @extends('admin.layouts.master')
 
 @section('content')
+
+
     <section class="space-y-6">
         <article
             class="relative overflow-hidden rounded-[2rem] border border-homy-gold-200 bg-gradient-to-br from-homy-gold-50 via-white to-homy-green-100/60 p-6 dark:border-homy-gold-600/35 dark:from-[#15261f] dark:via-[#12211B] dark:to-[#183629]">

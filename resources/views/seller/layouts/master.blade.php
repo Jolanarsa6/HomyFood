@@ -47,6 +47,6 @@
        <x-footer/>
     
 
-    <script src="../assets/app.js"></script>
+    <script src="{{ asset('../../templates/assets/app.js') }}"></script>
 </body>
 </html>

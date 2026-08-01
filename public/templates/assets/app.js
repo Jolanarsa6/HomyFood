@@ -397,113 +397,113 @@
 
 
 
-    (function(){
-      const container = document.getElementById('homy-toasts');
+    // (function(){
+    //   const container = document.getElementById('homy-toasts');
 
-      // placement based on dir/lang
-      function setPlacement(){
-        const dir = document.documentElement.getAttribute('dir') || document.dir || 'rtl';
-        if(dir === 'rtl'){
-          container.style.left = '1.5rem'; container.style.right = 'auto';
-        } else {
-          container.style.right = '1.5rem'; container.style.left = 'auto';
-        }
-      }
-      setPlacement();
+    //   // placement based on dir/lang
+    //   function setPlacement(){
+    //     const dir = document.documentElement.getAttribute('dir') || document.dir || 'rtl';
+    //     if(dir === 'rtl'){
+    //       container.style.left = '1.5rem'; container.style.right = 'auto';
+    //     } else {
+    //       container.style.right = '1.5rem'; container.style.left = 'auto';
+    //     }
+    //   }
+    //   setPlacement();
 
-      // observe dir changes if parent app toggles
-      const mo = new MutationObserver((mut)=>{ if(mut.some(m=>m.attributeName==='dir')) setPlacement(); });
-      mo.observe(document.documentElement,{attributes:true});
+    //   // observe dir changes if parent app toggles
+    //   const mo = new MutationObserver((mut)=>{ if(mut.some(m=>m.attributeName==='dir')) setPlacement(); });
+    //   mo.observe(document.documentElement,{attributes:true});
 
-      function escapeHtml(unsafe){ return String(unsafe).replace(/[&<>"']/g,function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]; }); }
+    //   function escapeHtml(unsafe){ return String(unsafe).replace(/[&<>"']/g,function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]; }); }
 
-      const TYPES = {
-        success: {
-          icon: 'fa-solid fa-check',
-          lightBg: 'bg-emerald-50', lightBorder: 'border-emerald-200', lightText: 'text-emerald-700', progress: 'bg-emerald-500',
-          darkBg: 'dark:bg-[#08321a]/70', darkBorder: 'dark:border-homy-gold-600/35', darkText: 'dark:text-homy-gold-400'
-        },
-        info: {
-          icon: 'fa-solid fa-circle-info',
-          lightBg: 'bg-sky-50', lightBorder: 'border-sky-200', lightText: 'text-sky-700', progress: 'bg-sky-500',
-          darkBg: 'dark:bg-[#0b2b3b]/70', darkBorder: 'dark:border-homy-gold-600/35', darkText: 'dark:text-homy-gold-400'
-        },
-        error: {
-          icon: 'fa-solid fa-circle-exclamation',
-          lightBg: 'bg-red-50', lightBorder: 'border-red-200', lightText: 'text-red-700', progress: 'bg-red-500',
-          darkBg: 'dark:bg-[#3a0f0f]/70', darkBorder: 'dark:border-homy-gold-600/35', darkText: 'dark:text-homy-gold-400'
-        }
-      };
+    //   const TYPES = {
+    //     success: {
+    //       icon: 'fa-solid fa-check',
+    //       lightBg: 'bg-emerald-50', lightBorder: 'border-emerald-200', lightText: 'text-emerald-700', progress: 'bg-emerald-500',
+    //       darkBg: 'dark:bg-[#08321a]/70', darkBorder: 'dark:border-homy-gold-600/35', darkText: 'dark:text-homy-gold-400'
+    //     },
+    //     info: {
+    //       icon: 'fa-solid fa-circle-info',
+    //       lightBg: 'bg-sky-50', lightBorder: 'border-sky-200', lightText: 'text-sky-700', progress: 'bg-sky-500',
+    //       darkBg: 'dark:bg-[#0b2b3b]/70', darkBorder: 'dark:border-homy-gold-600/35', darkText: 'dark:text-homy-gold-400'
+    //     },
+    //     error: {
+    //       icon: 'fa-solid fa-circle-exclamation',
+    //       lightBg: 'bg-red-50', lightBorder: 'border-red-200', lightText: 'text-red-700', progress: 'bg-red-500',
+    //       darkBg: 'dark:bg-[#3a0f0f]/70', darkBorder: 'dark:border-homy-gold-600/35', darkText: 'dark:text-homy-gold-400'
+    //     }
+    //   };
 
-      // Public API: showNotification({type:'success', messages:{ar:'..',en:'..'}, duration:5000, lang:'ar'})
-      window.showNotification = function({type='info', messages='', duration=5000, lang}){
-        const docLang = document.documentElement.lang || 'ar';
-        const useLang = lang || docLang || 'ar';
-        let text = '';
-        if(typeof messages === 'string') text = messages; else if(messages && typeof messages === 'object') text = messages[useLang] || messages.ar || messages.en || '';
-        text = escapeHtml(text || '');
+    //   // Public API: showNotification({type:'success', messages:{ar:'..',en:'..'}, duration:5000, lang:'ar'})
+    //   window.showNotification = function({type='info', messages='', duration=5000, lang}){
+    //     const docLang = document.documentElement.lang || 'ar';
+    //     const useLang = lang || docLang || 'ar';
+    //     let text = '';
+    //     if(typeof messages === 'string') text = messages; else if(messages && typeof messages === 'object') text = messages[useLang] || messages.ar || messages.en || '';
+    //     text = escapeHtml(text || '');
 
-        const t = TYPES[type] || TYPES.info;
-        const id = 'notif-' + Date.now() + '-' + Math.floor(Math.random()*9999);
-        const el = document.createElement('div');
-        el.id = id;
-        el.setAttribute('role','status');
-        el.className = `w-96 rounded-xl border p-3 shadow-lg flex items-start gap-3 animate-fade-in ${t.lightBg} ${t.lightBorder} ${t.lightText} ${t.darkBg} ${t.darkBorder} ${t.darkText}`;
+    //     const t = TYPES[type] || TYPES.info;
+    //     const id = 'notif-' + Date.now() + '-' + Math.floor(Math.random()*9999);
+    //     const el = document.createElement('div');
+    //     el.id = id;
+    //     el.setAttribute('role','status');
+    //     el.className = `w-96 rounded-xl border p-3 shadow-lg flex items-start gap-3 animate-fade-in ${t.lightBg} ${t.lightBorder} ${t.lightText} ${t.darkBg} ${t.darkBorder} ${t.darkText}`;
 
-        el.innerHTML = `
-          <div class="pt-1"><i class="${t.icon} ${t.lightText} text-lg ${t.darkText}"></i></div>
-          <div class="flex-1">
-            <p class="text-sm font-black ${t.lightText} ${t.darkText}">${text}</p>
-            <div class="mt-2 h-1 w-full rounded-full bg-black/5 overflow-hidden">
-              <div class="progress ${t.progress} h-1 w-full" style="transform-origin:left;transform:scaleX(1)"></div>
-            </div>
-          </div>
-          <button class="ms-2 text-slate-400 hover:text-slate-600" aria-label="dismiss"><i class="fa-solid fa-xmark"></i></button>
-        `;
+    //     el.innerHTML = `
+    //       <div class="pt-1"><i class="${t.icon} ${t.lightText} text-lg ${t.darkText}"></i></div>
+    //       <div class="flex-1">
+    //         <p class="text-sm font-black ${t.lightText} ${t.darkText}">${text}</p>
+    //         <div class="mt-2 h-1 w-full rounded-full bg-black/5 overflow-hidden">
+    //           <div class="progress ${t.progress} h-1 w-full" style="transform-origin:left;transform:scaleX(1)"></div>
+    //         </div>
+    //       </div>
+    //       <button class="ms-2 text-slate-400 hover:text-slate-600" aria-label="dismiss"><i class="fa-solid fa-xmark"></i></button>
+    //     `;
 
-        // attach dismiss handler
-        el.querySelector('button').addEventListener('click',()=>dismissNotification(id));
+    //     // attach dismiss handler
+    //     el.querySelector('button').addEventListener('click',()=>dismissNotification(id));
 
-        container.appendChild(el);
+    //     container.appendChild(el);
 
-        // start progress animation
-        const prog = el.querySelector('.progress');
-        requestAnimationFrame(()=>{ prog.style.transition = `transform ${duration}ms linear`; prog.style.transform = 'scaleX(0)'; });
+    //     // start progress animation
+    //     const prog = el.querySelector('.progress');
+    //     requestAnimationFrame(()=>{ prog.style.transition = `transform ${duration}ms linear`; prog.style.transform = 'scaleX(0)'; });
 
-        // auto dismiss
-        const timer = setTimeout(()=>{ dismissNotification(id); }, duration);
+    //     // auto dismiss
+    //     const timer = setTimeout(()=>{ dismissNotification(id); }, duration);
 
-        // return an object to allow manual dismissal if needed
-        return {id, dismiss: ()=>{ clearTimeout(timer); dismissNotification(id); }};
-      };
+    //     // return an object to allow manual dismissal if needed
+    //     return {id, dismiss: ()=>{ clearTimeout(timer); dismissNotification(id); }};
+    //   };
 
-      window.dismissNotification = function(id){ const el = document.getElementById(id); if(!el) return; el.classList.add('opacity-0','scale-95'); setTimeout(()=>{ if(el?.parentNode) el.parentNode.removeChild(el); },300); };
+    //   window.dismissNotification = function(id){ const el = document.getElementById(id); if(!el) return; el.classList.add('opacity-0','scale-95'); setTimeout(()=>{ if(el?.parentNode) el.parentNode.removeChild(el); },300); };
 
-      // small helper demo bindings (you can remove when copying component)
-      document.getElementById('demo-success-ar').addEventListener('click',()=>{
-        showNotification({type:'success', messages:{ar:'تم تسجيل البائع بنجاح', en: 'Vendor registered successfully'}, duration:4500});
-      });
-      document.getElementById('demo-success-en').addEventListener('click',()=>{
-        // temporarily set doc lang to en for demo
-        document.documentElement.lang = document.documentElement.lang === 'en' ? 'en' : 'en';
-        showNotification({type:'success', messages:{ar:'تم تسجيل البائع بنجاح', en: 'Vendor registered successfully'}, duration:4500});
-      });
+    //   // small helper demo bindings (you can remove when copying component)
+    //   document.getElementById('demo-success-ar').addEventListener('click',()=>{
+    //     showNotification({type:'success', messages:{ar:'تم تسجيل البائع بنجاح', en: 'Vendor registered successfully'}, duration:4500});
+    //   });
+    //   document.getElementById('demo-success-en').addEventListener('click',()=>{
+    //     // temporarily set doc lang to en for demo
+    //     document.documentElement.lang = document.documentElement.lang === 'en' ? 'en' : 'en';
+    //     showNotification({type:'success', messages:{ar:'تم تسجيل البائع بنجاح', en: 'Vendor registered successfully'}, duration:4500});
+    //   });
 
-      document.getElementById('toggle-lang').addEventListener('click',()=>{
-        const cur = document.documentElement.lang === 'en' ? 'ar' : 'en';
-        document.documentElement.lang = cur;
-        document.documentElement.setAttribute('dir', cur === 'ar' ? 'rtl' : 'ltr');
-        setPlacement();
-        alert('Language: ' + cur);
-      });
+    //   document.getElementById('toggle-lang').addEventListener('click',()=>{
+    //     const cur = document.documentElement.lang === 'en' ? 'ar' : 'en';
+    //     document.documentElement.lang = cur;
+    //     document.documentElement.setAttribute('dir', cur === 'ar' ? 'rtl' : 'ltr');
+    //     setPlacement();
+    //     alert('Language: ' + cur);
+    //   });
 
-      document.getElementById('toggle-theme').addEventListener('click',()=>{
-        document.documentElement.classList.toggle('dark');
-      });
+    //   document.getElementById('toggle-theme').addEventListener('click',()=>{
+    //     document.documentElement.classList.toggle('dark');
+    //   });
 
-      // small fade-in keyframes
-      const style = document.createElement('style');
-      style.innerHTML = `@keyframes fade-in{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}} .animate-fade-in{animation:fade-in .18s ease-out}`;
-      document.head.appendChild(style);
+    //   // small fade-in keyframes
+    //   const style = document.createElement('style');
+    //   style.innerHTML = `@keyframes fade-in{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}} .animate-fade-in{animation:fade-in .18s ease-out}`;
+    //   document.head.appendChild(style);
 
-    })();
+    // })();

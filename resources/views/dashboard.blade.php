@@ -1,5 +1,6 @@
 <x-buyer.app>
 
+    <x-alert></x-alert>
     <div class="relative z-10">
         <main>
             <section class="relative overflow-hidden px-4 pb-14 pt-10 lg:pt-14">
@@ -35,11 +36,7 @@
                         </p>
 
                         <div class="mt-7 flex flex-wrap items-center gap-3">
-                            {{-- <a href="special-offers.html"
-                                class="rounded-2xl bg-homy-green-700 px-6 py-3 text-sm font-black text-white shadow-lg shadow-homy-green-700/25 transition hover:-translate-y-0.5 hover:bg-homy-green-600">
-                                <span class="lang-ar">ابدأ التسوق الآن</span>
-                                <span class="lang-en">Start Shopping</span>
-                            </a> --}}
+
                             {{-- <a href="compare.html"
                                 class="rounded-2xl border-2 border-homy-gold-400 bg-white px-6 py-3 text-sm font-black text-homy-green-700 transition hover:-translate-y-0.5 hover:bg-homy-gold-500 hover:text-homy-green-900 dark:bg-homy-gold-500 dark:text-homy-green-900">
                                 <span class="lang-ar">قارن المنتجات</span>
@@ -66,22 +63,13 @@
                                     alt="{{ $product->ar_name }}" class="h-36 w-full rounded-2xl object-cover">
                                 <h3 class="mt-3 font-black text-homy-green-700 dark:text-homy-gold-400">
                                     <span class="lang-ar">{{ $product->product_ar_name }}</span>
-                                    <span class="lang-en">Premium Makdous In Olive Oil</span>
+                                    <span class="lang-en">{{ $product->product_en_name }}</span>
                                 </h3>
-                                <p class="mt-1 text-sm text-slate-500 dark:text-slate-300">{{ $product->price }} ★</p>
+                                <p class="mt-1 text-sm text-slate-500 dark:text-slate-300">{{ $product->price }} <span
+                                        class="lang-ar">ليرة</span><span class="lang-en">SR.P</span></p>
                             </article>
                         @endforeach
-                        {{-- <article
-                            class="hero-badge rounded-3xl border border-homy-gold-200/80 bg-white/90 p-4 shadow-xl shadow-homy-gold-100/70 dark:border-homy-gold-600/35 dark:bg-[#153023]/90"
-                            style="animation-delay:0.5s">
-                            <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=900&q=80"
-                                alt="Jam" class="h-36 w-full rounded-2xl object-cover">
-                            <h3 class="mt-3 font-black text-homy-green-700 dark:text-homy-gold-400">
-                                <span class="lang-ar">مربى تين بطعم أصيل</span>
-                                <span class="lang-en">Authentic Fig Jam</span>
-                            </h3>
-                            <p class="mt-1 text-sm text-slate-500 dark:text-slate-300">4.8 ★</p>
-                        </article> --}}
+
 
                         <article
                             class="rounded-3xl border border-homy-gold-200/80 bg-homy-green-700 p-4 text-white shadow-xl sm:col-span-2 dark:border-homy-gold-600/35">
@@ -96,7 +84,7 @@
                                         <span class="lang-en">Pure Traditional Ghee 100%</span>
                                     </h3>
                                 </div>
-                                <a href="product-details.html"
+                                <a href="{{ route('buyer.show_product_details', 3) }}"
                                     class="rounded-xl bg-homy-gold-500 px-4 py-2 text-xs font-black text-homy-green-900 transition hover:bg-homy-gold-400">
                                     <span class="lang-ar">عرض التفاصيل</span>
                                     <span class="lang-en">View Details</span>
@@ -161,17 +149,17 @@
                                 <span class="lang-en">Core product cards aligned with your current style</span>
                             </p> -->
                         </div>
-                        {{-- <a href="special-offers.html"
+                        <a href="{{ route('buyer.all_products.show') }}"
                             class="text-sm font-black text-homy-green-700 underline decoration-homy-gold-500 decoration-2 underline-offset-4 dark:text-homy-gold-400">
                             <span class="lang-ar">عرض الكل</span>
                             <span class="lang-en">View All</span>
-                        </a> --}}
+                        </a>
                     </div>
 
                     <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                        @foreach ($products as $product)
+                        @foreach ($products->take(18) as $product)
                             <article class="homy-card p-3">
-                                <a href="product-details.html" class="relative block">
+                                <a class="relative block">
                                     <img src={{ $product->getFirstMediaUrl('product_images') }} alt="Fig Jam"
                                         class="h-44 w-full rounded-2xl object-cover">
                                     <span
@@ -185,6 +173,60 @@
                                         </button>
                                     </form>
                                 </a>
+
+
+                                {{-- ....................... --}}
+                                {{-- @auth
+    <div x-data="{ 
+            productId: {{ $product->id }},
+            /* التحقق من حالة المنتج باستخدام العلاقة المجهزة من الكنترولر */
+            isFav: {{ (auth()->check() && $product->productWishlists->contains(auth()->id())) ? 'true' : 'false' }},
+            loading: false 
+         }" 
+         class="inline-block">
+        
+        <button @click="
+                if(loading) return;
+                loading = true;
+                
+                // تغيير اللون فوراً لتجربة سريعة
+                isFav = !isFav; 
+                
+                // إرسال الطلب مع تمرير الـ CSRF Token في الـ Headers
+                axios.post('/wishlist/toggle/' + productId, {}, {
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    }
+                })
+                .then(response => {
+                    isFav = response.data.is_favorite;
+                })
+                .catch(error => {
+                    // في حال الفشل، نعيد الأيقونة لحالتها السابقة
+                    isFav = !isFav;
+                    alert('حدث خطأ ما، يرجى المحاولة لاحقاً');
+                    console.error(error); // هذا السطر سيطبع لك تفاصيل الخطأ بدقة في متصفحك (Console)
+                })
+                .finally(() => loading = false);
+            "
+            type="button"
+            class="p-2 rounded-full transition-all duration-300 transform active:scale-95 focus:outline-none"
+            :class="isFav ? 'text-homy-green-700 dark:text-homy-gold-400' : 'text-slate-400 dark:text-slate-500 hover:text-homy-green-600 dark:hover:text-homy-gold-200'">
+            
+            <i :class="isFav ? 'fa-solid fa-heart' : 'fa-regular fa-heart'" class="text-xl transition-transform duration-300"></i>
+            
+        </button>
+    </div>
+@else
+    <a href="{{ route('login') }}" class="p-2 text-slate-400 dark:text-slate-500 hover:text-homy-green-600 dark:hover:text-homy-gold-200 inline-block">
+        <i class="fa-regular fa-heart text-xl"></i>
+    </a>
+@endauth --}}
+
+
+                                {{-- ....................... --}}
+
+
                                 <div class="pt-3">
                                     <h3
                                         class="line-clamp-1 text-sm font-black text-homy-green-700 dark:text-homy-gold-400">
@@ -263,33 +305,31 @@
                         @endforeach
 
 
-                            <article class="homy-card p-4">
-                                <div class="grid gap-3 sm:grid-cols-[1.2fr_1fr]">
-                                    <img src="{{ asset('images/boxPhoto.jpg') }}"
-                                        alt="Assorted products"
-                                        class="h-44 w-full rounded-2xl object-cover sm:h-full">
-                                    <div
-                                        class="rounded-2xl bg-homy-green-700/95 p-4 text-white dark:bg-homy-green-700">
-                                        <p class="text-xs font-bold uppercase tracking-wider text-homy-gold-100">
-                                            <span class="lang-ar">صندوق العائلة</span>
-                                            <span class="lang-en">Family Box</span>
-                                        </p>
-                                        <h3 class="mt-1 text-lg font-black">
-                                            <span class="lang-ar">5 منتجات مختارة</span>
-                                            <span class="lang-en">5 Curated Products</span>
-                                        </h3>
-                                        <p class="mt-2 text-xs font-semibold text-white/80">
-                                            <span class="lang-ar">مربى + زعتر + مكدوس + سمن + مخلل</span>
-                                            <span class="lang-en">Jam + Zaatar + Makdous + Ghee + Pickles</span>
-                                        </p>
-                                        <a href="{{ route('buyer.addToCart',1) }}"
-                                            class="mt-4 inline-block rounded-xl bg-homy-gold-500 px-3 py-2 text-xs font-black text-homy-green-900">
-                                            <span class="lang-ar">أضف البوكس للسلة</span>
-                                            <span class="lang-en">Add Box To Cart</span>
-                                        </a>
-                                    </div>
+                        <article class="homy-card p-4">
+                            <div class="grid gap-3 sm:grid-cols-[1.2fr_1fr]">
+                                <img src="{{ asset('images/boxPhoto.jpg') }}" alt="Assorted products"
+                                    class="h-44 w-full rounded-2xl object-cover sm:h-full">
+                                <div class="rounded-2xl bg-homy-green-700/95 p-4 text-white dark:bg-homy-green-700">
+                                    <p class="text-xs font-bold uppercase tracking-wider text-homy-gold-100">
+                                        <span class="lang-ar">صندوق العائلة</span>
+                                        <span class="lang-en">Family Box</span>
+                                    </p>
+                                    <h3 class="mt-1 text-lg font-black">
+                                        <span class="lang-ar">5 منتجات مختارة</span>
+                                        <span class="lang-en">5 Curated Products</span>
+                                    </h3>
+                                    <p class="mt-2 text-xs font-semibold text-white/80">
+                                        <span class="lang-ar">مربى + زعتر + مكدوس + سمن + مخلل</span>
+                                        <span class="lang-en">Jam + Zaatar + Makdous + Ghee + Pickles</span>
+                                    </p>
+                                    <a href="{{ route('buyer.addToCart', 1) }}"
+                                        class="mt-4 inline-block rounded-xl bg-homy-gold-500 px-3 py-2 text-xs font-black text-homy-green-900">
+                                        <span class="lang-ar">أضف البوكس للسلة</span>
+                                        <span class="lang-en">Add Box To Cart</span>
+                                    </a>
                                 </div>
-                            </article>
+                            </div>
+                        </article>
                     </div>
                 </div>
             </section>
@@ -429,7 +469,7 @@
                                 <span class="lang-en">Pick products and compare price, rating and packaging fast</span>
                             </p>
                         </div>
-                        <a href="compare.html"
+                        <a href="{{ route('buyer.compare') }}"
                             class="rounded-xl bg-homy-green-700 px-4 py-2 text-xs font-black text-white transition hover:bg-homy-green-600">
                             <span class="lang-ar">افتح صفحة المقارنة</span>
                             <span class="lang-en">Open Comparison Page</span>

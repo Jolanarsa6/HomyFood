@@ -6,14 +6,21 @@ use App\Http\Controllers\Buyer\CheckoutController;
 use App\Http\Controllers\Buyer\ConnectUsController;
 use App\Http\Controllers\Buyer\ProductDetailsController;
 use App\Http\Controllers\Buyer\WishlistController;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 
-Route::group(['middleware' => ['guest:web,admin', 'lang.switch'], 'prefix' => 'buyer', 'as' => 'buyer.'], function () {
+Route::group(['middleware' => ['lang.switch'], 'prefix' => 'buyer', 'as' => 'buyer.'], function () {
 
+    Route::get('/showAll', [ProductDetailsController::class, 'showAll'])->name('all_products.show');
     Route::get('/about_us', function () {
         return view('buyer.about-us');
     })->name('about_us');
+
+    Route::get('/contact_us', [ConnectUsController::class, 'index'])->name('contact_us.show');
+    Route::post('/contact_us_send', [ConnectUsController::class, 'store'])->name('contact_us.store');
+
+    Route::get('/search', [BuyerDashboardController::class, 'search'])->name('search');
 });
 
 Route::group(['middleware' => ['auth:web', 'verified', 'role:buyer', 'lang.switch'], 'prefix' => 'buyer', 'as' => 'buyer.'], function () {
@@ -33,7 +40,12 @@ Route::group(['middleware' => ['auth:web', 'verified', 'role:buyer', 'lang.switc
 
     Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist');
     Route::get('/addToWishlist/{product_id}', [BuyerDashboardController::class, 'addToWishlist'])->name('addToWishlist');
+    Route::delete('/removeFromWishlist/{product_id}', [WishlistController::class, 'destroy'])->name('wishlist.remove');
 
+
+    // ................
+    Route::post('/wishlist/toggle/{productId}', [WishlistController::class, 'toggle'])->middleware('auth');
+    //.................
 
 
     // checkout
@@ -44,14 +56,7 @@ Route::group(['middleware' => ['auth:web', 'verified', 'role:buyer', 'lang.switc
     })->name('special-offers');
 
     Route::get('/compare', function () {
-        return view('buyer.compare');
+        $products = Product::all();
+        return view('buyer.compare', compact('products'));
     })->name('compare');
-
-    Route::get('/contact_us', [ConnectUsController::class,'index'])->name('contact_us.show');
-    Route::post('/contact_us_send', [ConnectUsController::class,'store'])->name('contact_us.store');
-  
-
 });
-
-    Route::get('/search', [BuyerDashboardController::class, 'search'])->name('buyer.search');
-

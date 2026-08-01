@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
-Route::group(['middleware' => ['guest:web,admin', 'lang.switch'], 'prefix' => 'seller', 'as' => 'seller.'], function () {
+    Route::group(['middleware' => ['lang.switch'], 'prefix' => 'seller', 'as' => 'seller.'], function () {
     Route::get('/join', [SellerJoinController::class, 'index'])->name('join');
 
 

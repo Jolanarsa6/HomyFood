@@ -30,7 +30,9 @@ class AppServiceProvider extends ServiceProvider
                 ? auth()->guard('admin')->user()->unreadNotifications // أو استعلامك المخصص
                 : collect();
 
-            $view->with('notifications', $notifications);
+            $view->with('notifications', $notifications)->with('admin', auth()->guard('admin')->user());
         });
+
+
     }
 }

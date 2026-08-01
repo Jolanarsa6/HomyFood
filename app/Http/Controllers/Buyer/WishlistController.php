@@ -15,4 +15,25 @@ class WishlistController extends Controller
         $products = $user->productWishlists;
         return view('buyer.wishlist',compact('products'));
     }
+       public function destroy(int $product_id)
+    {
+        $user= Auth::user();
+        $product = Product::findOrFail($product_id);
+        $user->productWishlists()->detach($product);
+        return redirect()->back()->with('success','the product deleted successfuly');
+    }
+
+       public function toggle($productId)
+    {
+        $user = Auth::user();
+        
+        $result = $user->productWishlists()->toggle($productId);
+
+        $isFavorite = in_array($productId, $result['attached']);
+
+        return response()->json([
+            'status' => 'success',
+            'is_favorite' => $isFavorite
+        ]);
+    }
 }

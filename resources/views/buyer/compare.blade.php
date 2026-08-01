@@ -135,18 +135,20 @@
                     class="fa-solid fa-xmark"></i></button>
         </div>
         <div class="grid gap-3 sm:grid-cols-2">
-            <button data-compare-pick data-name="مربى تين ملكي" data-price="45 SAR" data-rating="4.9 ★"
-                data-pack="زجاجي فاخر" data-desc="تين عضوي وسكر قليل"
-                data-img="https://images.unsplash.com/photo-1590779033100-9f60705a013d?auto=format&fit=crop&w=900&q=80"
+            @foreach($products as $product)
+            <button data-compare-pick data-name="{{ $product->product_ar_name }}" data-price={{ $product->price }} data-rating="4.9 ★"
+                data-pack="زجاجي فاخر" data-desc={{ $product->description }}
+                data-img={{ $product->getFirstMediaUrl("product_images") }}
                 class="flex items-center gap-3 rounded-2xl border border-homy-gold-200 bg-homy-gold-50/70 p-3 text-right dark:border-homy-gold-600/35 dark:bg-homy-green-700/20">
                 <img src="https://images.unsplash.com/photo-1590779033100-9f60705a013d?auto=format&fit=crop&w=900&q=80"
                     class="h-14 w-14 rounded-xl object-cover" alt="Fig jam">
                 <div>
-                    <p class="text-sm font-black text-homy-green-700 dark:text-homy-gold-400">مربى تين ملكي</p>
-                    <p class="text-xs font-semibold text-slate-500 dark:text-slate-300">45 SAR</p>
+                    <p class="text-sm font-black text-homy-green-700 dark:text-homy-gold-400">{{ $product->product_ar_name }}</p>
+                    <p class="text-xs font-semibold text-slate-500 dark:text-slate-300">{{ $product->price }}</p>
                 </div>
             </button>
-            <button data-compare-pick data-name="مكدوس جوز سوبر" data-price="58 SAR" data-rating="4.8 ★"
+            @endforeach
+            {{-- <button data-compare-pick data-name="مكدوس جوز سوبر" data-price="58 SAR" data-rating="4.8 ★"
                 data-pack="مرطبان محكم" data-desc="باذنجان محشي بالجوز والفليفلة"
                 data-img="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"
                 class="flex items-center gap-3 rounded-2xl border border-homy-gold-200 bg-homy-gold-50/70 p-3 text-right dark:border-homy-gold-600/35 dark:bg-homy-green-700/20">
@@ -178,7 +180,7 @@
                     <p class="text-sm font-black text-homy-green-700 dark:text-homy-gold-400">سمن بقري بلدي</p>
                     <p class="text-xs font-semibold text-slate-500 dark:text-slate-300">67 SAR</p>
                 </div>
-            </button>
+            </button> --}}
         </div>
     </div>
 </div>

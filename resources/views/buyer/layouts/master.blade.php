@@ -27,22 +27,20 @@
 </head>
 
 <body class="text-slate-800 dark:text-slate-100">
-    <div id="sidebarOverlay" class="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm lg:hidden"></div>
+    <x-buyer.aside />
 
-        <aside id="sidebar" class="offcanvas-sidebar fixed top-0 right-0 z-50 h-full w-80 max-w-[88vw] overflow-y-auto custom-scrollbar border-s border-homy-gold-200/60 bg-white/95 p-6 shadow-2xl shadow-black/25 backdrop-blur-xl dark:border-homy-gold-600/40 dark:bg-[#12211B]/95">
-          @include('buyer.layouts.sidebar')
-        </aside>
     <!-- Page Heading -->
     @include('buyer.layouts.header');
 
     <!-- Page Content -->
 
-        @yield('content')
+    @yield('content')
 
-        <!-- footer -->
-       <x-footer/>
-    
+    <!-- footer -->
+    <x-footer />
 
-    <script src="../assets/app.js"></script>
+
+    <script src="{{ asset('../../templates/assets/app.js') }}"></script>
 </body>
+
 </html>

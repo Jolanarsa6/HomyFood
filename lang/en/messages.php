@@ -14,4 +14,10 @@ return [
 'search_message' => 'Search for Zataar , Jam , Makdous ...',
 'mark_all_notify_as_read' => 'Mark all as read',
 "empty_notification" => "There isn't any new notifications!",
+"addSuccess" => "Product added successfully",
+"duplicate_item" => "Product is already exists",
+"add_to_wishlist" => "Product added to wishlist successfuly",
+"wishlist_error" => "This item is already in your wishlist.",
+"cart_success" => "Product added to cart successfuly",
+"cart_error" => "This item is already in your cart.",
 ];

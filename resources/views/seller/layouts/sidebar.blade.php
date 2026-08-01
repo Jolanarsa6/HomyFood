@@ -52,7 +52,7 @@
 
                 <hr>
           <a onclick="event.preventDefault(); document.getElementById('post-form').submit();"
-              class="{{ $inactive_link }} {{ request()->routeIs('seller.profile.show') ? $active_link : $inactive_link }}">
+              class="{{ $inactive_link }}">
               <i class="fa-solid fa-grid-2"></i>
               <span class="lang-ar">تسجيل الخروج</span><span class="lang-en">Logout</span></a>
 

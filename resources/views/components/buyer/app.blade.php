@@ -24,21 +24,21 @@
             document.documentElement.classList.remove('dark');
         }
     </script>
-
 </head>
+
 <body class="text-slate-800 dark:text-slate-100">
-     <div class="bg-homy-green-700 px-4 py-2 text-center text-xs font-bold tracking-wide text-white">
-            <span class="lang-ar">شحن مجاني لأول طلب</span>
-            <span class="lang-en">Free shipping on first order over 200 SAR - Code HOMY100</span>
-        </div>
- <x-buyer.aside/>
+    <div class="bg-homy-green-700 px-4 py-2 text-center text-xs font-bold tracking-wide text-white">
+        <span class="lang-ar">شحن مجاني لأول طلب</span>
+        <span class="lang-en">Free shipping on first order over 200 SAR - Code HOMY100</span>
+    </div>
+    <x-buyer.aside />
 
-<x-buyer.header/>
+    <x-buyer.header />
 
-{{ $slot }}
+    {{ $slot }}
 
 
 
-  @include('partials.footer');
+    <x-buyer.footer />
     <script src="{{ asset('templates/assets/app.js') }}"></script>
 </body>

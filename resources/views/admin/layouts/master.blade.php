@@ -29,24 +29,25 @@
 <body class="text-slate-800 dark:text-slate-100">
     <div id="sidebarOverlay" class="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm lg:hidden"></div>
 
-        <!-- Header -->
-        {{-- @include('admin.layouts.header') --}}
-<x-admin-header/>
-        <!-- Main Contents -->
+    <!-- Header -->
+    <x-admin-header />
+    <!-- Main Contents -->
     <main class="mx-auto grid w-full max-w-[1700px] gap-6 px-4 py-6 lg:grid-cols-[1fr_320px]">
 
-            @yield('content')
+        @yield('content')
 
-            
-            <aside id="sidebar" class="offcanvas-sidebar fixed right-0 top-0 z-50 h-full w-80 max-w-[90vw] overflow-y-auto border-s border-homy-gold-200/60 bg-white/95 p-5 shadow-2xl shadow-black/25 backdrop-blur-xl dark:border-homy-gold-600/35 dark:bg-[#12211B]/95 lg:sticky lg:top-24 lg:z-10 lg:h-[calc(100vh-7rem)] lg:w-auto lg:max-w-none lg:translate-x-0 lg:rounded-[1.5rem] lg:border lg:shadow-none">               
-                @include('admin.layouts.sidebar')
-            </aside>
+
+        <aside id="sidebar"
+            class="offcanvas-sidebar fixed right-0 top-0 z-50 h-full w-80 max-w-[90vw] overflow-y-auto border-s border-homy-gold-200/60 bg-white/95 p-5 shadow-2xl shadow-black/25 backdrop-blur-xl dark:border-homy-gold-600/35 dark:bg-[#12211B]/95 lg:sticky lg:top-24 lg:z-10 lg:h-[calc(100vh-7rem)] lg:w-auto lg:max-w-none lg:translate-x-0 lg:rounded-[1.5rem] lg:border lg:shadow-none">
+            @include('admin.layouts.sidebar')
+        </aside>
     </main>
-</div>
-        <!-- footer -->
-       <x-footer/>
-    
+    </div>
+    <!-- footer -->
+    <x-footer />
 
-    <script src="../assets/app.js"></script>
+
+    <script src="{{ asset('../../templates/assets/app.js') }}"></script>
 </body>
+
 </html>
