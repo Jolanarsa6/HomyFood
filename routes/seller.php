@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Seller\AnalyticsController;
 use App\Http\Controllers\Seller\ProductController;
 use App\Http\Controllers\Seller\ProfileController;
 use App\Http\Controllers\Seller\register\SellerRegisterStep1Controller;
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
-    Route::group(['middleware' => ['lang.switch'], 'prefix' => 'seller', 'as' => 'seller.'], function () {
+Route::group(['middleware' => ['lang.switch'], 'prefix' => 'seller', 'as' => 'seller.'], function () {
     Route::get('/join', [SellerJoinController::class, 'index'])->name('join');
 
 
@@ -58,6 +59,8 @@ Route::group(['middleware' => ['auth:web', 'verified', 'role:seller', 'check_app
     Route::get('/showProducts', [ProductController::class, 'showProduct'])->name('showProducts');
     Route::get('/showorders', [ProductController::class, 'showOrder'])->name('showOrders');
 
+    // analytics
+    Route::get('/showAnalytics', [AnalyticsController::class, 'index'])->name('analytics.show');
 
     // profile 
     Route::get('/showProfile', [ProfileController::class, 'edit'])->name('profile.show');

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Dashboard\HomeController as DashboardHomeController;
 use App\Http\Controllers\Buyer\BuyerDashboardController;
 use App\Http\Controllers\General\HomeController;
 use App\Http\Controllers\Notifi\ShowUnReadNotificationNumberController;
@@ -21,13 +22,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth','role.redirect','verified','lang.switch'])->name('dashboard');
 
 // The home page for super admin
-Route::get('/admin/dashboard', function () {
-    $admin = Auth::guard('admin')->user();
-       $payments = $admin->payments()->get();
-        $sellers = User::role('seller')->get();
-        $products = Product::all();
-    return view('admin.dashboard',compact('payments','sellers','products'));
-})->middleware(['auth:admin', 'verified','lang.switch'])->name('admin.dashboard');
+Route::get('/admin/dashboard',[DashboardHomeController::class,'index'])->middleware(['auth:admin', 'verified','lang.switch'])->name('admin.dashboard');
 
 // For the language translation proccess
 Route::get('/translation/{locale}',function($locale){

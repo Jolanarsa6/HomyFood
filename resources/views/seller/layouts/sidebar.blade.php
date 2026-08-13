@@ -21,6 +21,22 @@
               class="{{ $inactive_link }} {{ request()->routeIs('seller.addProduct') ? $active_link : $inactive_link }}"><i
                   class="fa-solid fa-plus"></i><span class="lang-ar">إضافة منتج</span><span class="lang-en">Add
                   Product</span></a>
+          <a href="{{ route('seller.analytics.show') }}"
+              class="{{ $inactive_link }} {{ request()->routeIs('seller.analytics.show') ? $active_link : $inactive_link }}"><i
+                  class="fa-solid fa-chart-simple"></i><span class="lang-ar">الإحصائيات</span><span
+                  class="lang-en">Analytics</span></a>
+                  <a href="products.html"
+                    class="flex items-center gap-3 rounded-xl px-3 py-2 text-slate-600 hover:bg-homy-gold-50 dark:text-slate-300 dark:hover:bg-homy-green-700/25"><i
+                        class="fa-solid fa-box-open"></i><span class="lang-ar">إدارة المنتجات</span><span
+                        class="lang-en">Products</span></a>
+                        <a href="messages.html"
+                    class="flex items-center gap-3 rounded-xl px-3 py-2 text-slate-600 hover:bg-homy-gold-50 dark:text-slate-300 dark:hover:bg-homy-green-700/25"><i
+                        class="fa-solid fa-comments"></i><span class="lang-ar">المراسلة والتعليقات</span><span
+                        class="lang-en">Messages</span></a>
+                        <a href="store-settings.html"
+                    class="flex items-center gap-3 rounded-xl px-3 py-2 text-slate-600 hover:bg-homy-gold-50 dark:text-slate-300 dark:hover:bg-homy-green-700/25"><i
+                        class="fa-solid fa-sliders"></i><span class="lang-ar">إعدادات المتجر</span><span
+                        class="lang-en">Store Settings</span></a>
           {{-- <a href="products.html"
                     class="flex items-center gap-3 rounded-xl px-3 py-2 text-slate-600 hover:bg-homy-gold-50 dark:text-slate-300 dark:hover:bg-homy-green-700/25"><i
                         class="fa-solid fa-box-open"></i><span class="lang-ar">إدارة المنتجات</span><span
@@ -37,10 +53,7 @@
                     class="flex items-center gap-3 rounded-xl px-3 py-2 text-slate-600 hover:bg-homy-gold-50 dark:text-slate-300 dark:hover:bg-homy-green-700/25"><i
                         class="fa-solid fa-comments"></i><span class="lang-ar">المراسلة والتعليقات</span><span
                         class="lang-en">Messages</span></a>
-                <a href="analytics.html"
-                    class="flex items-center gap-3 rounded-xl px-3 py-2 text-slate-600 hover:bg-homy-gold-50 dark:text-slate-300 dark:hover:bg-homy-green-700/25"><i
-                        class="fa-solid fa-chart-simple"></i><span class="lang-ar">الإحصائيات</span><span
-                        class="lang-en">Analytics</span></a>
+               
                 <a href="store-settings.html"
                     class="flex items-center gap-3 rounded-xl px-3 py-2 text-slate-600 hover:bg-homy-gold-50 dark:text-slate-300 dark:hover:bg-homy-green-700/25"><i
                         class="fa-solid fa-sliders"></i><span class="lang-ar">إعدادات المتجر</span><span
@@ -50,7 +63,7 @@
                   class="fa-solid fa-user-gear"></i><span class="lang-ar">الملف الشخصي</span><span
                   class="lang-en">Profile</span></a>
 
-                <hr>
+          <hr>
           <a onclick="event.preventDefault(); document.getElementById('post-form').submit();"
               class="{{ $inactive_link }}">
               <i class="fa-solid fa-grid-2"></i>
