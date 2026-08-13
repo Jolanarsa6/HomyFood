@@ -106,7 +106,7 @@
                             </tr>
                             <tr class="border-b border-homy-gold-100 dark:border-homy-gold-600/25">
                                 <td class="px-4 py-4 font-black text-homy-green-700 dark:text-homy-gold-400"><span
-                                        class="lang-ar">التعبئة</span><span class="lang-en">Packaging</span></td>
+                                        class="lang-ar">تاريخ الإنتهاء</span><span class="lang-en">Expiry Date</span></td>
                                 <td id="table-pack-1" class="px-4 py-4"></td>
                                 <td id="table-pack-2" class="px-4 py-4"></td>
                             </tr>
@@ -136,51 +136,18 @@
         </div>
         <div class="grid gap-3 sm:grid-cols-2">
             @foreach($products as $product)
-            <button data-compare-pick data-name="{{ $product->product_ar_name }}" data-price={{ $product->price }} data-rating="4.9 ★"
-                data-pack="زجاجي فاخر" data-desc={{ $product->description }}
+            <button data-compare-pick data-name="{{ $product->product_ar_name }}" data-price={{ $product->price }} data-rating="5 ★"
+                data-pack="{{ $product->expiry_date }}" data-desc={{ $product->description }}
                 data-img={{ $product->getFirstMediaUrl("product_images") }}
                 class="flex items-center gap-3 rounded-2xl border border-homy-gold-200 bg-homy-gold-50/70 p-3 text-right dark:border-homy-gold-600/35 dark:bg-homy-green-700/20">
-                <img src="https://images.unsplash.com/photo-1590779033100-9f60705a013d?auto=format&fit=crop&w=900&q=80"
-                    class="h-14 w-14 rounded-xl object-cover" alt="Fig jam">
+                <img src="{{ $product->getFirstMediaUrl("product_images") }}"
+                    class="h-14 w-14 rounded-xl object-cover" alt="Product Image">
                 <div>
                     <p class="text-sm font-black text-homy-green-700 dark:text-homy-gold-400">{{ $product->product_ar_name }}</p>
                     <p class="text-xs font-semibold text-slate-500 dark:text-slate-300">{{ $product->price }}</p>
                 </div>
             </button>
             @endforeach
-            {{-- <button data-compare-pick data-name="مكدوس جوز سوبر" data-price="58 SAR" data-rating="4.8 ★"
-                data-pack="مرطبان محكم" data-desc="باذنجان محشي بالجوز والفليفلة"
-                data-img="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"
-                class="flex items-center gap-3 rounded-2xl border border-homy-gold-200 bg-homy-gold-50/70 p-3 text-right dark:border-homy-gold-600/35 dark:bg-homy-green-700/20">
-                <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"
-                    class="h-14 w-14 rounded-xl object-cover" alt="Makdous">
-                <div>
-                    <p class="text-sm font-black text-homy-green-700 dark:text-homy-gold-400">مكدوس جوز سوبر</p>
-                    <p class="text-xs font-semibold text-slate-500 dark:text-slate-300">58 SAR</p>
-                </div>
-            </button>
-            <button data-compare-pick data-name="زعتر نابلسي فاخر" data-price="52 SAR" data-rating="4.7 ★"
-                data-pack="كيس ورقي مختوم" data-desc="خلطة زعتر مع سمسم بلدي"
-                data-img="https://images.unsplash.com/photo-1603048719539-9ecb4d6f0164?auto=format&fit=crop&w=900&q=80"
-                class="flex items-center gap-3 rounded-2xl border border-homy-gold-200 bg-homy-gold-50/70 p-3 text-right dark:border-homy-gold-600/35 dark:bg-homy-green-700/20">
-                <img src="https://images.unsplash.com/photo-1603048719539-9ecb4d6f0164?auto=format&fit=crop&w=900&q=80"
-                    class="h-14 w-14 rounded-xl object-cover" alt="Zaatar">
-                <div>
-                    <p class="text-sm font-black text-homy-green-700 dark:text-homy-gold-400">زعتر نابلسي فاخر</p>
-                    <p class="text-xs font-semibold text-slate-500 dark:text-slate-300">52 SAR</p>
-                </div>
-            </button>
-            <button data-compare-pick data-name="سمن بقري بلدي" data-price="67 SAR" data-rating="4.9 ★"
-                data-pack="علبة معدنية" data-desc="سمن طبيعي 100%"
-                data-img="https://images.unsplash.com/photo-1617093727343-374698b1b08d?auto=format&fit=crop&w=900&q=80"
-                class="flex items-center gap-3 rounded-2xl border border-homy-gold-200 bg-homy-gold-50/70 p-3 text-right dark:border-homy-gold-600/35 dark:bg-homy-green-700/20">
-                <img src="https://images.unsplash.com/photo-1617093727343-374698b1b08d?auto=format&fit=crop&w=900&q=80"
-                    class="h-14 w-14 rounded-xl object-cover" alt="Ghee">
-                <div>
-                    <p class="text-sm font-black text-homy-green-700 dark:text-homy-gold-400">سمن بقري بلدي</p>
-                    <p class="text-xs font-semibold text-slate-500 dark:text-slate-300">67 SAR</p>
-                </div>
-            </button> --}}
         </div>
     </div>
 </div>

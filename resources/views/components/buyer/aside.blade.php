@@ -38,8 +38,8 @@
                          <span>{{ __('partials/aside.special_offers') }}</span>
                      </a>
                      @auth
-                     <a href="{{ route('buyer.compare') }}"
-                         class="{{ $inactive_link }} {{ request()->routeIs('buyer.compare') ? $active_link : $inactive_link }}">
+                         <a href="{{ route('buyer.compare') }}"
+                             class="{{ $inactive_link }} {{ request()->routeIs('buyer.compare') ? $active_link : $inactive_link }}">
                              <i class="fa-solid fa-scale-balanced"></i>
                              <span>{{ __('partials/aside.compare_product') }}</span>
                          </a>
@@ -55,11 +55,18 @@
                          <span>{{ __('partials/aside.connect_us') }}</span>
                      </a>
                      @auth
-                          <a href="{{ route('seller.join') }}"
-                         class="{{ $inactive_link }} {{ request()->routeIs('seller.join') ? $active_link : $inactive_link }}">
+                         <a href="{{ route('seller.join') }}"
+                             class="{{ $inactive_link }} {{ request()->routeIs('seller.join') ? $active_link : $inactive_link }}">
                              <i class="fa-solid fa-store"></i>
-                         <span>{{ __('partials/aside.join_us_seller') }}</span>
-                     </a>
+                             <span>{{ __('partials/aside.join_us_seller') }}</span>
+                         </a>
+                         <a href="{{ route('logout') }}" class="block lg-flex"
+                             class="{{ $inactive_link }} {{ request()->routeIs('logout') ? $active_link : $inactive_link }}">
+<form action="{{ route('logout') }}" method="POST">
+        @csrf
+        <button type="submit">{{ __('Log Out') }}</button>
+    </form>
+            </a>
                      @endauth
                  </nav>
 

@@ -23,8 +23,8 @@
 
                         <h1
                             class="text-3xl font-black leading-tight text-homy-green-700 dark:text-homy-gold-400 sm:text-4xl lg:text-5xl">
-                            <span class="lang-ar">مذاق البيت الذي يخفف الغربة ويقربك من أهلك</span>
-                            <span class="lang-en">A Home Taste That Brings You Closer To Family</span>
+                            <span class="lang-ar">منتجات من قلب الجبال إلى هاتفك</span>
+                            <span class="lang-en">Heart Of Mountains To Your Phone</span>
                         </h1>
 
                         <p
@@ -352,42 +352,56 @@
                         </div>
 
                         <div class="grid gap-4 sm:grid-cols-3 lg:grid-cols-6">
-                            <button
-                                class="js-filter-item active mx-auto flex h-28 w-28 flex-col items-center justify-center rounded-full border border-homy-gold-300 bg-white text-xs font-black text-homy-green-700 shadow-md transition hover:-translate-y-1 dark:border-homy-gold-600/40 dark:bg-[#173326] dark:text-homy-gold-300">
-                                <i class="fa-solid fa-jar mb-2 text-lg"></i>
-                                <span class="lang-ar">مربى</span>
-                                <span class="lang-en">Jam</span>
-                            </button>
-                            <button
-                                class="js-filter-item mx-auto flex h-28 w-28 flex-col items-center justify-center rounded-full border border-homy-gold-300 bg-white text-xs font-black text-homy-green-700 shadow-md transition hover:-translate-y-1 dark:border-homy-gold-600/40 dark:bg-[#173326] dark:text-homy-gold-300">
-                                <i class="fa-solid fa-bowl-food mb-2 text-lg"></i>
-                                <span class="lang-ar">مكدوس</span>
-                                <span class="lang-en">Makdous</span>
-                            </button>
-                            <button
-                                class="js-filter-item mx-auto flex h-28 w-28 flex-col items-center justify-center rounded-full border border-homy-gold-300 bg-white text-xs font-black text-homy-green-700 shadow-md transition hover:-translate-y-1 dark:border-homy-gold-600/40 dark:bg-[#173326] dark:text-homy-gold-300">
-                                <i class="fa-solid fa-leaf mb-2 text-lg"></i>
-                                <span class="lang-ar">زعتر</span>
-                                <span class="lang-en">Zaatar</span>
-                            </button>
-                            <button
-                                class="js-filter-item mx-auto flex h-28 w-28 flex-col items-center justify-center rounded-full border border-homy-gold-300 bg-white text-xs font-black text-homy-green-700 shadow-md transition hover:-translate-y-1 dark:border-homy-gold-600/40 dark:bg-[#173326] dark:text-homy-gold-300">
-                                <i class="fa-solid fa-cow mb-2 text-lg"></i>
-                                <span class="lang-ar">سمن</span>
-                                <span class="lang-en">Ghee</span>
-                            </button>
-                            <button
-                                class="js-filter-item mx-auto flex h-28 w-28 flex-col items-center justify-center rounded-full border border-homy-gold-300 bg-white text-xs font-black text-homy-green-700 shadow-md transition hover:-translate-y-1 dark:border-homy-gold-600/40 dark:bg-[#173326] dark:text-homy-gold-300">
-                                <i class="fa-solid fa-cheese mb-2 text-lg"></i>
-                                <span class="lang-ar">ألبان</span>
-                                <span class="lang-en">Dairy</span>
-                            </button>
-                            <button
-                                class="js-filter-item mx-auto flex h-28 w-28 flex-col items-center justify-center rounded-full border border-homy-gold-300 bg-white text-xs font-black text-homy-green-700 shadow-md transition hover:-translate-y-1 dark:border-homy-gold-600/40 dark:bg-[#173326] dark:text-homy-gold-300">
-                                <i class="fa-solid fa-pepper-hot mb-2 text-lg"></i>
-                                <span class="lang-ar">مخللات</span>
-                                <span class="lang-en">Pickles</span>
-                            </button>
+                            <a href="{{ route('buyer.filter_product', 'Jam') }}">
+                                <button
+                                    class="js-filter-item active mx-auto flex h-28 w-28 flex-col items-center justify-center rounded-full border border-homy-gold-300 bg-white text-xs font-black text-homy-green-700 shadow-md transition hover:-translate-y-1 dark:border-homy-gold-600/40 dark:bg-[#173326] dark:text-homy-gold-300">
+                                    <i class="fa-solid fa-jar mb-2 text-lg"></i>
+                                    <span class="lang-ar">مربى</span>
+                                    <span class="lang-en">Jam</span>
+                                </button>
+                            </a>
+                            <a href="{{ route('buyer.filter_product', 'Makdous') }}">
+                                <button
+                                    class="js-filter-item mx-auto flex h-28 w-28 flex-col items-center justify-center rounded-full border border-homy-gold-300 bg-white text-xs font-black text-homy-green-700 shadow-md transition hover:-translate-y-1 dark:border-homy-gold-600/40 dark:bg-[#173326] dark:text-homy-gold-300">
+                                    <i class="fa-solid fa-bowl-food mb-2 text-lg"></i>
+                                    <span class="lang-ar">مكدوس</span>
+                                    <span class="lang-en">Makdous</span>
+                                </button>
+                            </a>
+
+                            <a href="{{ route('buyer.filter_product', 'Zaatar') }}">
+                                <button
+                                    class="js-filter-item mx-auto flex h-28 w-28 flex-col items-center justify-center rounded-full border border-homy-gold-300 bg-white text-xs font-black text-homy-green-700 shadow-md transition hover:-translate-y-1 dark:border-homy-gold-600/40 dark:bg-[#173326] dark:text-homy-gold-300">
+                                    <i class="fa-solid fa-leaf mb-2 text-lg"></i>
+                                    <span class="lang-ar">زعتر</span>
+                                    <span class="lang-en">Zaatar</span>
+                                </button>
+                            </a>
+
+                            <a href="{{ route('buyer.filter_product', 'Ghee') }}">
+                                <button
+                                    class="js-filter-item mx-auto flex h-28 w-28 flex-col items-center justify-center rounded-full border border-homy-gold-300 bg-white text-xs font-black text-homy-green-700 shadow-md transition hover:-translate-y-1 dark:border-homy-gold-600/40 dark:bg-[#173326] dark:text-homy-gold-300">
+                                    <i class="fa-solid fa-cow mb-2 text-lg"></i>
+                                    <span class="lang-ar">سمن</span>
+                                    <span class="lang-en">Ghee</span>
+                                </button>
+                                <a href="{{ route('buyer.filter_product', 'Dairy') }}">
+                                    <button
+                                        class="js-filter-item mx-auto flex h-28 w-28 flex-col items-center justify-center rounded-full border border-homy-gold-300 bg-white text-xs font-black text-homy-green-700 shadow-md transition hover:-translate-y-1 dark:border-homy-gold-600/40 dark:bg-[#173326] dark:text-homy-gold-300">
+                                        <i class="fa-solid fa-cheese mb-2 text-lg"></i>
+                                        <span class="lang-ar">ألبان</span>
+                                        <span class="lang-en">Dairy</span>
+                                    </button>
+                                </a>
+
+                                <a href="{{ route('buyer.filter_product', 'Pickles') }}">
+                                    <button
+                                        class="js-filter-item mx-auto flex h-28 w-28 flex-col items-center justify-center rounded-full border border-homy-gold-300 bg-white text-xs font-black text-homy-green-700 shadow-md transition hover:-translate-y-1 dark:border-homy-gold-600/40 dark:bg-[#173326] dark:text-homy-gold-300">
+                                        <i class="fa-solid fa-pepper-hot mb-2 text-lg"></i>
+                                        <span class="lang-ar">مخللات</span>
+                                        <span class="lang-en">Pickles</span>
+                                    </button>
+                                </a>
                         </div>
                     </div>
                 </div>

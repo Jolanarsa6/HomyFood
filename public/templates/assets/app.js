@@ -88,23 +88,93 @@
         });
     }
 
-    function wireQuantity() {
-        const rows = document.querySelectorAll("[data-qty]");
+
+  function wireQuantity() {
+    const rows = document.querySelectorAll("[data-qty]");
+    const grandTotalDisplay = document.getElementById("grand-total-display");
+
+    // Helper function that scans ALL items and updates the grand total
+    function calculateGrandTotal() {
+        let entireSum = 0;
+
         rows.forEach((row) => {
             const input = row.querySelector("input");
-            const minus = row.querySelector('[data-role="minus"]');
-            const plus = row.querySelector('[data-role="plus"]');
-            if (!input || !minus || !plus) return;
-            minus.addEventListener("click", () => {
-                const current = Number(input.value || "1");
-                input.value = String(Math.max(1, current - 1));
-            });
-            plus.addEventListener("click", () => {
-                const current = Number(input.value || "1");
-                input.value = String(current + 1);
-            });
+            const basePrice = parseFloat(row.dataset.price) || 0;
+            const currentQty = parseInt(input.value || "1");
+
+            // Multiply this specific product's price by its quantity
+            entireSum += currentQty * basePrice;
         });
+
+        // Update the global total price indicator on the UI
+        if (grandTotalDisplay) {
+            grandTotalDisplay.textContent = entireSum.toFixed(2);
+        }
     }
+
+    // Set up click interactions for all looped products
+    rows.forEach((row) => {
+        const input = row.querySelector("input");
+        const minus = row.querySelector('[data-role="minus"]');
+        const plus = row.querySelector('[data-role="plus"]');
+        
+        if (!input || !minus || !plus) return;
+
+        minus.addEventListener("click", () => {
+            const current = Number(input.value || "1");
+            const nextValue = Math.max(1, current - 1);
+            input.value = String(nextValue);
+            
+            calculateGrandTotal(); // Recalculate everything live
+        });
+
+        plus.addEventListener("click", () => {
+            const current = Number(input.value || "1");
+            const nextValue = current + 1;
+            input.value = String(nextValue);
+            
+            calculateGrandTotal(); // Recalculate everything live
+        });
+    });
+}
+
+function refreshGrandTotal() {
+    let cumulativeSum = 0;
+
+    // 1. Safe Calculation Loop
+    productRows.forEach(row => {
+        // Look for your input (handles both '.qty-input-field' or generic 'input')
+        const inputField = row.querySelector('.qty-input-field') || row.querySelector('input');
+        const unitPrice = parseFloat(row.getAttribute('data-price')) || 0;
+        
+        // SAFE: If the input or its value doesn't exist yet, default to 1
+        const absoluteQty = inputField ? (parseInt(inputField.value) || 1) : 1;
+
+        cumulativeSum += (absoluteQty * unitPrice);
+    });
+
+    // 2. Safe Discount Extraction
+    const totalContainer = document.getElementById('total-container');
+    // If you don't want to use an HTML attribute, you can hardcode your discount here directly (e.g., 10.00)
+    const discount = totalContainer ? (parseFloat(totalContainer.getAttribute('data-discount')) || 0) : 10.00;
+
+    // 3. Math (Stays the same)
+    let finalTotal = Math.max(0, cumulativeSum - discount);
+
+    // 4. Safe UI updates (Checks if targets exist before writing to them)
+    const subtotalTarget = document.getElementById('blade-subtotal');
+    if (subtotalTarget) {
+        subtotalTarget.textContent = cumulativeSum.toFixed(2);
+    }
+
+    if (grandTotalTarget) {
+        grandTotalTarget.textContent = finalTotal.toFixed(2);
+    }
+}
+
+
+
+
 
     function wirePaymentModal() {
         const openers = document.querySelectorAll('[data-open="paymentModal"]');

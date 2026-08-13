@@ -20,4 +20,7 @@ return [
 "wishlist_error" => "This item is already in your wishlist.",
 "cart_success" => "Product added to cart successfuly",
 "cart_error" => "This item is already in your cart.",
+"comment_success" => "The comment has published successfully",
+"comment_success_msg" => "You can add more comments!",
+"delete_from_wishlist" => "The product removed successfully",
 ];

@@ -45,33 +45,33 @@
                      aria-label="Wishlist">
                      <i class="fa-regular fa-heart"></i>
                      <span
-                         class="absolute -top-1 -start-1 min-w-5 rounded-full bg-homy-gold-500 px-1 text-center text-[11px] font-black text-homy-green-900">4</span>
+                         class="absolute -top-1 -start-1 min-w-5 rounded-full bg-homy-gold-500 px-1 text-center text-[11px] font-black text-homy-green-900">{{ $wishlistNum }}</span>
                  </a>
                  <a href="{{ route('buyer.show_cart') }}"
                      class="relative grid h-11 w-11 place-items-center rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 shadow-sm transition hover:bg-homy-gold-50 dark:border-homy-gold-600/40 dark:bg-homy-green-700/40 dark:text-homy-gold-300"
                      aria-label="Cart">
                      <i class="fa-solid fa-bag-shopping"></i>
                      <span
-                         class="absolute -top-1 -start-1 min-w-5 rounded-full bg-homy-gold-500 px-1 text-center text-[11px] font-black text-homy-green-900">3</span>
+                         class="absolute -top-1 -start-1 min-w-5 rounded-full bg-homy-gold-500 px-1 text-center text-[11px] font-black text-homy-green-900">{{ $cartNum }}</span>
                  </a>
              @endauth
 
              @guest
                  <a href="{{ route('login') }}">
-                     <x-primary-button>
+                     <x-primary-button class="hidden lg:block">
                          <i class="far fa-user text-lg"></i>
                          <span>{{ __('actions.login') }}</span>
                      </x-primary-button>
                  </a>
 
-                 <a href="{{ route('seller.join') }}"
-                     class="rounded-2xl border-2 border-homy-gold-400 bg-homy-gold-500 px-4 py-2.5 text-sm font-black text-homy-green-900 transition hover:bg-homy-gold-400 xl:block">
+                 <a href="{{ route('seller.join') }}" 
+                     class="hidden lg:block rounded-2xl border-2 border-homy-gold-400 bg-homy-gold-500 px-4 py-2.5 text-sm font-black text-homy-green-900 transition hover:bg-homy-gold-400 xl:block">
                      <span>{{ __('partials/aside.join_us_seller') }}</span>
                  </a>
              @endguest
 
              @auth
-                 <x-logout class="block lg:hidden" />
+                 <x-logout class="hidden lg:block" />
              @endauth
          </div>
      </div>

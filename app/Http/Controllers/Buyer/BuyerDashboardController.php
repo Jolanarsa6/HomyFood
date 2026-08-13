@@ -29,6 +29,7 @@ class BuyerDashboardController extends Controller
             $user = Auth::user();
             $product = Product::findOrFail($product_id);
             $user->productCart()->attach($product);
+            
             return redirect()->back()->with('success',__('messages.cart_success'));
         } catch (QueryException $e) {
             if ($e->getCode() === '23000' || str_contains($e->getMessage(), 'Duplicate entry')) {
@@ -72,6 +73,14 @@ class BuyerDashboardController extends Controller
                 ->orWhere('palce_of_origin', 'LIKE', "%$request->search%");
         })->get();
 
+        return view('buyer.searchResult', compact('products'));
+    }
+
+    public function filter_product($product_name)
+    {
+        $products = Product::whereHas('categories', function ($query) use ($product_name) {
+            $query->where('name', $product_name); 
+        })->with('categories')->get();
         return view('buyer.searchResult', compact('products'));
     }
 }

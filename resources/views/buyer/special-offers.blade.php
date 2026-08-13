@@ -39,7 +39,7 @@
                         </div>
                     </article>
 
-                    <article class="homy-card overflow-hidden p-4">
+                    {{-- <article class="homy-card overflow-hidden p-4">
                         <div class="relative">
                             <img src="https://images.unsplash.com/photo-1590779033100-9f60705a013d?auto=format&fit=crop&w=1000&q=80" alt="Offer" class="h-52 w-full rounded-2xl object-cover">
                             <span class="absolute start-2 top-2 rounded-full bg-red-500 px-3 py-1 text-xs font-black text-white">-30%</span>
@@ -69,7 +69,7 @@
                             <a href="product-details.html" class="rounded-xl border border-homy-gold-300 px-3 py-2 text-xs font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:text-homy-gold-300"><span class="lang-ar">التفاصيل</span><span class="lang-en">Details</span></a>
                             <a href="checkout.html" class="rounded-xl bg-homy-green-700 px-3 py-2 text-xs font-black text-white"><span class="lang-ar">شراء فوري</span><span class="lang-en">Buy Now</span></a>
                         </div>
-                    </article>
+                    </article> --}}
                 </div>
 
                 <section class="mt-12 rounded-[2rem] border border-homy-gold-200 bg-white/85 p-6 dark:border-homy-gold-600/30 dark:bg-[#12211B]/85">

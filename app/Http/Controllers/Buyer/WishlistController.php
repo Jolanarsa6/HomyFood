@@ -20,7 +20,7 @@ class WishlistController extends Controller
         $user= Auth::user();
         $product = Product::findOrFail($product_id);
         $user->productWishlists()->detach($product);
-        return redirect()->back()->with('success','the product deleted successfuly');
+        return redirect()->back()->with('remove_success', __('messages.delete_from_wishlist'));
     }
 
        public function toggle($productId)

@@ -130,6 +130,6 @@ return [
     'admin_login' => 'Admin Login',
     'welcom_ser' => 'Welcome Ser',
     'remove' => 'Remove',
-
+    'Logout' => 'Logout',
 
 ];

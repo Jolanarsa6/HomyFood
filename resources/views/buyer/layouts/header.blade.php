@@ -21,4 +21,5 @@
              </a>
          </div>
      </div>
+     <x-alert></x-alert>
  </header>

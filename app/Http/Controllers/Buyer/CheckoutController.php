@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Buyer;
 
 use App\Http\Controllers\Controller;
+use App\Models\Packaging;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class CheckoutController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
         $product = Auth::user()->productCart()->get();
         $no = 1000;

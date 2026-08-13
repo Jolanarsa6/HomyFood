@@ -12,10 +12,10 @@
                         <span>{{ __('partials/footer.quick_link') }}</span>
                     </h4>
                     <div class="mt-3 grid gap-2 text-sm font-semibold text-slate-600 dark:text-slate-300">
-                        <a href="special-offers.html">Special Offers</a>
-                        <a href="compare.html">Compare</a>
-                        <a href="wishlist.html">Wishlist</a>
-                        <a href="cart.html">Cart</a>
+                        <a href="{{ route('buyer.special-offers') }}">Special Offers</a>
+                        <a href="{{ route('buyer.compare') }}">Compare</a>
+                        <a href="{{ route('buyer.wishlist') }}">Wishlist</a>
+                        <a href="{{ route('buyer.show_cart') }}">Cart</a>
                     </div>
                 </div>
                 <div>
@@ -23,10 +23,10 @@
                         <span>{{ __('partials/footer.info') }}</span>
                     </h4>
                     <div class="mt-3 grid gap-2 text-sm font-semibold text-slate-600 dark:text-slate-300">
-                        <a href="about-us.html">About Us</a>
-                        <a href="contact-us.html">Contact Us</a>
-                        <a href="login.html">Login</a>
-                        <a href="register.html">Register</a>
+                        <a href="{{ route('buyer.about_us') }}">About Us</a>
+                        <a href="{{ route('buyer.contact_us.show') }}">Contact Us</a>
+                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('buyer.register') }}">Register</a>
                     </div>
                 </div>
                 <div>

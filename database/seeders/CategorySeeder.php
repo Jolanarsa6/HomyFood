@@ -16,23 +16,27 @@ class CategorySeeder extends Seeder
         $categories =[ 
             [
                 'admin_id' => '1',
-                'name' => 'Honey',
+                'name' => 'Jam',
             ],
             [
                 'admin_id' => '1',
-                'name' => 'Nannies',
+                'name' => 'Makdous',
             ],
             [
                 'admin_id' => '1',
-                'name' => 'Thyme',
+                'name' => 'Zaatar',
             ],
             [
                 'admin_id' => '2',
-                'name' => 'Oils',
+                'name' => 'Ghee',
             ],
             [
                 'admin_id' => '2',
-                'name' => 'Mortar',
+                'name' => 'Dairy',
+            ],
+            [
+                'admin_id' => '2',
+                'name' => 'Pickles',
             ]
         ];
 

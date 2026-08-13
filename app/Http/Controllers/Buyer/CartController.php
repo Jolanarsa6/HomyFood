@@ -21,6 +21,6 @@ class CartController extends Controller
         $user= Auth::user();
         $product = Product::findOrFail($product_id);
         $user->productCart()->detach($product);
-        return redirect()->back()->with('deleteSuccess','the product deleted successfuly');
+        return redirect()->back()->with('remove_success', __('messages.delete_from_wishlist'));
     }
 }

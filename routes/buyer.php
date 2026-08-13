@@ -6,7 +6,10 @@ use App\Http\Controllers\Buyer\CheckoutController;
 use App\Http\Controllers\Buyer\ConnectUsController;
 use App\Http\Controllers\Buyer\ProductDetailsController;
 use App\Http\Controllers\Buyer\WishlistController;
+use App\Http\Controllers\CommentController;
+use App\Models\Cart;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 
@@ -14,7 +17,9 @@ Route::group(['middleware' => ['lang.switch'], 'prefix' => 'buyer', 'as' => 'buy
 
     Route::get('/showAll', [ProductDetailsController::class, 'showAll'])->name('all_products.show');
     Route::get('/about_us', function () {
-        return view('buyer.about-us');
+        $sellers = User::role("seller")->get();
+        $monthlyDemand = count(Cart::whereMonth('created_at', now()->month)->get());
+        return view('buyer.about-us',compact('sellers','monthlyDemand'));
     })->name('about_us');
 
     Route::get('/contact_us', [ConnectUsController::class, 'index'])->name('contact_us.show');
@@ -34,7 +39,6 @@ Route::group(['middleware' => ['auth:web', 'verified', 'role:buyer', 'lang.switc
     Route::get('/showCart', [CartController::class, 'index'])->name('show_cart');
     Route::get('/addToCart/{product_id}', [BuyerDashboardController::class, 'addToCart'])->name('addToCart');
     Route::delete('/removeFromCart/{product_id}', [CartController::class, 'destroy'])->name('product_cart.remove');
-    Route::delete('/cartCheckout', [CartController::class, 'cartCheckout'])->name('cartCheckout');
 
 
 
@@ -59,4 +63,10 @@ Route::group(['middleware' => ['auth:web', 'verified', 'role:buyer', 'lang.switc
         $products = Product::all();
         return view('buyer.compare', compact('products'));
     })->name('compare');
+
+    // filters 
+    Route::get('/filter_product/{product_name}',[BuyerDashboardController::class,'filter_product'])->name('filter_product');
+
+    // comments
+    Route::post('/comment/store',[CommentController::class,'store'])->name('comment.store');
 });

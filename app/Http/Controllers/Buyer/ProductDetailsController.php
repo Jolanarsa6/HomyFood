@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Buyer;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -10,13 +11,15 @@ class ProductDetailsController extends Controller
 {
     public function index(int $product_id)
     {
+        $comments = Comment::all();
         $product = Product::findOrFail($product_id);
-        return view('buyer/product_details',compact('product'));
+        return view('buyer/product_details',compact('product','comments'));
     }
 
     public function showAll()
     {
         $products = Product::all();
-        return view('buyer/searchResult',compact('products'));
+        return view('buyer.searchResult',compact('products'));
     }
+
 }

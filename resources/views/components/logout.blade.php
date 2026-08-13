@@ -1,4 +1,4 @@
-<div class="mx-2 auth-buttons flex items-center gap-3 auth-buttons">
+<div class="mx-2 auth-buttons items-center gap-3 auth-buttons hidden lg:block">
     <x-secondary-button onclick="event.preventDefault(); document.getElementById('post-form').submit();">
         {{ __('Log Out') }}
     </x-secondary-button>
