@@ -32,7 +32,7 @@
                             <span class="lang-ar">عرض المكدوس الذهبي</span>
                             <span class="lang-en">Golden Makdous Deal</span>
                         </h2>
-                        <p class="mt-2 text-sm font-semibold text-slate-500 dark:text-slate-300">88 SAR بدل 117 SAR</p>
+                        <p class="mt-2 text-sm font-semibold text-slate-500 dark:text-slate-300">88 SYP بدل 117 SYP</p>
                         <div class="mt-4 flex gap-2">
                             <a href="product-details.html" class="rounded-xl border border-homy-gold-300 px-3 py-2 text-xs font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:text-homy-gold-300"><span class="lang-ar">التفاصيل</span><span class="lang-en">Details</span></a>
                             <a href="checkout.html" class="rounded-xl bg-homy-green-700 px-3 py-2 text-xs font-black text-white"><span class="lang-ar">شراء فوري</span><span class="lang-en">Buy Now</span></a>
@@ -48,7 +48,7 @@
                             <span class="lang-ar">باقـة المربيات الثلاثية</span>
                             <span class="lang-en">Triple Jam Bundle</span>
                         </h2>
-                        <p class="mt-2 text-sm font-semibold text-slate-500 dark:text-slate-300">72 SAR بدل 103 SAR</p>
+                        <p class="mt-2 text-sm font-semibold text-slate-500 dark:text-slate-300">72 SYP بدل 103 SYP</p>
                         <div class="mt-4 flex gap-2">
                             <a href="product-details.html" class="rounded-xl border border-homy-gold-300 px-3 py-2 text-xs font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:text-homy-gold-300"><span class="lang-ar">التفاصيل</span><span class="lang-en">Details</span></a>
                             <a href="checkout.html" class="rounded-xl bg-homy-green-700 px-3 py-2 text-xs font-black text-white"><span class="lang-ar">شراء فوري</span><span class="lang-en">Buy Now</span></a>
@@ -64,7 +64,7 @@
                             <span class="lang-ar">عرض السمن البلدي</span>
                             <span class="lang-en">Traditional Ghee Offer</span>
                         </h2>
-                        <p class="mt-2 text-sm font-semibold text-slate-500 dark:text-slate-300">55 SAR بدل 67 SAR</p>
+                        <p class="mt-2 text-sm font-semibold text-slate-500 dark:text-slate-300">55 SYP بدل 67 SYP</p>
                         <div class="mt-4 flex gap-2">
                             <a href="product-details.html" class="rounded-xl border border-homy-gold-300 px-3 py-2 text-xs font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:text-homy-gold-300"><span class="lang-ar">التفاصيل</span><span class="lang-en">Details</span></a>
                             <a href="checkout.html" class="rounded-xl bg-homy-green-700 px-3 py-2 text-xs font-black text-white"><span class="lang-ar">شراء فوري</span><span class="lang-en">Buy Now</span></a>

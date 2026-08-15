@@ -28,22 +28,22 @@
             <div class="mt-4 grid gap-4 sm:grid-cols-2">
                 <div><label class="mb-2 block text-sm font-black text-homy-green-700 dark:text-homy-gold-400"><span
                             class="lang-ar">الاسم الكامل</span><span class="lang-en">Full Name</span></label><input
-                        type="text" value="Sara Ahmad"
+                        type="text" value="Jolanar Saoud"
                         class="w-full rounded-xl border border-homy-gold-200 px-4 py-3 text-sm font-semibold dark:border-homy-gold-600/35 dark:bg-[#173326]">
                 </div>
                 <div><label class="mb-2 block text-sm font-black text-homy-green-700 dark:text-homy-gold-400"><span
                             class="lang-ar">البريد الإلكتروني</span><span class="lang-en">Email</span></label><input
-                        type="email" value="sara@homyfood.com"
+                        type="email" value="Jolanar@homyfood.com"
                         class="w-full rounded-xl border border-homy-gold-200 px-4 py-3 text-sm font-semibold dark:border-homy-gold-600/35 dark:bg-[#173326]">
                 </div>
                 <div><label class="mb-2 block text-sm font-black text-homy-green-700 dark:text-homy-gold-400"><span
                             class="lang-ar">رقم الجوال</span><span class="lang-en">Phone</span></label><input type="text"
-                        value="+966550001122"
+                        value="0984756374"
                         class="w-full rounded-xl border border-homy-gold-200 px-4 py-3 text-sm font-semibold dark:border-homy-gold-600/35 dark:bg-[#173326]">
                 </div>
                 <div><label class="mb-2 block text-sm font-black text-homy-green-700 dark:text-homy-gold-400"><span
                             class="lang-ar">المدينة</span><span class="lang-en">City</span></label><input type="text"
-                        value="Riyadh"
+                        value="Tartous"
                         class="w-full rounded-xl border border-homy-gold-200 px-4 py-3 text-sm font-semibold dark:border-homy-gold-600/35 dark:bg-[#173326]">
                 </div>
             </div>

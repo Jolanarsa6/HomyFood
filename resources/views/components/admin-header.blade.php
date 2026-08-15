@@ -49,8 +49,8 @@
                             vendor applications need review</span></a>
                     <a href="disputes.html"
                         class="block border-b border-homy-gold-100 px-4 py-3 text-sm font-semibold text-slate-600 hover:bg-homy-gold-50 dark:border-homy-gold-600/25 dark:text-slate-300 dark:hover:bg-homy-green-700/25"><span
-                            class="lang-ar">نزاع دفع جديد بقيمة 890 SAR</span><span class="lang-en">New payment dispute
-                            worth 890 SAR</span></a>
+                            class="lang-ar">نزاع دفع جديد بقيمة 890 SYP</span><span class="lang-en">New payment dispute
+                            worth 890 SYP</span></a>
                     <a href="suggestions.html"
                         class="block border-b border-homy-gold-100 px-4 py-3 text-sm font-semibold text-slate-600 hover:bg-homy-gold-50 dark:border-homy-gold-600/25 dark:text-slate-300 dark:hover:bg-homy-green-700/25"><span
                             class="lang-ar">اقتراح تحسين لتجربة التوصيل من المستخدمين</span><span

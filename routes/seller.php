@@ -57,6 +57,8 @@ Route::group(['middleware' => ['auth:web', 'verified', 'role:seller', 'check_app
 
 
     Route::get('/showProducts', [ProductController::class, 'showProduct'])->name('showProducts');
+    Route::get('/search', [ProductController::class, 'search'])->name('search');
+    Route::get('/showComments', [ProductController::class, 'showComments'])->name('showComments');
     Route::get('/showorders', [ProductController::class, 'showOrder'])->name('showOrders');
 
     // analytics
@@ -64,4 +66,6 @@ Route::group(['middleware' => ['auth:web', 'verified', 'role:seller', 'check_app
 
     // profile 
     Route::get('/showProfile', [ProfileController::class, 'edit'])->name('profile.show');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });

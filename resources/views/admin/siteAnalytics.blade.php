@@ -58,7 +58,7 @@
                 <span class="lang-ar">متوسط السلة</span>
                 <span class="lang-en">Avg Basket</span>
             </p>
-            <p class="mt-2 text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">{{ number_format($avgBasket, 2) }} SAR</p>
+            <p class="mt-2 text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">{{ number_format($avgBasket, 2) }} SYP</p>
             <p class="mt-1 text-xs font-bold text-amber-600">
                 <span class="lang-ar">إجمالي {{ $totalCartItems }} عنصر</span>
                 <span class="lang-en">Total {{ $totalCartItems }} items</span>

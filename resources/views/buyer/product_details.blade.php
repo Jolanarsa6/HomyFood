@@ -25,7 +25,7 @@
                     <div class="mt-4 flex flex-wrap items-center gap-4">
                         <span
                             class="rounded-full bg-homy-gold-100 px-3 py-1 text-xs font-black text-homy-green-700 dark:bg-homy-gold-500 dark:text-homy-green-900">{{ $product->price }}
-                            SAR</span>
+                            SYP</span>
                         <span class="text-sm font-black text-homy-gold-600">4.9 ★</span>
                         {{-- <span class="text-xs font-bold text-slate-500 dark:text-slate-300"><span class="lang-ar">+320 تقييم</span><span class="lang-en">+320 Reviews</span></span> --}}
                     </div>

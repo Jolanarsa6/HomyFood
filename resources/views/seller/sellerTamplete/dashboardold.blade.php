@@ -46,7 +46,7 @@
         <article class="kpi-card p-4">
             <p class="text-xs font-black text-slate-500 dark:text-slate-300"><span class="lang-ar">إجمالي
                     المبيعات</span><span class="lang-en">Total Sales</span></p>
-            <p class="mt-2 text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">48,900 SAR</p>
+            <p class="mt-2 text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">48,900 SYP</p>
             <p class="mt-1 text-xs font-bold text-emerald-600">+12%</p>
         </article>
         <article class="kpi-card p-4">
@@ -59,7 +59,7 @@
         <article class="kpi-card p-4">
             <p class="text-xs font-black text-slate-500 dark:text-slate-300"><span class="lang-ar">رصيد
                     المحفظة</span><span class="lang-en">Wallet Balance</span></p>
-            <p class="mt-2 text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">12,340 SAR</p>
+            <p class="mt-2 text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">12,340 SYP</p>
             <p class="mt-1 text-xs font-bold text-sky-600"><span class="lang-ar">آخر تحويل: أمس</span><span
                     class="lang-en">Last payout: Yesterday</span></p>
         </article>
@@ -102,7 +102,7 @@
                             <td class="px-2 py-3"><span
                                     class="rounded-full bg-amber-100 px-2 py-1 text-xs font-black text-amber-700">Preparing</span>
                             </td>
-                            <td class="px-2 py-3">182 SAR</td>
+                            <td class="px-2 py-3">182 SYP</td>
                         </tr>
                         <tr class="border-t border-homy-gold-100 dark:border-homy-gold-600/25">
                             <td class="px-2 py-3">#HMF-2090</td>
@@ -110,7 +110,7 @@
                             <td class="px-2 py-3"><span
                                     class="rounded-full bg-sky-100 px-2 py-1 text-xs font-black text-sky-700">Shipped</span>
                             </td>
-                            <td class="px-2 py-3">95 SAR</td>
+                            <td class="px-2 py-3">95 SYP</td>
                         </tr>
                         <tr class="border-t border-homy-gold-100 dark:border-homy-gold-600/25">
                             <td class="px-2 py-3">#HMF-2089</td>
@@ -118,7 +118,7 @@
                             <td class="px-2 py-3"><span
                                     class="rounded-full bg-emerald-100 px-2 py-1 text-xs font-black text-emerald-700">Delivered</span>
                             </td>
-                            <td class="px-2 py-3">243 SAR</td>
+                            <td class="px-2 py-3">243 SYP</td>
                         </tr>
                     </tbody>
                 </table>

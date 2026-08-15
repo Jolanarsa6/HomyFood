@@ -27,7 +27,7 @@
                             {{ $product->product_ar_name }}</h2>
                         <h2 class="mt-3 text-sm font-black text-homy-green-700 dark:text-homy-gold-400 lang-en">
                             {{ $product->product_en_name }}</h2>
-                        <p class="mt-1 text-xs font-semibold text-slate-500 dark:text-slate-300">{{ $product->price }} SAR
+                        <p class="mt-1 text-xs font-semibold text-slate-500 dark:text-slate-300">{{ $product->price }} SYP
                         </p>
                         <div class="mt-3 flex gap-2">
                             <a href="{{ route('buyer.addToCart', $product->id) }}"

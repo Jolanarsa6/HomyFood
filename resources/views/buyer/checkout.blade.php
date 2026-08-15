@@ -19,7 +19,7 @@
                                     class="lang-en">{{ $product->product_en_name }}</span>
                             </h2>
                             <p class="mt-1 text-sm font-semibold text-slate-500 dark:text-slate-300">{{ $product->price }}
-                                SAR</p>
+                                SYP</p>
                             <p class="mt-2 text-xs font-semibold text-slate-400 dark:text-slate-300"><span
                                     class="lang-ar">منتج يدوي من : {{ $product->brand }}</span><span
                                     class="lang-en">Handmade
@@ -86,7 +86,7 @@
                                         class="lang-en">{{ $product->product_en_name }}</span>
                                 </h2>
                                 <p class="mt-1 text-sm font-semibold text-slate-500 dark:text-slate-300">
-                                    {{ $product->price }} SAR</p>
+                                    {{ $product->price }} SYP</p>
                                 <p class="mt-2 text-xs font-semibold text-slate-400 dark:text-slate-300"><span
                                         class="lang-ar">منتج يدوي من : {{ $product->brand }}</span><span
                                         class="lang-en">Handmade
@@ -148,16 +148,16 @@
                         السعر</span><span class="lang-en">Price Summary</span></h2>
                 <div class="mt-4 space-y-2 text-sm font-semibold text-slate-600 dark:text-slate-300">
                     <div class="flex justify-between"><span><span class="lang-ar">السعر الكلي</span><span
-                                class="lang-en">Total Price</span></span><span>{{ session('totlaPrice') }} SAR</span></div>
+                                class="lang-en">Total Price</span></span><span>{{ session('totlaPrice') }} SYP</span></div>
                     <div class="flex justify-between"><span><span class="lang-ar">رسوم التوصيل</span><span
-                                class="lang-en">Delivery</span></span><span>12 SAR</span></div>
+                                class="lang-en">Delivery</span></span><span>12 SYP</span></div>
                     <div class="flex justify-between"><span><span class="lang-ar">الضريبة</span><span
-                                class="lang-en">Tax</span></span><span>3 SAR</span></div>
+                                class="lang-en">Tax</span></span><span>3 SYP</span></div>
                     <div
                         class="border-t border-homy-gold-200 pt-3 text-base font-black text-homy-green-700 dark:border-homy-gold-600/35 dark:text-homy-gold-400 flex justify-between">
                         <span><span class="lang-ar">الإجمالي</span><span
                                 class="lang-en">Total</span></span><span id="grand-total-display">{{ session('totlaPrice') + 12 + 3 }}
-                            SAR</span>
+                            SYP</span>
                     </div>
                 </div>
 

@@ -15,12 +15,10 @@ class AnalyticsController extends Controller
     {
         $userId = auth()->id();
 
-    // 1. إحصائيات المنتجات الأساسية
     $totalProducts = Product::where('user_id', $userId)->count();
     $totalProductValue = Product::where('user_id', $userId)->sum('price');
     $avgPrice = Product::where('user_id', $userId)->avg('price') ?? 0;
 
-    // 2. إحصائيات السلة (مؤشر الطلب على منتجات هذا البائع)
     $cartStats = DB::table('cart')
         ->join('products', 'cart.product_id', '=', 'products.id')
         ->where('products.user_id', $userId)
@@ -35,7 +33,6 @@ class AnalyticsController extends Controller
         ? $cartStats->total_cart_value / $cartStats->unique_buyers 
         : 0;
 
-    // 3. المنتجات الأكثر طلباً (الأكثر وجوداً في السلة)
     $topRequestedProducts = DB::table('cart')
         ->join('products', 'cart.product_id', '=', 'products.id')
         ->where('products.user_id', $userId)
@@ -56,7 +53,6 @@ class AnalyticsController extends Controller
         $prod->percentage = $totalRequests > 0 ? round(($prod->request_count / $totalRequests) * 100) : 0;
     }
 
-    // 4. أفضل الفئات لدى البائع (حسب عدد المنتجات في كل فئة)
     $topCategories = Category::join('product_category', 'categories.id', '=', 'product_category.category_id')
         ->join('products', 'product_category.product_id', '=', 'products.id')
         ->where('products.user_id', $userId)
@@ -71,7 +67,6 @@ class AnalyticsController extends Controller
         $cat->percentage = $totalCatProducts > 0 ? round(($cat->product_count / $totalCatProducts) * 100) : 0;
     }
 
-    // 5. المنتجات المضافة خلال آخر 7 أيام (للمخطط)
     $trend = Product::select(DB::raw('DATE(created_at) as date'), DB::raw('COUNT(*) as count'))
         ->where('user_id', $userId)
         ->where('created_at', '>=', Carbon::now()->subDays(7))

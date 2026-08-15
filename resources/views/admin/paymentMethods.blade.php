@@ -16,7 +16,7 @@
               <article class="kpi-card p-4">
                   <p class="text-xs font-black text-slate-500 dark:text-slate-300"><span class="lang-ar">إجمالي المبيعات
                           الشهرية</span><span class="lang-en">Monthly GMV</span></p>
-                  <p class="mt-2 text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">  SAR</p>
+                  <p class="mt-2 text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">  SYP</p>
                   <p class="mt-1 text-xs font-bold text-emerald-600">+18.4%</p>
               </article>
               <article class="kpi-card p-4">

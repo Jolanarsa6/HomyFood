@@ -164,7 +164,7 @@
                                         class="h-44 w-full rounded-2xl object-cover">
                                     <span
                                         class="absolute start-2 top-2 rounded-full bg-white/90 px-2 py-1 text-[11px] font-black text-homy-green-700">{{ $product->price }}
-                                        SAR</span>
+                                        SYP</span>
                                     <form action="{{ route('buyer.addToWishlist', $product->id) }}" method="GET">
                                         <button type="submit" data-action="toggle-favorite" aria-pressed="false"
                                             class="absolute end-2 top-2 h-9 w-9 rounded-full bg-white/90 text-homy-green-700 shadow"
@@ -288,7 +288,7 @@
                                     <div class="mt-auto pt-4 flex flex-wrap items-center gap-2">
                                         <span
                                             class="text-sm font-black text-homy-green-700 dark:text-homy-gold-400">{{ $product->price }}
-                                            SAR</span>
+                                            SYP</span>
                                         <a href="{{ route('buyer.show_product_details', $product->id) }}"
                                             class="rounded-xl border border-homy-gold-300 px-3 py-2 text-xs font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:text-homy-gold-300">
                                             <span class="lang-ar">التفاصيل</span>
@@ -497,7 +497,7 @@
                                 <span class="lang-ar">مربى تين عضوي</span>
                                 <span class="lang-en">Organic Fig Jam</span>
                             </h3>
-                            <p class="mt-1 text-sm font-semibold text-slate-600 dark:text-slate-300">45 SAR | 4.9 ★</p>
+                            <p class="mt-1 text-sm font-semibold text-slate-600 dark:text-slate-300">45 SYP | 4.9 ★</p>
                         </article>
                         <article
                             class="rounded-2xl border border-homy-gold-200 bg-homy-gold-50/70 p-4 dark:border-homy-gold-600/30 dark:bg-homy-green-700/25">
@@ -505,7 +505,7 @@
                                 <span class="lang-ar">مربى تين كلاسيك</span>
                                 <span class="lang-en">Classic Fig Jam</span>
                             </h3>
-                            <p class="mt-1 text-sm font-semibold text-slate-600 dark:text-slate-300">39 SAR | 4.6 ★</p>
+                            <p class="mt-1 text-sm font-semibold text-slate-600 dark:text-slate-300">39 SYP | 4.6 ★</p>
                         </article>
                     </div>
                 </div>

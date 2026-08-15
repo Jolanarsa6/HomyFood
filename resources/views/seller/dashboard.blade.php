@@ -3,7 +3,6 @@
 @section('content')
 <section class="space-y-6">
     
-    {{-- رأس الصفحة مع الترحيب وزر إضافة منتج --}}
     <article class="rounded-[2rem] border border-homy-gold-200 bg-gradient-to-br from-homy-gold-50 via-white to-homy-green-100/45 p-6 dark:border-homy-gold-600/35 dark:from-[#14261f] dark:via-[#12211b] dark:to-[#173326]">
         <div class="flex flex-wrap items-start justify-between gap-4">
             <div>
@@ -22,12 +21,11 @@
             </a>
         </div>
         
-        {{-- مؤشرات سريعة (الربعيات أسفل الترحيب) --}}
         <div class="mt-5 grid gap-3 sm:grid-cols-4 text-center text-xs font-black">
             <div class="rounded-xl bg-white/90 p-3 text-homy-green-700 dark:bg-homy-green-700/35 dark:text-homy-gold-300">
                 <span class="lang-ar">متوسط سعر المنتج</span>
                 <span class="lang-en">Avg Price</span>
-                <p class="mt-1 text-lg">{{ number_format($avgPrice, 2) }} SAR</p>
+                <p class="mt-1 text-lg">{{ number_format($avgPrice, 2) }} SYP</p>
             </div>
             <div class="rounded-xl bg-white/90 p-3 text-homy-green-700 dark:bg-homy-green-700/35 dark:text-homy-gold-300">
                 <span class="lang-ar">إجمالي المنتجات</span>
@@ -47,7 +45,6 @@
         </div>
     </article>
 
-    {{-- بطاقات KPI الرئيسية --}}
     <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <article class="kpi-card p-4">
             <p class="text-xs font-black text-slate-500 dark:text-slate-300">
@@ -55,7 +52,7 @@
                 <span class="lang-en">Total Product Value</span>
             </p>
             <p class="mt-2 text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">
-                {{ number_format(Auth::user()->products()->sum('price')) }} SAR
+                {{ number_format(Auth::user()->products()->sum('price')) }} SYP
             </p>
             <p class="mt-1 text-xs font-bold text-emerald-600">
                 <span class="lang-ar">تقديري للعرض</span>
@@ -81,7 +78,7 @@
                 <span class="lang-en">Max Product Price</span>
             </p>
             <p class="mt-2 text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">
-                {{ number_format(Auth::user()->products()->max('price') ?? 0) }} SAR
+                {{ number_format(Auth::user()->products()->max('price') ?? 0) }} SYP
             </p>
             <p class="mt-1 text-xs font-bold text-sky-600">
                 <span class="lang-ar">أغلى منتج لديك</span>
@@ -95,16 +92,14 @@
                 <span class="lang-en">Need Attention</span>
             </p>
             <p class="mt-2 text-2xl font-black text-red-600">{{ $lowStockProducts }}</p>
-            <a href="{{ route('seller.showProducts') }}" class="mt-1 inline-block text-xs font-black text-red-600 underline">
+            <a href="{{ route('seller.addProduct') }}" class="mt-1 inline-block text-xs font-black text-red-600 underline">
                 <span class="lang-ar">تحديث المخزون الآن</span>
                 <span class="lang-en">Update Stock Now</span>
             </a>
         </article>
     </div>
 
-    {{-- قسم المخطط وأفضل المنتجات --}}
     <div class="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
-        {{-- المخطط الشريطي (آخر 7 أيام لإضافة المنتجات) --}}
         <article class="rounded-[1.5rem] border border-homy-gold-200 bg-white/90 p-5 dark:border-homy-gold-600/35 dark:bg-[#12211B]/85">
             <h2 class="text-lg font-black text-homy-green-700 dark:text-homy-gold-400">
                 <span class="lang-ar">نشاط إضافة المنتجات - 7 أيام</span>
@@ -118,7 +113,6 @@
             </div>
         </article>
 
-        {{-- أفضل المنتجات أداءً (أعلى سعر) --}}
         <article class="rounded-[1.5rem] border border-homy-gold-200 bg-white/90 p-5 dark:border-homy-gold-600/35 dark:bg-[#12211B]/85">
             <h2 class="mb-4 text-lg font-black text-homy-green-700 dark:text-homy-gold-400">
                 <span class="lang-ar">أفضل المنتجات</span>
@@ -143,7 +137,6 @@
                 @endforelse
             </div>
 
-            {{-- صندوق آخر تعليق --}}
             @if($latestComment)
             <div class="mt-5 rounded-xl border border-homy-gold-200 p-3 dark:border-homy-gold-600/35">
                 <p class="text-xs font-black text-homy-green-700 dark:text-homy-gold-400">
@@ -153,7 +146,7 @@
                 <p class="mt-2 text-sm font-semibold text-slate-600 dark:text-slate-300">
                     {{ $latestComment->buyer_name }}: "{{ $latestComment->buyer_comment }}"
                 </p>
-                <a href="#" class="mt-2 inline-block text-xs font-black text-homy-gold-600 underline">
+                <a href="{{ route("seller.showComments") }}" class="mt-2 inline-block text-xs font-black text-homy-gold-600 underline">
                     <span class="lang-ar">الرد من هنا</span>
                     <span class="lang-en">Reply Here</span>
                 </a>
@@ -162,7 +155,6 @@
         </article>
     </div>
 
-    {{-- جدول أحدث المنتجات (بدلاً من الطلبات) --}}
     <div class="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
         <article class="rounded-[1.5rem] border border-homy-gold-200 bg-white/90 p-5 dark:border-homy-gold-600/35 dark:bg-[#12211B]/85">
             <div class="mb-4 flex items-center justify-between">
@@ -191,17 +183,17 @@
                                 <span class="lang-ar">المخزون</span>
                                 <span class="lang-en">Stock</span>
                             </th>
-                            <th class="px-2 py-2 text-right font-black">
+                            {{-- <th class="px-2 py-2 text-right font-black">
                                 <span class="lang-ar">الإجراء</span>
                                 <span class="lang-en">Action</span>
-                            </th>
+                            </th> --}}
                         </tr>
                     </thead>
                     <tbody class="font-semibold text-slate-600 dark:text-slate-300">
                         @forelse($latestProducts as $product)
                             <tr class="border-t border-homy-gold-100 dark:border-homy-gold-600/25">
                                 <td class="px-2 py-3">{{ $product->product_ar_name }}</td>
-                                <td class="px-2 py-3">{{ number_format($product->price) }} SAR</td>
+                                <td class="px-2 py-3">{{ number_format($product->price) }} SYP</td>
                                 <td class="px-2 py-3">
                                     @if($product->available_quantity <= 5)
                                         <span class="rounded-full bg-red-100 px-2 py-1 text-xs font-black text-red-700">
@@ -212,12 +204,12 @@
                                         {{ number_format($product->available_quantity) }}
                                     @endif
                                 </td>
-                                <td class="px-2 py-3">
-                                    <a href="{{ route('seller.addProduct', $product->id) }}" class="text-xs font-black text-homy-gold-600 underline">
+                                {{-- <td class="px-2 py-3">
+                                    <a href="{{ route('seller.addProduct') }}" class="text-xs font-black text-homy-gold-600 underline">
                                         <span class="lang-ar">تعديل</span>
                                         <span class="lang-en">Edit</span>
                                     </a>
-                                </td>
+                                </td> --}}
                             </tr>
                         @empty
                             <tr class="border-t border-homy-gold-100 dark:border-homy-gold-600/25">
@@ -232,7 +224,6 @@
             </div>
         </article>
 
-        {{-- الإحصائيات السريعة (تم تركها للتنسيق) --}}
         <article class="rounded-[1.5rem] border border-homy-gold-200 bg-white/90 p-5 dark:border-homy-gold-600/35 dark:bg-[#12211B]/85">
             <h2 class="text-lg font-black text-homy-green-700 dark:text-homy-gold-400">
                 <span class="lang-ar">نظرة سريعة</span>
@@ -245,7 +236,7 @@
                 </div>
                 <div class="flex items-center justify-between rounded-xl border border-homy-gold-200 px-3 py-2 dark:border-homy-gold-600/30">
                     <span><span class="lang-ar">متوسط السعر</span><span class="lang-en">Avg Price</span></span>
-                    <span class="font-black text-homy-green-700">{{ number_format($avgPrice) }} SAR</span>
+                    <span class="font-black text-homy-green-700">{{ number_format($avgPrice) }} SYP</span>
                 </div>
                 <div class="flex items-center justify-between rounded-xl border border-homy-gold-200 px-3 py-2 dark:border-homy-gold-600/30">
                     <span><span class="lang-ar">أقل من 5 قطع</span><span class="lang-en">Low Stock Alert</span></span>

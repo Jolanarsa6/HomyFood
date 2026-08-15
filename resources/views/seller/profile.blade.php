@@ -106,11 +106,16 @@
         </article>
 
         <div class="flex flex-wrap gap-3">
-            <button type="button" class="rounded-2xl bg-homy-green-700 px-6 py-3 text-sm font-black text-white"><span
+            <form action="{{ route('seller.profile.update') }}" method="POST">
+                @csrf
+                @method('put')
+                <button type="submit" class="rounded-2xl bg-homy-green-700 px-6 py-3 text-sm font-black text-white"><span
                     class="lang-ar">حفظ التغييرات</span><span class="lang-en">Save Changes</span></button>
-            <button type="button"
+                </form>
+            
+                <button type="submit" 
                 class="rounded-2xl border border-homy-gold-300 px-6 py-3 text-sm font-black text-homy-green-700 dark:border-homy-gold-600/35 dark:text-homy-gold-300"><span
-                    class="lang-ar">إلغاء</span><span class="lang-en">Cancel</span></button>
-        </div>
+                class="lang-ar">إلغاء</span><span class="lang-en">Cancel</span></button>
+            </div>
     </section>
 @endsection

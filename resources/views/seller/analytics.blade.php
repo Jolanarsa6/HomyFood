@@ -19,7 +19,7 @@
                 <span class="lang-ar">قيمة المخزون الإجمالية</span>
                 <span class="lang-en">Total Inventory Value</span>
             </p>
-            <p class="mt-2 text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">{{ number_format($totalProductValue) }} SAR</p>
+            <p class="mt-2 text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">{{ number_format($totalProductValue) }} SYP</p>
             <p class="mt-1 text-xs font-bold text-emerald-600">
                 <span class="lang-ar">{{ $totalProducts }} منتج متاح</span>
                 <span class="lang-en">{{ $totalProducts }} active products</span>
@@ -43,7 +43,7 @@
                 <span class="lang-ar">متوسط قيمة السلة</span>
                 <span class="lang-en">Average Cart Value</span>
             </p>
-            <p class="mt-2 text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">{{ number_format($avgCartValue, 2) }} SAR</p>
+            <p class="mt-2 text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">{{ number_format($avgCartValue, 2) }} SYP</p>
             <p class="mt-1 text-xs font-bold text-homy-gold-600">
                 <span class="lang-ar">تقديري للطلب</span>
                 <span class="lang-en">Estimated demand</span>
@@ -55,7 +55,7 @@
                 <span class="lang-ar">متوسط سعر المنتج</span>
                 <span class="lang-en">Average Product Price</span>
             </p>
-            <p class="mt-2 text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">{{ number_format($avgPrice, 2) }} SAR</p>
+            <p class="mt-2 text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">{{ number_format($avgPrice, 2) }} SYP</p>
             <p class="mt-1 text-xs font-bold text-amber-600">
                 <span class="lang-ar">جودة العرض</span>
                 <span class="lang-en">Offer quality</span>
@@ -63,9 +63,7 @@
         </article>
     </div>
 
-    {{-- المخطط وأفضل المنتجات --}}
     <div class="grid gap-5 xl:grid-cols-2">
-        {{-- المخطط الشريطي (آخر 7 أيام لإضافة المنتجات) --}}
         <article class="rounded-[1.5rem] border border-homy-gold-200 bg-white/90 p-5 dark:border-homy-gold-600/35 dark:bg-[#12211B]/85">
             <h2 class="text-lg font-black text-homy-green-700 dark:text-homy-gold-400">
                 <span class="lang-ar">منتجات مضافة - 7 أيام</span>
@@ -79,7 +77,6 @@
             </div>
         </article>
 
-        {{-- أكثر المنتجات طلباً (بدلاً من أفضل المنتجات أداءً) --}}
         <article class="rounded-[1.5rem] border border-homy-gold-200 bg-white/90 p-5 dark:border-homy-gold-600/35 dark:bg-[#12211B]/85">
             <h2 class="text-lg font-black text-homy-green-700 dark:text-homy-gold-400">
                 <span class="lang-ar">أكثر المنتجات طلباً</span>
@@ -106,7 +103,6 @@
         </article>
     </div>
 
-    {{-- جدول أفضل الفئات (بدلاً من مصادر الزيارات) --}}
     <article class="rounded-[1.5rem] border border-homy-gold-200 bg-white/90 p-5 dark:border-homy-gold-600/35 dark:bg-[#12211B]/85">
         <h2 class="text-lg font-black text-homy-green-700 dark:text-homy-gold-400">
             <span class="lang-ar">أكثر الفئات شيوعاً لديك</span>

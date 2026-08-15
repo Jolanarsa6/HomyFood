@@ -39,7 +39,7 @@
                 <span class="lang-ar">قيمة السلة الإجمالية</span>
                 <span class="lang-en">Total Cart Value</span>
             </p>
-            <p class="mt-2 text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">{{ number_format($totalCartValue) }} SAR</p>
+            <p class="mt-2 text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">{{ number_format($totalCartValue) }} SYP</p>
             <p class="mt-1 text-xs font-bold text-emerald-600">
                 <span class="lang-ar">تقديري للطلب</span>
                 <span class="lang-en">Estimated demand</span>

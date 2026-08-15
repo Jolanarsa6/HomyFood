@@ -29,7 +29,7 @@
 <body class="text-slate-800 dark:text-slate-100">
     <div class="bg-homy-green-700 px-4 py-2 text-center text-xs font-bold tracking-wide text-white">
         <span class="lang-ar">شحن مجاني لأول طلب</span>
-        <span class="lang-en">Free shipping on first order over 200 SAR - Code HOMY100</span>
+        <span class="lang-en">Free shipping on first order over 200 SYP - Code HOMY100</span>
     </div>
     <x-buyer.aside />
 

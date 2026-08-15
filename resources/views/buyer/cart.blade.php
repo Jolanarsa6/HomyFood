@@ -25,7 +25,7 @@
                                     {{ $product->product_ar_name }}
                                 </h2>
                                 <p class="text-sm font-semibold text-slate-500 dark:text-slate-300">{{ $product->price }}
-                                    SAR</p>
+                                    SYP</p>
                                 <p class="mt-1 text-xs font-semibold text-slate-400 dark:text-slate-300">
                                     {{ $product->brand }}</p>
                             </div>
@@ -62,18 +62,18 @@
                                 class="lang-en">Subtotal</span></span>
                                 <span
                             id="blade-subtotal">{{ number_format($initialGrandTotal, 2) }}
-                            SAR</span>
+                            SYP</span>
      </div>
                     <div class="flex items-center justify-between"><span><span class="lang-ar">التوصيل</span><span
                                 class="lang-en">Delivery</span></span><span>{{ number_format($discountAmount, 2) }}
-                            SAR</span></div>
+                            SYP</span></div>
                     <div class="flex items-center justify-between"><span><span class="lang-ar">الخصم</span><span
                                 class="lang-en">Discount</span></span><span>12.00-
-                            SAR</span></div>
+                            SYP</span></div>
                     <div
                         class="mt-2 border-t border-homy-gold-200 pt-3 text-base font-black text-homy-green-700 dark:border-homy-gold-600/35 dark:text-homy-gold-400 flex items-center justify-between">
                         <span><span class="lang-ar">الإجمالي</span><span class="lang-en">Total</span></span>                           <span
-                            id="grand-total-display">{{ number_format($initialSubtotal, 2) }} SAR</span>
+                            id="grand-total-display">{{ number_format($initialSubtotal, 2) }} SYP</span>
                     </div>
                 </div>
             </aside>
