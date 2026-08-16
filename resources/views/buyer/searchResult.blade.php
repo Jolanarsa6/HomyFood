@@ -1,5 +1,7 @@
 <x-buyer.app>
-
+<x-slot name="title">
+  {{  __('titles.search_result')}}
+</x-slot>
     <main class="px-4 py-10">
         <section class="mx-auto w-full max-w-7xl">
             <div class="mb-7 flex items-end justify-between gap-3">

@@ -1,5 +1,18 @@
 <div class="fixed top-5 right-5 z-50 flex flex-col gap-3 max-w-sm w-full px-4">
-    
+    @if ($errors->any())
+         <div class="js-flash-alert transform translate-x-0 opacity-100 transition-all duration-500 ease-in-out p-4 rounded-xl shadow-xl bg-homy-green-100 dark:bg-slate-900 border border-homy-green-500/30 dark:border-homy-green-600/50 text-homy-green-700 dark:text-homy-gold-400 flex items-start gap-3" role="alert">
+            <svg class="w-5 h-5 text-homy-green-500 dark:text-homy-gold-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <div>
+                <strong class="font-semibold block text-homy-green-700 dark:text-homy-gold-400 text-base">{{ __('messages.delete_from_wishlist') }}</strong>
+                <p class="mt-1 text-sm font-medium text-slate-600 dark:text-slate-300">
+            {{ $errors->first() }}
+                </p>
+            </div>
+        </div>
+    @endif
+
     @if(session('success'))
         <div class="js-flash-alert transform translate-x-0 opacity-100 transition-all duration-500 ease-in-out p-4 rounded-xl shadow-xl bg-homy-green-100 dark:bg-slate-900 border border-homy-green-500/30 dark:border-homy-green-600/50 text-homy-green-700 dark:text-homy-gold-400 flex items-start gap-3" role="alert">
             <svg class="w-5 h-5 text-homy-green-500 dark:text-homy-gold-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">

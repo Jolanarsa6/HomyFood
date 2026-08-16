@@ -10,10 +10,11 @@ class CommentController extends Controller
      public function store(Request $request)
     {
         $comment = $request->validate([
+            'user_id' => ['required'],
+            'product_id' => ['required'],
             'buyer_name' => ['required','string'],
             'buyer_comment' => ['required','string'],
             'comment_date' => ['required', 'date'],
-            'product_id' => ['required']
         ]);
 
         Comment::create($comment);

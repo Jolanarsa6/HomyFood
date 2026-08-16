@@ -1,4 +1,4 @@
-  @extends('admin.layouts.master')
+@extends('admin.layouts.master',['title'=> __('titles.payment_methods')])
 
   @section('content')
       <section class="space-y-6">

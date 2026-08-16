@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\seller\CommentController;
 use App\Http\Controllers\Seller\AnalyticsController;
 use App\Http\Controllers\Seller\ProductController;
 use App\Http\Controllers\Seller\ProfileController;
@@ -58,9 +59,9 @@ Route::group(['middleware' => ['auth:web', 'verified', 'role:seller', 'check_app
 
     Route::get('/showProducts', [ProductController::class, 'showProduct'])->name('showProducts');
     Route::get('/search', [ProductController::class, 'search'])->name('search');
-    Route::get('/showComments', [ProductController::class, 'showComments'])->name('showComments');
+    Route::get('/showComments', [CommentController::class, 'showComments'])->name('showComments');
     Route::get('/showorders', [ProductController::class, 'showOrder'])->name('showOrders');
-
+    Route::post('/comments/{comment}/reply', [CommentController::class, 'storeReply'])->name('comments.reply');
     // analytics
     Route::get('/showAnalytics', [AnalyticsController::class, 'index'])->name('analytics.show');
 

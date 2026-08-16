@@ -19,8 +19,12 @@
         <div class="relative hidden w-full max-w-xl xl:block">
             <i
                 class="fa-solid fa-magnifying-glass pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
-            <input type="search" placeholder="ابحث عن بائع أو متجر / Search seller or store"
-                class="w-full rounded-2xl border border-homy-gold-200 bg-white px-10 py-2.5 text-sm font-semibold text-slate-700 outline-none ring-homy-gold-400 focus:ring dark:border-homy-gold-600/35 dark:bg-homy-green-700/25 dark:text-slate-100">
+            <form action="{{ route('admin.search') }}" method="GET">
+                <input type="search" placeholder="ابحث عن بائع أو متجر / Search seller or store" name="search"
+                    value="{{ request()->search }}"
+                    class="w-full rounded-2xl border border-homy-gold-200 bg-white px-10 py-2.5 text-sm font-semibold text-slate-700 outline-none ring-homy-gold-400 focus:ring dark:border-homy-gold-600/35 dark:bg-homy-green-700/25 dark:text-slate-100">
+                <button type="submit"></button>
+            </form>
         </div>
 
         <div class="ms-auto flex items-center gap-2">
@@ -30,12 +34,12 @@
 
             <div class="relative">
                 <a href="{{ route('admin.show_notifications') }}">
-                <button data-toggle="notifications"
-                    class="relative h-11 w-11 rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/35 dark:text-homy-gold-300">
-                    <i class="fa-regular fa-bell"></i>
-                    <span
-                        class="absolute -left-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-red-500 px-1 text-[10px] font-black text-white">{{ $notifications->count() }}</span>
-                </button>
+                    <button data-toggle="notifications"
+                        class="relative h-11 w-11 rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/35 dark:text-homy-gold-300">
+                        <i class="fa-regular fa-bell"></i>
+                        <span
+                            class="absolute -left-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-red-500 px-1 text-[10px] font-black text-white">{{ $notifications->count() }}</span>
+                    </button>
                 </a>
                 <div id="notificationsPanel"
                     class="admin-popover hidden absolute left-0 mt-2 w-80 overflow-hidden rounded-2xl border border-homy-gold-200 bg-white shadow-2xl shadow-black/15 dark:border-homy-gold-600/35 dark:bg-[#12211B]">
@@ -66,8 +70,7 @@
             <div class="relative">
                 <button data-toggle="profileMenu"
                     class="flex items-center gap-2 rounded-2xl border border-homy-gold-200 bg-white px-2 py-1.5 dark:border-homy-gold-600/40 dark:bg-homy-green-700/35">
-                    <img src="{{ asset('images/a.jpg') }}"
-                        alt="Admin" class="h-8 w-8 rounded-xl object-cover">
+                    <img src="{{ asset('images/a.jpg') }}" alt="Admin" class="h-8 w-8 rounded-xl object-cover">
                     <span class="hidden text-xs font-black text-homy-green-700 dark:text-homy-gold-300 sm:block"><span
                             class="lang-ar">المدير العام</span><span class="lang-en">Owner Admin</span></span>
                 </button>
@@ -90,19 +93,23 @@
 
 <div class="fixed top-5 right-5 z-50 flex flex-col gap-3 max-w-sm w-full px-4">
 
-<x-alert></x-alert>
-@foreach ($admin->unreadNotifications as $notifi)  
-<div class="js-flash-alert transform translate-x-0 opacity-100 transition-all duration-500 ease-in-out p-4 rounded-xl shadow-xl bg-homy-green-100 dark:bg-slate-900 border border-homy-green-500/30 dark:border-homy-green-600/50 text-homy-green-700 dark:text-homy-gold-400 flex items-start gap-3" role="alert">
-    <svg class="w-5 h-5 text-homy-green-500 dark:text-homy-gold-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-    </svg>
-    <div>
-        <strong class="font-semibold block text-homy-green-700 dark:text-homy-gold-400 text-base">{{ $notifi->data['title'] }}</strong>
+    <x-alert></x-alert>
+    @foreach ($admin->unreadNotifications as $notifi)
+        <div class="js-flash-alert transform translate-x-0 opacity-100 transition-all duration-500 ease-in-out p-4 rounded-xl shadow-xl bg-homy-green-100 dark:bg-slate-900 border border-homy-green-500/30 dark:border-homy-green-600/50 text-homy-green-700 dark:text-homy-gold-400 flex items-start gap-3"
+            role="alert">
+            <svg class="w-5 h-5 text-homy-green-500 dark:text-homy-gold-400 shrink-0 mt-0.5" fill="none"
+                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <div>
+                <strong
+                    class="font-semibold block text-homy-green-700 dark:text-homy-gold-400 text-base">{{ $notifi->data['title'] }}</strong>
                 <p class="mt-1 text-sm font-medium text-slate-600 dark:text-slate-300">
-                          {{ $notifi->data['name'] }} {{ $notifi->data['message'] }}
+                    {{ $notifi->data['name'] }} {{ $notifi->data['message'] }}
                 </p>
             </div>
         </div>
-        @endforeach
+    @endforeach
 </div>
 {{-- <button id="themeToggle" class="h-11 w-11 rounded-2xl border border-homy-gold-200 bg-white text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/35 dark:text-homy-gold-300"><i class="fa-solid fa-moon"></i></button> --}}

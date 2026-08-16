@@ -1,4 +1,8 @@
 <x-app-layout>
+
+    <x-slot name="title">
+        {{ __('titles.waiting') }}
+    </x-slot>
 <body class="text-slate-800 dark:text-slate-100">
     <main class="min-h-screen px-4 py-10 grid place-items-center">
         {{-- <div class="mb-4 flex w-full max-w-2xl justify-end gap-2">

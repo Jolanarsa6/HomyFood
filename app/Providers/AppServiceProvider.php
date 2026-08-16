@@ -40,7 +40,7 @@ class AppServiceProvider extends ServiceProvider
             $cartNum = Auth::check() ? Auth::user()->productCart()->count() : 0;
             // $cartNum = $user->productCart;
             $wishlistNum = Auth::check() ? Auth::user()->productWishlists()->count() : 0;
-
+view()->share('unreadNotifications', auth()->user()?->unreadNotifications);
             $view->with('cartNum', $cartNum)->with('wishlistNum', $wishlistNum);
         });
     }

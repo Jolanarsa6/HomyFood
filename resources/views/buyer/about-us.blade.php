@@ -1,4 +1,4 @@
-@extends('buyer.layouts.master')
+@extends('buyer.layouts.master',['title'=> __('titles.about_us')])
 
 @section('content')
     <div class="relative z-10">
@@ -33,7 +33,7 @@
                         <div class="mt-6 grid gap-3 sm:grid-cols-3">
                             <div
                                 class="rounded-2xl border border-homy-gold-200 bg-white/85 p-4 text-center dark:border-homy-gold-600/35 dark:bg-[#12211B]/80">
-                                <p class="text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">+{{ $monthlyDemand }}</p>
+                                <p class="text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">+{{ $cartStats->total_cart_items }}</p>
                                 <p class="text-xs font-bold text-slate-500 dark:text-slate-300"><span class="lang-ar">طلب
                                         شهري</span><span class="lang-en">Monthly Orders</span></p>
                             </div>

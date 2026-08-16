@@ -1,4 +1,4 @@
-@extends('buyer.layouts.master')
+@extends('buyer.layouts.master',['title'=> __('titles.contact_us')])
 
 @section('content')
     <div class="relative z-10">

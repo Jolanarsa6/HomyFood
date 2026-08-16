@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('admin.layouts.master',['title'=> __('titles.site_analytics')])
 
 @section('content')
 

@@ -15,4 +15,13 @@ class SellersControlController extends Controller
         $users = ModelsUser::role('seller')->get();
         return view('admin.sellersControl',compact('users'));
     }
+
+     public function search(Request $request)
+    {
+        $users = User::when($request->has('search'), function ($query) use ($request) {
+            $query->where('full_name', 'LIKE', "%$request->search%");
+        })->get();
+       
+        return view('admin.sellersControl',compact('users'));
+    }
 }

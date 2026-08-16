@@ -1,4 +1,4 @@
-@extends('buyer.layouts.master')
+@extends('buyer.layouts.master',['title'=> __('titles.special_offer')])
 
 @section('content')
 

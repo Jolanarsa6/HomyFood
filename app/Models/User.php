@@ -4,7 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-use Dom\Comment;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -67,18 +67,36 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
+    function replies()
+    {
+        return $this->hasMany(Reply::class);
+    }
+
     function productWishlists()
     {
-        return $this->belongsToMany(Product::class,'wishlist');
+        return $this->belongsToMany(Product::class, 'wishlist');
     }
 
     function productCart()
     {
-        return $this->belongsToMany(Product::class,'cart');
+        return $this->belongsToMany(Product::class, 'cart');
     }
 
     function connectUs()
     {
-        return $this->hasMany(ConnectUs::class , 'connect_us');
+        return $this->hasMany(ConnectUs::class, 'connect_us');
+    }
+
+
+    function commentsOnProducts()
+    {
+        return $this->hasManyThrough(
+            Comment::class,
+            Product::class,
+            'user_id',
+            'product_id',
+            'id',
+            'id'
+        );
     }
 }

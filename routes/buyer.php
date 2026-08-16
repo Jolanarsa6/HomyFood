@@ -10,6 +10,7 @@ use App\Http\Controllers\CommentController;
 use App\Models\Cart;
 use App\Models\Product;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 
@@ -19,7 +20,15 @@ Route::group(['middleware' => ['lang.switch'], 'prefix' => 'buyer', 'as' => 'buy
     Route::get('/about_us', function () {
         $sellers = User::role("seller")->get();
         $monthlyDemand = count(Cart::whereMonth('created_at', now()->month)->get());
-        return view('buyer.about-us',compact('sellers','monthlyDemand'));
+        $cartStats = DB::table('cart')
+        ->join('products', 'cart.product_id', '=', 'products.id')
+        ->select(
+            DB::raw('COUNT(cart.id) as total_cart_items'),
+            DB::raw('SUM(products.price) as total_cart_value'),
+            DB::raw('COUNT(DISTINCT cart.user_id) as unique_buyers')
+        )
+        ->first();
+        return view('buyer.about-us',compact('sellers','monthlyDemand','cartStats'));
     })->name('about_us');
 
     Route::get('/contact_us', [ConnectUsController::class, 'index'])->name('contact_us.show');

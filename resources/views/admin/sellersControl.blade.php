@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('admin.layouts.master',['title'=> __('titles.seller_controller')])
 
 @section('content')
     <section class="space-y-6">

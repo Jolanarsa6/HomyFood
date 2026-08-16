@@ -1,4 +1,7 @@
 <x-app-Layout>
+    <x-slot name="title">
+       {{ __('titles.seller_join')}}
+    </x-slot>
 <body class="text-slate-800 dark:text-slate-100">
     <main>
         <section class="relative overflow-hidden px-4 pb-16 pt-12">

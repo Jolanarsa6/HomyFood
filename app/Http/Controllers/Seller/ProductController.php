@@ -55,8 +55,8 @@ class ProductController extends Controller
 
             //    $product->addMediaFromRequest('product_image')->toMediaCollection('ProductImages');
         }
-        if ($request->hasFile('video')) {
-            $product->addMediaFromRequest('product_video')->toMediaCollection('ProductVideos');
+        if ($request->hasFile('product_video')) {
+            $product->addMediaFromRequest('product_video')->toMediaCollection('product_videos');
         }
         return redirect()->back()->with('success', 'Categories added successfully!');
 
@@ -95,10 +95,5 @@ class ProductController extends Controller
         return view("seller.product", compact('products', 'lowStockProducts', 'categories'));
     }
 
-    public function showComments()
-    {
-        // $prodcts = Auth::user()->products();
-        // $categories = Category::all();
-        return view("seller.messages");
-    }
+ 
 }

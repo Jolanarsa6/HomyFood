@@ -1,5 +1,7 @@
 <x-buyer.app>
-
+    <x-slot name="title">
+        {{ __('titles.dashboard') }}
+    </x-slot>
     <x-alert></x-alert>
     <div class="relative z-10">
         <main>
@@ -423,52 +425,29 @@
                     </div>
 
                     <div class="grid gap-5 lg:grid-cols-3">
-                        <article class="homy-card overflow-hidden">
+                        @foreach($products as $product)
+                        @if($product->getFirstMediaUrl('product_videos') != null)
+                         <article class="homy-card overflow-hidden">
                             <video controls preload="metadata"
-                                poster="https://images.unsplash.com/photo-1587241321921-91a834d6d191?auto=format&fit=crop&w=900&q=80"
+                                poster="{{ $product->getFirstMediaUrl('product_images') }}"
                                 class="h-52 w-full object-cover">
-                                <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+                                <source src="{{ $product->getFirstMediaUrl('product_videos') }}"
                                     type="video/mp4">
+                                    متصفحك لا يدعم تشغيل الفيديو
                             </video>
                             <div class="p-4">
                                 <h3 class="font-black text-homy-green-700 dark:text-homy-gold-400">
-                                    <span class="lang-ar">طريقة تحضير المكدوس البلدي</span>
-                                    <span class="lang-en">How We Prepare Traditional Makdous</span>
+                                    <span class="lang-ar">طريقة تحضير {{ $product->product_ar_name }}</span>
+                                    <span class="lang-en">How We Prepare {{ $product->product_en_name }}</span>
                                 </h3>
                             </div>
                         </article>
-                        <article class="homy-card overflow-hidden">
-                            <video controls preload="metadata"
-                                poster="https://images.unsplash.com/photo-1589712235274-89ec11f2f24f?auto=format&fit=crop&w=900&q=80"
-                                class="h-52 w-full object-cover">
-                                <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-                                    type="video/webm">
-                            </video>
-                            <div class="p-4">
-                                <h3 class="font-black text-homy-green-700 dark:text-homy-gold-400">
-                                    <span class="lang-ar">من الحقل إلى مرطبان الزعتر</span>
-                                    <span class="lang-en">From Field To Zaatar Jar</span>
-                                </h3>
-                            </div>
-                        </article>
-                        <article class="homy-card overflow-hidden">
-                            <video controls preload="metadata"
-                                poster="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=80"
-                                class="h-52 w-full object-cover">
-                                <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-                                    type="video/mp4">
-                            </video>
-                            <div class="p-4">
-                                <h3 class="font-black text-homy-green-700 dark:text-homy-gold-400">
-                                    <span class="lang-ar">سر نكهة السمن البلدي</span>
-                                    <span class="lang-en">The Secret Of Traditional Ghee</span>
-                                </h3>
-                            </div>
-                        </article>
+                        @endif 
+                        @endforeach                  
                     </div>
                 </div>
             </section>
-
+            
             <section class="px-4 pb-14">
                 <div
                     class="mx-auto w-full max-w-7xl rounded-[2rem] border border-homy-gold-200 bg-white/85 p-6 shadow-xl dark:border-homy-gold-600/30 dark:bg-[#12211B]/85">

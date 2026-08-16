@@ -1,4 +1,4 @@
-@extends('buyer.layouts.master')
+@extends('buyer.layouts.master',['title'=> __('titles.wishlist')])
 
 @section('content')
     <main class="px-4 py-10">

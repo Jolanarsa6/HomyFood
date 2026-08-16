@@ -1,4 +1,4 @@
-@extends('buyer.layouts.master')
+@extends('buyer.layouts.master',['title'=> __('titles.join_request')])
 
 @section('content')
     <section class="space-y-5">

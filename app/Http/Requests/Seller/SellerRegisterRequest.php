@@ -28,29 +28,29 @@ class SellerRegisterRequest extends FormRequest
     public function rules(): array
     {
         return [    
-            'full_name' => ['required', 'string', 'max:255'],
-            'phone' => ['required', 'string', 'min:10', 'max:30'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            // 'account_type' => ['required', 'in:buyer,seller'],
+            'full_name' => ['sometimes', 'string', 'max:255'],
+            'phone' => ['sometimes', 'string', 'min:10', 'max:30'],
+            'email' => ['sometimes', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+            'password' => ['sometimes', 'confirmed', Rules\Password::defaults()],
+            // 'account_type' => ['sometimes', 'in:buyer,seller'],
        
             
 
-            'birthdate' => ['required', 'date', 'string'],
-            'country' => ['required', 'string'],
-            'city' => ['required'],
-            'town' => ['required'],
-            'address' => ['required'],
-            'product_type' => ['required'],
-            'capability' => ['required'],
-            'bank_name' => ['required'],
-            'IBAN' => ['required'],
-            'id_number' => ['required'],
-            'username' => ['required'],
-            'id_image_front' => ['required'],
-            'id_image_back' => ['required'],
-            'terms_data' => ['required'],
-            'agree' => ['required'],
+            'birthdate' => ['sometimes', 'date', 'string'],
+            'country' => ['sometimes', 'string'],
+            'city' => ['sometimes'],
+            'town' => ['sometimes'],
+            'address' => ['sometimes'],
+            'product_type' => ['sometimes'],
+            'capability' => ['sometimes'],
+            'bank_name' => ['sometimes'],
+            'IBAN' => ['sometimes'],
+            'id_number' => ['sometimes'],
+            'username' => ['sometimes'],
+            'id_image_front' => ['sometimes'],
+            'id_image_back' => ['sometimes'],
+            'terms_data' => ['sometimes'],
+            'agree' => ['sometimes'],
         ];
     }
 }

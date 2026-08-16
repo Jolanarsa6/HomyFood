@@ -1,9 +1,6 @@
-/* =========================================
-           1. الأساسيات والتهيئة (Reset & Core)
-           ========================================= */
 :root {
-    --primary-color: #0d3b1f; /* أخضر داكن من الشعار */
-    --secondary-color: #d1b16c; /* ذهبي من الشعار */
+    --primary-color: #0d3b1f;
+    --secondary-color: #d1b16c; 
     --text-dark: #333;
     --text-light: #fff;
     --bg-light: #f9f9f9;
@@ -36,7 +33,6 @@ ul {
     list-style: none;
 }
 
-/* تنسيق الأزرار الأساسية */
 .btn {
     padding: 10px 20px;
     border-radius: 5px;
@@ -66,9 +62,7 @@ ul {
     color: var(--text-light);
 }
 
-/* =========================================
-           2. الـ Header الاحترافي
-           ========================================= */
+
 .header {
     background-color: var(--text-light);
     box-shadow: var(--shadow-md);
@@ -77,7 +71,6 @@ ul {
     z-index: 1000;
 }
 
-/* شريط علوي صغير للترحيب (اختياري، يضيف احترافية) */
 .top-bar {
     background-color: var(--secondary-color);
     color: var(--text-light);
@@ -86,15 +79,13 @@ ul {
     text-align: center;
 }
 
-/* الـ Header الرئيسي */
 .main-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 15px 50px; /* تباعد جانبي كبير للشاشات الكبيرة */
+    padding: 15px 50px; 
 }
 
-/* جزء الشعار والقائمة */
 .logo-nav-group {
     display: flex;
     align-items: center;
@@ -112,20 +103,17 @@ ul {
     color: var(--secondary-color);
 }
 
-/* حاوية الشعار */
 .header-logo {
     display: flex;
     align-items: center;
 }
 
-/* تنسيق الشعار الدائري من الصورة */
 .header-logo img {
-    height: 60px; /* حجم الشعار في الـ Header */
+    height: 60px; 
     border-radius: 50%;
     border: 2px solid var(--secondary-color);
 }
 
-/* جزء البحث */
 .search-container {
     flex: 1;
     max-width: 500px;
@@ -157,7 +145,6 @@ ul {
     cursor: pointer;
 }
 
-/* جزء إجراءات المستخدم (الأيقونات والأزرار) */
 .user-actions {
     display: flex;
     align-items: center;
@@ -176,7 +163,6 @@ ul {
     color: var(--secondary-color);
 }
 
-/* شارة العدد فوق الأيقونة */
 .badge {
     position: absolute;
     top: -8px;
@@ -193,19 +179,15 @@ ul {
     justify-content: center;
 }
 
-/* أزرار التسجيل */
 .auth-buttons {
     display: flex;
     gap: 10px;
 }
 
-/* =========================================
-           3. الـ Navbar (القائمة الجانبية السفلية)
-           ========================================= */
 .sidebar {
     position: fixed;
     top: 0;
-    right: 100%; /* مخفية تمامًا على اليسار */
+    right: 100%; 
     width: 300px;
     height: 100vh;
     background-color: var(--text-light);
@@ -217,12 +199,10 @@ ul {
     padding: 30px;
 }
 
-/* عندما تكون القائمة نشطة */
 .sidebar.active {
-    right: 0; /* تظهر على اليسار */
+    right: 0; 
 }
 
-/* خلفية شفافة عند فتح القائمة */
 .overlay {
     position: fixed;
     top: 0;
@@ -241,7 +221,6 @@ ul {
     visibility: visible;
 }
 
-/* رأس القائمة الجانبية */
 .sidebar-header {
     display: flex;
     align-items: center;
@@ -281,7 +260,6 @@ ul {
     color: var(--primary-color);
 }
 
-/* عناصر القائمة */
 .sidebar-menu ul li {
     margin-bottom: 15px;
 }
@@ -308,9 +286,7 @@ ul {
     font-weight: 600;
 }
 
-/* =========================================
-           4. قسم فلاتر الدوائر
-           ========================================= */
+
 .filters-section {
     padding: 40px 50px;
     background-color: var(--text-light);
@@ -322,7 +298,7 @@ ul {
     align-items: center;
     justify-content: center;
     gap: 25px;
-    flex-wrap: wrap; /* للسماح بالالتفاف على الشاشات الصغيرة */
+    flex-wrap: wrap; 
 }
 
 .filter-item {
@@ -349,7 +325,6 @@ ul {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
-/* تأثير الـ Hover على الدائرة */
 .filter-item:hover .circle {
     background-color: var(--primary-color);
     color: var(--text-light);
@@ -357,7 +332,6 @@ ul {
     transform: translateY(-5px);
 }
 
-/* الدائرة النشطة */
 .filter-item.active .circle {
     background-color: var(--secondary-color);
     color: var(--primary-color);
@@ -378,9 +352,7 @@ ul {
     color: var(--primary-color);
 }
 
-/* =========================================
-           5. قسم المحتوى الرئيسي والـ Responsiveness
-           ========================================= */
+
 .main-content {
     padding: 50px;
     min-height: 50vh;
@@ -394,11 +366,7 @@ ul {
     font-family: "Cairo", sans-serif;
 }
 
-/* =========================================
-           استعلامات الوسائط (Responsive Design)
-           ========================================= */
 
-/* للأجهزة اللوحية (Tablets) */
 @media (max-width: 1024px) {
     .main-header {
         padding: 15px 30px;
@@ -414,14 +382,13 @@ ul {
     }
 }
 
-/* للهواتف (Mobile-first هو الأساس، هنا نعدل التخطيط الأفقي) */
 @media (max-width: 768px) {
     .top-bar {
         display: none;
     } /* إخفاء الشريط العلوي */
 
     .main-header {
-        flex-wrap: wrap; /* للسماح بالالتفاف */
+        flex-wrap: wrap; 
         padding: 10px 15px;
     }
     .header-logo img {
@@ -429,7 +396,7 @@ ul {
     }
 
     .search-container {
-        order: 3; /* البحث يصبح في الصف الثاني */
+        order: 3;
         width: 100%;
         max-width: 100%;
         margin: 10px 0 5px;
@@ -440,12 +407,12 @@ ul {
     }
 
     .user-actions {
-        order: 2; /* الأيقونات تصبح بجوار الشعار */
+        order: 2; 
         gap: 12px;
     }
 
     .auth-buttons {
-        display: none; /* إخفاء أزرار تسجيل الدخول في الهواتف، يمكن نقلها للقائمة الجانبية */
+        display: none; 
     }
 
     .filters-section {

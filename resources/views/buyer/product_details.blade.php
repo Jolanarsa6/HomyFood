@@ -1,4 +1,4 @@
-@extends('buyer.layouts.master')
+@extends('buyer.layouts.master', ['title' => __('titles.product_details')])
 
 @section('content')
     <main class="px-4 py-10">
@@ -102,6 +102,7 @@
                 class="mt-4 rounded-2xl border border-homy-gold-200 p-4 dark:border-homy-gold-600/35">
                 @csrf
                 <input type="hidden" name="product_id" value="{{ $product->id }}">
+                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                 <input type="hidden" name="buyer_name" value="{{ Auth::user()->full_name }}">
                 <input type="hidden" name="comment_date" value="{{ now() }}">
                 <label class="mb-2 block text-sm font-black text-homy-green-700 dark:text-homy-gold-400"><span
@@ -115,28 +116,46 @@
             </form>
 
             <div class="mt-6 space-y-4">
-                @foreach ($comments as $comment)
-                    @if ($product->id == $comment->product_id)
-                        <article class="rounded-2xl border border-homy-gold-200 p-4 dark:border-homy-gold-600/35">
-                            <div class="flex items-center justify-between gap-2">
-                                <p class="text-sm font-black text-homy-green-700 dark:text-homy-gold-400">
-                                    {{ $comment->buyer_name }}</p>
-                                <p class="text-xs font-bold text-slate-400">{{ $comment->comment_date }}</p>
-                            </div>
-                            <p class="mt-2 text-sm font-semibold text-slate-600 dark:text-slate-300"><span
-                                    class="lang-ar">{{ $comment->buyer_comment }}</span><span class="lang-en">Amazing
-                                    taste! Is there a larger size?</span></p>
+                @foreach ($product->comments as $comment)
+                    <article class="rounded-2xl border border-homy-gold-200 p-4 dark:border-homy-gold-600/35">
+                        <div class="flex items-center justify-between gap-2">
+                            <p class="text-sm font-black text-homy-green-700 dark:text-homy-gold-400">
+                                {{ $comment->buyer_name }}</p>
+                            <p class="text-xs font-bold text-slate-400">{{ $comment->comment_date }}</p>
+                        </div>
+                        <p class="mt-2 text-sm font-semibold text-slate-600 dark:text-slate-300"><span
+                                class="lang-ar">{{ $comment->buyer_comment }}</span><span class="lang-en">Amazing
+                                taste! Is there a larger size?</span></p>
 
-                            <div class="mt-3 rounded-xl bg-homy-gold-50 p-3 dark:bg-homy-green-700/25">
-                                <p class="text-xs font-black text-homy-green-700 dark:text-homy-gold-400"><span
-                                        class="lang-ar">رد البائع : {{ $product->brand }}</span><span
-                                        class="lang-en">Seller Reply</span></p>
-                                <p class="mt-1 text-sm font-semibold text-slate-600 dark:text-slate-300"><span
-                                        class="lang-ar">..............</span><span class="lang-en">..............</span>
-                                </p>
-                            </div>
-                        </article>
-                    @endif
+                        <div class="mt-3 rounded-xl bg-homy-gold-50 p-3 dark:bg-homy-green-700/25">
+                            {{-- <p class="text-xs font-black text-homy-green-700 dark:text-homy-gold-400"><span
+                                    class="lang-ar">رد البائع : {{ $product->brand }}</span><span class="lang-en">Seller
+                                    Reply</span></p>
+                            <p class="mt-1 text-sm font-semibold text-slate-600 dark:text-slate-300"><span
+                                    class="lang-ar">..............</span><span class="lang-en">..............</span>
+                            </p> --}}
+
+
+                            @php
+                                $reply = $comment->replies->first(); // أول رد فقط
+                            @endphp
+
+                            @if ($reply)
+                                <div class="mt-3 rounded-xl bg-homy-gold-50 p-3 dark:bg-homy-green-700/25">
+                                    <p class="text-xs font-black text-homy-green-700 dark:text-homy-gold-400">
+                                        رد البائع: {{ $reply->user->full_name ?? $reply->seller->full_name }}
+                                    </p>
+                                    <p class="mt-1 text-sm font-semibold text-slate-600 dark:text-slate-300">
+                                        {{ $reply->body }}
+                                    </p>
+                                </div>
+                            @else
+                                <div class="mt-1 text-sm font-semibold text-slate-600 dark:text-slate-300">
+                                    لم يتم الرد بعد
+                                </div>
+                            @endif
+                        </div>
+                    </article>
                 @endforeach
             </div>
         </section>

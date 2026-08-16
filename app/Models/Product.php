@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Override;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
@@ -42,5 +43,9 @@ class Product extends Model implements HasMedia
     function productCart()
     {
         return $this->belongsToMany(User::class, 'cart');
+    }
+    function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }

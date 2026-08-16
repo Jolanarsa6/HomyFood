@@ -1,15 +1,8 @@
-@extends('seller.layouts.master')
+@extends('seller.layouts.master',['title'=> __('titles.add_product')])
 
 
 @section('content')
-    {{-- _______________________________ --}}
-
-
-    @if ($errors->any())
-        <div style="color:white">
-            {{ $errors->first() }}
-        </div>
-    @endif
+    <x-alert></x-alert>
 
     <section class="space-y-6">
         <article

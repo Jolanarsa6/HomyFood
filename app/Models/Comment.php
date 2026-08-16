@@ -8,8 +8,16 @@ class Comment extends Model
 {
     protected $guarded = ['id'];
 
-    public function comments()
+    public function user()
     {
-        return $this->belongsToMany(Comment::class);
+        return $this->belongsTo(User::class);
+    }
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
     }
 }

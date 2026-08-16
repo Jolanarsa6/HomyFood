@@ -89,9 +89,11 @@ Route::group(["middleware" => ["auth:admin", 'lang.switch'], "prefix" => "admin"
 
     // seller control
     Route::get('/show_sellers_control', [SellersControlController::class, 'index'])->name('show_sellers_control');
+    Route::get('/search', [SellersControlController::class, 'search'])->name('search');
 
     // Notitication control
     Route::get('/show_notifications', [sellerJoinRequestNotifi::class, 'index'])->name('show_notifications');
     Route::post('/read_notifications/{notification_id}', [sellerJoinRequestNotifi::class, 'edit'])->name('notifications.read');
     Route::post('/readAll_notifications', [sellerJoinRequestNotifi::class, 'readAll'])->name('notifications.readAll');
+
 });
