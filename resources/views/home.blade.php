@@ -159,7 +159,7 @@
                     </div>
 
                     <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                        @foreach ($products->take(18) as $product)
+                        @foreach ($products->take(4) as $product)
                             <article class="homy-card p-3">
                                 <a class="relative block">
                                     <img src={{ $product->getFirstMediaUrl('product_images') }} alt="Fig Jam"
@@ -425,7 +425,7 @@
                     </div>
 
                     <div class="grid gap-5 lg:grid-cols-3">
-                        @foreach($products as $product)
+                        @foreach($products->take(3) as $product)
                         @if($product->getFirstMediaUrl('product_videos') != null)
                          <article class="homy-card overflow-hidden">
                             <video controls preload="metadata"
