@@ -30,7 +30,7 @@
     <x-buyer.aside />
 
     <!-- Page Heading -->
-    @include('buyer.layouts.header');
+    @include('buyer.layouts.header')
 
     <!-- Page Content -->
 

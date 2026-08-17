@@ -23,11 +23,11 @@ class ProductInformationsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'product_ar_name' => ['sometimes','string'],
-            'product_en_name' => ['sometimes','string'],
-            'brand' => ['sometimes','string'],
-            'palce_of_origin' => ['sometimes','string'],
-            'description' => ['sometimes','string'],
+            'product_ar_name' => ['sometimes'],
+            'product_en_name' => ['sometimes'],
+            'brand' => ['sometimes'],
+            'palce_of_origin' => ['sometimes'],
+            'description' => ['sometimes'],
             'price' => ['sometimes'],
             'discount_price' => ['sometimes'],
             'available_quantity' => ['sometimes'],

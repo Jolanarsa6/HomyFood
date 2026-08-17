@@ -200,10 +200,10 @@
                         class="rounded-2xl bg-homy-green-700 px-6 py-3 text-sm font-black text-white hover:bg-homy-green-600"><span
                             class="lang-ar">نشر المنتج</span><span class="lang-en">Publish
                             Product</span></button>
-                    <button type="button"
+                    {{-- <button type="button"
                         class="rounded-2xl border border-homy-gold-300 px-6 py-3 text-sm font-black text-homy-green-700 dark:border-homy-gold-600/35 dark:text-homy-gold-300"><span
                             class="lang-ar">حفظ كمسودة</span><span class="lang-en">Save As
-                            Draft</span></button>
+                            Draft</span></button> --}}
                     <a href="{{ route('seller.showProducts') }}"
                         class="rounded-2xl border border-homy-gold-300 px-6 py-3 text-sm font-black text-homy-green-700 dark:border-homy-gold-600/35 dark:text-homy-gold-300"><span
                             class="lang-ar">عرض المنتجات</span><span class="lang-en">View Products</span></a>

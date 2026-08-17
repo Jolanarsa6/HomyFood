@@ -30,7 +30,7 @@
     <div id="sidebarOverlay" class="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm lg:hidden"></div>
 
     <!-- Page Heading -->
-    @include('seller.layouts.header');
+    @include('seller.layouts.header')
 
     <!-- Page Content -->
     <main class="mx-auto grid w-full max-w-[1500px] gap-6 px-4 py-6 lg:grid-cols-[1fr_300px]">

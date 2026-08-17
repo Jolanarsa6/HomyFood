@@ -16,11 +16,11 @@ class PaymentSeeder extends Seeder
              $payments = [
             [
                 'admin_id' => '1',
-                'name' => 'Syriatel Kash',
+                'name' => 'Syriatel Cash',
             ],
             [
                 'admin_id' => '1',
-                'name' => 'Sham Kash',
+                'name' => 'Sham Cash',
             ],
             [
                 'admin_id' => '1',

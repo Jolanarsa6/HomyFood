@@ -65,7 +65,8 @@ Route::group(['middleware' => ['auth:web', 'verified', 'role:buyer', 'lang.switc
     Route::get('/checkout_all', [CheckoutController::class, 'index'])->name('checkout_all');
     Route::get('/checkout/{product_id}', [CheckoutController::class, 'show'])->name('checkout');
     Route::get('/special-offers', function () {
-        return view('buyer.special-offers');
+        $products = Product::all();
+        return view('buyer.special-offers',compact('products'));
     })->name('special-offers');
 
     Route::get('/compare', function () {
