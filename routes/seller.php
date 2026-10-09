@@ -29,19 +29,6 @@ Route::group(['middleware' => ['lang.switch'], 'prefix' => 'seller', 'as' => 'se
         return view('seller.waiting');
     })->name('waiting');
 
-    // Route::get('/sellerRegisterStep1',[SellerRegisterStep1Controller::class,'Create'])->name('register_step1');
-    // Route::post('/sellerRegisterStep1',[SellerRegisterStep1Controller::class,'store']);
-
-    // Route::get('/sellerRegisterStep2',[SellerRegisterStep2Controller::class,'Create'])->name('register_step2');
-    // Route::post('/sellerRegisterStep2',[SellerRegisterStep2Controller::class,'store']);
-
-    // Route::get('/sellerRegisterStep3',[SellerRegisterStep3Controller::class,'Create'])->name('register_step3');
-    // Route::post('/sellerRegisterStep3',[SellerRegisterStep3Controller::class,'store']);
-
-    // Route::get('/sellerRegisterStep4',[SellerRegisterStep4Controller::class,'Create'])->name('register_step4');
-    // Route::post('/sellerRegisterStep4',[SellerRegisterStep4Controller::class,'store']);
-
-
 });
 
 

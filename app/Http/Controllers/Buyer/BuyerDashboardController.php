@@ -19,7 +19,8 @@ class BuyerDashboardController extends Controller
         // }
 
         $products = Product::all();
-        return view('dashboard', compact('products'));
+        // dd($products);
+        return view('home', compact('products'));
     }
 
     public function addToCart(int $product_id)

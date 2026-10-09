@@ -7,9 +7,11 @@ use App\Http\Controllers\Buyer\ConnectUsController;
 use App\Http\Controllers\Buyer\ProductDetailsController;
 use App\Http\Controllers\Buyer\WishlistController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\SpecialOfferController;
 use App\Models\Cart;
 use App\Models\Product;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -64,10 +66,7 @@ Route::group(['middleware' => ['auth:web', 'verified', 'role:buyer', 'lang.switc
     // checkout
     Route::get('/checkout_all', [CheckoutController::class, 'index'])->name('checkout_all');
     Route::get('/checkout/{product_id}', [CheckoutController::class, 'show'])->name('checkout');
-    Route::get('/special-offers', function () {
-        $products = Product::all();
-        return view('buyer.special-offers',compact('products'));
-    })->name('special-offers');
+    Route::get('/special-offers', SpecialOfferController::class)->name('special-offers');
 
     Route::get('/compare', function () {
         $products = Product::all();

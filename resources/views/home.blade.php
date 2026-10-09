@@ -38,12 +38,13 @@
                         </p>
 
                         <div class="mt-7 flex flex-wrap items-center gap-3">
-
-                            {{-- <a href="compare.html"
+                            @auth
+                            <a href="{{ route('buyer.compare') }}"
                                 class="rounded-2xl border-2 border-homy-gold-400 bg-white px-6 py-3 text-sm font-black text-homy-green-700 transition hover:-translate-y-0.5 hover:bg-homy-gold-500 hover:text-homy-green-900 dark:bg-homy-gold-500 dark:text-homy-green-900">
                                 <span class="lang-ar">قارن المنتجات</span>
                                 <span class="lang-en">Compare Products</span>
-                            </a> --}}
+                            </a>
+                            @endauth
                             <a href="{{ route('login') }}"
                                 class="rounded-2xl bg-homy-green-700 px-6 py-3 text-sm font-black text-white shadow-lg shadow-homy-green-700/25 transition hover:-translate-y-0.5 hover:bg-homy-green-600">
                                 <span class="lang-ar">ابدأ التسوق الآن</span>
@@ -97,47 +98,6 @@
                 </div>
             </section>
 
-            {{-- <section class="px-4 pb-8">
-                <div class="mx-auto flex w-full max-w-7xl gap-20 overflow-x-auto pb-2 custom-scrollbar">
-                    <button
-                        class="js-filter-item active shrink-0 rounded-2xl border border-homy-gold-200 bg-white px-4 py-3 text-center text-xs font-black text-homy-green-700 dark:border-homy-gold-600/35 dark:bg-[#153023] dark:text-homy-gold-300">
-                        <i class="fa-solid fa-layer-group mb-2 block text-base"></i>
-                        <span class="lang-ar">الكل</span>
-                        <span class="lang-en">All</span>
-                    </button>
-                    <button
-                        class="js-filter-item shrink-0 rounded-2xl border border-homy-gold-200 bg-white px-4 py-3 text-center text-xs font-black text-homy-green-700 dark:border-homy-gold-600/35 dark:bg-[#153023] dark:text-homy-gold-300">
-                        <i class="fa-solid fa-jar mb-2 block text-base"></i>
-                        <span class="lang-ar">المربيات</span>
-                        <span class="lang-en">Jams</span>
-                    </button>
-                    <button
-                        class="js-filter-item shrink-0 rounded-2xl border border-homy-gold-200 bg-white px-4 py-3 text-center text-xs font-black text-homy-green-700 dark:border-homy-gold-600/35 dark:bg-[#153023] dark:text-homy-gold-300">
-                        <i class="fa-solid fa-seedling mb-2 block text-base"></i>
-                        <span class="lang-ar">الزعتر</span>
-                        <span class="lang-en">Zaatar</span>
-                    </button>
-                    <button
-                        class="js-filter-item shrink-0 rounded-2xl border border-homy-gold-200 bg-white px-4 py-3 text-center text-xs font-black text-homy-green-700 dark:border-homy-gold-600/35 dark:bg-[#153023] dark:text-homy-gold-300">
-                        <i class="fa-solid fa-pepper-hot mb-2 block text-base"></i>
-                        <span class="lang-ar">المخللات</span>
-                        <span class="lang-en">Pickles</span>
-                    </button>
-                    <button
-                        class="js-filter-item shrink-0 rounded-2xl border border-homy-gold-200 bg-white px-4 py-3 text-center text-xs font-black text-homy-green-700 dark:border-homy-gold-600/35 dark:bg-[#153023] dark:text-homy-gold-300">
-                        <i class="fa-solid fa-wheat-awn mb-2 block text-base"></i>
-                        <span class="lang-ar">المونة</span>
-                        <span class="lang-en">Pantry</span>
-                    </button>
-                    <button
-                        class="js-filter-item shrink-0 rounded-2xl border border-homy-gold-200 bg-white px-4 py-3 text-center text-xs font-black text-homy-green-700 dark:border-homy-gold-600/35 dark:bg-[#153023] dark:text-homy-gold-300">
-                        <i class="fa-solid fa-cheese mb-2 block text-base"></i>
-                        <span class="lang-ar">الألبان</span>
-                        <span class="lang-en">Dairy</span>
-                    </button>
-                </div>
-            </section> --}}
-
             <section class="px-4 pb-14">
                 <div class="mx-auto w-full max-w-7xl">
                     <div class="mb-7 flex items-end justify-between gap-4">
@@ -146,10 +106,10 @@
                                 <span class="lang-ar">منتجات مختارة لك</span>
                                 <span class="lang-en">Curated For You</span>
                             </h2>
-                            <!-- <p class="mt-1 text-sm font-semibold text-slate-500 dark:text-slate-300">
-                                <span class="lang-ar">بطاقات المنتج الأساسية بنفس روح متجرك الحالية</span>
-                                <span class="lang-en">Core product cards aligned with your current style</span>
-                            </p> -->
+                            <p class="mt-1 text-sm font-semibold text-slate-500 dark:text-slate-300">
+                                <span class="lang-ar">منتجات مصنوعة بحب خصيصا لأجلك </span>
+                                <span class="lang-en">Products made with love, especially for you.</span>
+                            </p> 
                         </div>
                         <a href="{{ route('buyer.all_products.show') }}"
                             class="text-sm font-black text-homy-green-700 underline decoration-homy-gold-500 decoration-2 underline-offset-4 dark:text-homy-gold-400">
@@ -175,59 +135,6 @@
                                         </button>
                                     </form>
                                 </a>
-
-
-                                {{-- ....................... --}}
-                                {{-- @auth
-    <div x-data="{ 
-            productId: {{ $product->id }},
-            /* التحقق من حالة المنتج باستخدام العلاقة المجهزة من الكنترولر */
-            isFav: {{ (auth()->check() && $product->productWishlists->contains(auth()->id())) ? 'true' : 'false' }},
-            loading: false 
-         }" 
-         class="inline-block">
-        
-        <button @click="
-                if(loading) return;
-                loading = true;
-                
-                // تغيير اللون فوراً لتجربة سريعة
-                isFav = !isFav; 
-                
-                // إرسال الطلب مع تمرير الـ CSRF Token في الـ Headers
-                axios.post('/wishlist/toggle/' + productId, {}, {
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    }
-                })
-                .then(response => {
-                    isFav = response.data.is_favorite;
-                })
-                .catch(error => {
-                    // في حال الفشل، نعيد الأيقونة لحالتها السابقة
-                    isFav = !isFav;
-                    alert('حدث خطأ ما، يرجى المحاولة لاحقاً');
-                    console.error(error); // هذا السطر سيطبع لك تفاصيل الخطأ بدقة في متصفحك (Console)
-                })
-                .finally(() => loading = false);
-            "
-            type="button"
-            class="p-2 rounded-full transition-all duration-300 transform active:scale-95 focus:outline-none"
-            :class="isFav ? 'text-homy-green-700 dark:text-homy-gold-400' : 'text-slate-400 dark:text-slate-500 hover:text-homy-green-600 dark:hover:text-homy-gold-200'">
-            
-            <i :class="isFav ? 'fa-solid fa-heart' : 'fa-regular fa-heart'" class="text-xl transition-transform duration-300"></i>
-            
-        </button>
-    </div>
-@else
-    <a href="{{ route('login') }}" class="p-2 text-slate-400 dark:text-slate-500 hover:text-homy-green-600 dark:hover:text-homy-gold-200 inline-block">
-        <i class="fa-regular fa-heart text-xl"></i>
-    </a>
-@endauth --}}
-
-
-                                {{-- ....................... --}}
-
 
                                 <div class="pt-3">
                                     <h3
@@ -262,10 +169,10 @@
                                 <span class="lang-ar">قد يعجبك</span>
                                 <span class="lang-en">May You Love</span>
                             </h2>
-                            {{-- <p class="mt-1 text-sm font-semibold text-slate-500 dark:text-slate-300">
-                                <span class="lang-ar">تنويع بصري يعزز تجربة المستخدم في الصفحة الرئيسية</span>
-                                <span class="lang-en">Visual diversity for richer homepage experience</span>
-                            </p>  --}}
+                            <p class="mt-1 text-sm font-semibold text-slate-500 dark:text-slate-300">
+                                <span class="lang-ar">منتجات متطابقة مع اهتماماتك</span>
+                                <span class="lang-en">Products perfectly matched to your interests</span>
+                            </p> 
                         </div>
                     </div>
 
@@ -345,11 +252,7 @@
                                 <h2 class="text-2xl font-black text-homy-green-700 dark:text-homy-gold-400">
                                     <span class="lang-ar">فلاتر سريعة</span>
                                     <span class="lang-en">Quick Filters</span>
-                                </h2>
-                                <!-- <p class="mt-1 text-sm font-semibold text-slate-600 dark:text-slate-300">
-                                    <span class="lang-ar">نفس هدف فلاتر الأعلى لكن بعرض بصري عالمي</span>
-                                    <span class="lang-en">Same purpose as top filters with a richer visual style</span>
-                                </p> -->
+                                </h2> 
                             </div>
                         </div>
 
@@ -425,29 +328,30 @@
                     </div>
 
                     <div class="grid gap-5 lg:grid-cols-3">
-                        @foreach($products->take(3) as $product)
-                        @if($product->getFirstMediaUrl('product_videos') != null)
-                         <article class="homy-card overflow-hidden">
-                            <video controls preload="metadata"
-                                poster="{{ $product->getFirstMediaUrl('product_images') }}"
-                                class="h-52 w-full object-cover">
-                                <source src="{{ $product->getFirstMediaUrl('product_videos') }}"
-                                    type="video/mp4">
-                                    متصفحك لا يدعم تشغيل الفيديو
-                            </video>
-                            <div class="p-4">
-                                <h3 class="font-black text-homy-green-700 dark:text-homy-gold-400">
-                                    <span class="lang-ar">طريقة تحضير {{ $product->product_ar_name }}</span>
-                                    <span class="lang-en">How We Prepare {{ $product->product_en_name }}</span>
-                                </h3>
-                            </div>
-                        </article>
-                        @endif 
-                        @endforeach                  
+                        @foreach ($products->take(3) as $product)
+                            @if ($product->getFirstMediaUrl('product_videos') != null)
+                                <article class="homy-card overflow-hidden">
+                                    <video controls preload="metadata"
+                                        poster="{{ $product->getFirstMediaUrl('product_images') }}"
+                                        class="h-52 w-full object-cover">
+                                        <source src="{{ $product->getFirstMediaUrl('product_videos') }}"
+                                            type="video/mp4">
+                                        متصفحك لا يدعم تشغيل الفيديو
+                                    </video>
+                                    <div class="p-4">
+                                        <h3 class="font-black text-homy-green-700 dark:text-homy-gold-400">
+                                            <span class="lang-ar">طريقة تحضير {{ $product->product_ar_name }}</span>
+                                            <span class="lang-en">How We Prepare
+                                                {{ $product->product_en_name }}</span>
+                                        </h3>
+                                    </div>
+                                </article>
+                            @endif
+                        @endforeach
                     </div>
                 </div>
             </section>
-            
+
             <section class="px-4 pb-14">
                 <div
                     class="mx-auto w-full max-w-7xl rounded-[2rem] border border-homy-gold-200 bg-white/85 p-6 shadow-xl dark:border-homy-gold-600/30 dark:bg-[#12211B]/85">
@@ -502,42 +406,11 @@
                     <div
                         class="brand-marquee overflow-hidden rounded-3xl border border-homy-gold-200 bg-white/90 p-4 dark:border-homy-gold-600/30 dark:bg-[#12211B]/85">
                         <div class="brand-track flex w-max gap-3">
-                            <span
-                                class="rounded-2xl border border-homy-gold-200 bg-homy-gold-50 px-4 py-3 text-sm font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/30 dark:text-homy-gold-300">Homy
-                                Pantry</span>
-                            <span
-                                class="rounded-2xl border border-homy-gold-200 bg-homy-gold-50 px-4 py-3 text-sm font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/30 dark:text-homy-gold-300">Levant
-                                Spoon</span>
-                            <span
-                                class="rounded-2xl border border-homy-gold-200 bg-homy-gold-50 px-4 py-3 text-sm font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/30 dark:text-homy-gold-300">Golden
-                                Ghee House</span>
-                            <span
-                                class="rounded-2xl border border-homy-gold-200 bg-homy-gold-50 px-4 py-3 text-sm font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/30 dark:text-homy-gold-300">Makdous
-                                Stories</span>
-                            <span
-                                class="rounded-2xl border border-homy-gold-200 bg-homy-gold-50 px-4 py-3 text-sm font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/30 dark:text-homy-gold-300">Farm
-                                To Jar</span>
-                            <span
-                                class="rounded-2xl border border-homy-gold-200 bg-homy-gold-50 px-4 py-3 text-sm font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/30 dark:text-homy-gold-300">Royal
-                                Pickles</span>
-                            <span
-                                class="rounded-2xl border border-homy-gold-200 bg-homy-gold-50 px-4 py-3 text-sm font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/30 dark:text-homy-gold-300">Homy
-                                Pantry</span>
-                            <span
-                                class="rounded-2xl border border-homy-gold-200 bg-homy-gold-50 px-4 py-3 text-sm font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/30 dark:text-homy-gold-300">Levant
-                                Spoon</span>
-                            <span
-                                class="rounded-2xl border border-homy-gold-200 bg-homy-gold-50 px-4 py-3 text-sm font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/30 dark:text-homy-gold-300">Golden
-                                Ghee House</span>
-                            <span
-                                class="rounded-2xl border border-homy-gold-200 bg-homy-gold-50 px-4 py-3 text-sm font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/30 dark:text-homy-gold-300">Makdous
-                                Stories</span>
-                            <span
-                                class="rounded-2xl border border-homy-gold-200 bg-homy-gold-50 px-4 py-3 text-sm font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/30 dark:text-homy-gold-300">Farm
-                                To Jar</span>
-                            <span
-                                class="rounded-2xl border border-homy-gold-200 bg-homy-gold-50 px-4 py-3 text-sm font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/30 dark:text-homy-gold-300">Royal
-                                Pickles</span>
+                            @foreach ($products as $product)
+                                <span
+                                    class="rounded-2xl border border-homy-gold-200 bg-homy-gold-50 px-4 py-3 text-sm font-black text-homy-green-700 dark:border-homy-gold-600/40 dark:bg-homy-green-700/30 dark:text-homy-gold-300">{{ $product->brand }}
+                                </span>
+                            @endforeach
                         </div>
                     </div>
                 </div>

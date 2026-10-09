@@ -27,17 +27,17 @@
 </head>
 
 <body class="text-slate-800 dark:text-slate-100">
-    @include('partials.header')
+    @include('buyer.layouts.header')
  <main class="px-4 py-8 lg:py-12">
         <section
             class="mx-auto grid w-full max-w-7xl overflow-hidden rounded-[2rem] border border-homy-gold-200 bg-white/90 shadow-2xl shadow-homy-green-700/10 dark:border-homy-gold-600/35 dark:bg-[#12211B]/90 lg:grid-cols-2">
     
-   {{ $slot }}
+    @yield('content')
 
         </section>
  </main>
     <x-footer />
-    <script src="{{ asset('templates/assets/app.js') }}"></script>
+      <script src="{{ asset('../../templates/assets/app.js') }}"></script>
 </body>
 
 </html>

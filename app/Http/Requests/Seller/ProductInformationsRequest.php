@@ -43,8 +43,8 @@ class ProductInformationsRequest extends FormRequest
             'quest_3' => ['string'],
 
 
-            'delivery_id' => ['nullable','array'],
-        'delivery_id.*' => 'exists:categories,id', 
+            'delivery_id' => ['nullable', 'array'],
+            'delivery_id.*' => 'exists:categories,id',
 
         ];
     }

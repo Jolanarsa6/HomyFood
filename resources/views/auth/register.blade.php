@@ -1,9 +1,6 @@
-<x-guest-Layout>
-    <x-slot name="title">
-        {{ __('actions.register') }}
-    </x-slot>
+@extends('auth.guest',['title'=> __('actions.register')])
 
-
+@section('content')
     <div class="relative hidden min-h-[620px] lg:block">
         <img src="{{ asset('images/register.png') }}" alt="Homemade table" class="h-full w-full object-cover">
         <div class="absolute inset-0 bg-gradient-to-b from-homy-green-700/45 via-homy-green-700/25 to-black/55">
@@ -48,7 +45,7 @@
                     <x-input-error :messages="$errors->get('full_name')" />
                 </div>
                 <div>
-                    <x-input-label for="phone" :value="__('phone')" />
+                    <x-input-label for="phone" :value="__('form.phone')" />
                     <x-text-input id="phone" type="phone" name="phone" :value="old('phone')" required autofocus
                         autocomplete="phone" />
                     <x-input-error :messages="$errors->get('phone')" />
@@ -72,41 +69,21 @@
                 </div>
                 <div>
                     <x-input-label for="password_confirmation" :value="__('form.confirm_password')" />
-                    <x-text-input type="password" placeholder="********" id="password_confirmation" name="password_confirmation"/>
+                    <x-text-input type="password" placeholder="********" id="password_confirmation"
+                        name="password_confirmation" />
                 </div>
             </div>
-            {{-- <div class="grid gap-4 sm:grid-cols-2">
-                      <div>
-                        <x-input-label for="password" :value="__('form.user_name')" />
-                        <x-text-input type="text"  id="password" name="username" />
-                        <x-input-error :messages="$errors->get('username')" />
-
-                    </div>
-                         <div>
-                            <x-input-label for="birthdate" :value="__('form.birthdate')" />
-                        <x-text-input type="date" id="birthdate" name="birthdate" />
-                        <x-input-error :messages="$errors->get('birthdate')" />
-
-                    </div>
-            </div> --}}
 
             <label class="inline-flex items-start gap-2 text-xs font-bold text-slate-500 dark:text-slate-300">
                 <input type="checkbox"
-                    class="mt-0.5 rounded border-homy-gold-300 text-homy-green-700 focus:ring-homy-gold-200" name="terms" required>
+                    class="mt-0.5 rounded border-homy-gold-300 text-homy-green-700 focus:ring-homy-gold-200"
+                    name="terms" required>
                 <span>{{ __('form.check_agree') }}</span>
             </label>
 
             <x-input-error :messages="$errors->get('phone')" />
 
-                <x-primary-button>{{ __('actions.create_account') }}</x-primary-button>
-
-
-
-            {{-- <button type="submit"
-                class="w-full rounded-2xl bg-homy-green-700 px-6 py-3 text-sm font-black text-white transition hover:bg-homy-green-600">
-                <span class="lang-ar">إنشاء الحساب</span>
-                <span class="lang-en">Create Account</span>
-            </button> --}}
+            <x-primary-button>{{ __('actions.create_account') }}</x-primary-button>
         </form>
 
         <p class="mt-6 text-center text-sm font-semibold text-slate-500 dark:text-slate-300">
@@ -119,6 +96,4 @@
         </p>
     </div>
 
-    </section>
-
-</x-guest-Layout>
+@endsection

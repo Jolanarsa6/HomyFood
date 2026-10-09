@@ -18,7 +18,7 @@ Route::get('/',[HomeController::class,'index'])->name('home')->middleware(['gues
 
 // The home page for buyer and seller dependent on it's role
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('home');
 })->middleware(['auth','role.redirect','verified','lang.switch'])->name('dashboard');
 
 // The home page for super admin

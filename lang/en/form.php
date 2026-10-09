@@ -11,5 +11,6 @@ return [
     'password' => 'Password',
     'city' => 'city',
     'town' => 'town',
+    'phone' => 'Phone',
 
 ];

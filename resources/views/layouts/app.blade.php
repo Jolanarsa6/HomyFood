@@ -24,13 +24,12 @@
             document.documentElement.classList.remove('dark');
         }
     </script>
-
 </head>
 
 <body class="font-sans antialiased">
  
         <!-- Page Heading -->
-            @include('partials.header');
+    @include('buyer.layouts.header')
 
         <!-- Page Content -->
         <main>

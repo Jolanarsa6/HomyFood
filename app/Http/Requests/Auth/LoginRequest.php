@@ -2,16 +2,28 @@
 
 namespace App\Http\Requests\Auth;
 
+use App\Helpers\ApiResponse;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Contracts\Validation\ValidationRule;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use Override;
 
 class LoginRequest extends FormRequest
 {
+    #[Override]
+    protected function failedValidation(Validator $validator)
+    {
+        if($this->is('api/*')){
+            $response = ApiResponse::sendResponse(422,'Validation Errors',$validator->errors());
+            throw new ValidationException($validator,$response);
+        }
+    }
+
     /**
      * Determine if the user is authorized to make this request.
      */
