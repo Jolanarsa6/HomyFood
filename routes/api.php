@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Api\LoginController;
+use App\Http\Controllers\Api\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -11,7 +11,7 @@ Route::get('/user', function (Request $request) {
 
 // .............................. auth routes 
 
-Route::post('/login', [LoginController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login']);
 
 //     Route::get('register', [RegisteredUserController::class, 'create'])
 //         ->name('buyer.register');
